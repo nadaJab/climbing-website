@@ -2,21 +2,40 @@
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
+  
   <parent>
     <groupId>com.climbingwebsite</groupId>
     <artifactId>climbing</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>com.climbingwebsite</groupId>
-  <artifactId>climbing-webapp</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
-  <name>climbing-webapp Maven Webapp</name>
-  <url>http://maven.apache.org</url>
-  <dependencies>
   
-        <!-- ===== Modules ===== -->
+   <artifactId>climbing-webapp</artifactId>
+   <packaging>war</packaging>
+   <name>climbing-webapp</name>
+   
+  
+   <dependencies>  
+   	    <dependency>
+      		<groupId>junit</groupId>
+    	    <artifactId>junit</artifactId>
+        </dependency>
+        
         <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+        </dependency>
+        
+        <dependency>
+    		<groupId>org.apache.struts</groupId>
+    		<artifactId>struts2-core</artifactId>
+    	</dependency>
+    
+		<dependency>
             <groupId>com.climbingwebsite</groupId>
             <artifactId>climbing-business</artifactId>
         </dependency>
@@ -29,34 +48,11 @@
         <dependency>
             <groupId>com.climbingwebsite</groupId>
             <artifactId>climbing-model</artifactId>
-        </dependency>
-
-   	    <dependency>
-      		<groupId>junit</groupId>
-    	    <artifactId>junit</artifactId>
-        </dependency>
-        
-        <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.bval</groupId>
-            <artifactId>bval-jsr</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-        </dependency>
-        
-        <dependency>
-    	<groupId>org.apache.struts</groupId>
-    	<artifactId>struts2-core</artifactId>
-    	<version>2.5.16</version>
-    	</dependency>
+        </dependency>   
     
   </dependencies>
-  <build>
-    <finalName>climbing-webapp</finalName>
+  
+   <build>
+    <finalName>climbing webapp</finalName>
   </build>
-</project>
+  </project>
