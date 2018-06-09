@@ -1,35 +1,53 @@
-<%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="sb" uri="/struts-bootstrap-tags" %>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
-<html>
-  <head>
-	<sj:head jqueryui="true"/>
-  </head>
-  
-  <body>
-	<sj:menu id="menuWithItems" class="navbar navbar-expand-lg navbar-light bg-light">
-	
-	<sj:menuItem title="Accueil" href="jsp/Home/"/>
-	<sj:menuItem title="Site">
-		<sj:menu id="subMenuPlugins" cssStyle="width:50%">
-			<sj:menuItem title="Localiser un site" href="https://cwiki.apache.org/S2PLUGINS/home.html"/>
-			<sj:menuItem title="Ajouter un site" href="https://github.com/struts-community-plugins/struts2-jquery/"/>
-		</sj:menu>
-	</sj:menuItem>
+            
+  <!-- Bootstrap core CSS -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">          
 
-	<sj:menuItem title="Topo">
-		<sj:menu id="subMenuSocialMedia" cssStyle="width:50%">
-			<sj:menuItem title="Liste topo" href="https://twitter.com/TheApacheStruts"/>
-			<sj:menuItem title="Ajouter un topo" href="https://www.google.com/+ApacheStruts"/>
-		</sj:menu>
-	</sj:menuItem>
-	
-	<sj:menuItem title="Connexion">
-		<sj:menu id="subMenuSocialMedia" cssStyle="width:50%">
-			<sj:menuItem title="Connexion" href="https://twitter.com/TheApacheStruts"/>
-			<sj:menuItem title="CrÈer un compte" href="https://www.google.com/+ApacheStruts"/>
-		</sj:menu>
-	</sj:menuItem>
+<nav class="navbar navbar-default">
+<div class="container-fluid">
 
-	</sj:menu>
-  </body>
-</html>
+	<div class="navbar-header">
+  		<a class="navbar-brand" href="#">Accueil</a>
+	</div>  
+
+    <!-- Left nav -->
+    <ul class="nav navbar-nav mr-auto">
+     
+      				
+      <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#">Site</a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="jsp/Home/">Localiser un site</a></li>
+          <li><a class="dropdown-item disabled" href="jsp/Home/">Ajouter un site</a></li>
+        </ul>
+      </li>
+      
+      <li class="nav-item dropdown">
+
+      <a class="nav-link dropdown-toggle" href="#">Topo</a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Liste topo</a></li>
+          <li><a class="dropdown-item disabled" href="#">Ajouter un topo</a></li>
+        </ul>
+      </li>
+   
+    
+    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#">Connexion</a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Connexion</a></li>
+          <li><a class="dropdown-item disabled" href="#">Cr√©er un compte</a></li>
+        </ul>
+      </li>
+    </ul>
+
+	<form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
+    </form>
+    
+  </div>
+</nav>
