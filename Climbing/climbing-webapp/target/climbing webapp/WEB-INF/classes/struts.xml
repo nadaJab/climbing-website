@@ -9,13 +9,23 @@
         <default-action-ref name="index" />
 
         <!-- Action "index" -->
-        <action name="home" class="action.HomeAction">
+        <action name="home">
             <result>/jsp/Home.jsp</result>
         </action>
         
         <!-- Action "inscription" -->
         <action name="inscription" class="action.InscriptionAction">
-            <result>/jsp/Home.jsp</result>
+            <result>/jsp/Inscription.jsp</result>
+        </action>
+        
+        <!-- Action "Ajout d'un topo" -->
+        <action name="ajout-topo" class="action.AjoutTopoAction">
+            <result>/jsp/AjoutTopo.jsp</result>
+        </action>
+        
+        <!-- Action "Ajout d'un nouveau site" -->
+        <action name="ajoutsite" class="action.AjoutSiteAction">
+            <result>/jsp/AjoutSite.jsp</result>
         </action>
         
     </package>

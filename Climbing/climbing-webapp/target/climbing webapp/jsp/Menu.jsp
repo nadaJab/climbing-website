@@ -1,52 +1,53 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="sb" uri="/struts-bootstrap-tags" %>
+<%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
             
-            
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#"></a>
-  
+  <!-- Bootstrap core CSS -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">          
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="jsp/Home/">Accueil <span class="sr-only">(current)</span></a>
+<nav class="navbar navbar-default">
+<div class="container-fluid">
+
+	<div class="navbar-header">
+  		<a class="navbar-brand" href="home.action">Accueil</a>
+	</div>  
+
+    <!-- Left nav -->
+    <ul class="nav navbar-nav mr-auto">
+     
+      				
+      <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="ajoutsite.action">Site</a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="jsp/Home/">Localiser un site</a></li>
+          <li><a class="dropdown-item disabled" href="ajoutsite.action">Ajouter un site</a></li>
+        </ul>
       </li>
       
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="jsp/Site" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Site
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Localiser un site</a>
-          <a class="dropdown-item" href="#">Ajouter un site</a>
-        </div>
+
+      <a class="nav-link dropdown-toggle" href="ajout-topo.action">Topo</a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Liste topo</a></li>
+          <li><a class="dropdown-item disabled" href="ajout-topo.action">Ajouter un topo</a></li>
+        </ul>
       </li>
-      
-	  <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="jsp/Site" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Topo
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Liste topo</a>
-          <a class="dropdown-item" href="#">Ajouter un topo</a>
-        </div>
+   
+    
+    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="inscription.action">Connexion</a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Connexion</a></li>
+          <li><a class="dropdown-item disabled" href="inscription.action">Créer un compte</a></li>
+        </ul>
       </li>
-      
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="jsp/Site" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Connexion
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="jsp/Home/">Connexion</a>
-          <a class="dropdown-item" href="jsp/Home/">Créer un compte</a>
-        </div>
-      </li>
-	       
     </ul>
-    <form class="form-inline my-2 my-lg-0">
+
+	<form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
     </form>
+    
   </div>
 </nav>
