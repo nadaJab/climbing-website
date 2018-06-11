@@ -19,28 +19,16 @@
             <s:fielderror/>
             
             <s:form action="index" enctype="multipart/form-data" cssClass="form-horizontal"
-                    label="Ajouter un nouveau topo">
+                    label="Ajouter un nouveau secteur">
                     
                     <s:textfield
-                        key="nameTopo"
-                        tooltip="Entrer le nom du Topo"/>
+                        key="nameSector"
+                        tooltip="Entrer le nom du nouveau secteur"/>
                         
                     <s:textfield
-                        key="author"
-                        tooltip="Entrer l'auteur du topo"/>
-                    
-                    <s:textfield
-                        key="nbCopyMax"
-                        tooltip="Donner le nombre d'exemplaires que vous disposez"/>  
-                        
-                     <s:textfield
-                        key="editionYear"
-                        tooltip="L'année d'édition du topo"/> 
-                    
-               		<s:file
-                        key="picture"
-                        tooltip="Télécharger une image de couverture du topo"/>
-                        
+                        key="nbRoutes"
+                        tooltip="Donner le nombre de routes de ce secteur"/>  
+                                 
                     <s:submit cssClass="btn btn-primary"/>
     		</s:form>
  	</div>  

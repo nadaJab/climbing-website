@@ -18,7 +18,7 @@
             <s:fielderror/>
             
             <s:form action="index" enctype="multipart/form-data" cssClass="form-horizontal"
-                    label="Ajout d'un nouveau site">
+                    label="Ajouter un nouveau site">
                     
                     <s:textfield
                         key="nameSpot"
@@ -37,7 +37,6 @@
                         	   '7a', '7b', '7c',
                         	   '8a', '8b', '8c',
                         	   '9a', '9b', '9c'}"
-                        name="cotationMinimale"
                         emptyOption="true"
                         tooltip="La cotation minimale du site"
                         headerKey="non-renseignée"
@@ -52,7 +51,6 @@
                         	   '7a', '7b', '7c',
                         	   '8a', '8b', '8c',
                         	   '9a', '9b', '9c'}"
-                        name="cotationMaximale"
                         emptyOption="true"
                         tooltip="La cotation maximale du site"
                         headerKey="non-renseignée"

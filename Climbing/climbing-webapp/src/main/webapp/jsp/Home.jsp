@@ -13,6 +13,8 @@
 
 <body>
  	    	<jsp:include page="Menu.jsp"></jsp:include> 
+ 	    	<jsp:include page="search.jsp"></jsp:include> 
+ 	    	
  	
           
 </body>
