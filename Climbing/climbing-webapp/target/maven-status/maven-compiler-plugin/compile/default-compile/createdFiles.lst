@@ -1,4 +1,6 @@
+action\AjoutSectorAction.class
+action\AjoutTopoAction.class
 action\AjoutSiteAction.class
 action\HomeAction.class
 action\InscriptionAction.class
-action\AjoutTopoAction.class
+action\AjoutRouteAction.class

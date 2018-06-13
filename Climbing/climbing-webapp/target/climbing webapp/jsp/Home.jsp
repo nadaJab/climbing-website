@@ -13,7 +13,30 @@
 
 <body>
  	    	<jsp:include page="Menu.jsp"></jsp:include> 
+ 	  
+ 	<div class="container">   	
+ 	<form class="form-inline" role="form" name="form" action="" method="post">
+ 		  <div class="form-row">
  	
+ 	 <div class="form-group col-md-6">
+      <label for="inputCity">Ville</label>
+       <input type="text" class="form-control" id="inputCity">
+    </div>
+ 		  
+    <div class="form-group col-md-6">
+      <label for="inputState">Pays</label>
+      <input type="text" class="form-control" id="inputState">
+    </div>
+    
+    <div class="form-group col-md-6">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
+ 	</div>
+ 	
+  </div>
+ 	
+ 	    	
+ 	</form>
+ 	</div>     	
           
 </body>
 </html>

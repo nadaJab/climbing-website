@@ -28,6 +28,16 @@
             <result>/jsp/AjoutSite.jsp</result>
         </action>
         
+        <!-- Action "Ajout d'un nouveau secteur" -->
+        <action name="ajoutsecteur" class="action.AjoutSectorAction">
+            <result>/jsp/AjoutSector.jsp</result>
+        </action>
+        
+         <!-- Action "Ajout d'une nouvelle ligne" -->
+        <action name="ajoutligne" class="action.AjoutRouteAction">
+            <result>/jsp/AjoutRoute.jsp</result>
+        </action>
+        
     </package>
     
 </struts>

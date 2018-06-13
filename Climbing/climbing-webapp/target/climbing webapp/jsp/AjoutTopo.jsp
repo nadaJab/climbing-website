@@ -19,7 +19,7 @@
             <s:fielderror/>
             
             <s:form action="index" enctype="multipart/form-data" cssClass="form-horizontal"
-                    label="Ajout d'un nouveau site">
+                    label="Ajouter un nouveau topo">
                     
                     <s:textfield
                         key="nameTopo"
@@ -39,7 +39,7 @@
                     
                		<s:file
                         key="picture"
-                        tooltip="Télécharger une image du topo"/>
+                        tooltip="Télécharger une image de couverture du topo"/>
                         
                     <s:submit cssClass="btn btn-primary"/>
     		</s:form>
