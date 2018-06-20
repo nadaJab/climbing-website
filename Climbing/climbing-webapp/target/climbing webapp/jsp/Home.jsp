@@ -3,40 +3,59 @@
 <%@ taglib prefix="sb" uri="/struts-bootstrap-tags" %>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 
 <html>
 <head> 
     <meta charset="UTF-8">
+     <!-- Bootstrap core CSS 
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet"> -->
+    <sb:head/>
+	<sj:head jquerytheme="lightness"/>
 </head>
 
 <body>
- 	    	<jsp:include page="Menu.jsp"></jsp:include> 
- 	  
- 	<div class="container">   	
- 	<form class="form-inline" role="form" name="form" action="" method="post">
- 		  <div class="form-row">
- 	
- 	 <div class="form-group col-md-6">
-      <label for="inputCity">Ville</label>
-       <input type="text" class="form-control" id="inputCity">
+ 	   	<%@include file="include/menu.jsp" %>
+ 	   	
+ 	<div class="container">   	   	
+    <!-- recherche multi-critères  -->
+ 	<div class="row">
+    <div class="col-sm-24 col-xs-12">
+      <!--  Niveau 1 --> 
+      
+        <div class="row">
+        <div class="col-sm-10 col-xs-4 col-sm-offset-1 col-xs-offset-1">
+            
+             <!--  Niveau 2 --> 
+ 				<div class="col-sm-24 hidden-xs">                
+                <s:form theme="simple" cssClass="well form-search" >
+                
+                	<s:textfield
+    				key="nameSpot"
+            		placeholder="Le nom du site"/>
+            		
+    				<s:textfield
+    				key="city"
+            		placeholder="Ville"/>
+
+    				<s:password
+    				key="state"
+            		placeholder="Pays"/>
+
+    				<s:submit cssClass="btn btn-primary"
+    				key="search"
+    				/>
+    				
+				</s:form>
+                </div>
+            </div>
+           
+        </div>
     </div>
- 		  
-    <div class="form-group col-md-6">
-      <label for="inputState">Pays</label>
-      <input type="text" class="form-control" id="inputState">
-    </div>
-    
-    <div class="form-group col-md-6">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
- 	</div>
- 	
-  </div>
- 	
+</div>
+
+</div>  	    	
  	    	
- 	</form>
- 	</div>     	
-          
+ 	   	<%@include file="include/footer.jsp" %>
 </body>
 </html>

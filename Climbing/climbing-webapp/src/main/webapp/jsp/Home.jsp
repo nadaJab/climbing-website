@@ -3,19 +3,21 @@
 <%@ taglib prefix="sb" uri="/struts-bootstrap-tags" %>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 
- <!-- Bootstrap core CSS -->
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"> 
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 
 <html>
 <head> 
     <meta charset="UTF-8">
+     <!-- Bootstrap core CSS 
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet"> -->
+    <sb:head/>
+	<sj:head jquerytheme="lightness"/>
 </head>
 
 <body>
- 	    	<jsp:include page="Menu.jsp"></jsp:include> 
- 	    	   	
+ 	   	<%@include file="include/menu.jsp" %>
+ 	   	
+ 	<div class="container">   	   	
     <!-- recherche multi-critères  -->
  	<div class="row">
     <div class="col-sm-24 col-xs-12">
@@ -51,8 +53,9 @@
         </div>
     </div>
 </div>
+
+</div>  	    	
  	    	
- 	    	
- 	    	<jsp:include page="footer.jsp"></jsp:include>    
+ 	   	<%@include file="include/footer.jsp" %>
 </body>
 </html>

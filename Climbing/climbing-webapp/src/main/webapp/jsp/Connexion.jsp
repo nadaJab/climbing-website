@@ -9,7 +9,8 @@
 	 
 </head>
 <body>
-	<jsp:include page="Menu.jsp"></jsp:include> 
+ 	   	<%@include file="include/menu.jsp" %>
+
 	<form class="dropdown-menu p-4">
   <div class="form-group">
     <label for="exampleDropdownFormEmail2">Email address</label>
@@ -27,5 +28,7 @@
   </div>
   <button type="submit" class="btn btn-primary">Sign in</button>
 </form>
+
+	 	   	<%@include file="include/footer.jsp" %>
 </body>
 </html>

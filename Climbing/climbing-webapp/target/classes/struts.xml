@@ -3,39 +3,40 @@
         "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 <struts>
+
     <package name="default" extends="struts-default">
     
         <!-- Action par défaut -->
-        <default-action-ref name="index" />
+        <default-action-ref name="home" />
 
         <!-- Action "index" -->
-        <action name="home">
-            <result>/jsp/Home.jsp</result>
+        <action name="home" class="action.HomeAction">
+            <result>/jsp/home.jsp</result>
         </action>
         
         <!-- Action "inscription" -->
         <action name="inscription" class="action.InscriptionAction">
-            <result>/jsp/Inscription.jsp</result>
+            <result>/jsp/inscription.jsp</result>
         </action>
         
         <!-- Action "Ajout d'un topo" -->
-        <action name="ajout-topo" class="action.AjoutTopoAction">
-            <result>/jsp/AjoutTopo.jsp</result>
+        <action name="ajouttopo" class="action.AjoutTopoAction">
+            <result>/jsp/ajout-topo.jsp</result>
         </action>
         
         <!-- Action "Ajout d'un nouveau site" -->
         <action name="ajoutsite" class="action.AjoutSiteAction">
-            <result>/jsp/AjoutSite.jsp</result>
+            <result>/jsp/ajout-site.jsp</result>
         </action>
         
         <!-- Action "Ajout d'un nouveau secteur" -->
         <action name="ajoutsecteur" class="action.AjoutSectorAction">
-            <result>/jsp/AjoutSector.jsp</result>
+            <result>/jsp/ajout-sector.jsp</result>
         </action>
         
          <!-- Action "Ajout d'une nouvelle ligne" -->
         <action name="ajoutligne" class="action.AjoutRouteAction">
-            <result>/jsp/AjoutRoute.jsp</result>
+            <result>/jsp/ajout-route.jsp</result>
         </action>
         
     </package>

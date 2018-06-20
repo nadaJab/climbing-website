@@ -16,7 +16,6 @@ CREATE TABLE public.User_1 (
                 first_name VARCHAR NOT NULL,
                 last_name VARCHAR NOT NULL,
                 climbing_type VARCHAR NOT NULL,
-                grade VARCHAR NOT NULL,
                 birth_year DATE NOT NULL,
                 genre VARCHAR NOT NULL,
                 role VARCHAR NOT NULL,
@@ -116,7 +115,6 @@ CREATE TABLE public.Spot (
                 cotation_min VARCHAR,
                 orientation VARCHAR NOT NULL,
                 climbing_type VARCHAR NOT NULL,
-                rock_type VARCHAR,
                 id_city INTEGER NOT NULL,
                 id_country INTEGER NOT NULL,
                 CONSTRAINT spot_pk PRIMARY KEY (id_spot)

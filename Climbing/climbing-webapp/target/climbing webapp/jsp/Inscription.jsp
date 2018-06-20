@@ -3,16 +3,18 @@
 <%@ taglib prefix="sb" uri="/struts-bootstrap-tags" %>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 
 <html>
 <head> 
     <meta charset="UTF-8">  
+    <sb:head/>
+	<sj:head jquerytheme="lightness"/>
 </head>
 
 <body>
- 	<jsp:include page="Menu.jsp"></jsp:include> 
+ 	   	<%@include file="include/menu.jsp" %>
+ 	   	
  	<div class="container">
     <s:actionerror/>
             <s:actionmessage/>
@@ -72,6 +74,8 @@
                               
                   <s:submit cssClass="btn btn-primary"/>
             </s:form>
- </div>  
+ </div>
+   			
+ 	   	<%@include file="include/footer.jsp" %>
 </body>
 </html>
