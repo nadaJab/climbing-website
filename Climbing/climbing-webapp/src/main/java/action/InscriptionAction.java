@@ -12,7 +12,6 @@ public class InscriptionAction extends ActionSupport{
 	//private String DateDeNaissance;
 	private String sexe;
 	private String typeGrimpe;
-	private String pays;
 	private String email;
 	private String password;
 	private String confirmerPassword;
@@ -67,14 +66,6 @@ public class InscriptionAction extends ActionSupport{
 
 	public void setTypeGrimpe(String typeGrimpe) {
 		this.typeGrimpe = typeGrimpe;
-	}
-
-	public String getPays() {
-		return pays;
-	}
-
-	public void setPays(String pays) {
-		this.pays = pays;
 	}
 
 	public String getEmail() {

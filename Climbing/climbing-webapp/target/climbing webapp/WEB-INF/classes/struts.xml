@@ -16,11 +16,15 @@
         
         <!-- Action "inscription" -->
         <action name="inscription" class="action.InscriptionAction">
+        
             <result>/jsp/inscription.jsp</result>
+            <!--  
+            <result name="success" type="redirectAction">thankyou.jsp</result>
+            -->
         </action>
         
         <!-- Action "Ajout d'un topo" -->
-        <action name="ajout-topo" class="action.AjoutTopoAction">
+        <action name="ajouttopo" class="action.AjoutTopoAction">
             <result>/jsp/ajout-topo.jsp</result>
         </action>
         
@@ -37,6 +41,11 @@
          <!-- Action "Ajout d'une nouvelle ligne" -->
         <action name="ajoutligne" class="action.AjoutRouteAction">
             <result>/jsp/ajout-route.jsp</result>
+        </action>
+        
+        <!-- Action "connexion -->
+        <action name="connexion" class="action.LoginAction">
+        	<result>/jsp/connexion.jsp</result>        	
         </action>
         
     </package>

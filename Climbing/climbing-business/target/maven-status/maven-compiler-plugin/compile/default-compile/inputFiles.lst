@@ -1,1 +1,6 @@
-C:\Users\nada\Desktop\java-formation\Openclassrooms-JAVA\projet6\eclipse-workspace\climbing\climbing-business\src\main\java\org\climbing\business\App.java
+C:\Users\nada\Desktop\java-formation\Openclassrooms-JAVA\projet6\eclipse-workspace\climbing\climbing-business\src\main\java\org\climbing\business\contract\ManagerFactory.java
+C:\Users\nada\Desktop\java-formation\Openclassrooms-JAVA\projet6\eclipse-workspace\climbing\climbing-business\src\main\java\org\climbing\business\impl\ManagerFactoryImpl.java
+C:\Users\nada\Desktop\java-formation\Openclassrooms-JAVA\projet6\eclipse-workspace\climbing\climbing-business\src\main\java\org\climbing\business\contract\manager\CommentManager.java
+C:\Users\nada\Desktop\java-formation\Openclassrooms-JAVA\projet6\eclipse-workspace\climbing\climbing-business\src\main\java\org\climbing\business\contract\manager\SpotManager.java
+C:\Users\nada\Desktop\java-formation\Openclassrooms-JAVA\projet6\eclipse-workspace\climbing\climbing-business\src\main\java\org\climbing\business\contract\manager\TopoManager.java
+C:\Users\nada\Desktop\java-formation\Openclassrooms-JAVA\projet6\eclipse-workspace\climbing\climbing-business\src\main\java\org\climbing\business\contract\manager\UserManager.java

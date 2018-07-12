@@ -35,7 +35,7 @@
           			Connexion
         			</a>
         				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          				<a class="dropdown-item" href="#">Connexion</a>
+          				<a class="dropdown-item" href="connexion.action">Connexion</a>
           				<a class="dropdown-item" href="inscription.action">Inscription</a>
         				</div>
       			 </li>

@@ -11,7 +11,10 @@ CREATE TABLE public.Account (
 
 ALTER SEQUENCE public.account_id_compte_seq_1 OWNED BY public.Account.id_compte;
 
+CREATE SEQUENCE public.user_1_id_user_seq;
+
 CREATE TABLE public.User_1 (
+                id_user INTEGER NOT NULL DEFAULT nextval('public.user_1_id_user_seq'),
                 pseudo VARCHAR NOT NULL,
                 first_name VARCHAR NOT NULL,
                 last_name VARCHAR NOT NULL,
@@ -20,9 +23,11 @@ CREATE TABLE public.User_1 (
                 genre VARCHAR NOT NULL,
                 role VARCHAR NOT NULL,
                 id_compte INTEGER NOT NULL,
-                CONSTRAINT user_1_pk PRIMARY KEY (pseudo)
+                CONSTRAINT user_1_pk PRIMARY KEY (id_user)
 );
 
+
+ALTER SEQUENCE public.user_1_id_user_seq OWNED BY public.User_1.id_user;
 
 CREATE SEQUENCE public.comment_id_comment_seq;
 
@@ -30,7 +35,7 @@ CREATE TABLE public.Comment (
                 id_comment INTEGER NOT NULL DEFAULT nextval('public.comment_id_comment_seq'),
                 content VARCHAR NOT NULL,
                 date_coment DATE NOT NULL,
-                pseudo VARCHAR NOT NULL,
+                id_user INTEGER NOT NULL,
                 CONSTRAINT comment_pk PRIMARY KEY (id_comment)
 );
 
@@ -60,6 +65,41 @@ CREATE TABLE public.City (
 
 ALTER SEQUENCE public.city_id_city_seq_1 OWNED BY public.City.id_city;
 
+CREATE SEQUENCE public.route_id_route_seq;
+
+CREATE TABLE public.Route (
+                id_route INTEGER NOT NULL DEFAULT nextval('public.route_id_route_seq'),
+                route_name VARCHAR NOT NULL,
+                cotation VARCHAR NOT NULL,
+                height INTEGER NOT NULL,
+                point_number INTEGER,
+                route_opener VARCHAR,
+                opening_year INTEGER,
+                CONSTRAINT route_pk PRIMARY KEY (id_route)
+);
+
+
+ALTER SEQUENCE public.route_id_route_seq OWNED BY public.Route.id_route;
+
+CREATE SEQUENCE public.sector_id_sector_seq;
+
+CREATE TABLE public.Sector (
+                id_sector INTEGER NOT NULL DEFAULT nextval('public.sector_id_sector_seq'),
+                sector_name VARCHAR NOT NULL,
+                nb_routes INTEGER NOT NULL,
+                CONSTRAINT sector_pk PRIMARY KEY (id_sector)
+);
+
+
+ALTER SEQUENCE public.sector_id_sector_seq OWNED BY public.Sector.id_sector;
+
+CREATE TABLE public.SectorRoute (
+                id_route INTEGER NOT NULL,
+                id_sector INTEGER NOT NULL,
+                CONSTRAINT sectorroute_pk PRIMARY KEY (id_route, id_sector)
+);
+
+
 CREATE SEQUENCE public.topo_id_topo_seq;
 
 CREATE TABLE public.Topo (
@@ -83,7 +123,7 @@ CREATE TABLE public.BookingTopo (
                 borrowing_date DATE NOT NULL,
                 return_date DATE NOT NULL,
                 id_topo INTEGER NOT NULL,
-                pseudo VARCHAR NOT NULL,
+                id_user INTEGER NOT NULL,
                 CONSTRAINT bookingtopo_pk PRIMARY KEY (id_bookingTopo)
 );
 
@@ -91,10 +131,10 @@ CREATE TABLE public.BookingTopo (
 ALTER SEQUENCE public.bookingtopo_id_bookingtopo_seq OWNED BY public.BookingTopo.id_bookingTopo;
 
 CREATE TABLE public.ListTopo (
-                pseudo VARCHAR NOT NULL,
                 id_topo INTEGER NOT NULL,
+                id_user INTEGER NOT NULL,
                 nb_copy INTEGER NOT NULL,
-                CONSTRAINT listtopo_pk PRIMARY KEY (pseudo, id_topo)
+                CONSTRAINT listtopo_pk PRIMARY KEY (id_topo, id_user)
 );
 
 
@@ -123,42 +163,19 @@ CREATE TABLE public.Spot (
 
 ALTER SEQUENCE public.spot_id_spot_seq OWNED BY public.Spot.id_spot;
 
-CREATE TABLE public.TopoSite (
+CREATE TABLE public.SpotSector (
+                id_spot INTEGER NOT NULL,
+                id_sector INTEGER NOT NULL,
+                CONSTRAINT spotsector_pk PRIMARY KEY (id_spot, id_sector)
+);
+
+
+CREATE TABLE public.TopoSpot (
                 id_topo INTEGER NOT NULL,
                 id_spot INTEGER NOT NULL,
-                CONSTRAINT toposite_pk PRIMARY KEY (id_topo, id_spot)
+                CONSTRAINT topospot_pk PRIMARY KEY (id_topo, id_spot)
 );
 
-
-CREATE SEQUENCE public.sector_id_sector_seq;
-
-CREATE TABLE public.Sector (
-                id_sector INTEGER NOT NULL DEFAULT nextval('public.sector_id_sector_seq'),
-                sector_name VARCHAR NOT NULL,
-                nb_routes INTEGER NOT NULL,
-                id_spot INTEGER NOT NULL,
-                CONSTRAINT sector_pk PRIMARY KEY (id_sector)
-);
-
-
-ALTER SEQUENCE public.sector_id_sector_seq OWNED BY public.Sector.id_sector;
-
-CREATE SEQUENCE public.route_id_route_seq;
-
-CREATE TABLE public.Route (
-                id_route INTEGER NOT NULL DEFAULT nextval('public.route_id_route_seq'),
-                route_name VARCHAR NOT NULL,
-                cotation VARCHAR NOT NULL,
-                height INTEGER NOT NULL,
-                point_number INTEGER,
-                route_opener VARCHAR,
-                opening_year INTEGER,
-                id_sector INTEGER NOT NULL,
-                CONSTRAINT route_pk PRIMARY KEY (id_route)
-);
-
-
-ALTER SEQUENCE public.route_id_route_seq OWNED BY public.Route.id_route;
 
 CREATE TABLE public.CommentSpot (
                 id_comment INTEGER NOT NULL,
@@ -175,22 +192,22 @@ ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
 ALTER TABLE public.Comment ADD CONSTRAINT user_comment_fk
-FOREIGN KEY (pseudo)
-REFERENCES public.User_1 (pseudo)
+FOREIGN KEY (id_user)
+REFERENCES public.User_1 (id_user)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
 ALTER TABLE public.ListTopo ADD CONSTRAINT user_listtopo_fk
-FOREIGN KEY (pseudo)
-REFERENCES public.User_1 (pseudo)
+FOREIGN KEY (id_user)
+REFERENCES public.User_1 (id_user)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
 ALTER TABLE public.BookingTopo ADD CONSTRAINT user_bookingtopo_fk
-FOREIGN KEY (pseudo)
-REFERENCES public.User_1 (pseudo)
+FOREIGN KEY (id_user)
+REFERENCES public.User_1 (id_user)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
@@ -223,6 +240,27 @@ ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
+ALTER TABLE public.SectorRoute ADD CONSTRAINT route_sectorroute_fk
+FOREIGN KEY (id_route)
+REFERENCES public.Route (id_route)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.SectorRoute ADD CONSTRAINT sector_sectorroute_fk
+FOREIGN KEY (id_sector)
+REFERENCES public.Sector (id_sector)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE public.SpotSector ADD CONSTRAINT sector_spotsector_fk
+FOREIGN KEY (id_sector)
+REFERENCES public.Sector (id_sector)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
 ALTER TABLE public.CommentTopo ADD CONSTRAINT topo_commenttopo_fk
 FOREIGN KEY (id_topo)
 REFERENCES public.Topo (id_topo)
@@ -244,7 +282,7 @@ ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
-ALTER TABLE public.TopoSite ADD CONSTRAINT topo_toposite_fk
+ALTER TABLE public.TopoSpot ADD CONSTRAINT topo_toposite_fk
 FOREIGN KEY (id_topo)
 REFERENCES public.Topo (id_topo)
 ON DELETE NO ACTION
@@ -258,23 +296,16 @@ ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
-ALTER TABLE public.Sector ADD CONSTRAINT spot_sector_fk
+ALTER TABLE public.TopoSpot ADD CONSTRAINT spot_toposite_fk
 FOREIGN KEY (id_spot)
 REFERENCES public.Spot (id_spot)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
-ALTER TABLE public.TopoSite ADD CONSTRAINT spot_toposite_fk
+ALTER TABLE public.SpotSector ADD CONSTRAINT spot_spotsector_fk
 FOREIGN KEY (id_spot)
 REFERENCES public.Spot (id_spot)
 ON DELETE NO ACTION
-ON UPDATE NO ACTION
-NOT DEFERRABLE;
-
-ALTER TABLE public.Route ADD CONSTRAINT sector_route_fk
-FOREIGN KEY (id_sector)
-REFERENCES public.Sector (id_sector)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION
+ON UPDATE CASCADE
 NOT DEFERRABLE;

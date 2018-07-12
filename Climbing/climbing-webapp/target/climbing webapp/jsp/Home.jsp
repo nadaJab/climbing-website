@@ -10,13 +10,15 @@
     <meta charset="UTF-8">
      <!-- Bootstrap core CSS 
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet"> -->
+   
     <sb:head/>
 	<sj:head jquerytheme="lightness"/>
+
 </head>
 
 <body>
  	   	<%@include file="include/menu.jsp" %>
- 	   	
+ 	
  	<div class="container">   	   	
     <!-- recherche multi-critères  -->
  	<div class="row">

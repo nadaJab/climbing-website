@@ -4,3 +4,4 @@ action\AjoutSiteAction.class
 action\HomeAction.class
 action\InscriptionAction.class
 action\AjoutRouteAction.class
+action\LoginAction.class

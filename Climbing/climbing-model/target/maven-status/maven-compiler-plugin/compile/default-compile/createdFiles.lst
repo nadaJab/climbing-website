@@ -1,0 +1,12 @@
+beans\comment\Comment.class
+beans\comment\CommentTopo.class
+beans\user\Account.class
+beans\comment\CommentSpot.class
+beans\spot\Country.class
+beans\user\User.class
+beans\spot\Sector.class
+exception\NotFoundException.class
+beans\topo\BookingTopo.class
+beans\topo\Topo.class
+beans\spot\Route.class
+beans\spot\Spot.class

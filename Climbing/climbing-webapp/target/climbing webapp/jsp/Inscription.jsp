@@ -56,15 +56,11 @@
                         labelposition="inline"
 						list="{'Bloc', 'Voie', 'Grande voie', 'Trad', 'Artif', 'Deep water', 'Via-ferrata'}"      
 						tooltip="Type de grimpe"/>
-						
-				<s:textfield
-                        key="pays"
-                        tooltip="Votre pays"/>
-						     
+								     
                 <s:textfield
                         key="email"
                         placeholder="adresse@exemple.com"
-                        tooltip="Enter your Name here"/>
+                        tooltip="Votre adresse email"/>
                         
                 <s:password
             			key="password"/>
