@@ -1,6 +1,13 @@
-org\climbing\business\contract\manager\SpotManager.class
-org\climbing\business\contract\manager\TopoManager.class
-org\climbing\business\contract\manager\CommentManager.class
+org\climbing\business\contract\manager\Spot\RouteManager.class
 org\climbing\business\impl\ManagerFactoryImpl.class
-org\climbing\business\contract\manager\UserManager.class
+org\climbing\business\contract\manager\Spot\SpotManager.class
+org\climbing\business\contract\manager\Spot\SectorManager.class
 org\climbing\business\contract\ManagerFactory.class
+org\climbing\business\contract\manager\Spot\CountryManager.class
+org\climbing\business\contract\manager\Topo\TopoManager.class
+org\climbing\business\contract\manager\Comment\CommentTopoManager.class
+org\climbing\business\contract\manager\User\AccountManager.class
+org\climbing\business\contract\manager\Topo\BookingTopoManager.class
+org\climbing\business\contract\manager\User\UserManager.class
+org\climbing\business\contract\manager\Comment\CommentManager.class
+org\climbing\business\contract\manager\Comment\CommentSpotManager.class
