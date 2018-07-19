@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd">
+            
+            
+    <!-- ===== Déclaration des Managers ===== -->
+    <bean id="CommentManager" class="org.climbing.business.impl.manager.comment.CommentManagerImpl"/>
+    <bean id="CommentSpotManager" class="org.climbing.business.impl.manager.comment.CommentSpotManagerImpl"/>
+    <bean id="CommentTopoManager" class="org.climbing.business.impl.manager.comment.CommentTopoManagerImpl"/>
+    
+    <bean id="CountryManager" class="org.climbing.business.impl.manager.spot.CountryManagerImpl"/>
+    <bean id="RouteManager" class="org.climbing.business.impl.manager.spot.RouteManagerImpl"/>
+    <bean id="SectorManager" class="org.climbing.business.impl.manager.spot.SectorManagerImpl"/>
+    <bean id="SpotManager" class="org.climbing.business.impl.manager.spot.SpotManagerImpl"/>
+    
+    <bean id="BookingTopoManager" class="org.climbing.business.impl.manager.topo.BookingTopoManagerImpl"/>
+    <bean id="TopoManager" class="org.climbing.business.impl.manager.topo.TopoManagerImpl"/>
+    
+    <bean id="AccountManager" class="org.climbing.business.impl.manager.user.AccountManagerImpl"/>
+    <bean id="UserManager" class="org.climbing.business.impl.manager.user.UserImpl"/>
+    
+    
+    <!-- ===== ManagerFactory ===== -->
+    <bean id="ManagerFactory" class="org.climbing.business.impl.ManagerFactoryImpl">
+    <!--  
+        <property name="projetManager" ref="projetManager"/>
+        <property name="ticketManager" ref="ticketManager"/>   -->
+    </bean>
+</beans>

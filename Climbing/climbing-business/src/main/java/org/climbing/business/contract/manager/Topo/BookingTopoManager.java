@@ -1,4 +1,4 @@
-package org.climbing.business.contract.manager.Topo;
+package org.climbing.business.contract.manager.topo;
 
 public class BookingTopoManager {
 

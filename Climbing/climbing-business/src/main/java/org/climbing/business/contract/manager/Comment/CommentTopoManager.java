@@ -1,4 +1,4 @@
-package org.climbing.business.contract.manager.Comment;
+package org.climbing.business.contract.manager.comment;
 
 public class CommentTopoManager {
 

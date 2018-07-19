@@ -1,9 +1,9 @@
 package org.climbing.business.contract;
 
-import org.climbing.business.contract.manager.Comment.*;
-import org.climbing.business.contract.manager.Spot.*;
-import org.climbing.business.contract.manager.Topo.*;
-import org.climbing.business.contract.manager.User.*;
+import org.climbing.business.contract.manager.comment.*;
+import org.climbing.business.contract.manager.spot.*;
+import org.climbing.business.contract.manager.topo.*;
+import org.climbing.business.contract.manager.user.*;
 
 	/**
 	 * Factory des Managers

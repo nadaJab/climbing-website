@@ -1,4 +1,4 @@
-package org.climbing.business.contract.manager.User;
+package org.climbing.business.contract.manager.user;
 
 public class UserManager {
 
