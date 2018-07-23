@@ -7,26 +7,46 @@
             
             
     <!-- ===== Déclaration des Managers ===== -->
-    <bean id="CommentManager" class="org.climbing.business.impl.manager.comment.CommentManagerImpl"/>
-    <bean id="CommentSpotManager" class="org.climbing.business.impl.manager.comment.CommentSpotManagerImpl"/>
-    <bean id="CommentTopoManager" class="org.climbing.business.impl.manager.comment.CommentTopoManagerImpl"/>
+    <bean id="commentManager" class="org.climbing.business.impl.manager.comment.CommentManagerImpl"/>
+    <bean id="commentSpotManager" class="org.climbing.business.impl.manager.comment.CommentSpotManagerImpl"/>
+    <bean id="commentTopoManager" class="org.climbing.business.impl.manager.comment.CommentTopoManagerImpl"/>
     
-    <bean id="CountryManager" class="org.climbing.business.impl.manager.spot.CountryManagerImpl"/>
-    <bean id="RouteManager" class="org.climbing.business.impl.manager.spot.RouteManagerImpl"/>
-    <bean id="SectorManager" class="org.climbing.business.impl.manager.spot.SectorManagerImpl"/>
-    <bean id="SpotManager" class="org.climbing.business.impl.manager.spot.SpotManagerImpl"/>
+    <bean id="countryManager" class="org.climbing.business.impl.manager.spot.CountryManagerImpl"/>
+    <bean id="routeManager" class="org.climbing.business.impl.manager.spot.RouteManagerImpl"/>
+    <bean id="sectorManager" class="org.climbing.business.impl.manager.spot.SectorManagerImpl"/>
+    <bean id="spotManager" class="org.climbing.business.impl.manager.spot.SpotManagerImpl"/>
     
-    <bean id="BookingTopoManager" class="org.climbing.business.impl.manager.topo.BookingTopoManagerImpl"/>
-    <bean id="TopoManager" class="org.climbing.business.impl.manager.topo.TopoManagerImpl"/>
+    <bean id="bookingTopoManager" class="org.climbing.business.impl.manager.topo.BookingTopoManagerImpl"/>
+    <bean id="topoManager" class="org.climbing.business.impl.manager.topo.TopoManagerImpl"/>
     
-    <bean id="AccountManager" class="org.climbing.business.impl.manager.user.AccountManagerImpl"/>
-    <bean id="UserManager" class="org.climbing.business.impl.manager.user.UserImpl"/>
+    <bean id="accountManager" class="org.climbing.business.impl.manager.user.AccountManagerImpl"/>
+    <bean id="userManager" class="org.climbing.business.impl.manager.user.UserManagerImpl"/>
     
     
     <!-- ===== ManagerFactory ===== -->
     <bean id="ManagerFactory" class="org.climbing.business.impl.ManagerFactoryImpl">
-    <!--  
-        <property name="projetManager" ref="projetManager"/>
-        <property name="ticketManager" ref="ticketManager"/>   -->
+     
+        <property name="commentManager" ref="commentManager"/>
+        <property name="commentSpotManager" ref="commentSpotManager"/>  
+        <property name="commentTopoManager" ref="commentTopoManager"/>  
+        
+        <property name="countryManager" ref="countryManager"/>
+        <property name="routeManager" ref="routeManager"/>  
+        <property name="sectorManager" ref="sectorManager"/>  
+        <property name="spotManager" ref="spotManager"/>  
+        
+        <property name="bookingTopoManager" ref="bookingTopoManager"/>
+        <property name="topoManager" ref="topoManager"/>  
+        
+        <property name="accountManager" ref="accountManager"/>
+        <property name="userManager" ref="userManager"/>  
+        
+    </bean> 
+    
+    <!-- ==== AbstractManager ===== -->
+    <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="targetClass" value="org.climbing.business.impl.AbstractManagerImpl"/>
+        <property name="targetMethod" value="setDaoFactory"/>
+        <property name="arguments" ref="daoFactory"/>
     </bean>
 </beans>

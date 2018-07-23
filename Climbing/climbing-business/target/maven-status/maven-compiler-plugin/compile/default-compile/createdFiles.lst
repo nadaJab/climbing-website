@@ -1,6 +1,7 @@
 org\climbing\business\impl\manager\comment\CommentManagerImpl.class
 org\climbing\business\contract\manager\comment\CommentTopoManager.class
 org\climbing\business\impl\manager\comment\CommentTopoManagerImpl.class
+org\climbing\business\impl\AbstractManagerImpl.class
 org\climbing\business\contract\manager\topo\BookingTopoManager.class
 org\climbing\business\impl\manager\topo\BookingTopoManagerImpl.class
 org\climbing\business\impl\manager\user\AccountManagerImpl.class

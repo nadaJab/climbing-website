@@ -3,10 +3,11 @@
          xmlns="http://xmlns.jcp.org/xml/ns/javaee"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
-  
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
+    
+     <listener> 
+     	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class> 
+     </listener> 
+    
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:/bootstrapContext.xml</param-value>
@@ -22,5 +23,12 @@
         <filter-name>struts2</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+    
+     <resource-ref>
+        <res-ref-name>jdbc/climbing-bdd</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+        <res-sharing-scope>Shareable</res-sharing-scope>
+    </resource-ref>
     
 </web-app>

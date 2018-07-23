@@ -1,11 +1,12 @@
 package action;
 
-import org.apache.commons.lang3.StringUtils;
+/* import org.apache.commons.lang3.StringUtils; */
 import com.opensymphony.xwork2.ActionSupport;
 
+/* 
 import beans.user.User;
 import exception.NotFoundException;
-import org.climbing.business.contract.ManagerFactory;
+import org.climbing.business.contract.ManagerFactory; */
 
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;

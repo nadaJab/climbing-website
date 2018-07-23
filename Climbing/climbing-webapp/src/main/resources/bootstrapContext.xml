@@ -4,10 +4,8 @@
        xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd">
-
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+        
     <!-- Inclusion d'autres fichiers de contexte Spring -->
     	<import resource="classpath:/org/climbing/demo/webapp/webappContext.xml" />
         <import resource="classpath:/org/climbing/business/businessContext.xml" />
