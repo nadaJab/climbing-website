@@ -1,5 +1,5 @@
 package org.climbing.business.contract.manager.topo;
 
-public class TopoManager {
+public interface TopoManager {
 
 }

@@ -1,5 +1,5 @@
 package org.climbing.consumer.contract.dao.comment;
 
-public class CommentTopoDao {
+public interface CommentTopoDao {
 
 }

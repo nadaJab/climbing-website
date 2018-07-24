@@ -1,5 +1,5 @@
 package org.climbing.business.contract.manager.user;
 
-public class AccountManager {
+public interface AccountManager {
 
 }

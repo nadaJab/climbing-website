@@ -1,4 +1,5 @@
 org\climbing\consumer\impl\dao\spot\SectorDaoImpl.class
+org\climbing\consumer\impl\AbstractDaoImpl.class
 org\climbing\consumer\contract\dao\comment\CommentDao.class
 org\climbing\consumer\impl\DaoFactoryImpl.class
 org\climbing\consumer\contract\dao\spot\CountryDao.class
@@ -21,5 +22,4 @@ org\climbing\consumer\impl\dao\spot\SpotDaoImpl.class
 org\climbing\consumer\impl\dao\topo\BookingTopoDaoImpl.class
 org\climbing\consumer\contract\dao\comment\CommentTopoDao.class
 org\climbing\consumer\impl\dao\comment\CommentTopoDaoImpl.class
-org\climbing\consumer\impl\dao\AbstractDaoImpl.class
 org\climbing\consumer\impl\dao\user\UserDaoImpl.class

@@ -1,5 +1,5 @@
 package org.climbing.business.contract.manager.spot;
 
-public class CountryManager {
+public interface CountryManager {
 
 }

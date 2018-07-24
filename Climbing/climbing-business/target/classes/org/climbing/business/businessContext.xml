@@ -7,6 +7,7 @@
             
             
     <!-- ===== Déclaration des Managers ===== -->
+    <!--  
     <bean id="commentManager" class="org.climbing.business.impl.manager.comment.CommentManagerImpl"/>
     <bean id="commentSpotManager" class="org.climbing.business.impl.manager.comment.CommentSpotManagerImpl"/>
     <bean id="commentTopoManager" class="org.climbing.business.impl.manager.comment.CommentTopoManagerImpl"/>
@@ -21,9 +22,10 @@
     
     <bean id="accountManager" class="org.climbing.business.impl.manager.user.AccountManagerImpl"/>
     <bean id="userManager" class="org.climbing.business.impl.manager.user.UserManagerImpl"/>
-    
+    -->
     
     <!-- ===== ManagerFactory ===== -->
+    <!--  
     <bean id="ManagerFactory" class="org.climbing.business.impl.ManagerFactoryImpl">
      
         <property name="commentManager" ref="commentManager"/>
@@ -42,11 +44,13 @@
         <property name="userManager" ref="userManager"/>  
         
     </bean> 
-    
+    -->
     <!-- ==== AbstractManager ===== -->
+    <!--
     <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
         <property name="targetClass" value="org.climbing.business.impl.AbstractManagerImpl"/>
         <property name="targetMethod" value="setDaoFactory"/>
-        <property name="arguments" ref="daoFactory"/>
+        <property name="arguments" ref="daoFactory"/>  
     </bean>
+    -->
 </beans>

@@ -1,5 +1,5 @@
 package org.climbing.business.contract.manager.comment;
 
-public class CommentSpotManager {
+public interface CommentSpotManager {
 
 }

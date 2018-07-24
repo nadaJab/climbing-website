@@ -1,5 +1,11 @@
 package org.climbing.business.impl.manager.spot;
 
-public class CountryManagerImpl {
+import org.climbing.business.contract.manager.spot.CountryManager;
+import org.climbing.business.impl.AbstractManagerImpl;
+
+import beans.spot.Country;
+import exception.NotFoundException;
+
+public class CountryManagerImpl extends AbstractManagerImpl implements CountryManager {
 
 }
