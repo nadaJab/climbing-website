@@ -6,12 +6,11 @@
             http://www.springframework.org/schema/beans/spring-beans.xsd">
             
             
-    <!-- ===== Déclaration des Managers ===== -->
-    <!--  
-    <bean id="commentManager" class="org.climbing.business.impl.manager.comment.CommentManagerImpl"/>
+    <!-- =====Managers declaration ===== -->
+    <bean id="commentManager" class="org.climbing.business.impl.manager.comment.CommentManagerImpl"/>  
     <bean id="commentSpotManager" class="org.climbing.business.impl.manager.comment.CommentSpotManagerImpl"/>
     <bean id="commentTopoManager" class="org.climbing.business.impl.manager.comment.CommentTopoManagerImpl"/>
-    
+      
     <bean id="countryManager" class="org.climbing.business.impl.manager.spot.CountryManagerImpl"/>
     <bean id="routeManager" class="org.climbing.business.impl.manager.spot.RouteManagerImpl"/>
     <bean id="sectorManager" class="org.climbing.business.impl.manager.spot.SectorManagerImpl"/>
@@ -22,29 +21,26 @@
     
     <bean id="accountManager" class="org.climbing.business.impl.manager.user.AccountManagerImpl"/>
     <bean id="userManager" class="org.climbing.business.impl.manager.user.UserManagerImpl"/>
-    -->
     
     <!-- ===== ManagerFactory ===== -->
-    <!--  
     <bean id="ManagerFactory" class="org.climbing.business.impl.ManagerFactoryImpl">
      
         <property name="commentManager" ref="commentManager"/>
         <property name="commentSpotManager" ref="commentSpotManager"/>  
         <property name="commentTopoManager" ref="commentTopoManager"/>  
-        
+       
         <property name="countryManager" ref="countryManager"/>
         <property name="routeManager" ref="routeManager"/>  
         <property name="sectorManager" ref="sectorManager"/>  
         <property name="spotManager" ref="spotManager"/>  
-        
+          
         <property name="bookingTopoManager" ref="bookingTopoManager"/>
         <property name="topoManager" ref="topoManager"/>  
         
         <property name="accountManager" ref="accountManager"/>
         <property name="userManager" ref="userManager"/>  
-        
     </bean> 
-    -->
+    
     <!-- ==== AbstractManager ===== -->
     <!--
     <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">

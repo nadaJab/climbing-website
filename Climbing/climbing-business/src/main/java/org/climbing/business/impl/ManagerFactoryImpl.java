@@ -1,5 +1,7 @@
 package org.climbing.business.impl;
 
+import javax.inject.Inject;
+
 import org.climbing.business.contract.ManagerFactory;
 
 import org.climbing.business.contract.manager.comment.*;
@@ -17,30 +19,6 @@ public class ManagerFactoryImpl implements ManagerFactory{
 	private CommentSpotManager commentSpotManager;
 	private CommentTopoManager commentTopoManager;
 
-	
-	public CommentManager getCommentManager() {
-		return this.commentManager;
-	}
-
-	public void setCommentManager(CommentManager commentManager) {
-		this.commentManager = commentManager;
-	}
-
-	public CommentSpotManager getCommentSpotManager() {
-		return commentSpotManager;
-	}
-
-	public void setCommentSpotManager(CommentSpotManager commentSpotManager) {
-		this.commentSpotManager = commentSpotManager;
-	}
-
-	public CommentTopoManager getCommentTopoManager() {
-		return commentTopoManager;
-	}
-
-	public void setCommentTopoManager(CommentTopoManager commentTopoManager) {
-		this.commentTopoManager = commentTopoManager;
-	}
 	//************	
 	//****spot****
 	//************
@@ -48,12 +26,55 @@ public class ManagerFactoryImpl implements ManagerFactory{
 	private RouteManager routeManager;
 	private SectorManager sectorManager;
 	private SpotManager spotManager;
+	
+	//***************
+	//****topo****
+	//***************
+	private BookingTopoManager bookingTopoManager;
+	private TopoManager topoManager;
+	
+	//***************
+	//****user****
+	//***************	
+	private AccountManager accountManager;
+	private UserManager userManager;
 
+	
+	//****comment****
+	public CommentManager getCommentManager() {
+		return this.commentManager;
+	}
+	
+    @Inject
+	public void setCommentManager(CommentManager commentManager) {
+		this.commentManager = commentManager;
+	}
 
+	public CommentSpotManager getCommentSpotManager() {
+		return commentSpotManager;
+	}
+	
+    @Inject
+	public void setCommentSpotManager(CommentSpotManager commentSpotManager) {
+		this.commentSpotManager = commentSpotManager;
+	}
+
+	public CommentTopoManager getCommentTopoManager() {
+		return commentTopoManager;
+	}
+	
+    @Inject
+	public void setCommentTopoManager(CommentTopoManager commentTopoManager) {
+		this.commentTopoManager = commentTopoManager;
+	}
+	
+	
+	//****spot****
 	public CountryManager getCountryManager() {
 		return countryManager;
 	}
-
+	
+    @Inject
 	public void setCountryManager(CountryManager countryManager) {
 		this.countryManager = countryManager;
 	}
@@ -61,7 +82,8 @@ public class ManagerFactoryImpl implements ManagerFactory{
 	public RouteManager getRouteManager() {
 		return routeManager;
 	}
-
+	
+    @Inject
 	public void setRouteManager(RouteManager routeManager) {
 		this.routeManager = routeManager;
 	}
@@ -69,7 +91,8 @@ public class ManagerFactoryImpl implements ManagerFactory{
 	public SectorManager getSectorManager() {
 		return sectorManager;
 	}
-
+	
+    @Inject
 	public void setSectorManager(SectorManager sectorManager) {
 		this.sectorManager = sectorManager;
 	}
@@ -77,23 +100,19 @@ public class ManagerFactoryImpl implements ManagerFactory{
 	public SpotManager getSpotManager() {
 		return spotManager;
 	}
-
+	
+    @Inject
 	public void setSpotManager(SpotManager spotManager) {
 		this.spotManager = spotManager;
 	}
 	
-
-	//***************
+	
 	//****topo****
-	//***************
-	private BookingTopoManager bookingTopoManager;
-	private TopoManager topoManager;
-
-
 	public BookingTopoManager getBookingTopoManager() {
 		return bookingTopoManager;
 	}
-
+	
+    @Inject
 	public void setBookingTopoManager(BookingTopoManager bookingTopoManager) {
 		this.bookingTopoManager = bookingTopoManager;
 	}
@@ -101,23 +120,18 @@ public class ManagerFactoryImpl implements ManagerFactory{
 	public TopoManager getTopoManager() {
 		return topoManager;
 	}
-
+	
+    @Inject
 	public void setTopoManager(TopoManager topoManager) {
 		this.topoManager = topoManager;
 	}
 	
-	//***************
-	//****user****
-	//***************
-	
-	private AccountManager accountManager;
-	private UserManager userManager;
-
 
 	public AccountManager getAccountManager() {
 		return accountManager;
 	}
-
+	
+    @Inject
 	public void setAccountManager(AccountManager accountManager) {
 		this.accountManager = accountManager;
 	}
@@ -125,11 +139,10 @@ public class ManagerFactoryImpl implements ManagerFactory{
 	public UserManager getUserManager() {
 		return userManager;
 	}
-
+	
+    @Inject
 	public void setUserManager(UserManager userManager) {
 		this.userManager = userManager;
 	}
 	
-	
-
 }
