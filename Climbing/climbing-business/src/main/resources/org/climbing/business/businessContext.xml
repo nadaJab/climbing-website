@@ -40,13 +40,13 @@
         <property name="accountManager" ref="accountManager"/>
         <property name="userManager" ref="userManager"/>  
     </bean> 
-    
+	 
     <!-- ==== AbstractManager ===== -->
-    <!--
+    <!--     
     <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
         <property name="targetClass" value="org.climbing.business.impl.AbstractManagerImpl"/>
         <property name="targetMethod" value="setDaoFactory"/>
         <property name="arguments" ref="daoFactory"/>  
     </bean>
-    -->
+	-->
 </beans>

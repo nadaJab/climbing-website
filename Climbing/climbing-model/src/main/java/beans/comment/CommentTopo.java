@@ -1,5 +1,20 @@
 package beans.comment;
 
-public class CommentTopo {
+import beans.topo.Topo;
 
+public class CommentTopo extends Comment{
+	
+	private Topo topo;
+	
+	public CommentTopo() {
+		super();
+	}
+	
+	public Topo getTopo() {
+		return topo;
+	}
+
+	public void setTopo(Topo topo) {
+		this.topo = topo;
+	}
 }

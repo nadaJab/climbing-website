@@ -25,7 +25,7 @@
         			</a>
         				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
           				<a class="dropdown-item" href="#">Liste topo</a>
-          				<a class="dropdown-item" href="ajout-topo.action">Ajouter un topo</a>
+          				<a class="dropdown-item" href="ajouttopo.action">Ajouter un topo</a>
         				</div>
       			 </li>
       			 
