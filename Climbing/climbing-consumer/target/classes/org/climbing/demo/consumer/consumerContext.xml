@@ -1,11 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="
             http://www.springframework.org/schema/beans
-            http://www.springframework.org/schema/beans/spring-beans.xsd">
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://www.springframework.org/schema/context 
+			http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<context:annotation-config/>
+	
+	<context:component-scan base-package="org.climbing.consumer.impl"></context:component-scan>
+	
+	<!-- Initialization for data source--> 
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    	<property name="dataSource" ref="dataSourceEscalade"/>
+	</bean>
+	
+</beans>            
 
  <!-- ===== Dao declaration ===== -->
+ <!--  
     <bean id="commentDao" class="org.climbing.consumer.impl.dao.comment.CommentDaoImpl"/>  
     <bean id="commentSpotDao" class="org.climbing.consumer.impl.dao.comment.CommentSpotDaoImpl"/>
     <bean id="commentTopoDao" class="org.climbing.consumer.impl.dao.comment.CommentTopoDaoImpl"/>
@@ -20,9 +35,10 @@
     
     <bean id="accountDao" class="org.climbing.consumer.impl.dao.user.AccountDaoImpl"/>
     <bean id="userDao" class="org.climbing.consumer.impl.dao.user.UserDaoImpl"/>
-    
+ -->   
     
 <!-- ===== DaoFactory ===== -->
+<!--   
 <bean id="DaoFactory" class="org.climbing.consumer.impl.DaoFactoryImpl">
      
         <property name="commentDao" ref="commentDao"/>
@@ -40,13 +56,5 @@
         <property name="accountDao" ref="accountDao"/>
         <property name="userDao" ref="userDao"/>  
 </bean> 
-  
-<!-- ==== AbstractDao ===== -->
-<!--
-<bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
-        <property name="targetClass" value="org.climbing.consumer.impl.AbstractDaoImpl"/>
-        <property name="targetMethod" value="setDataSource"/>
-        <property name="arguments" ref="dataSourceEscalade"/>
-</bean>
- -->         
-</beans>            
+-->   
+       

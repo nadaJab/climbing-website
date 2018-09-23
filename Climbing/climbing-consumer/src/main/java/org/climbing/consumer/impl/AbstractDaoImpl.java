@@ -1,22 +1,23 @@
 package org.climbing.consumer.impl;
 
-
-import javax.inject.Inject;
 import javax.inject.Named;
 import javax.sql.DataSource;
 
-public class AbstractDaoImpl {
+import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Component;
 
+public abstract class AbstractDaoImpl {
 	
-	@Inject
-	@Named("DataSourceClimbing")
-	private static DataSource dataSource;
-	
-	protected DataSource getDataSource() {
-		return dataSource;
-	}
-	
-	public static void setDataSource(DataSource dataSource) {
-        AbstractDaoImpl.dataSource = dataSource;
+	@Autowired
+	//@Component("dataSourceClimbing")
+	@Named("dataSourceClimbing")
+    private DataSource dataSource;
+
+    protected DataSource getDataSource() {
+        return dataSource;
+    }
+
+	public void setDataSource(DataSource dataSource) {
+        this.dataSource = dataSource;
     }
 }

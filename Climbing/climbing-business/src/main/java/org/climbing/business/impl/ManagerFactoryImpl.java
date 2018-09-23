@@ -1,13 +1,12 @@
 package org.climbing.business.impl;
 
-import javax.inject.Inject;
-
 import org.climbing.business.contract.ManagerFactory;
-
 import org.climbing.business.contract.manager.comment.*;
 import org.climbing.business.contract.manager.spot.*;
 import org.climbing.business.contract.manager.topo.*;
 import org.climbing.business.contract.manager.user.*;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 
 public class ManagerFactoryImpl implements ManagerFactory{
@@ -45,7 +44,7 @@ public class ManagerFactoryImpl implements ManagerFactory{
 		return this.commentManager;
 	}
 	
-    @Inject
+	@Autowired
 	public void setCommentManager(CommentManager commentManager) {
 		this.commentManager = commentManager;
 	}
@@ -54,7 +53,7 @@ public class ManagerFactoryImpl implements ManagerFactory{
 		return commentSpotManager;
 	}
 	
-    @Inject
+	@Autowired
 	public void setCommentSpotManager(CommentSpotManager commentSpotManager) {
 		this.commentSpotManager = commentSpotManager;
 	}
@@ -63,7 +62,7 @@ public class ManagerFactoryImpl implements ManagerFactory{
 		return commentTopoManager;
 	}
 	
-    @Inject
+	@Autowired
 	public void setCommentTopoManager(CommentTopoManager commentTopoManager) {
 		this.commentTopoManager = commentTopoManager;
 	}
@@ -74,7 +73,7 @@ public class ManagerFactoryImpl implements ManagerFactory{
 		return countryManager;
 	}
 	
-    @Inject
+	@Autowired
 	public void setCountryManager(CountryManager countryManager) {
 		this.countryManager = countryManager;
 	}
@@ -83,7 +82,7 @@ public class ManagerFactoryImpl implements ManagerFactory{
 		return routeManager;
 	}
 	
-    @Inject
+	@Autowired
 	public void setRouteManager(RouteManager routeManager) {
 		this.routeManager = routeManager;
 	}
@@ -92,7 +91,7 @@ public class ManagerFactoryImpl implements ManagerFactory{
 		return sectorManager;
 	}
 	
-    @Inject
+	@Autowired
 	public void setSectorManager(SectorManager sectorManager) {
 		this.sectorManager = sectorManager;
 	}
@@ -101,7 +100,7 @@ public class ManagerFactoryImpl implements ManagerFactory{
 		return spotManager;
 	}
 	
-    @Inject
+	@Autowired
 	public void setSpotManager(SpotManager spotManager) {
 		this.spotManager = spotManager;
 	}
@@ -112,7 +111,7 @@ public class ManagerFactoryImpl implements ManagerFactory{
 		return bookingTopoManager;
 	}
 	
-    @Inject
+	@Autowired
 	public void setBookingTopoManager(BookingTopoManager bookingTopoManager) {
 		this.bookingTopoManager = bookingTopoManager;
 	}
@@ -121,7 +120,7 @@ public class ManagerFactoryImpl implements ManagerFactory{
 		return topoManager;
 	}
 	
-    @Inject
+	@Autowired
 	public void setTopoManager(TopoManager topoManager) {
 		this.topoManager = topoManager;
 	}
@@ -131,7 +130,7 @@ public class ManagerFactoryImpl implements ManagerFactory{
 		return accountManager;
 	}
 	
-    @Inject
+	@Autowired
 	public void setAccountManager(AccountManager accountManager) {
 		this.accountManager = accountManager;
 	}
@@ -140,7 +139,7 @@ public class ManagerFactoryImpl implements ManagerFactory{
 		return userManager;
 	}
 	
-    @Inject
+	@Autowired
 	public void setUserManager(UserManager userManager) {
 		this.userManager = userManager;
 	}
