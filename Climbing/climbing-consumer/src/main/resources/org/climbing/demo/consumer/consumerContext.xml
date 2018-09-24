@@ -14,7 +14,7 @@
 	
 	<!-- Initialization for data source--> 
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-    	<property name="dataSource" ref="dataSourceEscalade"/>
+    	<property name="dataSource" ref="dataSourceClimbing"/>
 	</bean>
 	
 </beans>            

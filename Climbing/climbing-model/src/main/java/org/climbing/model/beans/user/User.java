@@ -13,7 +13,7 @@ public class User {
 	private String climbing_type;
 	private Date birth_year;
 	private String genre;
-	private Account compte;
+	private Account account;
 	private String role;
 	
 	// ==================== Getters/Setters ====================
@@ -60,13 +60,18 @@ public class User {
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
+	//********
 	public Account getCompte() {
-		return compte;
+		return account;
 	}
-	public void setCompte(Account compte) {
-		this.compte = compte;
+	public void setCompte(Account account) {
+		this.account = account;
 	}
 	
-	
-
 }

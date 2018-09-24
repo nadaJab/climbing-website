@@ -11,4 +11,8 @@
         <import resource="classpath:/org/climbing/business/businessContext.xml" />
         <import resource="classpath:/org/climbing/demo/consumer/consumerContext.xml" />
     
+    <bean id="dataSourceClimbing" class="org.springframework.jndi.JndiObjectFactoryBean">
+    	<property name="jndiName" value="java:comp/env/jdbc/????"/>
+	</bean>
+
 </beans>
