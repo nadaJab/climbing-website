@@ -22,53 +22,42 @@
             
             <s:form action="index" enctype="multipart/form-data" cssClass="form-horizontal"
                     label="Créer un compte">
-                <s:textfield
-                        key="name"
-                        tooltip="Entrer votre nom"/>
+               <s:textfield
+                        key="user.last_name"/>
 
                  <s:textfield
-                 		key="firstName"
-                 		tooltip="Entrer votre prénom"/>
+                 		key="user.first_name"/>
                 
                 <s:textfield
-                        key="nomUtilisation"
-                        tooltip="Entrez votre nom d'utilisation"/>
+                        key="user.pseudo"/>
                         
                 <sj:datepicker
                         id="datepicker"
-                        key="DateDeNaissance"
+                        key="user.birth_year"
                         cssClass="form-control"
                         elementCssClass="col-sm-5"
                         showOn="focus"
-                        inputAppendIcon="calendar"
-                        tooltip="Votre date de naissance"
-                        />
+                        inputAppendIcon="calendar"/>
                    		          	
 				<s:radio
-                        key="sexe"
+                        key="user.sexe"
                         labelposition="inline"
                         list="{'Femme', 'Homme'}"
-                        tooltip="Sexe"
                         cssErrorClass="foo"/>
 
 				<s:checkboxlist
-                        key="typeGrimpe"
+                        key="user.climbing_type"
                         labelposition="inline"
-						list="{'Bloc', 'Voie', 'Grande voie', 'Trad', 'Artif', 'Deep water', 'Via-ferrata'}"      
-						tooltip="Type de grimpe"/>
+						list="{'Bloc', 'Voie', 'Grande voie', 'Trad', 'Artif', 'Deep water', 'Via-ferrata'}"/>
 								     
                 <s:textfield
-                        key="email"
-                        placeholder="adresse@exemple.com"
-                        tooltip="Votre adresse email"/>
+                        key="account.email"
+                        placeholder="adresse@exemple.com"/>
                         
                 <s:password
-            			key="password"/>
-            			
-                <s:password
-            			key="confirmerPassword"/>			
+            			key="account.password"/>			
                               
-                  <s:submit cssClass="btn btn-primary"/>
+                  <s:submit key="submit" cssClass="btn btn-primary"/>
             </s:form>
  </div>
    			

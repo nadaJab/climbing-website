@@ -21,7 +21,7 @@ public class UserRM implements RowMapper<User>{
 		user.setGenre(rs.getString("genre"));
 		user.setRole(rs.getString("role"));
 		//*****
-		//user.setCompte(rs.getString(""));
+		//user.setCompte(rs.);
 		
 		return user;
 	}

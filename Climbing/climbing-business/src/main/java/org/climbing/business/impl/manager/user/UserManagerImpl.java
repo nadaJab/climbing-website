@@ -12,31 +12,27 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager 
 
 	@Override
 	public ArrayList<User> getListAllUser() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return getDaoFactory().getUserDao().ListAllUser();
 	}
 
 	@Override
 	public User getUser(Account account) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void addUser(User user) {
-		// TODO Auto-generated method stub
-		
+		 getDaoFactory().getUserDao().addUser(user);
 	}
 
 	@Override
 	public void updateUser(User user) {
-		// TODO Auto-generated method stub
-		
+		getDaoFactory().getUserDao().updateUser(user);
 	}
 
 	@Override
 	public void deleteUser(User user) {
-		// TODO Auto-generated method stub
-		
+		getDaoFactory().getUserDao().deleteUser(user);		
 	}
 }

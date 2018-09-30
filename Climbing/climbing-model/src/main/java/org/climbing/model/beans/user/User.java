@@ -12,7 +12,7 @@ public class User {
 	private String last_name;
 	private String climbing_type;
 	private Date birth_year;
-	private String genre;
+	private String sexe;
 	private Account account;
 	private String role;
 	
@@ -54,11 +54,11 @@ public class User {
 	public void setBirth_year(Date birth_year) {
 		this.birth_year = birth_year;
 	}
-	public String getGenre() {
-		return genre;
+	public String getsexe() {
+		return sexe;
 	}
-	public void setGenre(String genre) {
-		this.genre = genre;
+	public void setGenre(String sexe) {
+		this.sexe = sexe;
 	}
 	public String getRole() {
 		return role;

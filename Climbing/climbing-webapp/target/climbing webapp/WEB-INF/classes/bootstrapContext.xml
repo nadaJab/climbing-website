@@ -7,7 +7,7 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd">
         
     <!-- Inclusion d'autres fichiers de contexte Spring -->
-    	<import resource="classpath:/org/climbing/demo/webapp/webappContext.xml" />
+    	<import resource="classpath:/org/climbing/webapp/webappContext.xml" />
         <import resource="classpath:/org/climbing/business/businessContext.xml" />
         <import resource="classpath:/org/climbing/demo/consumer/consumerContext.xml" />
     

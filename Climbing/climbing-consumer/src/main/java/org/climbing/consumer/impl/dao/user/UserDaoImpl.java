@@ -17,15 +17,16 @@ import org.springframework.stereotype.Component;
 
 @Component("userDao") 
 public class UserDaoImpl extends AbstractDaoImpl implements UserDao  {
+	
+    UserRM userRow = new UserRM();
 
 	@Override
 	public ArrayList<User> ListAllUser() {
 
 		String vSQL = "SELECT * FROM user_1";
         JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
-        UserRM userRow = new UserRM();
         
-        ArrayList<User> ListAllUser = vJdbcTemplate.query(vSQL, userRow);
+        ArrayList<User> ListAllUser = (ArrayList<User>) vJdbcTemplate.query(vSQL, userRow);
                 
 		return ListAllUser;
 	}
