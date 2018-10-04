@@ -29,7 +29,7 @@
 						list="{'Bloc', 'Voie', 'Grande voie', 'Trad', 'Artif', 'Deep water', 'Via-ferrata'}"/>				     
                <s:textfield name="accountBean.email" placeholder="adresse@exemple.com"/>      
                <s:password name="accountBean.password" label="Mot de passe"/>			           
-               <s:submit value="Enregistrer" cssClass="btn btn-primary"/>
+               <s:submit value="submit" cssClass="btn btn-primary"/>
                
             </s:form>
  </div>
