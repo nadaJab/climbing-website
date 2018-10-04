@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN" 
+"http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+
+ <validators>
+  	
+    <field name="userBean.last_name">
+		<field-validator type="requiredstring">
+			<message>Votre nom est requis.</message>
+		</field-validator>
+		<field-validator type="stringlength">
+		<param name="minlength">4</param>
+			<message>Votre nom est requis.</message>
+		</field-validator>
+	</field>
+	
+	<field name="userBean.first_name">
+		<field-validator type="requiredstring">
+		<message>Votre prénom est requis.</message>
+		</field-validator>
+	</field>
+	
+	<field name="userBean.pseudo">
+		<field-validator type="requiredstring">
+		<message>Votre pseudo est requis.</message>
+		</field-validator>
+	</field>
+   	
+   	<field name = "userBean.birth_year">
+   		<field-validator type = "date">
+      		<param name = "min">01/01/2000</param>
+      		<message>Il semble que vous ayez entré des infos incorrectes. Minimum ${min}</message>
+   		</field-validator>
+	</field>
+	
+	<field name = "account.email">
+   		<field-validator type = "email">
+      		<message>Votre email n'est pas valide.</message>
+   		</field-validator>
+   		<field-validator type = "requiredstring">
+      		<message>Votre email n'est pas valide.</message>
+   		</field-validator>
+	</field>
+	
+	<field name = "account.password">
+   		<field-validator type = "requiredstring">
+      		<message>Votre mot de passe est requis.</message>
+   		</field-validator>
+	</field>
+ </validators>

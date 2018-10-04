@@ -17,7 +17,7 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager 
 	}
 
 	@Override
-	public User getUser(Account account) {
+	public User returnUser(Account account) {
 		return null;
 	}
 

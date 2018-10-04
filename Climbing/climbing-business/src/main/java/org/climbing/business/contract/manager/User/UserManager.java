@@ -10,7 +10,7 @@ public interface UserManager {
 	ArrayList<User> getListAllUser();
 	
 	//retourne l'utilisateur selon son account
-	User getUser(Account account);
+	User returnUser(Account account);
 	
 	//ajouter un utilisateur
 	void addUser(User user);

@@ -15,8 +15,9 @@
         </action>
         
         <!-- Action "inscription" -->
-        <action name="inscription" class="org.climbing.action.InscriptionAction">
-             <result>/jsp/inscription.jsp</result> 
+        <action name="inscription" class="org.climbing.action.InscriptionAction" method="input">
+             <result name="success">/jsp/thankYou.jsp</result>    
+             <result name="input">/jsp/inscription.jsp</result>
         </action>
         
         <!-- Action "Ajout d'un topo" -->
