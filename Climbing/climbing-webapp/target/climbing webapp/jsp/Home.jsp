@@ -8,12 +8,7 @@
 <html>
 <head> 
     <meta charset="UTF-8">
-     <!-- Bootstrap core CSS 
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet"> -->
-   
-    <sb:head/>
-	<sj:head jquerytheme="lightness"/>
-
+    <s:head/>
 </head>
 
 <body>
