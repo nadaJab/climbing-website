@@ -2,34 +2,34 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="sb" uri="/struts-bootstrap-tags" %>
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
-<head> 
-    <meta charset="UTF-8">  
-    <sb:head/>
-</head>
+	<head> 
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   		<s:head/>
+	</head>
 
 <body>
  	   	<%@include file="include/menu.jsp" %>
  	   	
  	<div class="container">
      
-            <s:form action="inscription" method="post" enctype="multipart/form-data" cssClass="form-horizontal" label="Créer un compte">
+            <s:form action="inscription" enctype="multipart/form-data" cssClass="form-horizontal" label="Créer un compte">
               
-               <s:textfield name="userBean.last_name" label="Nom"/>
-               <s:textfield name="userBean.first_name" label="Prénom"/> 
-               <s:textfield name="userBean.pseudo" label="Pseudo"/>
-               <s:textfield name="userBean.birth_year" placeholder= "dd/MM/yyyy" label="Date de naissance"/>         	
-			   <s:radio name="userBean.sexe"
+               <s:textfield key="userBean.last_name"/>
+               <s:textfield key="userBean.first_name"/> 
+               <s:textfield key="userBean.pseudo"/>
+               <s:textfield key="userBean.birth_year" placeholder= "dd/MM/yyyy"/>         	
+			   <s:radio key="userBean.sexe"
                         labelposition="inline"
                         list="{'Femme', 'Homme'}"
                         cssErrorClass="foo"/>
-			   <s:checkboxlist name="userBean.climbing_type" label="Type de grimpe" labelposition="inline"
+			   <s:checkboxlist key="userBean.climbing_type" labelposition="inline"
 						list="{'Bloc', 'Voie', 'Grande voie', 'Trad', 'Artif', 'Deep water', 'Via-ferrata'}"/>				     
-               <s:textfield name="accountBean.email" placeholder="adresse@exemple.com"/>      
-               <s:password name="accountBean.password" label="Mot de passe"/>			           
-               <s:submit value="Enregistrer" cssClass="btn btn-primary"/>
+               <s:textfield key="accountBean.email" placeholder="adresse@exemple.com"/>      
+               <s:password key="accountBean.password"/>			           
+               <s:submit value="submit" cssClass="btn btn-primary"/>
                
             </s:form>
  </div>

@@ -1,7 +1,7 @@
 package org.climbing.action;
 
-import org.climbing.business.contract.manager.user.UserManager;
-import org.climbing.business.impl.manager.user.UserManagerImpl;
+//import org.climbing.business.contract.manager.user.UserManager;
+//import org.climbing.business.impl.manager.user.UserManagerImpl;
 import org.climbing.model.beans.user.Account;
 import org.climbing.model.beans.user.User;
 import com.opensymphony.xwork2.ActionSupport;

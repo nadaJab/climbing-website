@@ -8,13 +8,7 @@ import beans.user.User;
 import exception.NotFoundException;
 import org.climbing.business.contract.ManagerFactory; */
 
-import java.util.Map;
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.struts2.interceptor.ServletRequestAware;
-import org.apache.struts2.interceptor.SessionAware;
-
-public class LoginAction extends ActionSupport implements SessionAware, ServletRequestAware{
+public class LoginAction extends ActionSupport{
 	
 	/**
 	 * 
@@ -22,10 +16,6 @@ public class LoginAction extends ActionSupport implements SessionAware, ServletR
 	private static final long serialVersionUID = 1L;
 	private String email;
 	private String password;
-	
-    private Map<String, Object> session;
-    private HttpServletRequest servletRequest;
-
 	
 	public String execute() {
 		return SUCCESS;	
@@ -70,18 +60,5 @@ public class LoginAction extends ActionSupport implements SessionAware, ServletR
 	     return vResult;      
 	}
 	
-	public String doLogout() {
-		 // Suppression de l'utilisateur en session
-	    this.session.remove("user");
-
-	    return ActionSupport.SUCCESS;
-	}
-
-	public void setSession(Map<String, Object> session) {
-		this.session = session;
-	}
-
-	public void setServletRequest(HttpServletRequest request) {
-		this.servletRequest = request;		
-	} 
+	
 }
