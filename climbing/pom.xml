@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         
+<modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.climbingwebsite</groupId>
+  <artifactId>climbing</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+   <!-- ===== Informations générales ===== -->
+    <name>climbing web site</name>
+    <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+	<maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+
+    <!-- Gestion des dépendances -->
+  <dependencyManagement>
+        <dependencies>
+            <!-- ===== Modules ===== -->
+            <dependency>
+                <groupId>com.climbingwebsite</groupId>
+                <artifactId>climbing-webapp</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            
+            <dependency>
+                <groupId>com.climbingwebsite</groupId>
+                <artifactId>climbing-business</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            
+            <dependency>
+                <groupId>com.climbingwebsite</groupId>
+                <artifactId>climbing-consumer</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            
+            <dependency>
+                <groupId>com.climbingwebsite</groupId>
+                <artifactId>climbing-model</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            
+            <dependency>
+                <groupId>com.climbingwebsite</groupId>
+                <artifactId>climbing-technical</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+			
+		    <!-- ===== others dependency ===== -->
+
+		   <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.12</version>
+                <scope>test</scope>
+            </dependency>
+            
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>1.1.0.Final</version>
+                <scope>compile</scope>
+            </dependency>
+            
+            <dependency>
+                <groupId>org.apache.bval</groupId>
+                <artifactId>bval-jsr</artifactId>
+                <version>1.1.2</version>
+                <scope>runtime</scope>
+            </dependency>
+            
+            <dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>3.1.0</version>
+				<scope>provided</scope>
+			</dependency>
+
+     		 <!-- ===== Spring ===== -->
+      
+      		<dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-framework-bom</artifactId>
+                <version>5.0.8.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            
+            <dependency>
+   				<groupId>org.springframework</groupId>
+    			<artifactId>spring-web</artifactId>
+    			<version>5.0.8.RELEASE</version>
+  			</dependency>
+  			
+  			<!-- JSR-250 -->
+			<dependency>
+    			<groupId>javax.annotation</groupId>
+    			<artifactId>javax.annotation-api</artifactId>
+    			<version>1.2</version>
+			</dependency>
+			
+			<!-- JSR-330 -->
+			<dependency>
+   				<groupId>javax.inject</groupId>
+    			<artifactId>javax.inject</artifactId>
+    			<version>1</version>
+			</dependency>
+  			     
+            <!--  struts 2 -->
+            <dependency>
+    			<groupId>org.apache.struts</groupId>
+    			<artifactId>struts2-bom</artifactId>
+    			<version>2.5.16</version>
+    			<type>pom</type>
+            	<scope>import</scope>
+    	   	</dependency>
+    	   	
+			<dependency>
+    			<groupId>org.apache.struts</groupId>
+    			<artifactId>struts2-api</artifactId>
+    			<version>2.0.5</version>
+			</dependency>
+    	   	
+    	    <!-- Gestion des logs avec Log4j -->
+            <dependency>
+                <groupId>commons-logging</groupId>
+                <artifactId>commons-logging</artifactId>
+                <version>1.2</version>
+            </dependency>
+            
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>2.9.1</version>
+                <scope>runtime</scope>
+            </dependency>
+            
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-jcl</artifactId>
+                <version>2.9.1</version>
+                <scope>runtime</scope>
+            </dependency>
+            
+            <!-- Drivers JDBC PostgreSQL -->
+			<dependency>
+				<groupId>org.postgresql</groupId>
+				<artifactId>postgresql</artifactId>
+				<version>9.4.1212</version>
+				<scope>runtime</scope>
+			</dependency>
+             
+			<dependency>
+    			<groupId>org.apache.maven.plugins</groupId>
+    			<artifactId>maven-resources-plugin</artifactId>
+    			<version>2.6</version>
+			</dependency>
+      
+        </dependencies>
+    </dependencyManagement>
+    
+  <modules>
+    <module>climbing-webapp</module>
+    <module>climbing-business</module>
+    <module>climbing-model</module>
+    <module>climbing-consumer</module>
+    <module>climbing-technical</module>
+  </modules>
+
+  <!-- Build -->
+   <build>
+    <finalName>basic_struts</finalName>
+    
+	<pluginManagement> 
+	
+		<plugins> 
+		 
+			<plugin>
+	 			<groupId>org.apache.maven.plugins</groupId> 
+	 			<artifactId>maven-war-plugin</artifactId>
+	  			<version>3.1.0</version>
+	   		</plugin>
+	   		
+	   </plugins> 
+	   
+	 </pluginManagement>
+	 
+  </build>
+  
+</project>
