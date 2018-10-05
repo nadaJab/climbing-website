@@ -17,18 +17,18 @@
      
             <s:form action="inscription" enctype="multipart/form-data" cssClass="form-horizontal" label="Créer un compte">
               
-               <s:textfield name="userBean.last_name" label="Nom"/>
-               <s:textfield name="userBean.first_name" label="Prénom"/> 
-               <s:textfield name="userBean.pseudo" label="Pseudo"/>
-               <s:textfield name="userBean.birth_year" placeholder= "dd/MM/yyyy" label="Date de naissance"/>         	
-			   <s:radio name="userBean.sexe"
+               <s:textfield key="userBean.last_name"/>
+               <s:textfield key="userBean.first_name"/> 
+               <s:textfield key="userBean.pseudo"/>
+               <s:textfield key="userBean.birth_year" placeholder= "dd/MM/yyyy"/>         	
+			   <s:radio key="userBean.sexe"
                         labelposition="inline"
                         list="{'Femme', 'Homme'}"
                         cssErrorClass="foo"/>
-			   <s:checkboxlist name="userBean.climbing_type" label="Type de grimpe" labelposition="inline"
+			   <s:checkboxlist key="userBean.climbing_type" labelposition="inline"
 						list="{'Bloc', 'Voie', 'Grande voie', 'Trad', 'Artif', 'Deep water', 'Via-ferrata'}"/>				     
-               <s:textfield name="accountBean.email" placeholder="adresse@exemple.com"/>      
-               <s:password name="accountBean.password" label="Mot de passe"/>			           
+               <s:textfield key="accountBean.email" placeholder="adresse@exemple.com"/>      
+               <s:password key="accountBean.password"/>			           
                <s:submit value="submit" cssClass="btn btn-primary"/>
                
             </s:form>
