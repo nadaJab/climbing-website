@@ -15,31 +15,25 @@ public class InscriptionAction extends ActionSupport{
 	private User userBean;
 	private Account accountBean;
 	
-	//private UserManager userManager = new UserManagerImpl();
-	
-	public String execute() throws Exception {
-		//return INPUT;	
-		return SUCCESS;
-	}
-
-	public String input() throws Exception {
-		return INPUT;
+	public String execute() {
+		return SUCCESS;	
 	}
 	
-	public User getUser() {
+	public User getUserBean() {
 		return userBean;
 	}
-
-	public void setUser(User user) {
-		this.userBean = user;
+	public void setUserBean(User userBean) {
+		this.userBean = userBean;
 	}
-
-	public Account getAccount() {
+	public Account getAccountBean() {
 		return accountBean;
 	}
-
-	public void setAccount(Account accountBean) {
+	public void setAccountBean(Account accountBean) {
 		this.accountBean = accountBean;
 	}
+	
+	//private UserManager userManager = new UserManagerImpl();
+		
+	
 	
 }

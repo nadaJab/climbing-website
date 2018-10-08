@@ -20,11 +20,11 @@
             <s:actionmessage/>
             <s:fielderror/>
             
-         <s:form action="index" enctype="multipart/form-data" cssClass="form-horizontal"
+         <s:form action="login" cssClass="form-horizontal"
                     label="Connexion">
                     
              <s:textfield
-                    key="email"
+                    key="accountBean.email"
                     placeholder="adresse@exemple.com"
                     tooltip="Votre adresse email"/> 
              

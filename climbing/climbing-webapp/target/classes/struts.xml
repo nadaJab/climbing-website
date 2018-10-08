@@ -15,10 +15,21 @@
         </action>
         
         <!-- Action "inscription" -->
+        <!--  
         <action name="inscription" class="org.climbing.action.InscriptionAction" method="input">
-             <result name="success">/jsp/thankYou.jsp</result>    
              <result name="input">/jsp/inscription.jsp</result>
-        </action>
+             <result name="success">/jsp/thankYou.jsp</result>    
+        </action> -->
+        
+        <action name="inscription" class="org.climbing.action.InscriptionAction" method="input">
+      		<result name="input">/jsp/inscription.jsp</result>
+    	</action>
+
+    	<action name="save" class="org.climbing.action.InscriptionAction">
+      		<result name="input">/jsp/inscription.jsp</result>
+     	 	<result name="success">/jsp/thankYou.jsp</result>
+    	</action>
+        
         
         <!-- Action "Ajout d'un topo" -->
         <action name="ajouttopo" class="org.climbing.action.AjoutTopoAction">
@@ -41,8 +52,13 @@
         </action>
         
         <!-- Action "connexion -->
-        <action name="connexion" class="org.climbing.action.LoginAction">
-        	<result>/jsp/connexion.jsp</result>        	
+        <action name="connexion" class="org.climbing.action.LoginAction" method="input">
+        	<result name="input">/jsp/connexion.jsp</result>        	
+        </action>
+        
+        <action name="login" class="org.climbing.action.LoginAction">
+        	<result name="input">/jsp/connexion.jsp</result>     
+        	<result name="success">/jsp/home.jsp</result>        	   	
         </action>
         
     </package>

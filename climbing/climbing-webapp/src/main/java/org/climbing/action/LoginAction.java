@@ -8,27 +8,32 @@ import beans.user.User;
 import exception.NotFoundException;
 import org.climbing.business.contract.ManagerFactory; */
 
+import org.climbing.model.beans.user.Account;
+ 
 public class LoginAction extends ActionSupport{
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String email;
+	private Account accountBean;
 	private String password;
 	
 	public String execute() {
 		return SUCCESS;	
 	}
 	
-	public String getEmail() {
-		return email;
+
+	public Account getAccountBean() {
+		return accountBean;
 	}
 
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setAccountBean(Account accountBean) {
+		this.accountBean = accountBean;
 	}
+
+
 
 
 	public String getPassword() {

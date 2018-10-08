@@ -15,7 +15,7 @@
  	   	
  	<div class="container">
      
-            <s:form action="inscription" enctype="multipart/form-data" cssClass="form-horizontal" label="Créer un compte">
+            <s:form action="save" validate="true" cssClass="form-horizontal" label="Créer un compte">
               
                <s:textfield key="userBean.last_name"/>
                <s:textfield key="userBean.first_name"/> 
