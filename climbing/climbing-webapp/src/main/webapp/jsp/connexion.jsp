@@ -28,7 +28,7 @@
                     tooltip="Votre adresse email"/> 
              
               <s:password
-            		key="password"/>  
+            		key="accountBean.password"/>  
             		           
               <s:submit value="Connecter" id="connecter" cssClass="btn btn-primary center-block"/>      
          </s:form>               

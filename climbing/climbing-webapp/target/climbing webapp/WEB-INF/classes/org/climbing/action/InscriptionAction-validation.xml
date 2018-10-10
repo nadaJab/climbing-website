@@ -18,11 +18,6 @@
     	<param name="fieldName">userBean.pseudo</param>
     	<message>Votre pseudo est requis.</message>
     </validator>
-
-	<validator type="requiredstring">
-    	<param name="fieldName">userBean.birth_year</param>
-      	<message>Il semble que vous ayez entré des infos incorrectes. Minimum ${min}</message>
-    </validator>
 	
 	<validator type="requiredstring">
     <param name="fieldName">userBean.birth_year</param>

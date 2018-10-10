@@ -18,7 +18,6 @@
  	   	<div class="container">
     		<s:actionerror/>
             <s:actionmessage/>
-            <s:fielderror/>
             
          <s:form action="login" cssClass="form-horizontal"
                     label="Connexion">
@@ -29,7 +28,7 @@
                     tooltip="Votre adresse email"/> 
              
               <s:password
-            		key="password"/>  
+            		key="accountBean.password"/>  
             		           
               <s:submit value="Connecter" id="connecter" cssClass="btn btn-primary center-block"/>      
          </s:form>               
