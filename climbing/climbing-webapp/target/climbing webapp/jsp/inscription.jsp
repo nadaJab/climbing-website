@@ -25,7 +25,7 @@
                <s:textfield key="userBean.first_name"/> 
                <s:textfield key="userBean.pseudo"/>
                
-               <sj:datepicker key="userBean.birth_year" cssClass="form-horizontal" inputAppendIcon="calendar"/>    
+               <sj:datepicker key="userBean.birth_year" inputAppendIcon="calendar"/>    
                           
 			   <s:radio key="userBean.sexe"
                         labelposition="inline"
