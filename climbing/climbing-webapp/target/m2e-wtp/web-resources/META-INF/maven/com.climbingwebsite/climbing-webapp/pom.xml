@@ -112,7 +112,13 @@
         		<groupId>com.jgeppert.struts2.jquery</groupId>
         		<artifactId>struts2-jquery-mobile-plugin</artifactId>
     		</dependency>
-    
+    		
+    		<!-- struts2-bootstrap-plugin -->
+    		<dependency>
+        		<groupId>com.jgeppert.struts2.bootstrap</groupId>
+        		<artifactId>struts2-bootstrap-plugin</artifactId>
+    		</dependency>
+    		
   </dependencies>
   
    <build>

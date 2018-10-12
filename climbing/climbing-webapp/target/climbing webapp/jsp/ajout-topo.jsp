@@ -8,9 +8,7 @@
 
 <html>
 	<head>
-		<meta charset="UTF-8">  
-		<sb:head/>
-		<sj:head jquerytheme="lightness"/>
+		<s:head/>
 	</head>
 </head>
 <body>

@@ -6,12 +6,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
-	<head> 
-		<link rel="stylesheet" href="bootstrap.min.css">
-		<link rel="stylesheet" href="bootstrap-datepicker3.css">
-
-   		<s:head/>
-    	<sj:head jqueryui="true"/>
+	<head> 		
+		<sj:head jqueryui="true"/>
+   		<sb:head includeScripts="true"/>
 	</head>
 
 <body>
@@ -19,14 +16,19 @@
  	   	
  	<div class="container">
      
-            <s:form action="save" validate="true" cssClass="form-horizontal" label="Créer un compte">
+            <s:form action="save" validate="true" theme="bootstrap" cssClass="form-horizontal" label="Créer un compte">
               
                <s:textfield key="userBean.last_name"/>
                <s:textfield key="userBean.first_name"/> 
                <s:textfield key="userBean.pseudo"/>
                
-               <sj:datepicker key="userBean.birth_year" inputAppendIcon="calendar"/>    
-                          
+               <sj:datepicker key="userBean.birth_year"                               
+               				  parentTheme="bootstrap"
+                              cssClass="form-control"
+                              elementCssClass="col-sm-5"
+                              showOn="focus"
+                              inputAppendIcon="calendar"/>
+                                         
 			   <s:radio key="userBean.sexe"
                         labelposition="inline"
                         list="{'Femme', 'Homme'}"
@@ -35,16 +37,12 @@
 						list="{'Bloc', 'Voie', 'Grande voie', 'Trad', 'Artif', 'Deep water', 'Via-ferrata'}"/>				     
                <s:textfield key="accountBean.email" placeholder="adresse@exemple.com"/>      
                <s:password key="accountBean.password"/>			           
-               <s:submit value="submit" cssClass="btn btn-primary"/>
+               <s:submit value="Enregistrer" cssClass="btn btn-primary center-block"/>
                
             </s:form>
  </div>
    			
- 	   	<%@include file="include/footer.jsp" %>
+ 	   	<%@include file="include/footer.jsp" %>	
  	   	
- 	  	<script src="jquery.min.js"></script>
-		<script src="bootstrap.min.js"></script>
-		<script src="bootstrap-datepicker.js"></script>
-		
 </body>
 </html>
