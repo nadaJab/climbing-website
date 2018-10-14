@@ -7,7 +7,8 @@
 
 <html>
 <head> 
-    <s:head/>
+    <sj:head jqueryui="true"/>
+   	<sb:head includeScripts="true"/>
 </head>
 
 <body>
@@ -25,27 +26,13 @@
              <!--  Niveau 2 --> 
  				<div class="col-sm-24 hidden-xs">                
                 <s:form theme="simple" cssClass="well form-search" >
-                
-                	<s:textfield
-    				key="nameSpot"
-            		placeholder="Le nom du site"/>
-            		
-    				<s:textfield
-    				key="city"
-            		placeholder="Ville"/>
-
-    				<s:password
-    				key="state"
-            		placeholder="Pays"/>
-
-    				<s:submit cssClass="btn btn-primary"
-    				key="search"
-    				/>
-    				
+                	<s:textfield key="nameSpot" placeholder="Le nom du site"/>
+    				<s:textfield key="city" placeholder="Ville"/>
+    				<s:password key="state" placeholder="Pays"/>
+    				<s:submit cssClass="btn btn-primary" key="search"/>
 				</s:form>
                 </div>
-            </div>
-           
+        </div>   
         </div>
     </div>
 </div>

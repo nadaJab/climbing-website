@@ -21,14 +21,12 @@
                <s:textfield key="userBean.last_name"/>
                <s:textfield key="userBean.first_name"/> 
                <s:textfield key="userBean.pseudo"/>
-               
                <sj:datepicker key="userBean.birth_year"                               
                				  parentTheme="bootstrap"
                               cssClass="form-control"
                               elementCssClass="col-sm-5"
                               showOn="focus"
-                              inputAppendIcon="calendar"/>
-                                         
+                              inputAppendIcon="calendar"/>                      
 			   <s:radio key="userBean.sexe"
                         labelposition="inline"
                         list="{'Femme', 'Homme'}"

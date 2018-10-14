@@ -7,16 +7,17 @@
 
 <html>
 <head>
-	<s:head/>
+	<sj:head jqueryui="true"/>
+   	<sb:head includeScripts="true"/>
 </head>
 
 <body>
  	   	<%@include file="include/menu.jsp" %>
  	   	
  	   	<div class="container">
-    		<s:actionerror/>
-            <s:actionmessage/>
-            
+    		    	<s:actionerror/>
+    	            <s:actionmessage/>
+    	
          <s:form action="login" cssClass="form-horizontal"
                     label="Connexion">
                     

@@ -7,7 +7,8 @@
 
 <html>
 	<head>
-		<s:head/>
+		<sj:head jqueryui="true"/>
+   		<sb:head includeScripts="true"/>
 	</head>
 </head>
 <body>

@@ -18,22 +18,13 @@
     	<param name="fieldName">userBean.pseudo</param>
     	<message>Votre pseudo est requis.</message>
     </validator>
-	
-  	<field name="userBean.birth_year">
-    	<field-validator type="requiredstring">
-        	<message>Votre date de naissance est requis.</message>
-    	</field-validator>
-    	<field-validator type="date">
-    	  	<message>Il semble que vous ayez entré des infos incorrectes dd/MM/yyyy.</message>
-    	</field-validator>
-	</field>
-
+		
 	<validator type="date">
     	<param name="fieldName">userBean.birth_year</param>
     	<param name="date"><![CDATA[\d{2}-\d{2}-\d{4}]]></param>
     	<message>Il semble que vous ayez entré des infos incorrectes dd/MM/yyyy.</message>
   	</validator>
-    
+  	    
    	<validator type="requiredstring">
     	<param name="fieldName">accountBean.email</param>
     	<message>Email est requis.</message>
