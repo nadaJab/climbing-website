@@ -17,16 +17,6 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager 
 	}
 
 	@Override
-	public User returnUser(Account account) {
-		return null;
-	}
-
-	@Override
-	public void addUser(User user) {
-		 getDaoFactory().getUserDao().addUser(user);
-	}
-
-	@Override
 	public void updateUser(User user) {
 		getDaoFactory().getUserDao().updateUser(user);
 	}
@@ -34,5 +24,11 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager 
 	@Override
 	public void deleteUser(User user) {
 		getDaoFactory().getUserDao().deleteUser(user);		
+	}
+
+	@Override
+	public void createUser(User user) {
+		getDaoFactory().getUserDao().createUser(user);
+		
 	}
 }

@@ -9,5 +9,7 @@
         <property name="jndiName" value="java:comp/env/jdbc/climbing-bdd"/>
     </bean>
 
-     
+    <bean id="HomeAction" class="org.climbing.action.HomeAction"></bean> 
+    <bean id="InscriptionAction" class="org.climbing.action.InscriptionAction" scope="prototype"></bean>     
+    
 </beans>

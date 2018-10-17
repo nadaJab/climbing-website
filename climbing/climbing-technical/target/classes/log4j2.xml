@@ -1,18 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
-<log4j:configuration debug="true"
-	xmlns:log4j='http://jakarta.apache.org/log4j/'>
 
-	<Appenders>
-		<Console name="console">
-			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n"/>
-		</Console>
-	</Appenders>
+<!DOCTYPE xml>
+
+<log4j:configuration debug="true">
+<appenders>
+
+    <File name="fichierLog" fileName="resources/fichierLog.log">
+    	<PatternLayout pattern="%d{yyyy-mm-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+    </File>
+    
+    <File name="console" target="SYSTEM_OUT">
+        <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+    </File>
+</appenders>
+
+<loggers>
 	
-	<loggers>
+	<root level="error">
+    	<Appender-ref ref="fichierLog" />
+    	<Appender-ref ref="console" />
+    </root>
+    
+	<logger name="com.opensymphony.xwork2.*" level="info">
+    	<!--  <Appender-ref ref="fichierLog" /> -->
+    	<Appender-ref ref="console" />
+	</logger> 
 	
+	<logger name="org.climbing.escalade" level="info">
+		<!--  <Appender-ref ref="fichierLog" /> -->
+		<Appender-ref ref="console" />
+	</logger>	
 	
-	</loggers>
-	
+</loggers>
 </log4j:configuration>
-	

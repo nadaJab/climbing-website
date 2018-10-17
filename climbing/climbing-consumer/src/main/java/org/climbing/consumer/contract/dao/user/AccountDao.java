@@ -4,7 +4,7 @@ import org.climbing.model.beans.user.Account;
 
 public interface AccountDao {
 	
-	//Account connexion(Account account);
+	//Account connexion(Account account); getAccount() dans user
 	
 	void addAccount(Account account);
 	void updateAccount(Account account);

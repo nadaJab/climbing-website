@@ -4,13 +4,12 @@
  <validators>
   	
   	<validator type="requiredstring">
-    	<param name="fieldName">userBean.last_name</param>
-        <param name="minlength">4</param>
+    	<param name="fieldName">userBean.lastName</param>
     	<message>Votre nom est requis.</message>
     </validator>
     
   	<validator type="requiredstring">
-    	<param name="fieldName">userBean.first_name</param>
+    	<param name="fieldName">userBean.firstName</param>
     	<message>Votre prénom est requis.</message>
     </validator>
 	
@@ -20,7 +19,7 @@
     </validator>
 		
 	<validator type="date">
-    	<param name="fieldName">userBean.birth_year</param>
+    	<param name="fieldName">userBean.birthYear</param>
     	<param name="date"><![CDATA[\d{2}-\d{2}-\d{4}]]></param>
     	<message>Il semble que vous ayez entré des infos incorrectes dd/MM/yyyy.</message>
   	</validator>

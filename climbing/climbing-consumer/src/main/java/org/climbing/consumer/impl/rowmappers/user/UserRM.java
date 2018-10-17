@@ -3,6 +3,7 @@ package org.climbing.consumer.impl.rowmappers.user;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.climbing.model.beans.user.Account;
 import org.climbing.model.beans.user.User;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -12,16 +13,18 @@ public class UserRM implements RowMapper<User>{
 	public User mapRow(ResultSet rs, int rownumber) throws SQLException {
 
 		User user = new User();
-		user.setId_user(rs.getInt("id"));
+		Account account = new Account();
+		
+		user.setIdUser(rs.getInt("id_user"));
 		user.setPseudo(rs.getString("pseudo"));
-		user.setLast_name(rs.getString("nom"));
-		user.setFirst_name(rs.getString("prénom"));
-		user.setClimbing_type(rs.getString("type_grimpe"));
-		user.setBirth_year(rs.getDate("date_naissance"));
-		user.setGenre(rs.getString("genre"));
-		user.setRole(rs.getString("role"));
-		//*****
-		//user.setCompte(rs.);
+		user.setLastName(rs.getString("first_name"));
+		user.setFirstName(rs.getString("last_name"));
+		user.setClimbingType(rs.getString("climbing_type"));
+		user.setBirthYear(rs.getDate("birth_year"));
+		user.setSexe(rs.getString("genre"));
+		user.setRole(rs.getString("role")); // par defaut simple utilisateur
+		
+		account.setEmail(rs.getString("email"));
 		
 		return user;
 	}

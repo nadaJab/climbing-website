@@ -1,10 +1,8 @@
 package org.climbing.consumer.impl.dao.user;
 
 import org.climbing.consumer.impl.AbstractDaoImpl;
-import org.climbing.consumer.impl.rowmappers.user.AccountRM;
 
 import java.sql.Types;
-import java.util.ArrayList;
 
 import org.climbing.consumer.contract.dao.user.AccountDao;
 
@@ -18,8 +16,6 @@ import org.springframework.stereotype.Component;
 
 @Component("accountDao") 
 public class AccountDaoImpl extends AbstractDaoImpl implements AccountDao  {
-
-    AccountRM accountRow = new AccountRM();
 
 	@Override
 	public void addAccount(Account account) {
@@ -49,4 +45,5 @@ public class AccountDaoImpl extends AbstractDaoImpl implements AccountDao  {
 		// TODO Auto-generated method stub
 		
 	}
+
 }
