@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
             http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <!-- ==== JNDI resource ===== -->
-    <bean id="dataSourceClimbing" class="org.springframework.jndi.JndiObjectFactoryBean">
-        <property name="jndiName" value="java:comp/env/jdbc/climbing-bdd"/>
-    </bean>
+	<!-- ==== JNDI resource ===== -->
+	<bean id="dataSourceClimbing"
+		class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName"
+			value="java:comp/env/jdbc/climbing-bdd" />
+	</bean>
 
-    <bean id="HomeAction" class="org.climbing.action.HomeAction"></bean> 
-    <bean id="InscriptionAction" class="org.climbing.action.InscriptionAction" scope="prototype"></bean>     
-    
+	<bean id="HomeAction" class="org.climbing.action.HomeAction"></bean>
+	<bean id="InscriptionAction"
+		class="org.climbing.action.InscriptionAction" scope="prototype"></bean>
+
 </beans>

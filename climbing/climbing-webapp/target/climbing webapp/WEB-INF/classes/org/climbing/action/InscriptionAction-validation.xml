@@ -1,42 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN" "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
 
- <validators>
-  	
-  	<validator type="requiredstring">
-    	<param name="fieldName">userBean.lastName</param>
-    	<message>Votre nom est requis.</message>
-    </validator>
-    
-  	<validator type="requiredstring">
-    	<param name="fieldName">userBean.firstName</param>
-    	<message>Votre prénom est requis.</message>
-    </validator>
-	
+<validators>
+
 	<validator type="requiredstring">
-    	<param name="fieldName">userBean.pseudo</param>
-    	<message>Votre pseudo est requis.</message>
-    </validator>
-		
+		<param name="fieldName">userBean.lastName</param>
+		<message>Votre nom est requis.</message>
+	</validator>
+
+	<validator type="requiredstring">
+		<param name="fieldName">userBean.firstName</param>
+		<message>Votre prénom est requis.</message>
+	</validator>
+
+	<validator type="requiredstring">
+		<param name="fieldName">userBean.pseudo</param>
+		<message>Votre pseudo est requis.</message>
+	</validator>
+
 	<validator type="date">
-    	<param name="fieldName">userBean.birthYear</param>
-    	<param name="date"><![CDATA[\d{2}-\d{2}-\d{4}]]></param>
-    	<message>Il semble que vous ayez entré des infos incorrectes dd/MM/yyyy.</message>
-  	</validator>
-  	    
-   	<validator type="requiredstring">
-    	<param name="fieldName">accountBean.email</param>
-    	<message>Email est requis.</message>
-  	</validator>
-  
-   	<validator type="email">
-    	<param name="fieldName">accountBean.email</param>
-    	<message>Votre email n'est pas valide.</message>
-  	</validator>
-	
+		<param name="fieldName">userBean.birthYear</param>
+		<param name="date"><![CDATA[\d{2}-\d{2}-\d{4}]]></param>
+		<message>Il semble que vous ayez entré des infos incorrectes
+			dd/MM/yyyy.</message>
+	</validator>
+
 	<validator type="requiredstring">
-    	<param name="fieldName">accountBean.password</param>
-    	<message>Votre mot de passe est requis.</message>
-  	</validator>
-	
- </validators>
+		<param name="fieldName">accountBean.email</param>
+		<message>Email est requis.</message>
+	</validator>
+
+	<validator type="email">
+		<param name="fieldName">accountBean.email</param>
+		<message>Votre email n'est pas valide.</message>
+	</validator>
+
+	<validator type="requiredstring">
+		<param name="fieldName">accountBean.password</param>
+		<message>Votre mot de passe est requis.</message>
+	</validator>
+
+</validators>

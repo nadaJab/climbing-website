@@ -17,6 +17,7 @@ org\climbing\consumer\contract\DaoFactory.class
 org\climbing\consumer\impl\dao\comment\CommentDaoImpl.class
 org\climbing\consumer\impl\dao\spot\RouteDaoImpl.class
 org\climbing\consumer\contract\dao\spot\SpotDao.class
+org\climbing\consumer\impl\rowmappers\user\AccountRM.class
 org\climbing\consumer\impl\dao\topo\TopoDaoImpl.class
 org\climbing\consumer\contract\dao\user\AccountDao.class
 org\climbing\consumer\impl\dao\spot\SpotDaoImpl.class

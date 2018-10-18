@@ -1,60 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
             http://www.springframework.org/schema/beans
             http://www.springframework.org/schema/beans/spring-beans.xsd
 			http://www.springframework.org/schema/context 
 			http://www.springframework.org/schema/context/spring-context.xsd">
-	
-	<context:annotation-config/>
-	
-	<context:component-scan base-package="org.climbing.consumer.impl"></context:component-scan>
-	
-	<!-- Initialization for data source--> 
-	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-    	<property name="dataSource" ref="dataSourceClimbing"/>
-	</bean>
-	
-</beans>            
 
- <!-- ===== Dao declaration ===== -->
- <!--  
-    <bean id="commentDao" class="org.climbing.consumer.impl.dao.comment.CommentDaoImpl"/>  
-    <bean id="commentSpotDao" class="org.climbing.consumer.impl.dao.comment.CommentSpotDaoImpl"/>
-    <bean id="commentTopoDao" class="org.climbing.consumer.impl.dao.comment.CommentTopoDaoImpl"/>
-      
-    <bean id="countryDao" class="org.climbing.consumer.impl.dao.spot.CountryDaoImpl"/>
-    <bean id="routeDao" class="org.climbing.consumer.impl.dao.spot.RouteDaoImpl"/>
-    <bean id="sectorDao" class="org.climbing.consumer.impl.dao.spot.SectorDaoImpl"/>
-    <bean id="spotDao" class="org.climbing.consumer.impl.dao.spot.SpotDaoImpl"/>
-    
-    <bean id="bookingTopoDao" class="org.climbing.consumer.impl.dao.topo.BookingTopoDaoImpl"/>
-    <bean id="topoDao" class="org.climbing.consumer.impl.dao.topo.TopoDaoImpl"/>
-    
-    <bean id="accountDao" class="org.climbing.consumer.impl.dao.user.AccountDaoImpl"/>
-    <bean id="userDao" class="org.climbing.consumer.impl.dao.user.UserDaoImpl"/>
- -->   
-    
+	<context:annotation-config />
+
+	<context:component-scan
+		base-package="org.climbing.consumer.impl"></context:component-scan>
+
+	<!-- Initialization for data source -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSourceClimbing" />
+	</bean>
+
+</beans>
+
+<!-- ===== Dao declaration ===== -->
+<!-- <bean id="commentDao" class="org.climbing.consumer.impl.dao.comment.CommentDaoImpl"/> 
+	<bean id="commentSpotDao" class="org.climbing.consumer.impl.dao.comment.CommentSpotDaoImpl"/> 
+	<bean id="commentTopoDao" class="org.climbing.consumer.impl.dao.comment.CommentTopoDaoImpl"/> 
+	<bean id="countryDao" class="org.climbing.consumer.impl.dao.spot.CountryDaoImpl"/> 
+	<bean id="routeDao" class="org.climbing.consumer.impl.dao.spot.RouteDaoImpl"/> 
+	<bean id="sectorDao" class="org.climbing.consumer.impl.dao.spot.SectorDaoImpl"/> 
+	<bean id="spotDao" class="org.climbing.consumer.impl.dao.spot.SpotDaoImpl"/> 
+	<bean id="bookingTopoDao" class="org.climbing.consumer.impl.dao.topo.BookingTopoDaoImpl"/> 
+	<bean id="topoDao" class="org.climbing.consumer.impl.dao.topo.TopoDaoImpl"/> 
+	<bean id="accountDao" class="org.climbing.consumer.impl.dao.user.AccountDaoImpl"/> 
+	<bean id="userDao" class="org.climbing.consumer.impl.dao.user.UserDaoImpl"/> -->
+
 <!-- ===== DaoFactory ===== -->
-<!--   
-<bean id="DaoFactory" class="org.climbing.consumer.impl.DaoFactoryImpl">
-     
-        <property name="commentDao" ref="commentDao"/>
-        <property name="commentSpotDao" ref="commentSpotDao"/>  
-        <property name="commentTopoDao" ref="commentTopoDao"/>  
-       
-        <property name="countryDao" ref="countryDao"/>
-        <property name="routeDao" ref="routeDao"/>  
-        <property name="sectorDao" ref="sectorDao"/>  
-        <property name="spotDao" ref="spotDao"/>  
-          
-        <property name="bookingTopoDao" ref="bookingTopoDao"/>
-        <property name="topoDao" ref="topoDao"/>  
-        
-        <property name="accountDao" ref="accountDao"/>
-        <property name="userDao" ref="userDao"/>  
-</bean> 
--->   
+<!-- <bean id="DaoFactory" class="org.climbing.consumer.impl.DaoFactoryImpl"> 
+	<property name="commentDao" ref="commentDao"/> <property name="commentSpotDao" 
+	ref="commentSpotDao"/> <property name="commentTopoDao" ref="commentTopoDao"/> 
+	<property name="countryDao" ref="countryDao"/> <property name="routeDao" 
+	ref="routeDao"/> <property name="sectorDao" ref="sectorDao"/> <property name="spotDao" 
+	ref="spotDao"/> <property name="bookingTopoDao" ref="bookingTopoDao"/> <property 
+	name="topoDao" ref="topoDao"/> <property name="accountDao" ref="accountDao"/> 
+	<property name="userDao" ref="userDao"/> </bean> -->   
        

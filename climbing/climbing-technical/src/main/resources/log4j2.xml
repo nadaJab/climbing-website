@@ -3,33 +3,35 @@
 <!DOCTYPE xml>
 
 <log4j:configuration debug="true">
-<appenders>
+	<appenders>
 
-    <File name="fichierLog" fileName="resources/fichierLog.log">
-    	<PatternLayout pattern="%d{yyyy-mm-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
-    </File>
-    
-    <File name="console" target="SYSTEM_OUT">
-        <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
-    </File>
-</appenders>
+		<File name="fichierLog" fileName="resources/fichierLog.log">
+			<PatternLayout
+				pattern="%d{yyyy-mm-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+		</File>
 
-<loggers>
-	
-	<root level="error">
-    	<Appender-ref ref="fichierLog" />
-    	<Appender-ref ref="console" />
-    </root>
-    
-	<logger name="com.opensymphony.xwork2.*" level="info">
-    	<!--  <Appender-ref ref="fichierLog" /> -->
-    	<Appender-ref ref="console" />
-	</logger> 
-	
-	<logger name="org.climbing.escalade" level="info">
-		<!--  <Appender-ref ref="fichierLog" /> -->
-		<Appender-ref ref="console" />
-	</logger>	
-	
-</loggers>
+		<File name="console" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+		</File>
+	</appenders>
+
+	<loggers>
+
+		<root level="error">
+			<Appender-ref ref="fichierLog" />
+			<Appender-ref ref="console" />
+		</root>
+
+		<logger name="com.opensymphony.xwork2.*" level="info">
+			<!-- <Appender-ref ref="fichierLog" /> -->
+			<Appender-ref ref="console" />
+		</logger>
+
+		<logger name="org.climbing.escalade" level="info">
+			<!-- <Appender-ref ref="fichierLog" /> -->
+			<Appender-ref ref="console" />
+		</logger>
+
+	</loggers>
 </log4j:configuration>

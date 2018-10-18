@@ -1,74 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns="http://www.springframework.org/schema/beans"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
             http://www.springframework.org/schema/beans
             http://www.springframework.org/schema/beans/spring-beans.xsd
           	http://www.springframework.org/schema/context
   			http://www.springframework.org/schema/context/spring-context.xsd">
-            
-    <!-- la configuration des injections (@Autowired...) -->
-    <context:annotation-config/>
 
-	<!-- Scans within the base package of the application for @Component classes to configure as beans -->
-    <context:component-scan base-package="org.climbing.business.impl"/>
-    
-    <!-- ==== AbstractManager ===== -->    
-    <!--  
-    <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
-        <property name="targetClass" value="org.climbing.business.impl.AbstractManagerImpl"/>
-        <property name="targetMethod" value="setDaoFactory"/>
-        <property name="arguments" ref="daoFactory"/>  
-    </bean> -->
-      
-     
-     
-            
-    <!-- =====Managers declaration ===== -->
-    <!--  
-    <bean id="commentManager" class="org.climbing.business.impl.manager.comment.CommentManagerImpl"/>  
-    <bean id="commentSpotManager" class="org.climbing.business.impl.manager.comment.CommentSpotManagerImpl"/>
-    <bean id="commentTopoManager" class="org.climbing.business.impl.manager.comment.CommentTopoManagerImpl"/>
-      
-    <bean id="countryManager" class="org.climbing.business.impl.manager.spot.CountryManagerImpl"/>
-    <bean id="routeManager" class="org.climbing.business.impl.manager.spot.RouteManagerImpl"/>
-    <bean id="sectorManager" class="org.climbing.business.impl.manager.spot.SectorManagerImpl"/>
-    <bean id="spotManager" class="org.climbing.business.impl.manager.spot.SpotManagerImpl"/>
-    
-    <bean id="bookingTopoManager" class="org.climbing.business.impl.manager.topo.BookingTopoManagerImpl"/>
-    <bean id="topoManager" class="org.climbing.business.impl.manager.topo.TopoManagerImpl"/>
-    
-    <bean id="accountManager" class="org.climbing.business.impl.manager.user.AccountManagerImpl"/>
-    <bean id="userManager" class="org.climbing.business.impl.manager.user.UserManagerImpl"/>
-    -->
-    
-    <!-- ===== ManagerFactory ===== -->
-    <!--   
-    <bean id="ManagerFactory" class="org.climbing.business.impl.ManagerFactoryImpl">
-     
-        <property name="commentManager" ref="commentManager"/>
-        <property name="commentSpotManager" ref="commentSpotManager"/>  
-        <property name="commentTopoManager" ref="commentTopoManager"/>  
-       
-        <property name="countryManager" ref="countryManager"/>
-        <property name="routeManager" ref="routeManager"/>  
-        <property name="sectorManager" ref="sectorManager"/>  
-        <property name="spotManager" ref="spotManager"/>  
-          
-        <property name="bookingTopoManager" ref="bookingTopoManager"/>
-        <property name="topoManager" ref="topoManager"/>  
-        
-        <property name="accountManager" ref="accountManager"/>
-        <property name="userManager" ref="userManager"/>  
-    </bean> 
-	--> 
-    <!-- ==== AbstractManager ===== -->
-    <!--     
-    <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
-        <property name="targetClass" value="org.climbing.business.impl.AbstractManagerImpl"/>
-        <property name="targetMethod" value="setDaoFactory"/>
-        <property name="arguments" ref="daoFactory"/>  
-    </bean>
-	-->
+	<!-- la configuration des injections (@Autowired...) -->
+	<context:annotation-config />
+
+	<!-- Scans within the base package of the application for @Component classes 
+		to configure as beans -->
+	<context:component-scan
+		base-package="org.climbing.business.impl" />
+
+	<!-- ==== AbstractManager ===== -->
+	<!-- <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean"> 
+		<property name="targetClass" value="org.climbing.business.impl.AbstractManagerImpl"/> 
+		<property name="targetMethod" value="setDaoFactory"/> <property name="arguments" 
+		ref="daoFactory"/> </bean> -->
+
+
+
+
+	<!-- =====Managers declaration ===== -->
+	<!-- <bean id="commentManager" class="org.climbing.business.impl.manager.comment.CommentManagerImpl"/> 
+		<bean id="commentSpotManager" class="org.climbing.business.impl.manager.comment.CommentSpotManagerImpl"/> 
+		<bean id="commentTopoManager" class="org.climbing.business.impl.manager.comment.CommentTopoManagerImpl"/> 
+		<bean id="countryManager" class="org.climbing.business.impl.manager.spot.CountryManagerImpl"/> 
+		<bean id="routeManager" class="org.climbing.business.impl.manager.spot.RouteManagerImpl"/> 
+		<bean id="sectorManager" class="org.climbing.business.impl.manager.spot.SectorManagerImpl"/> 
+		<bean id="spotManager" class="org.climbing.business.impl.manager.spot.SpotManagerImpl"/> 
+		<bean id="bookingTopoManager" class="org.climbing.business.impl.manager.topo.BookingTopoManagerImpl"/> 
+		<bean id="topoManager" class="org.climbing.business.impl.manager.topo.TopoManagerImpl"/> 
+		<bean id="accountManager" class="org.climbing.business.impl.manager.user.AccountManagerImpl"/> 
+		<bean id="userManager" class="org.climbing.business.impl.manager.user.UserManagerImpl"/> -->
+
+	<!-- ===== ManagerFactory ===== -->
+	<!-- <bean id="ManagerFactory" class="org.climbing.business.impl.ManagerFactoryImpl"> 
+		<property name="commentManager" ref="commentManager"/> <property name="commentSpotManager" 
+		ref="commentSpotManager"/> <property name="commentTopoManager" ref="commentTopoManager"/> 
+		<property name="countryManager" ref="countryManager"/> <property name="routeManager" 
+		ref="routeManager"/> <property name="sectorManager" ref="sectorManager"/> 
+		<property name="spotManager" ref="spotManager"/> <property name="bookingTopoManager" 
+		ref="bookingTopoManager"/> <property name="topoManager" ref="topoManager"/> 
+		<property name="accountManager" ref="accountManager"/> <property name="userManager" 
+		ref="userManager"/> </bean> -->
+	<!-- ==== AbstractManager ===== -->
+	<!-- <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean"> 
+		<property name="targetClass" value="org.climbing.business.impl.AbstractManagerImpl"/> 
+		<property name="targetMethod" value="setDaoFactory"/> <property name="arguments" 
+		ref="daoFactory"/> </bean> -->
 </beans> 
