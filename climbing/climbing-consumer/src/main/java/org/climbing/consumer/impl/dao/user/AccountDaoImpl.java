@@ -7,11 +7,9 @@ import java.sql.Types;
 import org.climbing.consumer.contract.dao.user.AccountDao;
 
 import org.climbing.model.beans.user.Account;
-import org.climbing.model.beans.user.User;
-import org.climbing.model.exception.NotFoundException;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component("accountDao") 
@@ -21,11 +19,16 @@ public class AccountDaoImpl extends AbstractDaoImpl implements AccountDao  {
 	public void addAccount(Account account) {
 		
 		String vSQL = "INSERT INTO account (email, password) VALUES (:email, :password)";
+		
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String hashedPassword = passwordEncoder.encode(account.getPassword());
+				
 	    NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
 	    
 	    BeanPropertySqlParameterSource vParams = new BeanPropertySqlParameterSource(account);
 	    vParams.registerSqlType("email", Types.VARCHAR);
 	    vParams.registerSqlType("password", Types.VARCHAR);
+	  //vParams.registerSqlType(hashedPassword, Types.VARCHAR); 
 	    
 	    //try {
 	        vJdbcTemplate.update(vSQL, vParams);

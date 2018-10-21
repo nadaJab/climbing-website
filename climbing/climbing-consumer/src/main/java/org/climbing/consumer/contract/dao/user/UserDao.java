@@ -9,6 +9,7 @@ public interface UserDao {
 	void createUser(User user);
 	void updateUser(User user);
 	void deleteUser(User user);
+	User searchUser(int uId);
+	User searchUser(String uPseudo);
 
-	
 }

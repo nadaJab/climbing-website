@@ -15,12 +15,11 @@
 		</action>
 
 		<!-- Action "inscription" -->
-		<action name="inscription" class="InscriptionAction"
-			method="input">
+		<action name="inscription" class="org.climbing.action.HomeAction" method="input">
 			<result name="input">/jsp/inscription.jsp</result>
 		</action>
 
-		<action name="save" class="InscriptionAction">
+		<action name="save" class="org.climbing.action.InscriptionAction">
 			<result name="input">/jsp/inscription.jsp</result>
 			<result name="success">/jsp/thankYou.jsp</result>
 		</action>

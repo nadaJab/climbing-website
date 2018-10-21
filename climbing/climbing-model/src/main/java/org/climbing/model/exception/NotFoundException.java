@@ -3,6 +3,12 @@ package org.climbing.model.exception;
 public class NotFoundException extends Exception {
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
+	/**
      * Constructeur par défaut.
      */
     public NotFoundException() {

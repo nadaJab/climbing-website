@@ -3,7 +3,6 @@ package org.climbing.consumer.impl.dao.user;
 import org.climbing.consumer.contract.dao.user.UserDao;
 import org.climbing.consumer.impl.AbstractDaoImpl;
 import org.climbing.consumer.impl.rowmappers.user.UserRM;
-import org.climbing.model.beans.user.Account;
 import org.climbing.model.beans.user.User;
 
 import java.sql.Types;
@@ -27,7 +26,6 @@ public class UserDaoImpl extends AbstractDaoImpl implements UserDao  {
 	@Override
 	public ArrayList<User> ListAllUser() {
 		
-
 		String vSQL = "SELECT * FROM user_1";
         JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
         
@@ -38,7 +36,7 @@ public class UserDaoImpl extends AbstractDaoImpl implements UserDao  {
 
 	@Override
 	public void createUser(User user) {	
-		String vSQL = "INSERT INTO public.user_1 (pseudo, first_name, last_name, climbing_type, birth_year, genre)"
+		String vSQL = "INSERT INTO user_1 (pseudo, first_name, last_name, climbing_type, birth_year, genre)"
 					+ " VALUES ( :pseudo, :first_name, :last_name, :climbing_type, :birth_year, :genre)";
 		
 		 MapSqlParameterSource vParams = new MapSqlParameterSource();
@@ -51,20 +49,72 @@ public class UserDaoImpl extends AbstractDaoImpl implements UserDao  {
 	     vParams.addValue("genre", user.getSexe(), Types.VARCHAR);
 	     
 	     NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
-
-	     vJdbcTemplate.update(vSQL, vParams);
-	     
+	     vJdbcTemplate.update(vSQL, vParams);     
 	}
 
 	@Override
 	public void updateUser(User user) {
-		// TODO Auto-generated method stub
+		String vSQL = "UPDATE user_1 SET pseudo = :pseudo, first_name = :first_name, "
+					+ "last_name = :last_name,climbing_type = :climbing_type, birth_year = :birth_year";
 		
+		MapSqlParameterSource vParams = new MapSqlParameterSource();
+		
+		vParams.addValue("pseudo", user.getPseudo(), Types.VARCHAR);
+	    vParams.addValue("first_name", user.getFirstName(), Types.VARCHAR);
+	    vParams.addValue("last_name", user.getLastName(), Types.VARCHAR);
+	    vParams.addValue("climbing_type", user.getClimbingType(), Types.VARCHAR);
+	    vParams.addValue("birth_year", user.getBirthYear(), Types.DATE);
+	    
+	    NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+	    vJdbcTemplate.update(vSQL, vParams);
 	}
 
 	@Override
 	public void deleteUser(User user) {
-		// TODO Auto-generated method stub
+		String vSQL = "DELETE FROM user_1 WHERE id_user = :id_user";
+		MapSqlParameterSource vParams = new MapSqlParameterSource();
+		vParams.addValue("id_user", user.getIdUser(), Types.INTEGER);
 		
+	    NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+	    vJdbcTemplate.update(vSQL, vParams);
+		
+	}
+
+	@Override
+	public User searchUser(int uId) {
+		String vSQL = "SELECT FROM user_1 WHERE id_user = :id_user";
+		User user;
+		
+		MapSqlParameterSource vParams = new MapSqlParameterSource();
+		vParams.addValue("id_user", uId, Types.INTEGER);
+		
+	    NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());  
+	    if(!vJdbcTemplate.query(vSQL, userRow).isEmpty()) {
+	    	user = (User) vJdbcTemplate.query(vSQL, userRow);
+	    }
+	    else {
+	    	user = null;
+	    }
+
+		return user;
+	}
+
+	@Override
+	public User searchUser(String uPseudo) {
+		String vSQL = "SELECT FROM user_1 WHERE pseudo = :pseudo";
+		User user;
+		
+		MapSqlParameterSource vParams = new MapSqlParameterSource();
+		vParams.addValue("pseudo", uPseudo, Types.VARCHAR);
+		
+		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());  
+	    if(!vJdbcTemplate.query(vSQL, userRow).isEmpty()) {
+	    	user = (User) vJdbcTemplate.query(vSQL, userRow);
+	    }
+	    else {
+	    	user = null;
+	    }
+
+		return user;
 	}
 }

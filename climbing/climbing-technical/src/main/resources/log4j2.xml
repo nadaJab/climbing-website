@@ -22,12 +22,7 @@
 			<Appender-ref ref="fichierLog" />
 			<Appender-ref ref="console" />
 		</root>
-
-		<logger name="com.opensymphony.xwork2.*" level="info">
-			<!-- <Appender-ref ref="fichierLog" /> -->
-			<Appender-ref ref="console" />
-		</logger>
-
+		
 		<logger name="org.climbing.escalade" level="info">
 			<!-- <Appender-ref ref="fichierLog" /> -->
 			<Appender-ref ref="console" />
