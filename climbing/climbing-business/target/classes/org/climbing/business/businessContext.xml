@@ -16,7 +16,7 @@
 	<context:component-scan base-package="org.climbing.business.impl" />
 	
 	<bean id="PlatformTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-    	<property name="dataSource" ref="dataSourceTicket"/>
+    	<property name="dataSource" ref="dataSourceClimbing"/>
 	</bean>
 	
 </beans> 
