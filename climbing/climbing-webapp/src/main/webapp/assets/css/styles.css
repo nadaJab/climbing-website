@@ -1,0 +1,6 @@
+.container {
+	background-image: url(": ../webapp/assets/images/background.jpg")
+		no-repeat;
+	background-position: top;
+	background-size: cover;
+}
