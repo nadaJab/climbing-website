@@ -9,7 +9,7 @@ import org.climbing.business.contract.manager.user.*;
 	 * Factory des Managers
 	 */
 	public interface ManagerFactory {
-
+			
 		 	CommentManager getCommentManager(); 
 		 	CommentTopoManager getCommentTopoManager();
 		 	CommentSpotManager getCommentSpotManager();
@@ -22,7 +22,7 @@ import org.climbing.business.contract.manager.user.*;
 		    
 		    
 		    TopoManager getTopoManager(); 
-		    BookingTopoManager getBookingTopoManager();
+		    BookingTopoManager getBookingTopoManager(); 
 		    
 		    UserManager getUserManager(); 
 		    AccountManager getAccountManager();

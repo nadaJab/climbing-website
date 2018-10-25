@@ -1,7 +1,9 @@
 package org.climbing.model.beans.user;
 
 import java.util.Date;
+import javax.inject.Named;
 
+@Named("user")
 public class User {
 	
 	// ==================== Attributs ====================
@@ -71,5 +73,13 @@ public class User {
 	}
 	public void setRole(String role) {
 		this.role = role;
+	}
+	@Override
+	public String toString() {
+		return "User [idUser=" + idUser + ", pseudo=" + pseudo + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", climbingType=" + climbingType + ", birthYear=" + birthYear + ", sexe=" + sexe + ", account="
+				+ account + ", role=" + role + "]";
 	}	
+	
+	
 }

@@ -1,145 +1,125 @@
 package org.climbing.business.impl;
 
+import javax.inject.Named;
+
 import org.climbing.business.contract.ManagerFactory;
 import org.climbing.business.contract.manager.comment.*;
 import org.climbing.business.contract.manager.spot.*;
 import org.climbing.business.contract.manager.topo.*;
 import org.climbing.business.contract.manager.user.*;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
-
+@Named("managerFactory")
 public class ManagerFactoryImpl implements ManagerFactory{
 
-	//***************
-	//****comment****
-	//***************
-	private CommentManager commentManager;
-	private CommentSpotManager commentSpotManager;
-	private CommentTopoManager commentTopoManager;
-
-	//************	
-	//****spot****
-	//************
-	private CountryManager countryManager;
-	private RouteManager routeManager;
-	private SectorManager sectorManager;
-	private SpotManager spotManager;
-	
-	//***************
-	//****topo****
-	//***************
-	private BookingTopoManager bookingTopoManager;
-	private TopoManager topoManager;
-	
-	//***************
-	//****user****
 	//***************	
-	private AccountManager accountManager;
-	private UserManager userManager;
-
-	
 	//****comment****
+	//***************
+	//@Autowired
+	private CommentManager commentManager;
 	public CommentManager getCommentManager() {
 		return this.commentManager;
 	}
-	
-	@Autowired
 	public void setCommentManager(CommentManager commentManager) {
 		this.commentManager = commentManager;
 	}
-
+	
+	//@Autowired
+	private CommentSpotManager commentSpotManager;
 	public CommentSpotManager getCommentSpotManager() {
 		return commentSpotManager;
 	}
-	
-	@Autowired
 	public void setCommentSpotManager(CommentSpotManager commentSpotManager) {
 		this.commentSpotManager = commentSpotManager;
 	}
-
+	
+	//@Autowired
+	private CommentTopoManager commentTopoManager;
 	public CommentTopoManager getCommentTopoManager() {
 		return commentTopoManager;
 	}
-	
-	@Autowired
 	public void setCommentTopoManager(CommentTopoManager commentTopoManager) {
 		this.commentTopoManager = commentTopoManager;
-	}
+	} 
 	
-	
+	//************	
 	//****spot****
+	//************
+	
+	//@Autowired
+	private CountryManager countryManager;
 	public CountryManager getCountryManager() {
 		return countryManager;
-	}
-	
-	@Autowired
+	}	
 	public void setCountryManager(CountryManager countryManager) {
 		this.countryManager = countryManager;
 	}
-
+	
+	//@Autowired
+	private RouteManager routeManager;
 	public RouteManager getRouteManager() {
 		return routeManager;
 	}
-	
-	@Autowired
 	public void setRouteManager(RouteManager routeManager) {
 		this.routeManager = routeManager;
 	}
-
+	
+	//@Autowired
+	private SectorManager sectorManager;
 	public SectorManager getSectorManager() {
 		return sectorManager;
 	}
-	
-	@Autowired
 	public void setSectorManager(SectorManager sectorManager) {
 		this.sectorManager = sectorManager;
 	}
 
+	//@Autowired
+	private SpotManager spotManager;
 	public SpotManager getSpotManager() {
 		return spotManager;
 	}
-	
-	@Autowired
 	public void setSpotManager(SpotManager spotManager) {
 		this.spotManager = spotManager;
 	}
 	
-	
+	//***************
 	//****topo****
+	//***************
+	//@Autowired
+	private BookingTopoManager bookingTopoManager;
 	public BookingTopoManager getBookingTopoManager() {
 		return bookingTopoManager;
 	}
-	
-	@Autowired
 	public void setBookingTopoManager(BookingTopoManager bookingTopoManager) {
 		this.bookingTopoManager = bookingTopoManager;
 	}
-
+	
+	//@Autowired
+	private TopoManager topoManager;
 	public TopoManager getTopoManager() {
 		return topoManager;
 	}
-	
-	@Autowired
 	public void setTopoManager(TopoManager topoManager) {
 		this.topoManager = topoManager;
-	}
+	} 
 	
-
+	//***************
+	//****user****
+	//***************	
+	@Autowired
+	private AccountManager accountManager;
 	public AccountManager getAccountManager() {
 		return accountManager;
 	}
-	
-	@Autowired
 	public void setAccountManager(AccountManager accountManager) {
 		this.accountManager = accountManager;
 	}
-
+	
+	@Autowired
+	private UserManager userManager;
 	public UserManager getUserManager() {
 		return userManager;
 	}
-	
-	@Autowired
 	public void setUserManager(UserManager userManager) {
 		this.userManager = userManager;
 	}

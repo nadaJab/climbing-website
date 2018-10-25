@@ -1,5 +1,7 @@
 package org.climbing.model.beans.user;
+import javax.inject.Named;
 
+@Named("account")
 public class Account {
 	
 	// ==================== Attributs ====================
@@ -27,6 +29,10 @@ public class Account {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	@Override
+	public String toString() {
+		return "Account [id_compte=" + id_compte + ", email=" + email + ", password=" + password + "]";
 	}
 	
 	

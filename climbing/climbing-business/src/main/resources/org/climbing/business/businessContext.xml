@@ -8,11 +8,10 @@
           	http://www.springframework.org/schema/context
   			http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<!-- la configuration des injections (@Autowired...) -->
+	<!-- la configuration des injections (@Inject...) -->
 	<context:annotation-config />
 
-	<!-- Scans within the base package of the application for @Component classes 
-		to configure as beans -->
+	<!-- @Named -->
 	<context:component-scan base-package="org.climbing.business.impl" />
 	
 	<bean id="PlatformTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

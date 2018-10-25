@@ -10,10 +10,10 @@
         <dependent-module archiveName="climbing-consumer-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/climbing-consumer/climbing-consumer">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="climbing-technical-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/climbing-technical/climbing-technical">
+        <dependent-module archiveName="climbing-model-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/climbing-model/climbing-model">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="climbing-model-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/climbing-model/climbing-model">
+        <dependent-module archiveName="climbing-technical-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/climbing-technical/climbing-technical">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="context-root" value="climbing-webapp"/>

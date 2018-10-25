@@ -27,7 +27,8 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager 
 	}
 	
 	@Override
-	public void createUser(User user, Account account) {
+	public User createUser(User user, Account account) {
+		
 		DefaultTransactionDefinition vDefintion = new DefaultTransactionDefinition();
 		vDefintion.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
 		vDefintion.setTimeout(30); 
@@ -46,7 +47,8 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager 
 	    if (vTransactionStatus != null) {
 	        platformTransactionManager.rollback(vTransactionStatus);
 	    }
-		}	
+		}
+		return user;	
 	}
 	
 	@Override

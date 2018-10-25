@@ -4,20 +4,34 @@
 
 <configuration  status="DEBUG">
 	<appenders>
-		<File name="fichierLog" fileName="C:\Users\nada\Desktop\java-formation\Openclassrooms-JAVA\projet6\projet\climbing2\climbing-website\climbing\climbing-technical\src\main\resources\fichierLog.log">
+		<File name="fichierLog" fileName="${catalina.home}/logs/all.log">
 			<PatternLayout pattern="%d{yyyy-mm-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
 		</File>
 
-		<File name="console" target="SYSTEM_OUT">
+		<Console name="STDOUT" target="SYSTEM_OUT">
 			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
-		</File>
+		</Console>
 	</appenders>
 
 	<loggers>
+		<Logger name="com.opensymphony.xwork2.*" level="debug">
+			<AppenderRef ref="fichierLog" />
+		</Logger>
+		
+		<Logger name="org.apache.struts2.*" level="debug">
+			<AppenderRef ref="fichierLog" />
+		</Logger>
+		
+		<Logger name="org.climbing.*" level="debug">
+			<AppenderRef ref="fichierLog" />
+			<AppenderRef ref="STDOUT"/>
+		</Logger>
+		
 		<root level="error">
 			<Appender-ref ref="fichierLog" />
-			<Appender-ref ref="console" />
+			<Appender-ref ref="STDOUT" />
 		</root>
+		
 	</loggers>
 	
 </configuration>

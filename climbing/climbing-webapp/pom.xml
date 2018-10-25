@@ -71,7 +71,12 @@
 			<groupId>com.climbingwebsite</groupId>
 			<artifactId>climbing-model</artifactId>
 		</dependency>
-
+		
+		<dependency>
+			<groupId>com.climbingwebsite</groupId>
+			<artifactId>climbing-technical</artifactId>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>

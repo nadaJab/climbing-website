@@ -4,14 +4,18 @@
 	xmlns="http://www.springframework.org/schema/beans"
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd">
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<!-- Inclusion d'autres fichiers de contexte Spring -->
-	<import
-		resource="classpath:/org/climbing/webapp/webappContext.xml" />
-	<import
-		resource="classpath:/org/climbing/business/businessContext.xml" />
-	<import
-		resource="classpath:/org/climbing/demo/consumer/consumerContext.xml" />
-
+	<import resource="classpath:*/org/climbing/webapp/webappContext.xml" />
+	<import resource="classpath:*/org/climbing/business/businessContext.xml" />
+	<import resource="classpath:*/org/climbing/demo/consumer/consumerContext.xml" />
+	
+	<!-- les injections @Inject -->
+	<context:annotation-config/>
+	
+	<!-- les beans avec @Named -->
+    <context:component-scan base-package="org.climbing.*"/>
 </beans>
