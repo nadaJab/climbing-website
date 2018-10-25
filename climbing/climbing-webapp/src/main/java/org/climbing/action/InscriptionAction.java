@@ -27,7 +27,7 @@ public class InscriptionAction extends ActionSupport{
 	private Account accountBean;
 	
 	public String execute() {
-		LOGGER.debug(userBean.toString() + "Attention log user");
+		//LOGGER.debug(userBean.toString() + "Attention log user");
 		return SUCCESS;	
 	}
 	
@@ -52,7 +52,7 @@ public class InscriptionAction extends ActionSupport{
 	    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		String hashedPassword = passwordEncoder.encode(accountBean.getPassword());
 		accountBean.setPassword(hashedPassword);
-		userBean.setAccount(accountBean);
+		userBean.setAccount(accountBean); 
 		
 		userBean = managerFactory.getUserManager().createUser(this.userBean, this.accountBean);
 		

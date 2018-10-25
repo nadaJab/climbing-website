@@ -7,4 +7,5 @@ import org.climbing.model.beans.user.Account;
 import org.climbing.model.exception.NotFoundException;
 
 public class AccountManagerImpl extends AbstractManagerImpl implements AccountManager {
+	
 }

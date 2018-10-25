@@ -26,9 +26,10 @@ public class AccountDaoImpl extends AbstractDaoImpl implements AccountDao  {
 	    NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
 	    
 	    BeanPropertySqlParameterSource vParams = new BeanPropertySqlParameterSource(account);
+	    
 	    vParams.registerSqlType("email", Types.VARCHAR);
-	    vParams.registerSqlType("password", Types.VARCHAR);
-	  //vParams.registerSqlType(hashedPassword, Types.VARCHAR); 
+	  //vParams.registerSqlType("password", Types.VARCHAR);
+	    vParams.registerSqlType(hashedPassword, Types.VARCHAR); 
 	    
 	    //try {
 	        vJdbcTemplate.update(vSQL, vParams);
