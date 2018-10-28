@@ -11,6 +11,8 @@ import javax.inject.Named;
 
 import org.climbing.business.contract.manager.user.UserManager;
 import org.climbing.business.impl.AbstractManagerImpl;
+import org.climbing.consumer.impl.dao.user.AccountDaoImpl;
+import org.climbing.consumer.impl.dao.user.UserDaoImpl;
 import org.climbing.model.beans.user.Account;
 import org.climbing.model.beans.user.User;
 
@@ -20,6 +22,9 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager 
     @Named("PlatformTransactionManager")
     private PlatformTransactionManager platformTransactionManager;
 	
+	private UserDaoImpl userDao;
+	private AccountDaoImpl accountDao;
+	
 	@Override
 	public ArrayList<User> getListAllUser() {
 		
@@ -27,28 +32,29 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager 
 	}
 	
 	@Override
-	public User createUser(User user, Account account) {
+	public User createUser(User pUser) {
 		
 		DefaultTransactionDefinition vDefintion = new DefaultTransactionDefinition();
 		vDefintion.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
 		vDefintion.setTimeout(30); 
 		
 		TransactionStatus vTransactionStatus = platformTransactionManager.getTransaction(vDefintion);
-		try {
-	  
-	    TransactionStatus vTScommit = vTransactionStatus;
-	    vTransactionStatus = null;
-	    platformTransactionManager.commit(vTScommit);
-	    
-		getDaoFactory().getUserDao().createUser(user);
-		getDaoFactory().getAccountDao().addAccount(account);
 		
+		try {
+						
+			userDao = (UserDaoImpl) getDaoFactory().getUserDao();
+			userDao.createUser(pUser);
+			accountDao.addAccount(pUser.getAccount());
+			
+			TransactionStatus vTScommit = vTransactionStatus;
+	    	vTransactionStatus = null;
+	    	platformTransactionManager.commit(vTScommit);		
 		} finally {
 	    if (vTransactionStatus != null) {
 	        platformTransactionManager.rollback(vTransactionStatus);
 	    }
 		}
-		return user;	
+		return (User) pUser;	
 	}
 	
 	@Override

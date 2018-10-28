@@ -14,12 +14,11 @@
 	<!-- bean avec @named -->
 	<context:component-scan
 		base-package="org.climbing.consumer.impl"></context:component-scan>
-
-	<!-- Initialization for data source -->
-	<bean id="transactionManager"
-		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSourceClimbing" />
-	</bean>
+	
+	<!-- Récupération de la ressource JNDI : javax.sql.DataSource pour la base de données climbing-bdd -->
+    <bean id="dataSourceClimbing" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName" value="java:comp/env/jdbc/climbing-bdd" />
+    </bean>
 
 </beans>
        

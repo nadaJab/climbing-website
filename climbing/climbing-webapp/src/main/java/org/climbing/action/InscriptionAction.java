@@ -1,10 +1,15 @@
 package org.climbing.action;
 
-//import javax.inject.Inject;
+import org.climbing.model.exception.AccountException;
+import org.climbing.model.exception.UserException;
+
+import javax.inject.Inject;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.climbing.business.contract.ManagerFactory;
+import org.climbing.business.contract.manager.user.UserManager;
+import org.climbing.business.impl.ManagerFactoryImpl;
 import org.climbing.model.beans.user.Account;
 import org.climbing.model.beans.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +27,7 @@ public class InscriptionAction extends ActionSupport{
 	
 	@Autowired
 	private ManagerFactory managerFactory;
-
+		
 	private User userBean;
 	private Account accountBean;
 	
@@ -45,20 +50,45 @@ public class InscriptionAction extends ActionSupport{
 	}
 	
 	
-	public String doCreateUser() {
+	public String doCreateUser(){
 		
 	    String vResult = ActionSupport.INPUT;
 	    
 	    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		String hashedPassword = passwordEncoder.encode(accountBean.getPassword());
 		accountBean.setPassword(hashedPassword);
+		userBean.setAccount(accountBean);
+
+	    //accountBean = managerFactory.getAccountManager().addAccount(accountBean);
+		
+	    userBean = managerFactory.getUserManager().createUser(this.userBean);
+	    
+	    vResult = ActionSupport.SUCCESS;
+	    
+		return vResult;
+	    
+	    /*
+	    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String hashedPassword = passwordEncoder.encode(accountBean.getPassword());
+		
+		accountBean.setPassword(hashedPassword);
+		
+		managerFactory.getAccountManager().addAccount(accountBean);
 		userBean.setAccount(accountBean); 
 		
-		userBean = managerFactory.getUserManager().createUser(this.userBean, this.accountBean);
+		userBean = managerFactory.getUserManager().createUser(this.userBean);
 		
-		return ActionSupport.SUCCESS;
+		return ActionSupport.SUCCESS; */
 		
 	}
 	
-    
+	
+	public ManagerFactory getManagerFactory() {
+		return managerFactory;
+	}
+
+	public void setManagerFactory(ManagerFactory managerFactory) {
+		this.managerFactory = managerFactory;
+	} 
+	
 }

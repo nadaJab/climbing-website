@@ -20,6 +20,11 @@
 		</action>
 
 		<action name="save" class="org.climbing.action.InscriptionAction" method="doCreateUser">
+			<interceptor-ref name="store">
+        		<param name="operationMode">STORE</param>
+    		</interceptor-ref>
+    		<interceptor-ref name="defaultStack" />
+    		
 			<result name="input">/jsp/inscription.jsp</result>
 			<result name="success">/jsp/thankYou.jsp</result>
 		</action>

@@ -108,6 +108,7 @@ public class ManagerFactoryImpl implements ManagerFactory{
 	//***************	
 	@Autowired
 	private AccountManager accountManager;
+	
 	public AccountManager getAccountManager() {
 		return accountManager;
 	}
@@ -117,6 +118,7 @@ public class ManagerFactoryImpl implements ManagerFactory{
 	
 	@Autowired
 	private UserManager userManager;
+	
 	public UserManager getUserManager() {
 		return userManager;
 	}

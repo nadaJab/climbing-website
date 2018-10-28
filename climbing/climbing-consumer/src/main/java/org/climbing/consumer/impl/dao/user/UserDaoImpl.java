@@ -15,6 +15,8 @@ import org.apache.logging.log4j.Logger; */
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 
 @Component("userDao") 
@@ -35,28 +37,38 @@ public class UserDaoImpl extends AbstractDaoImpl implements UserDao  {
 	}
 
 	@Override
-	public void createUser(User user) {	
-		String vSQL = "INSERT INTO user_1 (pseudo, first_name, last_name, climbing_type, birth_year, genre)"
-					+ " VALUES ( :pseudo, :first_name, :last_name, :climbing_type, :birth_year, :genre)";
+	public User createUser(User user) {	
+		String vSQL = "INSERT INTO user_1 (pseudo, first_name, last_name, climbing_type, birth_year, genre, role, id_account)"
+					+ " VALUES ( :pseudo, :firstName, :lastName, :climbingType, :birthYear, :genre, :role, idAccount)";
 		
+		 //auto generated primary key by the database
+		 KeyHolder keyHolder = new GeneratedKeyHolder();
+		 user.setIdUser(user.getAccount().getIdAccount());;	
+		 
+	     NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
 		 MapSqlParameterSource vParams = new MapSqlParameterSource();
 		 
 	     vParams.addValue("pseudo", user.getPseudo(), Types.VARCHAR);
-	     vParams.addValue("first_name", user.getFirstName(), Types.VARCHAR);
-	     vParams.addValue("last_name", user.getLastName(), Types.VARCHAR);
-	     vParams.addValue("climbing_type", user.getClimbingType(), Types.VARCHAR);
-	     vParams.addValue("birth_year", user.getBirthYear(), Types.DATE);
+	     vParams.addValue("firstName", user.getFirstName(), Types.VARCHAR);
+	     vParams.addValue("lastName", user.getLastName(), Types.VARCHAR);
+	     vParams.addValue("climbingType", user.getClimbingType(), Types.VARCHAR);
+	     vParams.addValue("birthYear", user.getBirthYear(), Types.DATE);
 	     vParams.addValue("genre", user.getSexe(), Types.VARCHAR);
+	     vParams.addValue("role", user.getRole(), Types.VARCHAR);
+	     vParams.addValue("idAccount", user.getAccount().getIdAccount(), Types.VARCHAR);
 	     
-	     NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
-	     vJdbcTemplate.update(vSQL, vParams);     
+	     vJdbcTemplate.update(vSQL, vParams, keyHolder);    
+	     user.setIdUser(keyHolder.getKey().intValue());
+	     
+		return user;
 	}
 
 	@Override
 	public void updateUser(User user) {
 		String vSQL = "UPDATE user_1 SET pseudo = :pseudo, first_name = :first_name, "
 					+ "last_name = :last_name,climbing_type = :climbing_type, birth_year = :birth_year";
-		
+	    
+		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
 		MapSqlParameterSource vParams = new MapSqlParameterSource();
 		
 		vParams.addValue("pseudo", user.getPseudo(), Types.VARCHAR);
@@ -65,7 +77,6 @@ public class UserDaoImpl extends AbstractDaoImpl implements UserDao  {
 	    vParams.addValue("climbing_type", user.getClimbingType(), Types.VARCHAR);
 	    vParams.addValue("birth_year", user.getBirthYear(), Types.DATE);
 	    
-	    NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
 	    vJdbcTemplate.update(vSQL, vParams);
 	}
 

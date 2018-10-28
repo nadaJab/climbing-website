@@ -6,21 +6,24 @@ public class Account {
 	
 	// ==================== Attributs ====================
 	
-	private Integer id_compte;
+	private Integer idAccount;
 	private String email;
 	private String password;
 	
 	// ==================== Getters/Setters ====================
 	
-	public Integer getId_compte() {
-		return id_compte;
+	public Integer getIdAccount() {
+		return idAccount;
 	}
-	public void setId_compte(Integer id_compte) {
-		this.id_compte = id_compte;
+	
+	public void setIdAccount(Integer idAccount) {
+		this.idAccount = idAccount;
 	}
+	
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
@@ -30,10 +33,5 @@ public class Account {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	@Override
-	public String toString() {
-		return "Account [id_compte=" + id_compte + ", email=" + email + ", password=" + password + "]";
-	}
-	
 	
 }

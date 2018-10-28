@@ -8,7 +8,7 @@
           	http://www.springframework.org/schema/context
   			http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<!-- la configuration des injections (@Inject...) -->
+	<!-- la configuration des injections (@Inject, @Autowired...) -->
 	<context:annotation-config />
 
 	<!-- @Named -->
@@ -17,5 +17,10 @@
 	<bean id="PlatformTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
     	<property name="dataSource" ref="dataSourceClimbing"/>
 	</bean>
+	
+	<!-- Récupération de la ressource JNDI : javax.sql.DataSource pour la base de données climbing-bdd -->
+    <bean id="dataSourceClimbing" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName" value="java:comp/env/jdbc/climbing-bdd" />
+    </bean>
 	
 </beans> 
