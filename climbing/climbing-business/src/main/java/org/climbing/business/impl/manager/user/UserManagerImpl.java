@@ -43,8 +43,8 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager 
 		try {
 						
 			userDao = (UserDaoImpl) getDaoFactory().getUserDao();
-			userDao.createUser(pUser);
 			accountDao.addAccount(pUser.getAccount());
+			userDao.createUser(pUser);
 			
 			TransactionStatus vTScommit = vTransactionStatus;
 	    	vTransactionStatus = null;
