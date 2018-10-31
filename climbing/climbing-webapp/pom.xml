@@ -75,7 +75,7 @@
 		<dependency>
 			<groupId>com.climbingwebsite</groupId>
 			<artifactId>climbing-technical</artifactId>
-		</dependency>
+		</dependency> 
 		
 		<dependency>
 			<groupId>org.postgresql</groupId>

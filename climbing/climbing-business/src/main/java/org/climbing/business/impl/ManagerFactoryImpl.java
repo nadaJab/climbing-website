@@ -2,16 +2,25 @@ package org.climbing.business.impl;
 
 import javax.inject.Named;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger; 
+
 import org.climbing.business.contract.ManagerFactory;
 import org.climbing.business.contract.manager.comment.*;
 import org.climbing.business.contract.manager.spot.*;
 import org.climbing.business.contract.manager.topo.*;
 import org.climbing.business.contract.manager.user.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-@Named("managerFactory")
+@Component("managerFactory")
 public class ManagerFactoryImpl implements ManagerFactory{
+	
+	private static final Logger LOGGER = LogManager.getRootLogger();
 
+	public ManagerFactoryImpl() {
+	LOGGER.info("coucou");
+	}
 	//***************	
 	//****comment****
 	//***************

@@ -23,7 +23,7 @@ public class InscriptionAction extends ActionSupport{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private static final Logger LOGGER = LogManager.getRootLogger();
+	//private static final Logger LOGGER = LogManager.getRootLogger();
 	
 	@Autowired
 	private ManagerFactory managerFactory;
@@ -32,7 +32,6 @@ public class InscriptionAction extends ActionSupport{
 	private Account accountBean;
 	
 	public String execute() {
-		//LOGGER.debug(userBean.toString() + "Attention log user");
 		return SUCCESS;	
 	}
 	
@@ -51,7 +50,6 @@ public class InscriptionAction extends ActionSupport{
 	
 	
 	public String doCreateUser(){
-		
 	    String vResult = ActionSupport.INPUT;
 	    
 	    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -59,36 +57,15 @@ public class InscriptionAction extends ActionSupport{
 		accountBean.setPassword(hashedPassword);
 		userBean.setAccount(accountBean);
 
-	    //accountBean = managerFactory.getAccountManager().addAccount(accountBean);
-		
+		//LOGGER.info(userBean.toString() + "Attention log user");
+
 	    userBean = managerFactory.getUserManager().createUser(this.userBean);
 	    
 	    vResult = ActionSupport.SUCCESS;
 	    
 		return vResult;
-	    
-	    /*
-	    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		String hashedPassword = passwordEncoder.encode(accountBean.getPassword());
-		
-		accountBean.setPassword(hashedPassword);
-		
-		managerFactory.getAccountManager().addAccount(accountBean);
-		userBean.setAccount(accountBean); 
-		
-		userBean = managerFactory.getUserManager().createUser(this.userBean);
-		
-		return ActionSupport.SUCCESS; */
-		
+	    	
 	}
 	
-	
-	public ManagerFactory getManagerFactory() {
-		return managerFactory;
-	}
-
-	public void setManagerFactory(ManagerFactory managerFactory) {
-		this.managerFactory = managerFactory;
-	} 
 	
 }

@@ -22,8 +22,8 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager 
     @Named("PlatformTransactionManager")
     private PlatformTransactionManager platformTransactionManager;
 	
-	private UserDaoImpl userDao;
-	private AccountDaoImpl accountDao;
+	//private UserDaoImpl userDao;
+	//private AccountDaoImpl accountDao;
 	
 	@Override
 	public ArrayList<User> getListAllUser() {
@@ -41,10 +41,13 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager 
 		TransactionStatus vTransactionStatus = platformTransactionManager.getTransaction(vDefintion);
 		
 		try {
-						
+			/*			
 			userDao = (UserDaoImpl) getDaoFactory().getUserDao();
-			accountDao.addAccount(pUser.getAccount());
 			userDao.createUser(pUser);
+			accountDao.addAccount(pUser.getAccount()); */
+			
+			getDaoFactory().getUserDao().createUser(pUser);
+			getDaoFactory().getAccountDao().addAccount(pUser.getAccount());
 			
 			TransactionStatus vTScommit = vTransactionStatus;
 	    	vTransactionStatus = null;

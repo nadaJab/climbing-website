@@ -33,7 +33,6 @@ public class AccountManagerImpl extends AbstractManagerImpl implements AccountMa
 		try {
 	    	accountDao = (AccountDaoImpl) getDaoFactory().getAccountDao();
 	    	accountDao.addAccount(pAccount);
-	    	
 	    	//accountDao = (AccountDaoImpl) getDaoFactory().getAccountDao().addAccount(pAccount);
 	    	
 	    	TransactionStatus vTScommit = vTransactionStatus;

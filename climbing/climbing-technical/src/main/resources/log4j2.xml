@@ -5,24 +5,25 @@
 <configuration  status="DEBUG">
 	<appenders>
 		<File name="fichierLog" fileName="${catalina.home}/logs/all.log">
-			<PatternLayout pattern="%d{yyyy-mm-dd HH:mm:ss.SSS} %highlight{%-5level} [%t] %c : %m%n" />
+            <PatternLayout pattern="%highlight{%-5level} [%t] %c : %m%n"/>
 		</File>
 
-		 <Console name="STDOUT">
-            <PatternLayout pattern="%highlight{%-5level} [%t] %c : %m%n"/>
+		<Console name="STDOUT">
+            <PatternLayout pattern="%-5level: %msg%n%throwable "/>
 		</Console>
 	</appenders>
 
 	<loggers>
-		<!--  	
-		<Logger name="com.opensymphony.xwork2.*" level="debug">
-			<AppenderRef ref="fichierLog" />
+		
+		 <Logger name="org.springframework" level="warn">
+            <AppenderRef ref="STDOUT"/>
+        </Logger>
+		
+		<Logger name="com.opensymphony.xwork2.*" level="warn">
+			<AppenderRef ref="STDOUT"/>
 		</Logger>
 		
-		<Logger name="org.apache.struts2.*" level="debug">
-			<AppenderRef ref="fichierLog" />
-		</Logger>
-		
+		<!-- 
 		<Logger name="org.climbing.*" level="debug">
 			<AppenderRef ref="fichierLog" />
 			<AppenderRef ref="STDOUT"/>
