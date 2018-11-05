@@ -23,7 +23,7 @@ public class InscriptionAction extends ActionSupport{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	//private static final Logger LOGGER = LogManager.getRootLogger();
+	private static final Logger LOGGER = LogManager.getRootLogger();
 	
 	@Autowired
 	private ManagerFactory managerFactory;
@@ -54,12 +54,12 @@ public class InscriptionAction extends ActionSupport{
 	    
 	    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		String hashedPassword = passwordEncoder.encode(accountBean.getPassword());
+		
 		accountBean.setPassword(hashedPassword);
 		userBean.setAccount(accountBean);
 
-		//LOGGER.info(userBean.toString() + "Attention log user");
-
-	    userBean = managerFactory.getUserManager().createUser(this.userBean);
+		managerFactory.getAccountManager().addAccount(this.accountBean);
+		managerFactory.getUserManager().createUser(this.userBean);
 	    
 	    vResult = ActionSupport.SUCCESS;
 	    

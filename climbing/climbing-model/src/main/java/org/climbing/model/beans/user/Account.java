@@ -1,7 +1,7 @@
 package org.climbing.model.beans.user;
 import javax.inject.Named;
 
-@Named("account")
+@Named("accountBean")
 public class Account {
 	
 	// ==================== Attributs ====================

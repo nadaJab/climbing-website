@@ -3,7 +3,7 @@ package org.climbing.model.beans.user;
 import java.util.Date;
 import javax.inject.Named;
 
-@Named("user")
+@Named("userBean")
 public class User {
 	
 	// ==================== Attributs ====================

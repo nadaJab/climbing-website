@@ -17,10 +17,12 @@ import org.springframework.stereotype.Component;
 public class ManagerFactoryImpl implements ManagerFactory{
 	
 	private static final Logger LOGGER = LogManager.getRootLogger();
-
+	
+	/*
 	public ManagerFactoryImpl() {
 	LOGGER.info("coucou");
-	}
+	} */
+	
 	//***************	
 	//****comment****
 	//***************

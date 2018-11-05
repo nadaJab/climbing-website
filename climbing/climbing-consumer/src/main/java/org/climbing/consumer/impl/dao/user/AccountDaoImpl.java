@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 public class AccountDaoImpl extends AbstractDaoImpl implements AccountDao  {
 
 	@Override
-	public Account addAccount(Account account) {
+	public Account addAccountDao(Account account) {
 		
 		String vSQL = "INSERT INTO account (email, password) VALUES (:email, :password)";
 		
@@ -39,13 +39,13 @@ public class AccountDaoImpl extends AbstractDaoImpl implements AccountDao  {
 	}
 
 	@Override
-	public void updateAccount(Account account) {
+	public void updateAccountDao(Account account) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void deleteAccount(Account account) {
+	public void deleteAccountDao(Account account) {
 		// TODO Auto-generated method stub
 		
 	}

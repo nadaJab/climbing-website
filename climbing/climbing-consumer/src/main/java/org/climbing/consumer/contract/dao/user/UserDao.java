@@ -6,10 +6,10 @@ import org.climbing.model.beans.user.User;
 public interface UserDao {
 
 	ArrayList<User> ListAllUser();
-	User createUser(User user);
-	void updateUser(User user);
-	void deleteUser(User user);
-	User searchUser(int uId);
-	User searchUser(String uPseudo);
+	User createUserDao(User user);
+	void updateUserDao(User user);
+	void deleteUserDao(User user);
+	User searchUserDao(int uId);
+	User searchUserDao(String uPseudo);
 
 }

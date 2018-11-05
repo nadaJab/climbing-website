@@ -8,21 +8,26 @@ import org.climbing.business.impl.AbstractManagerImpl;
 import org.climbing.consumer.impl.dao.user.AccountDaoImpl;
 import org.climbing.model.beans.user.Account;
 import org.climbing.model.exception.NotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
+@Component("accountManager")
 public class AccountManagerImpl extends AbstractManagerImpl implements AccountManager {
+	/*
+	 @Autowired
+	 @Qualifier("PlatformTransactionManager")*/
 	
-	 @Inject
-	 @Named("platformTransactionManager")
+	@Inject
+	@Named("PlatformTransactionManager")
 	 private PlatformTransactionManager platformTransactionManager;
-	
-	 private AccountDaoImpl accountDao;
 	 
 	@Override
-	public Account addAccount(Account pAccount) {
+	public void addAccount(Account pAccount) {
 		
 		DefaultTransactionDefinition vDefintion = new DefaultTransactionDefinition();
 		vDefintion.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
@@ -31,19 +36,18 @@ public class AccountManagerImpl extends AbstractManagerImpl implements AccountMa
 		TransactionStatus vTransactionStatus = platformTransactionManager.getTransaction(vDefintion);
 		
 		try {
-	    	accountDao = (AccountDaoImpl) getDaoFactory().getAccountDao();
-	    	accountDao.addAccount(pAccount);
-	    	//accountDao = (AccountDaoImpl) getDaoFactory().getAccountDao().addAccount(pAccount);
+			
+			getDaoFactory().getAccountDao().addAccountDao(pAccount);
 	    	
 	    	TransactionStatus vTScommit = vTransactionStatus;
 		    vTransactionStatus = null;
 		    platformTransactionManager.commit(vTScommit);
+		    
 		} finally {
 	    if (vTransactionStatus != null) {
 	        platformTransactionManager.rollback(vTransactionStatus);
 	    }
-		}
-		return pAccount;
+		} 
 	}
 	
 }

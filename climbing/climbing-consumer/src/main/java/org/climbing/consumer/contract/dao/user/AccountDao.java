@@ -6,7 +6,7 @@ public interface AccountDao {
 	
 	//Account connexion(Account account); getAccount() dans user
 	
-	Account addAccount(Account account);
-	void updateAccount(Account account);
-	void deleteAccount(Account account);
+	Account addAccountDao(Account account);
+	void updateAccountDao(Account account);
+	void deleteAccountDao(Account account);
 }

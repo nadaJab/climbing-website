@@ -8,9 +8,8 @@ import org.climbing.model.beans.user.User;
 import java.sql.Types;
 
 import java.util.ArrayList;
-/*
 import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger; */
+import org.apache.logging.log4j.Logger;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -22,7 +21,7 @@ import org.springframework.stereotype.Component;
 @Component("userDao") 
 public class UserDaoImpl extends AbstractDaoImpl implements UserDao  {
 	
-	//static final Logger logger = LogManager.getLogger();
+	static final Logger logger = LogManager.getLogger();
     UserRM userRow = new UserRM();
 
 	@Override
@@ -37,7 +36,7 @@ public class UserDaoImpl extends AbstractDaoImpl implements UserDao  {
 	}
 
 	@Override
-	public User createUser(User user) {	
+	public User createUserDao(User user) {	
 		String vSQL = "INSERT INTO user_1 (pseudo, first_name, last_name, climbing_type, birth_year, genre, role, id_account)"
 					+ " VALUES ( :pseudo, :firstName, :lastName, :climbingType, :birthYear, :genre, :role, idAccount)";
 		
@@ -60,11 +59,13 @@ public class UserDaoImpl extends AbstractDaoImpl implements UserDao  {
 	     vJdbcTemplate.update(vSQL, vParams, keyHolder);    
 	     user.setIdUser(keyHolder.getKey().intValue());
 	     
+	     logger.debug("methode createUserDao");
+
 		return user;
 	}
 
 	@Override
-	public void updateUser(User user) {
+	public void updateUserDao(User user) {
 		String vSQL = "UPDATE user_1 SET pseudo = :pseudo, first_name = :first_name, "
 					+ "last_name = :last_name,climbing_type = :climbing_type, birth_year = :birth_year";
 	    
@@ -81,7 +82,7 @@ public class UserDaoImpl extends AbstractDaoImpl implements UserDao  {
 	}
 
 	@Override
-	public void deleteUser(User user) {
+	public void deleteUserDao(User user) {
 		String vSQL = "DELETE FROM user_1 WHERE id_user = :id_user";
 		MapSqlParameterSource vParams = new MapSqlParameterSource();
 		vParams.addValue("id_user", user.getIdUser(), Types.INTEGER);
@@ -92,7 +93,7 @@ public class UserDaoImpl extends AbstractDaoImpl implements UserDao  {
 	}
 
 	@Override
-	public User searchUser(int uId) {
+	public User searchUserDao(int uId) {
 		String vSQL = "SELECT FROM user_1 WHERE id_user = :id_user";
 		User user;
 		
@@ -111,7 +112,7 @@ public class UserDaoImpl extends AbstractDaoImpl implements UserDao  {
 	}
 
 	@Override
-	public User searchUser(String uPseudo) {
+	public User searchUserDao(String uPseudo) {
 		String vSQL = "SELECT FROM user_1 WHERE pseudo = :pseudo";
 		User user;
 		
