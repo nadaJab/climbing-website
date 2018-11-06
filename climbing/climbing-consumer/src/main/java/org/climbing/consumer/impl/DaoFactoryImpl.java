@@ -12,8 +12,9 @@ import org.climbing.consumer.contract.dao.topo.TopoDao;
 import org.climbing.consumer.contract.dao.user.AccountDao;
 import org.climbing.consumer.contract.dao.user.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-
+@Service("daoFactory")
 public class DaoFactoryImpl {
 
 		//***************

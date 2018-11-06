@@ -1,6 +1,8 @@
 package org.climbing.consumer.impl.dao.user;
 
 import org.climbing.consumer.impl.AbstractDaoImpl;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.climbing.consumer.contract.dao.user.AccountDao;
 import java.sql.Types;
 
@@ -13,28 +15,25 @@ import org.springframework.stereotype.Component;
 
 @Component("accountDao") 
 public class AccountDaoImpl extends AbstractDaoImpl implements AccountDao  {
-
+	
+	private static final Logger LOGGER = LogManager.getRootLogger();
+	
 	@Override
 	public Account addAccountDao(Account account) {
-		
+				
 		String vSQL = "INSERT INTO account (email, password) VALUES (:email, :password)";
 		
-		// auto generated primary key by the database
 		KeyHolder keyHolder = new GeneratedKeyHolder();
-		
-		/*
-		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		String hashedPassword = passwordEncoder.encode(account.getPassword()); */
 				
 	    NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
 		MapSqlParameterSource vParams = new MapSqlParameterSource();
 	    
 		vParams.addValue("email", account.getEmail(), Types.VARCHAR);
 		vParams.addValue("password", account.getPassword(), Types.VARCHAR);
-	    
-	    vJdbcTemplate.update(vSQL, vParams, keyHolder);
-	    account.setIdAccount(keyHolder.getKey().intValue());
-	    
+	
+		vJdbcTemplate.update(vSQL, vParams, keyHolder);
+		account.setIdAccount(keyHolder.getKey().intValue());
+
 	    return account;
 	}
 

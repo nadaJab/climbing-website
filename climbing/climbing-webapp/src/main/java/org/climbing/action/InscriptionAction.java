@@ -3,13 +3,9 @@ package org.climbing.action;
 import org.climbing.model.exception.AccountException;
 import org.climbing.model.exception.UserException;
 
-import javax.inject.Inject;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.climbing.business.contract.ManagerFactory;
-import org.climbing.business.contract.manager.user.UserManager;
-import org.climbing.business.impl.ManagerFactoryImpl;
 import org.climbing.model.beans.user.Account;
 import org.climbing.model.beans.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,10 +52,10 @@ public class InscriptionAction extends ActionSupport{
 		String hashedPassword = passwordEncoder.encode(accountBean.getPassword());
 		
 		accountBean.setPassword(hashedPassword);
+		managerFactory.getAccountManager().addAccount(accountBean);	
+		
 		userBean.setAccount(accountBean);
-
-		managerFactory.getAccountManager().addAccount(this.accountBean);
-		managerFactory.getUserManager().createUser(this.userBean);
+		userBean = managerFactory.getUserManager().createUser(userBean);
 	    
 	    vResult = ActionSupport.SUCCESS;
 	    

@@ -36,6 +36,7 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager 
     private PlatformTransactionManager platformTransactionManager;
 	
 	private static final Logger LOGGER = LogManager.getRootLogger();
+	private User userImp;
 
 	@Override
 	public ArrayList<User> getListAllUser() {
@@ -44,7 +45,6 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager 
 	}
 	
 	public User createUser(User pUser) {
-		User userImp;
 		
 		DefaultTransactionDefinition vDefintion = new DefaultTransactionDefinition();
 		vDefintion.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
@@ -52,8 +52,8 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager 
 		
 		TransactionStatus vTransactionStatus = platformTransactionManager.getTransaction(vDefintion);
 		
-		try {			
-			
+		try {	
+		
 			userImp = getDaoFactory().getUserDao().createUserDao(pUser);
 			
 			TransactionStatus vTScommit = vTransactionStatus;

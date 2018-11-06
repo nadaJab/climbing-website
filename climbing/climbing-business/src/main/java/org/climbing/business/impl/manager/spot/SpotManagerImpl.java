@@ -8,7 +8,7 @@ import org.climbing.business.impl.AbstractManagerImpl;
 import org.climbing.model.beans.spot.Spot;
 import org.climbing.model.exception.NotFoundException;
 
-@Named("SpotManager")
+@Named("spotManager")
 public class SpotManagerImpl extends AbstractManagerImpl implements SpotManager {
 	
 }

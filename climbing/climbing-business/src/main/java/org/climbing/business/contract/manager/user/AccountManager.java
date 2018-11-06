@@ -4,6 +4,6 @@ import org.climbing.model.beans.user.Account;
 
 public interface AccountManager {
 	
-	void addAccount(Account pAccount);
+	Account addAccount(Account pAccount);
 
 }

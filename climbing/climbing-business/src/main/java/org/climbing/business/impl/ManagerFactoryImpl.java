@@ -18,11 +18,6 @@ public class ManagerFactoryImpl implements ManagerFactory{
 	
 	private static final Logger LOGGER = LogManager.getRootLogger();
 	
-	/*
-	public ManagerFactoryImpl() {
-	LOGGER.info("coucou");
-	} */
-	
 	//***************	
 	//****comment****
 	//***************
@@ -84,7 +79,7 @@ public class ManagerFactoryImpl implements ManagerFactory{
 		this.sectorManager = sectorManager;
 	}
 
-	//@Autowired
+	@Autowired
 	private SpotManager spotManager;
 	public SpotManager getSpotManager() {
 		return spotManager;

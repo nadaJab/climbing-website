@@ -8,14 +8,14 @@ public abstract class AbstractManagerImpl {
 	
 	@Inject
 	//@Component("daoFactoryClimbing") spring
-	@Named("daoFactoryClimbing")
-	private static DaoFactoryImpl daoFactory;
+	@Named("daoFactory")
+	protected DaoFactoryImpl daoFactory;
 	
-	protected static DaoFactoryImpl getDaoFactory() {
+	protected DaoFactoryImpl getDaoFactory() {
 		return daoFactory;
 	}
 	
-	public static void setDaoFactory(DaoFactoryImpl daoFactory) {
-		AbstractManagerImpl.daoFactory=daoFactory;
+	public void setDaoFactory(DaoFactoryImpl daoFactory) {
+		this.daoFactory=daoFactory;
 	}
 }
