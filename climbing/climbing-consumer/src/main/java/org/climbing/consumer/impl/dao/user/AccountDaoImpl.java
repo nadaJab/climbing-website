@@ -31,9 +31,9 @@ public class AccountDaoImpl extends AbstractDaoImpl implements AccountDao  {
 		vParams.addValue("email", account.getEmail(), Types.VARCHAR);
 		vParams.addValue("password", account.getPassword(), Types.VARCHAR);
 	
-		vJdbcTemplate.update(vSQL, vParams, keyHolder);
+		vJdbcTemplate.update(vSQL, vParams, keyHolder, new String[] { "id_compte" });
 		account.setIdAccount(keyHolder.getKey().intValue());
-
+		LOGGER.debug(account.getIdAccount() + "ooooooooooooooooooooooooo");
 	    return account;
 	}
 

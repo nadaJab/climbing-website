@@ -51,9 +51,7 @@ public class InscriptionAction extends ActionSupport{
 	    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		String hashedPassword = passwordEncoder.encode(accountBean.getPassword());
 		
-		accountBean.setPassword(hashedPassword);
-		managerFactory.getAccountManager().addAccount(accountBean);	
-		
+		accountBean.setPassword(hashedPassword);		
 		userBean.setAccount(accountBean);
 		userBean = managerFactory.getUserManager().createUser(userBean);
 	    

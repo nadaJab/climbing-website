@@ -56,7 +56,7 @@ public class UserDaoImpl extends AbstractDaoImpl implements UserDao  {
 	     //vParams.addValue("role", user.getRole(), Types.VARCHAR);
 	     vParams.addValue("idAccount", user.getAccount().getIdAccount(), Types.INTEGER);
 	     
-	     vJdbcTemplate.update(vSQL, vParams, keyHolder);   
+	     vJdbcTemplate.update(vSQL, vParams, keyHolder, new String[] { "id_user" });   
 	     user.setIdUser(keyHolder.getKey().intValue());
 
 		return user;

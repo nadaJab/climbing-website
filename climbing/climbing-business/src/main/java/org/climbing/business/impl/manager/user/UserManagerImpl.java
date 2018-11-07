@@ -20,9 +20,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.climbing.business.contract.manager.user.UserManager;
 import org.climbing.business.impl.AbstractManagerImpl;
-import org.climbing.consumer.impl.dao.user.AccountDaoImpl;
-import org.climbing.consumer.impl.dao.user.UserDaoImpl;
-import org.climbing.model.beans.user.Account;
 import org.climbing.model.beans.user.User;
 
 @Component("userManager")
@@ -36,7 +33,7 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager 
     private PlatformTransactionManager platformTransactionManager;
 	
 	private static final Logger LOGGER = LogManager.getRootLogger();
-	private User userImp;
+	//private User userImp;
 
 	@Override
 	public ArrayList<User> getListAllUser() {
@@ -53,8 +50,10 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager 
 		TransactionStatus vTransactionStatus = platformTransactionManager.getTransaction(vDefintion);
 		
 		try {	
-		
-			userImp = getDaoFactory().getUserDao().createUserDao(pUser);
+			//managerFactory.getAccountManager().addAccount(accountBean);	
+			
+			getDaoFactory().getAccountDao().addAccountDao(pUser.getAccount());
+			getDaoFactory().getUserDao().createUserDao(pUser);
 			
 			TransactionStatus vTScommit = vTransactionStatus;
 	    	vTransactionStatus = null;
@@ -64,7 +63,7 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager 
 	        platformTransactionManager.rollback(vTransactionStatus);
 	    }
 		}
-		return userImp;
+		return pUser;
 	}
 	
 	@Override
