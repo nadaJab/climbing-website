@@ -3,6 +3,8 @@ package org.climbing.action;
 import org.climbing.model.exception.AccountException;
 import org.climbing.model.exception.UserException;
 
+import java.util.Map;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.climbing.business.contract.ManagerFactory;
@@ -23,7 +25,8 @@ public class InscriptionAction extends ActionSupport{
 	
 	@Autowired
 	private ManagerFactory managerFactory;
-		
+	
+    private Map<String, Object> session;
 	private User userBean;
 	private Account accountBean;
 	
@@ -45,7 +48,7 @@ public class InscriptionAction extends ActionSupport{
 	}
 	
 	
-	public String doCreateUser(){
+	public String doCreateUser() throws AccountException, UserException{
 	    String vResult = ActionSupport.INPUT;
 	    
 	    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();

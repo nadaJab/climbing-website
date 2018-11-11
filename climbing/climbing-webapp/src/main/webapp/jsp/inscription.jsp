@@ -17,8 +17,7 @@
 
 	<div class="container">
 
-		<s:form action="save" validate="true" theme="bootstrap"
-			cssClass="form-horizontal" label="Créer un compte">
+		<s:form action="save" validate="true" theme="bootstrap" cssClass="form-horizontal" label="Créer un compte">
 
 			<s:textfield key="userBean.lastName" />
 			<s:textfield key="userBean.firstName" />

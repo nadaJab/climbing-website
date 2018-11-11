@@ -16,10 +16,8 @@
 	<%@include file="include/menu.jsp"%>
 
 	<div class="container">
-		<s:actionerror />
-		<s:actionmessage />
-
-		<s:form action="login" cssClass="form-horizontal" label="Connexion">
+	
+		<s:form action="connexionOK" validate="true" theme="bootstrap" cssClass="form-horizontal" label="Connexion">
 
 			<s:textfield key="accountBean.email"
 				placeholder="adresse@exemple.com" />

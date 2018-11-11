@@ -54,15 +54,24 @@
 			<result>/jsp/ajout-route.jsp</result>
 		</action>
 
-		<!-- Action "connexion -->
-		<action name="connexion"
-			class="org.climbing.action.LoginAction" method="input">
+		<!-- Action "connexion -->	
+		<action name="connexion" class="org.climbing.action.LoginAction">
+			<interceptor-ref name="store">
+        		<param name="operationMode">STORE</param>
+    		</interceptor-ref>
+    		<interceptor-ref name="defaultStack" />
+    	
 			<result name="input">/jsp/connexion.jsp</result>
 		</action>
-
-		<action name="login" class="org.climbing.action.LoginAction">
+		
+		<action name="connexionOK" class="org.climbing.action.LoginAction" method="doLogin">    	
 			<result name="input">/jsp/connexion.jsp</result>
-			<result name="success">/jsp/home.jsp</result>
+			<result name="success" type="redirectAction">/jsp/home.jsp</result>		
+		</action>
+		
+		<!-- Action "Deconnexion -->
+		<action name="deconnexion" class="org.climbing.action.LoginAction" method="doLogout">
+			<result name="success" type="redirectAction">/jsp/home.jsp</result>
 		</action>
 
 	</package>
