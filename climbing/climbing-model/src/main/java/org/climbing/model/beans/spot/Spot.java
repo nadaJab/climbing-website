@@ -4,47 +4,47 @@ import java.util.ArrayList;
 
 public class Spot {
 	
-	private Integer id_spot;
-	private String spot_name;
-	private Integer total_routes_nb;
-	private String cotation_max;
-	private String cotation_min;
+	private Integer idSpot;
+	private String spotName;
+	private Integer nbRoutesTotal;
+	private String cotationMax;
+	private String cotationMin;
 	private String orientation;
-	private String climbing_type;
-	private String rock_type;
+	private String climbingType;
 	private Country country;
 	private ArrayList<Sector> sectors;
 	
 	
-	public Integer getId_spot() {
-		return id_spot;
+	public Integer getIdSpot() {
+		return idSpot;
 	}
-	public void setId_spot(Integer id_spot) {
-		this.id_spot = id_spot;
+	public void setIdSpot(Integer idSpot) {
+		this.idSpot = idSpot;
 	}
-	public String getSpot_name() {
-		return spot_name;
+	public String getSpotName() {
+		return spotName;
 	}
-	public void setSpot_name(String spot_name) {
-		this.spot_name = spot_name;
+	public void setSpotName(String spotName) {
+		this.spotName = spotName;
 	}
-	public Integer getTotal_routes_nb() {
-		return total_routes_nb;
+	
+	public Integer getNbRoutesTotal() {
+		return nbRoutesTotal;
 	}
-	public void setTotal_routes_nb(Integer total_routes_nb) {
-		this.total_routes_nb = total_routes_nb;
+	public void setNbRoutesTotal(Integer nbRoutesTotal) {
+		this.nbRoutesTotal = nbRoutesTotal;
 	}
-	public String getCotation_max() {
-		return cotation_max;
+	public String getCotationMax() {
+		return cotationMax;
 	}
-	public void setCotation_max(String cotation_max) {
-		this.cotation_max = cotation_max;
+	public void setCotationMax(String cotationMax) {
+		this.cotationMax = cotationMax;
 	}
-	public String getCotation_min() {
-		return cotation_min;
+	public String getCotationMin() {
+		return cotationMin;
 	}
-	public void setCotation_min(String cotation_min) {
-		this.cotation_min = cotation_min;
+	public void setCotationMin(String cotationMin) {
+		this.cotationMin = cotationMin;
 	}
 	public String getOrientation() {
 		return orientation;
@@ -52,17 +52,11 @@ public class Spot {
 	public void setOrientation(String orientation) {
 		this.orientation = orientation;
 	}
-	public String getClimbing_type() {
-		return climbing_type;
+	public String getClimbingType() {
+		return climbingType;
 	}
-	public void setClimbing_type(String climbing_type) {
-		this.climbing_type = climbing_type;
-	}
-	public String getRock_type() {
-		return rock_type;
-	}
-	public void setRock_type(String rock_type) {
-		this.rock_type = rock_type;
+	public void setClimbingType(String climbingType) {
+		this.climbingType = climbingType;
 	}
 	public Country getCountry() {
 		return country;
@@ -75,6 +69,5 @@ public class Spot {
 	}
 	public void setSectors(ArrayList<Sector> sectors) {
 		this.sectors = sectors;
-	}
-	
+	}	
 }

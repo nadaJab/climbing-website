@@ -16,17 +16,13 @@
 	<%@include file="include/menu.jsp"%>
 
 	<div class="container">
-		<s:actionerror />
-		<s:actionmessage />
-		<s:fielderror />
-
-		<s:form action="index" enctype="multipart/form-data"
+		
+		<s:form action="ajoutligneOk" enctype="multipart/form-data"
 			cssClass="form-horizontal" label="Ajouter une nouvelle ligne">
 
-			<s:textfield key="nameLigne"
-				tooltip="Entrer le nom de la nouvelle ligne" />
+			<s:textfield key="routeBean.routeName"/>
 
-			<s:select key="cotation"
+			<s:select key="routeBean.cotation"
 				list="{'3a', '3b', '3c',
                         	   '4a', '4b', '4c',
                         	   '5a', '5b', '5c',
@@ -34,18 +30,14 @@
                         	   '7a', '7b', '7c',
                         	   '8a', '8b', '8c',
                         	   '9a', '9b', '9c'}"
-				headerKey="non-renseignée" headerValue="non-renseignée"
-				emptyOption="true" tooltip="La cotation de la ligne" />
+				emptyOption="true"/>
 
-			<s:textfield key="height" tooltip="L'hauteur" />
+			<s:textfield key="routeBean.height"/>
+			<s:textfield key="routeBean.pointNumber"/>
+			<s:textfield key="routeBean.routeOpener"/>
+			<s:textfield key="routeBean.openingYear"/>
 
-			<s:textfield key="pointNumber" tooltip="le nombre des points" />
-
-			<s:textfield key="nomOuvreurs" tooltip="Nom des ouvreurs de la ligne" />
-
-			<s:textfield key="openingYear" tooltip="Année d'ouverture" />
-
-			<s:submit cssClass="btn btn-primary" />
+			<s:submit value="Ajouter" cssClass="btn btn-primary center-block" />
 		</s:form>
 	</div>
 	<%@include file="include/footer.jsp"%>

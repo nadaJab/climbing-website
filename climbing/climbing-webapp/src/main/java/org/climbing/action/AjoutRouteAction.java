@@ -1,4 +1,8 @@
 package org.climbing.action;
+import org.climbing.business.contract.ManagerFactory;
+import org.climbing.model.beans.spot.Route;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.opensymphony.xwork2.ActionSupport;
 
 public class AjoutRouteAction extends ActionSupport{
@@ -7,62 +11,27 @@ public class AjoutRouteAction extends ActionSupport{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String nameLigne;
-	private String cotation;
-	private Double height;
-	private int pointNumber;
-	private String nomOuvreurs;
-	private int openingYear;
+	private Route routeBean;
+	
+	@Autowired
+	private ManagerFactory managerFactory;
 	
 	public String execute() {
 		return SUCCESS;	
 	}
 
-	public String getNameLigne() {
-		return nameLigne;
+	public Route getRouteBean() {
+		return routeBean;
 	}
 
-	public void setNameLigne(String nameLigne) {
-		this.nameLigne = nameLigne;
+	public void setRouteBean(Route routeBean) {
+		this.routeBean = routeBean;
 	}
-
-	public String getCotation() {
-		return cotation;
-	}
-
-	public void setCotation(String cotation) {
-		this.cotation = cotation;
-	}
-
-	public Double getHeight() {
-		return height;
-	}
-
-	public void setHeight(Double height) {
-		this.height = height;
-	}
-
-	public int getPointNumber() {
-		return pointNumber;
-	}
-
-	public void setPointNumber(int pointNumber) {
-		this.pointNumber = pointNumber;
-	}
-
-	public String getNomOuvreurs() {
-		return nomOuvreurs;
-	}
-
-	public void setNomOuvreurs(String nomOuvreurs) {
-		this.nomOuvreurs = nomOuvreurs;
-	}
-
-	public int getOpeningYear() {
-		return openingYear;
-	}
-
-	public void setOpeningYear(int openingYear) {
-		this.openingYear = openingYear;
+	
+	public String doAddRoute() {
+		String vResult = ActionSupport.INPUT;
+		routeBean = managerFactory.getRouteManager().addRoute(routeBean);
+		vResult = ActionSupport.SUCCESS;
+		return vResult;
 	}
 }

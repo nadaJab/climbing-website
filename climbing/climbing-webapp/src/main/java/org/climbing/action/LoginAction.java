@@ -5,12 +5,13 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 import org.climbing.business.contract.ManagerFactory;
 import org.climbing.model.beans.user.Account;
 import org.climbing.model.beans.user.User;
-import org.climbing.model.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
  
@@ -27,13 +28,17 @@ public class LoginAction extends ActionSupport implements SessionAware, ServletR
 	private Account accountBean;
 	private User userBean;
 	
+	private static final String USER = "user";
+	
+	private static final Logger LOGGER = LogManager.getLogger(LoginAction.class);
+
 	@Autowired
 	private ManagerFactory managerFactory;
 	
 	public String execute() {
 		return SUCCESS;	
 	}
-	
+		
 	public void setSession(Map<String, Object> session) {
 		this.session = session ;
 	}
@@ -60,8 +65,9 @@ public class LoginAction extends ActionSupport implements SessionAware, ServletR
 	    		 userBean = managerFactory.getUserManager().getUser(accountL.getIdAccount());
 	    		 userBean.setAccount(accountL);
 	    		 
-		    	 this.session.put("user", userBean);
+		    	 this.session.put(USER, userBean);
 		    	 vResult = ActionSupport.SUCCESS;  
+		    	 LOGGER.info("Bienvenu, Vous êtes connectés ");
 	    	 }
 	    	 else {
 		    	 addActionError("Entrer un mot de passe valide !");
@@ -75,7 +81,7 @@ public class LoginAction extends ActionSupport implements SessionAware, ServletR
 	
 	public String doLogout() {
 		
-	    this.session.remove("userBean");
+	    this.session.remove(USER);
 	    this.servletRequest.getSession().invalidate();
 	    
 		return ActionSupport.SUCCESS;

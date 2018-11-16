@@ -9,9 +9,6 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import java.util.ArrayList;
-/*
-import javax.inject.Inject;
-import javax.inject.Named; */
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -20,7 +17,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.climbing.business.contract.manager.user.UserManager;
 import org.climbing.business.impl.AbstractManagerImpl;
-import org.climbing.model.beans.user.Account;
 import org.climbing.model.beans.user.User;
 import org.climbing.model.exception.AccountException;
 import org.climbing.model.exception.UserException;

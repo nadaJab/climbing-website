@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN" "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+
+<validators>
+
+	<validator type="requiredstring">
+		<param name="fieldName">routeBean.routeName</param>
+		<message>Le nom de la route est obligatoire.</message>
+	</validator>
+	
+	<validator type="requiredstring">
+		<param name="fieldName">routeBean.cotation</param>
+		<message>La cotation est obligatoire.</message>
+	</validator>
+	
+	<field name="routeBean.height">
+        <field-validator type="requiredstring">
+			<message>L'hauteur est obligatoire.</message>
+        </field-validator>
+        <field-validator type="int" short-circuit="true">
+        	<param name="min">1</param>
+			<message>Entrez un nombre.</message>
+		</field-validator>        
+    </field>
+    
+    <!--  
+	<validator type="requiredstring">
+		<param name="fieldName">routeBean.height</param>
+		<message>L'hauteur est obligatoire.</message>
+	</validator>
+	
+	<validator type="int">
+		<param name="fieldName">routeBean.height</param>
+		<param name="min">1</param>
+		<message>Entrez un nombre.</message>
+	</validator>	
+	-->
+	
+	<field name="routeBean.pointNumber">
+        <field-validator type="requiredstring">
+			<message>L'hauteur est obligatoire.</message>
+        </field-validator>
+        <field-validator type="int" short-circuit="true">
+            <param name="min">1</param>
+			<message>Entrez un nombre.</message>
+		</field-validator>        
+    </field>
+		
+</validators>	

@@ -52,7 +52,7 @@ public class ManagerFactoryImpl implements ManagerFactory{
 	//****spot****
 	//************
 	
-	//@Autowired
+	@Autowired
 	private CountryManager countryManager;
 	public CountryManager getCountryManager() {
 		return countryManager;
@@ -61,7 +61,7 @@ public class ManagerFactoryImpl implements ManagerFactory{
 		this.countryManager = countryManager;
 	}
 	
-	//@Autowired
+	@Autowired
 	private RouteManager routeManager;
 	public RouteManager getRouteManager() {
 		return routeManager;
@@ -70,7 +70,7 @@ public class ManagerFactoryImpl implements ManagerFactory{
 		this.routeManager = routeManager;
 	}
 	
-	//@Autowired
+	@Autowired
 	private SectorManager sectorManager;
 	public SectorManager getSectorManager() {
 		return sectorManager;

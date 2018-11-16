@@ -1,29 +1,26 @@
 package org.climbing.model.beans.spot;
 
-import java.util.Date;
-
 public class Route {
 	
-	private Integer id_route;
-	private String route_name;
+	private Integer idRoute;
+	private String routeName;
 	private String cotation;
 	private Integer height;
-	private Integer point_number;
-	private String route_opener;
-	private Date opening_year;
+	private Integer pointNumber;
+	private String routeOpener;
+	private Integer openingYear;
 	
-	
-	public Integer getId_route() {
-		return id_route;
+	public Integer getIdRoute() {
+		return idRoute;
 	}
-	public void setId_route(Integer id_route) {
-		this.id_route = id_route;
+	public void setIdRoute(Integer idRoute) {
+		this.idRoute = idRoute;
 	}
-	public String getRoute_name() {
-		return route_name;
+	public String getRouteName() {
+		return routeName;
 	}
-	public void setRoute_name(String route_name) {
-		this.route_name = route_name;
+	public void setRouteName(String routeName) {
+		this.routeName = routeName;
 	}
 	public String getCotation() {
 		return cotation;
@@ -37,23 +34,23 @@ public class Route {
 	public void setHeight(Integer height) {
 		this.height = height;
 	}
-	public Integer getPoint_number() {
-		return point_number;
+	public Integer getPointNumber() {
+		return pointNumber;
 	}
-	public void setPoint_number(Integer point_number) {
-		this.point_number = point_number;
+	public void setPointNumber(Integer pointNumber) {
+		this.pointNumber = pointNumber;
 	}
-	public String getRoute_opener() {
-		return route_opener;
+	public String getRouteOpener() {
+		return routeOpener;
 	}
-	public void setRoute_opener(String route_opener) {
-		this.route_opener = route_opener;
+	public void setRouteOpener(String routeOpener) {
+		this.routeOpener = routeOpener;
 	}
-	public Date getOpening_year() {
-		return opening_year;
+	public Integer getOpeningYear() {
+		return openingYear;
 	}
-	public void setOpening_year(Date opening_year) {
-		this.opening_year = opening_year;
+	public void setOpeningYear(Integer openingYear) {
+		this.openingYear = openingYear;
 	}
-		
+	
 }

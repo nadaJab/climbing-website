@@ -21,7 +21,7 @@ public class InscriptionAction extends ActionSupport{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private static final Logger LOGGER = LogManager.getRootLogger();
+	private static final Logger LOGGER = LogManager.getLogger(InscriptionAction.class);
 	
 	@Autowired
 	private ManagerFactory managerFactory;

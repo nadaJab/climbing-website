@@ -1,9 +1,6 @@
 package org.climbing.consumer.contract.dao.user;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import org.climbing.model.beans.user.Account;
 import org.climbing.model.beans.user.User;
 
 public interface UserDao {

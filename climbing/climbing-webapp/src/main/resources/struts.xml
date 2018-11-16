@@ -4,16 +4,18 @@
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 <struts>
 
-	<package name="default" extends="struts-default">
-
-		<!-- Action par défaut -->
+	<!-- ===== Package pour les actions publiques ===== -->
+	<!-- ============================================== -->
+    <package name="public" extends="struts-default">
+    
+    	<!-- Action par défaut -->
 		<default-action-ref name="home" />
 
-		<!-- Action "index" -->
+		<!-- Action "home" -->
 		<action name="home" class="org.climbing.action.HomeAction">
 			<result>/jsp/home.jsp</result>
 		</action>
-
+		
 		<!-- Action "inscription" -->
 		<action name="inscription" class="org.climbing.action.InscriptionAction" method="input">
 			<result name="input">/jsp/inscription.jsp</result>
@@ -28,52 +30,83 @@
 			<result name="input">/jsp/inscription.jsp</result>
 			<result name="success">/jsp/thankYou.jsp</result>
 		</action>
-
-
-		<!-- Action "Ajout d'un topo" -->
+		
+		<!-- Action "connexion -->	
+		<action name="connexion" class="org.climbing.action.LoginAction"  method="input">
+			<interceptor-ref name="store">
+        		<param name="operationMode">STORE</param>
+    		</interceptor-ref>
+			<result name="input">/jsp/connexion.jsp</result>
+		</action>
+		
+		<action name="connexionOK" class="org.climbing.action.LoginAction" method="doLogin">    	
+	 <!--   <interceptor-ref name="loginStack" />  -->
+			<result name="input">/jsp/connexion.jsp</result>
+			<result name="success" type="redirectAction">/jsp/home.jsp</result>		
+		</action>
+		
+	<!-- ****Information site(spot)****** -->
+    <action name="site" class="org.climbing.action.SiteAction">
+			<result>/jsp/site.jsp</result>
+	</action>
+	
+    </package>
+		
+    <!-- ===== Package pour les actions privées ===== -->
+    <!-- ============================================ -->
+    <package name="private" extends="public">
+    	
+    	<interceptors>
+    		<interceptor name="loginInterceptor" class="org.climbing.interceptor.LoginInterceptor"></interceptor>
+    		<interceptor-stack name="loginStack">
+    			<interceptor-ref name="loginInterceptor"/>
+    			<interceptor-ref name="defaultStack" />
+    		</interceptor-stack>
+    	</interceptors>
+    	    	
+    	<!-- Action "Ajout d'un topo" -->
 		<action name="ajouttopo"
 			class="org.climbing.action.AjoutTopoAction">
 			<result>/jsp/ajout-topo.jsp</result>
 		</action>
 
 		<!-- Action "Ajout d'un nouveau site" -->
-		<action name="ajoutsite"
-			class="org.climbing.action.AjoutSiteAction">
-			<result>/jsp/ajout-site.jsp</result>
-		</action>
-
-		<!-- Action "Ajout d'un nouveau secteur" -->
-		<action name="ajoutsecteur"
-			class="org.climbing.action.AjoutSectorAction">
-			<result>/jsp/ajout-sector.jsp</result>
-		</action>
-
-		<!-- Action "Ajout d'une nouvelle ligne" -->
-		<action name="ajoutligne"
-			class="org.climbing.action.AjoutRouteAction">
-			<result>/jsp/ajout-route.jsp</result>
-		</action>
-
-		<!-- Action "connexion -->	
-		<action name="connexion" class="org.climbing.action.LoginAction">
-			<interceptor-ref name="store">
-        		<param name="operationMode">STORE</param>
-    		</interceptor-ref>
-    		<interceptor-ref name="defaultStack" />
-    	
-			<result name="input">/jsp/connexion.jsp</result>
+		<action name="ajoutsite" class="org.climbing.action.AjoutSpotAction" method="input">
+			<result name="input">/jsp/ajout-site.jsp</result>
 		</action>
 		
-		<action name="connexionOK" class="org.climbing.action.LoginAction" method="doLogin">    	
-			<result name="input">/jsp/connexion.jsp</result>
+		<action name="ajoutsiteOk" class="org.climbing.action.AjoutSpotAction" method="doAddSpot">
+			<result>/jsp/ajout-site.jsp</result>
+			<result name="input">/jsp/ajout-site.jsp</result>
 			<result name="success" type="redirectAction">/jsp/home.jsp</result>		
+		</action>
+		
+
+		<!-- Action "Ajout d'un nouveau secteur" -->
+		<action name="ajoutsecteur" class="org.climbing.action.AjoutSectorAction" method="input">
+			<result name="input">/jsp/ajout-sector.jsp</result>
+		</action>
+		
+		<action name="ajoutsecteurOk" class="org.climbing.action.AjoutSectorAction">
+			<result name="input">/jsp/ajout-sector.jsp</result>
+			<result name="success" type="redirectAction">/jsp/home.jsp</result>		
+		</action>
+		
+		<!-- Action "Ajout d'une nouvelle ligne" -->
+		<action name="ajoutligne" class="org.climbing.action.AjoutRouteAction" method="input">
+			<result name="input">/jsp/ajout-route.jsp</result>
+		</action>
+		
+		<action name="ajoutligneOk" class="org.climbing.action.AjoutRouteAction">
+			<result name="input">/jsp/ajout-route.jsp</result>
+			<result name="success" type="redirectAction">/jsp/home.jsp</result>	
 		</action>
 		
 		<!-- Action "Deconnexion -->
 		<action name="deconnexion" class="org.climbing.action.LoginAction" method="doLogout">
 			<result name="success" type="redirectAction">/jsp/home.jsp</result>
 		</action>
-
-	</package>
-
+		
+    </package>
+   
 </struts>

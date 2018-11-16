@@ -1,5 +1,8 @@
 package org.climbing.consumer.contract.dao.spot;
 
-public interface CountryDao {
+import org.climbing.model.beans.spot.Country;
 
+public interface CountryDao {
+	
+	Country addCountryDao(Country country);
 }
