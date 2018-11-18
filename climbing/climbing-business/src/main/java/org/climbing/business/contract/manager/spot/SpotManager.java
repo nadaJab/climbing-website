@@ -5,4 +5,5 @@ import org.climbing.model.beans.spot.Spot;
 public interface SpotManager {
 
 	 Spot addSpot(Spot pSpot);
+	 Spot getSpot(String nameSpot);
 }

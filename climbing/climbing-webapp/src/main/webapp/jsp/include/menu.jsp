@@ -1,24 +1,36 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="sb" uri="/struts-bootstrap-tags"%>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 
-<header>
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+ 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="/Tarek/view/visitor/home/bootstrap-4.1.2/js/dropdown.js" media="screen"/>
 
+	<sj:head jqueryui="true" />
+	<sb:head includeScripts="true" />
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+</head>
+<body>
+
+<header>
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 
 			<div class="navbar-header">
-				<a class="navbar-brand" href="home.action">Home</a>
+				<a class="navbar-brand" href="home.action"><span class="fas fa-hiking"></span>Home</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse"
-				id="bs-example-navbar-collapse-1">
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 
 				<ul class="nav navbar-nav">
-
+					
 					<!-- dropdown site -->
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -35,28 +47,24 @@
 						<ul class="dropdown-menu">
 							<li><a href="#">Liste topo</a></li>
 							<li><s:a action="ajouttopo.action">Ajouter un topo</s:a></li>
-						</ul></li>
-
-					<!-- dropdown connexion -->
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">Connexion<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><s:a action="connexion.action">Connexion</s:a></li>
-							<li><s:a action="inscription.action">Inscription</s:a></li>
 						</ul>
 					</li>
-					
+
+					 <ul class="nav navbar-nav navbar-right">
+					 
+					 	 <s:if test="#session.user">
+      					 	<li><s:a><s:property value="#session.user.pseudo" /><span class="glyphicon glyphicon-user"></span></s:a></li>
+	            			<li><s:a action="deconnexion.action">Déconnexion</s:a></li>
+      					 </s:if>
+      					 
+      					 <s:else>
+      					<li><s:a action="connexion.action"><span class="glyphicon glyphicon-user"></span>Connexion</s:a></li>
+      					<li><s:a action="inscription.action"><span class="glyphicon glyphicon-log-in"></span>Inscription</s:a></li>
+      					</s:else>
+      					
+    				</ul>
+				
 				<!--  
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false"><span class="fas fa-hiking fa-2x"></span></a>
-						<ul class="dropdown-menu">
-							<li><s:a action="connexion.action">Déconnexion</s:a></li>
-							<li><s:a action="inscription.action">Topo</s:a></li>
-						</ul>
-					</li> -->
-					
 					<div class="btn btn-default">
   						<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
   							<span class="fas fa-hiking fa-2x"></span>
@@ -66,15 +74,7 @@
     					<a class="dropdown-item" href="#">Topo</a>
   					</div>
 					</div>					
-					<!-- 
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">Person <span class="oi" data-glyph="person"></span> </a>
-						<ul class="dropdown-menu">
-							<li><a href="connexion.action">Connexion</a></li>
-						</ul>
-					</li>
-  					 -->
+					-->
 				</ul>
 
 
@@ -83,5 +83,6 @@
 		</div>
 		<!-- /.container-fluid -->
 	</nav>
-
 </header>
+</body>
+</html>

@@ -20,6 +20,7 @@ public class SpotManagerImpl extends AbstractManagerImpl implements SpotManager 
 	@Inject
 	@Named("PlatformTransactionManager")
     private PlatformTransactionManager platformTransactionManager;
+	private Spot spotImp;
 	
 	public Spot addSpot(Spot pSpot) {
 		DefaultTransactionDefinition vDefintion = new DefaultTransactionDefinition();
@@ -42,6 +43,28 @@ public class SpotManagerImpl extends AbstractManagerImpl implements SpotManager 
 	    }
 		}
 		return pSpot;	
+	}
+	
+	public Spot getSpot(String nameSpot) {
+		DefaultTransactionDefinition vDefintion = new DefaultTransactionDefinition();
+		vDefintion.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
+		vDefintion.setTimeout(30); 
+		
+		TransactionStatus vTransactionStatus = platformTransactionManager.getTransaction(vDefintion);
+		try {	
+			
+			spotImp = getDaoFactory().getSpotDao().getSpotDao(nameSpot);
+					
+		TransactionStatus vTScommit = vTransactionStatus;
+		vTransactionStatus = null;
+		platformTransactionManager.commit(vTScommit);		
+		} finally {
+		if (vTransactionStatus != null) {
+		platformTransactionManager.rollback(vTransactionStatus);
+		   }
+		}		
+		return spotImp;
+		
 	}
 
 }

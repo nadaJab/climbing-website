@@ -21,9 +21,24 @@
 		<div class="row">
 		<div class="col-sm-10 col-xs-4 col-sm-offset-1 col-xs-offset-1">
 		<div class="col-sm-24 hidden-xs">
-			<h3>COUCOU</h3>
-			<p class="lieu">Pays: <s:property value="spot.spotName"/></p>
-			
+<ul class="nav nav-tabs">
+ 
+ 	<div class="btn-group" role="group" aria-label="Basic example">
+  		<button type="button" class="btn btn-success">Informations</button>
+  		<button type="button" class="btn btn-success">Secteurs et Voies</button>
+  		<button type="button" class="btn btn-success">Topo</button>
+	</div>
+ 
+</ul>
+			<h3>Informations sur <s:property value="spotBean.spotName" /></h3>
+			<h4><p>
+				<s:property value="spotBean.spotName" /> est un site d'escalade de <s:property value="spotBean.climbingType" />, 
+				situé à Mont-Dol dans le département Ille-et-Vilaine (fr) 
+			   	On y trouve <s:property value="spotBean.nbRoutesTotal" /> lignes allant de <s:property value="spotBean.cotationMin" />
+			   	à <s:property value="spotBean.cotationMax" />.</br>
+			   	Orientation du site:  <s:property value="spotBean.orientation" />
+			   	
+			</p></h4> 
 			
 			
 		</div></div></div></div></div>

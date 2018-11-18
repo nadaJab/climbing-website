@@ -27,10 +27,10 @@
 
 						<!--  Niveau 2 -->
 						<div class="col-sm-24 hidden-xs">
-							<s:form theme="simple" cssClass="well form-search">
-								<s:textfield key="nameSpot" placeholder="Le nom du site" />
-								<s:textfield key="city" placeholder="Ville" />
-								<s:password key="state" placeholder="Pays" />
+							<s:form action="search" theme="simple" cssClass="well form-search">
+								<s:textfield key="spotBean.spotName" placeholder="Le nom du site" />
+								<s:textfield key="countryBean.cityName" placeholder="Ville" />
+								<s:password key="countryBean.countryName" placeholder="Pays" />
 								<s:submit cssClass="btn btn-primary" key="search" />
 							</s:form>
 						</div>

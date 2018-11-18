@@ -69,5 +69,13 @@ public class Spot {
 	}
 	public void setSectors(ArrayList<Sector> sectors) {
 		this.sectors = sectors;
+	}
+	@Override
+	public String toString() {
+		return "Spot [idSpot=" + idSpot + ", spotName=" + spotName + ", nbRoutesTotal=" + nbRoutesTotal
+				+ ", cotationMax=" + cotationMax + ", cotationMin=" + cotationMin + ", orientation=" + orientation
+				+ ", climbingType=" + climbingType + ", country=" + country + ", sectors=" + sectors + "]";
 	}	
+	
+	
 }

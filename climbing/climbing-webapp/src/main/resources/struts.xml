@@ -12,9 +12,16 @@
 		<default-action-ref name="home" />
 
 		<!-- Action "home" -->
-		<action name="home" class="org.climbing.action.HomeAction">
-			<result>/jsp/home.jsp</result>
+		<action name="home" class="org.climbing.action.HomeAction" method="input">
+			<result name="input">/jsp/home.jsp</result>
 		</action>
+		
+		<action name="search" class="org.climbing.action.HomeAction" method="searchSpot">
+			<result name="input">/jsp/home.jsp</result>
+			<result name="success">/jsp/site.jsp</result>
+		</action>
+		
+		
 		
 		<!-- Action "inscription" -->
 		<action name="inscription" class="org.climbing.action.InscriptionAction" method="input">
@@ -46,8 +53,8 @@
 		</action>
 		
 	<!-- ****Information site(spot)****** -->
-    <action name="site" class="org.climbing.action.SiteAction">
-			<result>/jsp/site.jsp</result>
+    <action name="site" class="org.climbing.action.AjoutSpotAction" method="displaySpot">
+			<result name="input">/jsp/site.jsp</result>
 	</action>
 	
     </package>

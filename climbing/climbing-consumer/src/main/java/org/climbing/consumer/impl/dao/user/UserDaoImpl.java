@@ -99,7 +99,7 @@ public class UserDaoImpl extends AbstractDaoImpl implements UserDao  {
 
 	@Override
 	public User searchUserDao(String uPseudo) {
-		String vSQL = "SELECT FROM user_Web WHERE pseudo = :pseudo";
+		String vSQL = "SELECT FROM user_Web WHERE pseudo = ?";
 		User user;
 		
 		MapSqlParameterSource vParams = new MapSqlParameterSource();

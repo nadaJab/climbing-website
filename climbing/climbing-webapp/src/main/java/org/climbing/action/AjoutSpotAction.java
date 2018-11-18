@@ -46,4 +46,12 @@ public class AjoutSpotAction extends ActionSupport{
 		return vResult;
 	}
 	
+	public String displaySpot() {
+	    String vResult = ActionSupport.INPUT;
+	    spotBean = managerFactory.getSpotManager().getSpot(spotBean.getSpotName());
+	    
+	    vResult = ActionSupport.SUCCESS;
+		return vResult;
+	}
+	
 }
