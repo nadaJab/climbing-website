@@ -6,4 +6,6 @@ public interface SpotManager {
 
 	 Spot addSpot(Spot pSpot);
 	 Spot getSpot(String nameSpot);
+	 Spot getSpot(String spotName, int idCountry);
+	 Spot getSpot(String nameSpot, String countryName);
 }

@@ -33,7 +33,7 @@
 			<h3>Informations sur <s:property value="spotBean.spotName" /></h3>
 			<h4><p>
 				<s:property value="spotBean.spotName" /> est un site d'escalade de <s:property value="spotBean.climbingType" />, 
-				situé à Mont-Dol dans le département Ille-et-Vilaine (fr) 
+				situé à <s:property value="countryBean.cityName" /> en <s:property value="countryBean.countryName" />.
 			   	On y trouve <s:property value="spotBean.nbRoutesTotal" /> lignes allant de <s:property value="spotBean.cotationMin" />
 			   	à <s:property value="spotBean.cotationMax" />.</br>
 			   	Orientation du site:  <s:property value="spotBean.orientation" />

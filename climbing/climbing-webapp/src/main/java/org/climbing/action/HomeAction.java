@@ -1,4 +1,6 @@
 package org.climbing.action;
+import java.util.ArrayList;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.climbing.business.contract.ManagerFactory;
@@ -14,11 +16,8 @@ public class HomeAction extends ActionSupport{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	/*
-	private String nameSpot;
-	private String Ville;
-	private String pays; */
 	
+	//private ArrayList<Spot> ListSpot;
 	private Spot spotBean;
 	private Country countryBean;
 	
@@ -45,14 +44,25 @@ public class HomeAction extends ActionSupport{
 	public void setCountryBean(Country countryBean) {
 		this.countryBean = countryBean;
 	}
-
+	
 	public String searchSpot() {
 		String vResult = ActionSupport.INPUT;
-		LOGGER.debug(spotBean + "la methode searchSpot()");
-		
-		spotBean = managerFactory.getSpotManager().getSpot(spotBean.getSpotName());
-		    
+		LOGGER.debug(spotBean.toString() + "la methode searchSpot()");
+
+		if((countryBean.getCityName().equals("")) &&(countryBean.getCountryName().equals("")) ) {
+			
+			spotBean = managerFactory.getSpotManager().getSpot(spotBean.getSpotName());
+			countryBean = managerFactory.getCountryManager().getCountry(spotBean.getCountry().getIdCityCountry());
+			
+		}
+		else if((!countryBean.getCityName().isEmpty()) && (!countryBean.getCountryName().isEmpty())) {
+			
+			countryBean = managerFactory.getCountryManager().getCountry(countryBean.getCityName(), countryBean.getCountryName());
+			spotBean = managerFactory.getSpotManager().getSpot(spotBean.getSpotName(), countryBean.getIdCityCountry());
+		}
 		vResult = ActionSupport.SUCCESS;
+		
 		return vResult;
-	}
+}
+	
 }

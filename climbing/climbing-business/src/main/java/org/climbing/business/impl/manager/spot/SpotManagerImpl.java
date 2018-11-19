@@ -66,5 +66,48 @@ public class SpotManagerImpl extends AbstractManagerImpl implements SpotManager 
 		return spotImp;
 		
 	}
+	
+	public Spot getSpot(String nameSpot, String countryName) {
+		DefaultTransactionDefinition vDefintion = new DefaultTransactionDefinition();
+		vDefintion.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
+		vDefintion.setTimeout(30); 
+		
+		TransactionStatus vTransactionStatus = platformTransactionManager.getTransaction(vDefintion);
+		try {	
+			
+			//spotImp = getDaoFactory().getSpotDao().getSpotDao(nameSpot, countryName);
+					
+		TransactionStatus vTScommit = vTransactionStatus;
+		vTransactionStatus = null;
+		platformTransactionManager.commit(vTScommit);		
+		} finally {
+		if (vTransactionStatus != null) {
+		platformTransactionManager.rollback(vTransactionStatus);
+		   }
+		}		
+		return spotImp;
+		
+	}
+	
+	public Spot getSpot(String spotName, int idCountry) {
+		DefaultTransactionDefinition vDefintion = new DefaultTransactionDefinition();
+		vDefintion.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
+		vDefintion.setTimeout(30); 
+		
+		TransactionStatus vTransactionStatus = platformTransactionManager.getTransaction(vDefintion);
+		try {	
+			
+			spotImp = getDaoFactory().getSpotDao().getSpotDao(spotName, idCountry);;
+					
+		TransactionStatus vTScommit = vTransactionStatus;
+		vTransactionStatus = null;
+		platformTransactionManager.commit(vTScommit);		
+		} finally {
+		if (vTransactionStatus != null) {
+		platformTransactionManager.rollback(vTransactionStatus);
+		   }
+		}		
+		return spotImp;
+	}
 
 }
