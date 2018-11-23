@@ -22,6 +22,7 @@ public class CountryDaoImpl extends AbstractDaoImpl implements CountryDao  {
 	
 	private static final Logger LOGGER = LogManager.getLogger(CountryDaoImpl.class);
 	Country countryDao;
+	CountryRM countryRm = new CountryRM();
 	
 	@Override
 	public Country addCountryDao(Country country) {
@@ -45,16 +46,18 @@ public class CountryDaoImpl extends AbstractDaoImpl implements CountryDao  {
 		String vSQL = "SELECT city_name, country_name FROM country WHERE id_city_country = ?";
 
 		JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
-		countryDao = vJdbcTemplate.queryForObject(vSQL, new Object[] { id }, new CountryRM());
+		countryDao = (Country) vJdbcTemplate.query(vSQL, new Object[] { id }, new CountryRM());
 
 		return countryDao;	
 	}
 	
-	public Country getCountryDao(String cityName, String countryName) {
-		String vSQL = "SELECT * FROM country WHERE city_name = ? AND country_name = ?";
+	public Country getCountryDao(String countryName, String cityName) {
+		String vSQL = "SELECT * FROM country WHERE country_name = ? AND  city_name = ?";
+		
 		JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
-		countryDao = vJdbcTemplate.queryForObject(vSQL, new Object[] { cityName, countryName}, new CountryRM());
-
+		countryDao = (Country) vJdbcTemplate.queryForObject(vSQL, new Object[] { countryName, cityName }, new CountryRM());
+		LOGGER.debug(countryDao.toString() + "coucou!!!");
+		
 		return countryDao;
 	}
 	

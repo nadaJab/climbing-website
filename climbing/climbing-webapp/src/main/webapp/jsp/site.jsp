@@ -14,34 +14,55 @@
 
 <body>
 	<%@include file="include/menu.jsp"%>
+ 
+	<div class="container content">
+		<s:if test="listSpot.empty">
+			<div class="row justify-content-lg-center">
+			<p class="text-center grossissement">Aucun site n'a été trouvé</p>
+			</div>
+		</s:if>
+		<s:else>
+			<div class="row justify-content-lg-center">
+			
+			<s:if test="isTestVar()">
+			 		<div class="col-sm-24 col-xs-12">
+						<div class="panel panel-default">
+						<div class="panel-heading"></div> 
+							<div class="panel-body">
+							 
+							<pre><p> 
+							Nom du site: <s:property value="spotBean.spotName"/>
+							Ville: <s:property value="spotBean.country.cityName"/>  
+							Pays:<s:property value="spotBean.country.countryName"/>
+							</p></pre>
+							<s:a action="topo_detail"><s:param name="id" value="id" /><button class="btn btn-success">Voir détails</button></s:a>
+			 		</div></div></div>
+			</s:if>
+			
+			<s:else> 
+			<s:iterator value="listSpot">
+					<div class="list">
+					<div class="col-sm-24 col-xs-12">
+						<div class="panel panel-default">
+						<div class="panel-heading"></div> 
+							<div class="panel-body">
+							 
+							<pre><p> 
+							Nom du site: <s:property value="spotName"/>
+							Ville: <s:property value="country.cityName"/>  
+							Pays:<s:property value="country.countryName"/>
+							</p></pre>
+
+							<s:a action="siteDetail"><s:param name="idSpot" value="idSpot" /><button class="btn btn-success">Voir détails</button></s:a>
+						</div>
+						</div>
+					</div>
+					</div>
+			</s:iterator>
+			</s:else>
+			</div>
+		</s:else>
+	</div>
 	
-	<div class="container">
-		<div class="row">
-		<div class="col-sm-24 col-xs-12">
-		<div class="row">
-		<div class="col-sm-10 col-xs-4 col-sm-offset-1 col-xs-offset-1">
-		<div class="col-sm-24 hidden-xs">
-<ul class="nav nav-tabs">
- 
- 	<div class="btn-group" role="group" aria-label="Basic example">
-  		<button type="button" class="btn btn-success">Informations</button>
-  		<button type="button" class="btn btn-success">Secteurs et Voies</button>
-  		<button type="button" class="btn btn-success">Topo</button>
-	</div>
- 
-</ul>
-			<h3>Informations sur <s:property value="spotBean.spotName" /></h3>
-			<h4><p>
-				<s:property value="spotBean.spotName" /> est un site d'escalade de <s:property value="spotBean.climbingType" />, 
-				situé à <s:property value="countryBean.cityName" /> en <s:property value="countryBean.countryName" />.
-			   	On y trouve <s:property value="spotBean.nbRoutesTotal" /> lignes allant de <s:property value="spotBean.cotationMin" />
-			   	à <s:property value="spotBean.cotationMax" />.</br>
-			   	Orientation du site:  <s:property value="spotBean.orientation" />
-			   	
-			</p></h4> 
-			
-			
-		</div></div></div></div></div>
-	</div>
 </body>
 </html>

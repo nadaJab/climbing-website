@@ -1,5 +1,7 @@
 package org.climbing.business.impl.manager.spot;
 
+import java.util.ArrayList;
+
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -21,6 +23,7 @@ public class SpotManagerImpl extends AbstractManagerImpl implements SpotManager 
 	@Named("PlatformTransactionManager")
     private PlatformTransactionManager platformTransactionManager;
 	private Spot spotImp;
+	ArrayList<Spot> listSpot;
 	
 	public Spot addSpot(Spot pSpot) {
 		DefaultTransactionDefinition vDefintion = new DefaultTransactionDefinition();
@@ -45,7 +48,29 @@ public class SpotManagerImpl extends AbstractManagerImpl implements SpotManager 
 		return pSpot;	
 	}
 	
-	public Spot getSpot(String nameSpot) {
+	public ArrayList<Spot> getAllSpot(){
+		DefaultTransactionDefinition vDefintion = new DefaultTransactionDefinition();
+		vDefintion.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
+		vDefintion.setTimeout(30); 
+		
+		TransactionStatus vTransactionStatus = platformTransactionManager.getTransaction(vDefintion);
+		try {
+			
+			listSpot = getDaoFactory().getSpotDao().getAllSpot();
+					
+		TransactionStatus vTScommit = vTransactionStatus;
+		vTransactionStatus = null;
+		platformTransactionManager.commit(vTScommit);		
+		} finally {
+		if (vTransactionStatus != null) {
+		platformTransactionManager.rollback(vTransactionStatus);
+			  }
+		}		
+
+		return listSpot;
+	}
+	
+	public   ArrayList<Spot> getSpot(String nameSpot) {
 		DefaultTransactionDefinition vDefintion = new DefaultTransactionDefinition();
 		vDefintion.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
 		vDefintion.setTimeout(30); 
@@ -53,7 +78,7 @@ public class SpotManagerImpl extends AbstractManagerImpl implements SpotManager 
 		TransactionStatus vTransactionStatus = platformTransactionManager.getTransaction(vDefintion);
 		try {	
 			
-			spotImp = getDaoFactory().getSpotDao().getSpotDao(nameSpot);
+			listSpot = getDaoFactory().getSpotDao().getSpotDao(nameSpot);
 					
 		TransactionStatus vTScommit = vTransactionStatus;
 		vTransactionStatus = null;
@@ -63,11 +88,12 @@ public class SpotManagerImpl extends AbstractManagerImpl implements SpotManager 
 		platformTransactionManager.rollback(vTransactionStatus);
 		   }
 		}		
-		return spotImp;
+		return listSpot;
 		
-	}
+	} 
 	
-	public Spot getSpot(String nameSpot, String countryName) {
+	/*
+	public  ArrayList<Spot> getSpot(String nameSpot) {
 		DefaultTransactionDefinition vDefintion = new DefaultTransactionDefinition();
 		vDefintion.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
 		vDefintion.setTimeout(30); 
@@ -75,7 +101,7 @@ public class SpotManagerImpl extends AbstractManagerImpl implements SpotManager 
 		TransactionStatus vTransactionStatus = platformTransactionManager.getTransaction(vDefintion);
 		try {	
 			
-			//spotImp = getDaoFactory().getSpotDao().getSpotDao(nameSpot, countryName);
+			listSpot = getDaoFactory().getSpotDao().getSpotDao(nameSpot);
 					
 		TransactionStatus vTScommit = vTransactionStatus;
 		vTransactionStatus = null;
@@ -85,10 +111,52 @@ public class SpotManagerImpl extends AbstractManagerImpl implements SpotManager 
 		platformTransactionManager.rollback(vTransactionStatus);
 		   }
 		}		
-		return spotImp;
+		return listSpot;
 		
-	}
+	} */
 	
+	 public ArrayList<Spot> getSpot(int id){
+		 DefaultTransactionDefinition vDefintion = new DefaultTransactionDefinition();
+		 vDefintion.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
+		 vDefintion.setTimeout(30); 
+			
+		TransactionStatus vTransactionStatus = platformTransactionManager.getTransaction(vDefintion);
+		try {	
+				
+			listSpot = getDaoFactory().getSpotDao().getSpotDao(id);
+						
+		TransactionStatus vTScommit = vTransactionStatus;
+		vTransactionStatus = null;
+		platformTransactionManager.commit(vTScommit);		
+		} finally {
+		if (vTransactionStatus != null) {
+		platformTransactionManager.rollback(vTransactionStatus);
+			   }
+			}		
+		return listSpot; 
+	 }
+	 
+	 public ArrayList<Spot> getSpotCountry(String countryName){
+		DefaultTransactionDefinition vDefintion = new DefaultTransactionDefinition();
+		vDefintion.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
+		vDefintion.setTimeout(30); 
+			
+		TransactionStatus vTransactionStatus = platformTransactionManager.getTransaction(vDefintion);
+		try {	
+				
+			listSpot = getDaoFactory().getSpotDao().getSpotCountryDao(countryName);
+					
+		TransactionStatus vTScommit = vTransactionStatus;
+		vTransactionStatus = null;
+		platformTransactionManager.commit(vTScommit);		
+		} finally {
+		if (vTransactionStatus != null) {
+		platformTransactionManager.rollback(vTransactionStatus);
+			  }
+		}		 
+		return listSpot;	 
+	 }
+
 	public Spot getSpot(String spotName, int idCountry) {
 		DefaultTransactionDefinition vDefintion = new DefaultTransactionDefinition();
 		vDefintion.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
@@ -109,5 +177,26 @@ public class SpotManagerImpl extends AbstractManagerImpl implements SpotManager 
 		}		
 		return spotImp;
 	}
+	/*
+	 public ArrayList<Spot> getSpot(String nameSpot,String cityName, String countryName){
+		DefaultTransactionDefinition vDefintion = new DefaultTransactionDefinition();
+		vDefintion.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
+		vDefintion.setTimeout(30); 
+			
+		TransactionStatus vTransactionStatus = platformTransactionManager.getTransaction(vDefintion);
+		try {	
+				
+			listSpot = getDaoFactory().getSpotDao().getSpotDao(nameSpot, cityName, countryName);;
+						
+		TransactionStatus vTScommit = vTransactionStatus;
+		vTransactionStatus = null;
+		platformTransactionManager.commit(vTScommit);		
+		} finally {
+		if (vTransactionStatus != null) {
+		platformTransactionManager.rollback(vTransactionStatus);
+			  }
+		}		
+		return listSpot; 
+	 } */
 
 }

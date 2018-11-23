@@ -40,14 +40,14 @@ public class CountryManagerImpl extends AbstractManagerImpl implements CountryMa
 		return countryImp;
 	}
 	
-	public Country getCountry(String cityName, String countryName) {
+	public Country getCountry(String countryName, String cityName) {
 		DefaultTransactionDefinition vDefintion = new DefaultTransactionDefinition();
 		vDefintion.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
 		vDefintion.setTimeout(30); 
 		
 		TransactionStatus vTransactionStatus = platformTransactionManager.getTransaction(vDefintion);
 		try {	
-			countryImp = getDaoFactory().getCountryDao().getCountryDao(cityName, countryName); 
+			countryImp = getDaoFactory().getCountryDao().getCountryDao( countryName,cityName); 
 			TransactionStatus vTScommit = vTransactionStatus;
 			vTransactionStatus = null;
 			platformTransactionManager.commit(vTScommit);		

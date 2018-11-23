@@ -32,7 +32,8 @@
 							<s:form action="search" theme="simple" cssClass="well form-search">
 								<s:textfield key="spotBean.spotName" placeholder="Le nom du site" />
 								<s:textfield key="countryBean.cityName" placeholder="Ville" />
-								<s:textfield key="countryBean.countryName" placeholder="Pays" />
+								<s:textfield key="countryBean.countryName" placeholder="Pays" /> 
+																
 								<s:submit cssClass="btn btn-primary" key="search" />
 							</s:form>
 						</div>

@@ -1,9 +1,7 @@
 package org.climbing.consumer.impl.dao.spot;
 
 import org.climbing.consumer.impl.AbstractDaoImpl;
-import org.climbing.consumer.impl.rowmappers.spot.CountryRM;
 import org.climbing.consumer.impl.rowmappers.spot.SpotRM;
-import org.climbing.consumer.impl.rowmappers.user.UserRM;
 
 import java.sql.Types;
 import java.util.ArrayList;
@@ -13,7 +11,6 @@ import org.apache.logging.log4j.Logger;
 import org.climbing.consumer.contract.dao.spot.SpotDao;
 import org.climbing.model.beans.spot.Country;
 import org.climbing.model.beans.spot.Spot;
-import org.climbing.model.beans.user.User;
 import org.climbing.model.exception.NotFoundException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -26,8 +23,9 @@ import org.springframework.stereotype.Component;
 public class SpotDaoImpl extends AbstractDaoImpl implements SpotDao  {
 	
 	SpotRM spotRow = new SpotRM();
-	Spot spotD;
-	Country countryD;
+	Spot spotDao;
+	ArrayList<Spot> listSpotDao;
+	Country countryDao;
 	
 	ArrayList<Spot> spotDaoArray;
 	private static final Logger LOGGER = LogManager.getLogger(SpotDaoImpl.class);
@@ -57,50 +55,75 @@ public class SpotDaoImpl extends AbstractDaoImpl implements SpotDao  {
 		return spot;
 	}
 	
-	public Spot getSpotDao(String nameSpot) {
-		String vSQL = "SELECT * FROM spot WHERE spot_name = ?";
+	public ArrayList<Spot> getAllSpot(){
+		
+		String vSQL = "SELECT * FROM spot INNER JOIN country ON spot.id_city_country = country.id_city_country ";
+        JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+        
+        listSpotDao = (ArrayList<Spot>) vJdbcTemplate.query(vSQL, spotRow);
+                
+		return listSpotDao;
+	}
+	
+	public ArrayList<Spot> getSpotDao(String nameSpot) {
+		String vSQL = "SELECT * FROM spot INNER JOIN country ON spot.id_city_country = country.id_city_country WHERE spot.spot_name = ?";
 		
 		 JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
-		 spotD = (Spot) vJdbcTemplate.queryForObject(vSQL, new Object[] { nameSpot }, new SpotRM());
+		 listSpotDao = (ArrayList<Spot>) vJdbcTemplate.query(vSQL, new Object[] { nameSpot }, new SpotRM());
 		 
-		 LOGGER.debug("methode getSpotDao $$$$$$$$$" + spotD.toString());
-		return spotD;
+		return listSpotDao;
 		
 	}
 	
+	//****
 	public ArrayList<Spot> getSpotDao(String nameSpot, String countryName) {
-		
-		String vSQL = "SELECT * FROM spot INNER JOIN country "
+		String vSQL = "SELECT * FROM spot INNER JOIN country ON spot.id_city_country = country.id_city_country"
 					+ " WHERE country_name = ?";
 		
 		 JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
-		 spotD = (Spot) vJdbcTemplate.queryForObject(vSQL, new Object[] { nameSpot, countryName}, new SpotRM());
-		return spotDaoArray;
-		
-		
-		/*
+		 spotDao = (Spot) vJdbcTemplate.queryForObject(vSQL, new Object[] { nameSpot, countryName}, new SpotRM());
+		return spotDaoArray;	
+	}
+	
+	/*
+	public ArrayList<Spot> getSpotDao(String nameSpot,String cityName, String countryName) {
 		String vSQL = "SELECT * FROM spot INNER JOIN country ON spot.id_city_country = country.id_city_country"
-					+ " WHERE spot.spot_name = :spotName AND city_name = :countryName";
-				
-		 NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
-		 MapSqlParameterSource vParams = new MapSqlParameterSource();
+					+ " WHERE spot.spot_name = ? AND country.country_name = ? AND country.city_name = ?";
+		
+		 JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+		 listSpotDao = (ArrayList<Spot>) vJdbcTemplate.query(vSQL, new Object[] { nameSpot, cityName, countryName}, new SpotRM());
 		 
-	     vParams.addValue("spotName", nameSpot, Types.VARCHAR);
-	     vParams.addValue("countryName", countryName, Types.VARCHAR);
-
-		 spotD = (Spot) vJdbcTemplate.query(vSQL, vParams, new SpotRM());
+		 LOGGER.debug("Contenu de la liste : %%%%%%%%" + listSpotDao);
 		 
-		 //spotD.setCountry(countryD);
-		return spotD;
-		*/
+		return listSpotDao;	
+	} */
+	
+	public ArrayList<Spot> getSpotDao(int id){
+		String vSQL = "SELECT * FROM spot INNER JOIN country ON spot.id_city_country = country.id_city_country WHERE spot.id_city_country = ?";
+		
+		JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+		listSpotDao = ( ArrayList<Spot>) vJdbcTemplate.query(vSQL, new Object[] { id }, new SpotRM());
+		
+		return listSpotDao;
+	}
+	
+	public ArrayList<Spot> getSpotCountryDao(String countryName){
+		String vSQL = "SELECT * FROM spot INNER JOIN country ON spot.id_city_country = country.id_city_country WHERE "
+					+ "country.country_name = ?";
+		
+		JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+		listSpotDao = ( ArrayList<Spot>) vJdbcTemplate.query(vSQL, new Object[] { countryName }, new SpotRM());
+		
+		return listSpotDao;	
 	}
 	
 	public Spot getSpotDao(String spotName, int idCountry) {
-		String vSQL = "SELECT * FROM spot WHERE spot_name = ? AND id_city_country = ?";
+		String vSQL = "SELECT * FROM spot INNER JOIN country ON spot.id_city_country = country.id_city_country "
+					+ " WHERE spot.spot_name = ? AND country.id_city_country = ?";
 		
 		JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
-		spotD = (Spot) vJdbcTemplate.queryForObject(vSQL, new Object[] { spotName, idCountry}, new SpotRM());
+		spotDao = (Spot) vJdbcTemplate.queryForObject(vSQL, new Object[] { spotName, idCountry}, new SpotRM());
 		
-		return spotD;	
+		return spotDao;	
 	}
 }

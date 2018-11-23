@@ -3,25 +3,47 @@
         "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 <struts>
-
+	
+	<package name="global" abstract="true" extends="struts-default">
+	
+		<interceptors>
+    		<interceptor name="loginInterceptor" class="org.climbing.interceptor.LoginInterceptor"></interceptor>
+    		<interceptor-stack name="loginStack">
+    			<interceptor-ref name="loginInterceptor"/>
+    			<interceptor-ref name="defaultStack" />
+    		</interceptor-stack>
+    	</interceptors>
+    	
+    	<global-results>
+			<result name="error-forbidden" type="httpheader">
+				<param name="error">403</param>
+			</result>
+		</global-results>
+		
+	</package>
 	<!-- ===== Package pour les actions publiques ===== -->
 	<!-- ============================================== -->
-    <package name="public" extends="struts-default">
-    
+    <package name="public" extends="global">
+    	
     	<!-- Action par défaut -->
 		<default-action-ref name="home" />
-
+		
 		<!-- Action "home" -->
 		<action name="home" class="org.climbing.action.HomeAction" method="input">
 			<result name="input">/jsp/home.jsp</result>
 		</action>
 		
+		<!-- Action recherche multi-critères -->
 		<action name="search" class="org.climbing.action.HomeAction" method="searchSpot">
 			<result name="input">/jsp/home.jsp</result>
 			<result name="success">/jsp/site.jsp</result>
 		</action>
 		
-		
+		<!-- Action information site 
+		<action name="siteDetail" class="org.climbing.action.HomeAction" method="searchSpotDetails">
+			<result name="input">/jsp/site.jsp</result>
+			<result name="success">/jsp/site-information</result>
+		</action> -->
 		
 		<!-- Action "inscription" -->
 		<action name="inscription" class="org.climbing.action.InscriptionAction" method="input">
@@ -47,7 +69,6 @@
 		</action>
 		
 		<action name="connexionOK" class="org.climbing.action.LoginAction" method="doLogin">    	
-	 <!--   <interceptor-ref name="loginStack" />  -->
 			<result name="input">/jsp/connexion.jsp</result>
 			<result name="success" type="redirectAction">/jsp/home.jsp</result>		
 		</action>
@@ -61,16 +82,10 @@
 		
     <!-- ===== Package pour les actions privées ===== -->
     <!-- ============================================ -->
-    <package name="private" extends="public">
-    	
-    	<interceptors>
-    		<interceptor name="loginInterceptor" class="org.climbing.interceptor.LoginInterceptor"></interceptor>
-    		<interceptor-stack name="loginStack">
-    			<interceptor-ref name="loginInterceptor"/>
-    			<interceptor-ref name="defaultStack" />
-    		</interceptor-stack>
-    	</interceptors>
-    	    	
+    <package name="private" extends="global">
+    		
+		<default-interceptor-ref name="loginStack"></default-interceptor-ref>    	
+		
     	<!-- Action "Ajout d'un topo" -->
 		<action name="ajouttopo"
 			class="org.climbing.action.AjoutTopoAction">
@@ -111,7 +126,9 @@
 		
 		<!-- Action "Deconnexion -->
 		<action name="deconnexion" class="org.climbing.action.LoginAction" method="doLogout">
-			<result name="success" type="redirectAction">/jsp/home.jsp</result>
+			<result type="redirectAction">
+			<param name="actionName">home</param>
+			</result>
 		</action>
 		
     </package>
