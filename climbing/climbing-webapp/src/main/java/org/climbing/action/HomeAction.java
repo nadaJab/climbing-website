@@ -22,14 +22,15 @@ public class HomeAction extends ActionSupport{
 	private Spot spotBean;
 	private ArrayList<Spot> listSpot;
 	private Country countryBean;
-	private ArrayList<Sector> listSector;
 	private boolean testVar = false;
+	private boolean testAffichage = false;
+	
 	@Autowired
 	private ManagerFactory managerFactory;
 	private static final Logger LOGGER = LogManager.getLogger(HomeAction.class);
 
 	public String execute() {
-		return SUCCESS;	
+        return ActionSupport.SUCCESS;
 	}
 
 	public Spot getSpotBean() {
@@ -55,14 +56,6 @@ public class HomeAction extends ActionSupport{
 	public void setListSpot(ArrayList<Spot> listSpot) {
 		this.listSpot = listSpot;
 	}
-
-	public ArrayList<Sector> getListSector() {
-		return listSector;
-	}
-
-	public void setListSector(ArrayList<Sector> listSector) {
-		this.listSector = listSector;
-	}
 	
 	public boolean isTestVar() {
 		return testVar;
@@ -70,6 +63,14 @@ public class HomeAction extends ActionSupport{
 
 	public void setTestVar(boolean testVar) {
 		this.testVar = testVar;
+	}
+	
+	public boolean isTestAffichage() {
+		return testAffichage;
+	}
+
+	public void setTestAffichage(boolean testAffichage) {
+		this.testAffichage = testAffichage;
 	}
 
 	public String searchSpot() throws NotFoundException {
@@ -87,20 +88,16 @@ public class HomeAction extends ActionSupport{
 		//(Si tous les champs ne sont pas vide)
 		else if((!spotBean.getSpotName().isEmpty()) && (!countryBean.getCityName().isEmpty()) && (!countryBean.getCountryName().isEmpty())) {
 			testVar = true;
-			countryBean = managerFactory.getCountryManager().getCountry(countryBean.getCountryName(), countryBean.getCityName());
-			LOGGER.debug(countryBean.toString() + "coucou");
-			spotBean = managerFactory.getSpotManager().getSpot(spotBean.getSpotName(), countryBean.getIdCityCountry()); 
+			spotBean = managerFactory.getSpotManager().getSpot(spotBean.getSpotName(), countryBean.getCityName(), countryBean.getCountryName()); 
 		
 			vResult = ActionSupport.SUCCESS;
 		
-	    //(Si le du nom du site est vide)
+	    //(Si le nom du site est vide)
 		}else if((spotBean.getSpotName().equals("")) && (!countryBean.getCityName().isEmpty()) && (!countryBean.getCountryName().isEmpty())){
 			
-			countryBean = managerFactory.getCountryManager().getCountry(countryBean.getCountryName(), countryBean.getCityName());
-			LOGGER.debug(countryBean.getIdCityCountry() + "############");
+			listSpot = managerFactory.getCountryManager().getCountry(countryBean.getCountryName(), countryBean.getCityName());
+			LOGGER.debug(listSpot + "############");
 
-			listSpot = managerFactory.getSpotManager().getSpot(countryBean.getIdCityCountry()); 
-			
 			vResult = ActionSupport.SUCCESS;
 		}
 		
@@ -117,15 +114,15 @@ public class HomeAction extends ActionSupport{
 			listSpot = managerFactory.getSpotManager().getSpot(spotBean.getSpotName());
 			vResult = ActionSupport.SUCCESS;
 		}
-		
+		testAffichage = true;
 		return vResult;
-	}
+	} 
 	
-	public String searchSpotDetails(int id) {
-		
-		spotBean = listSpot.get(id+1);
-		
-		return ActionSupport.SUCCESS;	
-	}
+	/*
+	public String searchSpotAjax() {
+		listSpot = managerFactory.getSpotManager().getAllSpot();
+        return ActionSupport.SUCCESS;
+
+	}*/
 	
 }

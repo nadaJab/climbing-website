@@ -8,6 +8,8 @@ public interface SpotManager {
 
 	 Spot addSpot(Spot pSpot);
 	 
+	 Spot getSpotId(int idSpot);
+	 
 	 ArrayList<Spot> getAllSpot();
 	 
 	 ArrayList<Spot> getSpot(String nameSpot);
@@ -16,10 +18,5 @@ public interface SpotManager {
 	 
 	 ArrayList<Spot> getSpotCountry(String countryName);
 	 
-	 //ArrayList<Spot> getSpot(String nameSpot,String cityName, String countryName);
-	 
-	 Spot getSpot(String spotName, int idCountry);
-	 
-	 //Spot getSpot(String nameSpot);
-	 
+	 Spot getSpot(String spotName, String cityName, String countryName); 
 }

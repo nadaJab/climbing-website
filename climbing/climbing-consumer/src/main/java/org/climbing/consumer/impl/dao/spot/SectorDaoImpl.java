@@ -18,8 +18,7 @@ import org.springframework.stereotype.Component;
 public class SectorDaoImpl extends AbstractDaoImpl implements SectorDao  {
 	
 	public Sector addSectorDao(Sector sector) {
-		
-		String vSQL = "INSERT INTO sector sector_name VALUES :sectorName";
+		String vSQL = "INSERT INTO sector (sector_name) VALUES (:sectorName)";
 		
 		 //auto generated primary key by the database
 		KeyHolder keyHolder = new GeneratedKeyHolder();

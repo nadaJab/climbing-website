@@ -7,7 +7,7 @@ public interface SpotDao {
 
 	Spot addSpotDao(Spot spot);
 	
-	 //Spot getSpotDao(String nameSpot);
+	Spot getSpotIdDao(int idSpot);
 	 
 	ArrayList<Spot> getAllSpot();
 
@@ -19,7 +19,7 @@ public interface SpotDao {
 	
 	ArrayList<Spot> getSpotCountryDao(String countryName);
 	
-	Spot getSpotDao(String spotName, int idCountry);
+	Spot getSpotDao(String spotName, String cityName, String countryName);
 	
 	
 }

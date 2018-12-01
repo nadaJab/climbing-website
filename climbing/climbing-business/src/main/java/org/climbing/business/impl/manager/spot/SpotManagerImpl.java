@@ -92,8 +92,8 @@ public class SpotManagerImpl extends AbstractManagerImpl implements SpotManager 
 		
 	} 
 	
-	/*
-	public  ArrayList<Spot> getSpot(String nameSpot) {
+	public Spot getSpotId(int idSpot){
+		
 		DefaultTransactionDefinition vDefintion = new DefaultTransactionDefinition();
 		vDefintion.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
 		vDefintion.setTimeout(30); 
@@ -101,7 +101,7 @@ public class SpotManagerImpl extends AbstractManagerImpl implements SpotManager 
 		TransactionStatus vTransactionStatus = platformTransactionManager.getTransaction(vDefintion);
 		try {	
 			
-			listSpot = getDaoFactory().getSpotDao().getSpotDao(nameSpot);
+			spotImp = getDaoFactory().getSpotDao().getSpotIdDao(idSpot);
 					
 		TransactionStatus vTScommit = vTransactionStatus;
 		vTransactionStatus = null;
@@ -111,9 +111,9 @@ public class SpotManagerImpl extends AbstractManagerImpl implements SpotManager 
 		platformTransactionManager.rollback(vTransactionStatus);
 		   }
 		}		
-		return listSpot;
+		return spotImp;
 		
-	} */
+	} 
 	
 	 public ArrayList<Spot> getSpot(int id){
 		 DefaultTransactionDefinition vDefintion = new DefaultTransactionDefinition();
@@ -157,7 +157,7 @@ public class SpotManagerImpl extends AbstractManagerImpl implements SpotManager 
 		return listSpot;	 
 	 }
 
-	public Spot getSpot(String spotName, int idCountry) {
+	public Spot getSpot(String spotName, String cityName, String countryName) {
 		DefaultTransactionDefinition vDefintion = new DefaultTransactionDefinition();
 		vDefintion.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
 		vDefintion.setTimeout(30); 
@@ -165,7 +165,7 @@ public class SpotManagerImpl extends AbstractManagerImpl implements SpotManager 
 		TransactionStatus vTransactionStatus = platformTransactionManager.getTransaction(vDefintion);
 		try {	
 			
-			spotImp = getDaoFactory().getSpotDao().getSpotDao(spotName, idCountry);;
+			spotImp = getDaoFactory().getSpotDao().getSpotDao(spotName, cityName, countryName);;
 					
 		TransactionStatus vTScommit = vTransactionStatus;
 		vTransactionStatus = null;
@@ -177,26 +177,6 @@ public class SpotManagerImpl extends AbstractManagerImpl implements SpotManager 
 		}		
 		return spotImp;
 	}
-	/*
-	 public ArrayList<Spot> getSpot(String nameSpot,String cityName, String countryName){
-		DefaultTransactionDefinition vDefintion = new DefaultTransactionDefinition();
-		vDefintion.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
-		vDefintion.setTimeout(30); 
-			
-		TransactionStatus vTransactionStatus = platformTransactionManager.getTransaction(vDefintion);
-		try {	
-				
-			listSpot = getDaoFactory().getSpotDao().getSpotDao(nameSpot, cityName, countryName);;
-						
-		TransactionStatus vTScommit = vTransactionStatus;
-		vTransactionStatus = null;
-		platformTransactionManager.commit(vTScommit);		
-		} finally {
-		if (vTransactionStatus != null) {
-		platformTransactionManager.rollback(vTransactionStatus);
-			  }
-		}		
-		return listSpot; 
-	 } */
+	
 
 }

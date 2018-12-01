@@ -66,7 +66,7 @@ public class SpotDaoImpl extends AbstractDaoImpl implements SpotDao  {
 	}
 	
 	public ArrayList<Spot> getSpotDao(String nameSpot) {
-		String vSQL = "SELECT * FROM spot INNER JOIN country ON spot.id_city_country = country.id_city_country WHERE spot.spot_name = ?";
+		String vSQL = "SELECT * FROM spot INNER JOIN country ON spot.id_city_country = country.id_city_country WHERE spot.spot_name ILIKE ?";
 		
 		 JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
 		 listSpotDao = (ArrayList<Spot>) vJdbcTemplate.query(vSQL, new Object[] { nameSpot }, new SpotRM());
@@ -85,18 +85,17 @@ public class SpotDaoImpl extends AbstractDaoImpl implements SpotDao  {
 		return spotDaoArray;	
 	}
 	
-	/*
-	public ArrayList<Spot> getSpotDao(String nameSpot,String cityName, String countryName) {
+	
+	public Spot getSpotIdDao(int idSpot) {
 		String vSQL = "SELECT * FROM spot INNER JOIN country ON spot.id_city_country = country.id_city_country"
-					+ " WHERE spot.spot_name = ? AND country.country_name = ? AND country.city_name = ?";
+					+ " WHERE id_spot = ? ";
 		
 		 JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
-		 listSpotDao = (ArrayList<Spot>) vJdbcTemplate.query(vSQL, new Object[] { nameSpot, cityName, countryName}, new SpotRM());
+		 spotDao = (Spot) vJdbcTemplate.queryForObject(vSQL, new Object[] { idSpot}, new SpotRM());
 		 
-		 LOGGER.debug("Contenu de la liste : %%%%%%%%" + listSpotDao);
-		 
-		return listSpotDao;	
-	} */
+		 LOGGER.debug(spotDao.toString() + "!!!");
+		return spotDao;	
+	} 
 	
 	public ArrayList<Spot> getSpotDao(int id){
 		String vSQL = "SELECT * FROM spot INNER JOIN country ON spot.id_city_country = country.id_city_country WHERE spot.id_city_country = ?";
@@ -109,7 +108,7 @@ public class SpotDaoImpl extends AbstractDaoImpl implements SpotDao  {
 	
 	public ArrayList<Spot> getSpotCountryDao(String countryName){
 		String vSQL = "SELECT * FROM spot INNER JOIN country ON spot.id_city_country = country.id_city_country WHERE "
-					+ "country.country_name = ?";
+					+ "country.country_name ILIKE ?";
 		
 		JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
 		listSpotDao = ( ArrayList<Spot>) vJdbcTemplate.query(vSQL, new Object[] { countryName }, new SpotRM());
@@ -117,12 +116,12 @@ public class SpotDaoImpl extends AbstractDaoImpl implements SpotDao  {
 		return listSpotDao;	
 	}
 	
-	public Spot getSpotDao(String spotName, int idCountry) {
+	public Spot getSpotDao(String spotName, String cityName, String countryName) {
 		String vSQL = "SELECT * FROM spot INNER JOIN country ON spot.id_city_country = country.id_city_country "
-					+ " WHERE spot.spot_name = ? AND country.id_city_country = ?";
+					+ " WHERE spot.spot_name ILIKE ? AND country.city_name ILIKE ? AND country.country_name ILIKE ?";
 		
 		JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
-		spotDao = (Spot) vJdbcTemplate.queryForObject(vSQL, new Object[] { spotName, idCountry}, new SpotRM());
+		spotDao = (Spot) vJdbcTemplate.queryForObject(vSQL, new Object[] { spotName, cityName, countryName}, new SpotRM());
 		
 		return spotDao;	
 	}

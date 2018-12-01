@@ -15,10 +15,12 @@
 
 	<div class="container">
 
+		<s:property value="idSpot" />
+		
 		<s:form action="ajoutsecteurOk" enctype="multipart/form-data"
 			cssClass="form-horizontal" label="Ajouter un nouveau secteur">
-
-			<s:textfield key="sectorBean.sectorName"/>
+			<s:param name="idSpot" value="idSpot" />
+			<s:textfield key="sectorBean.sectorName" />
 			<s:submit value="Ajouter" cssClass="btn btn-primary center-block" />
 		</s:form>
 	</div>

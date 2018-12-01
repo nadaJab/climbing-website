@@ -13,7 +13,17 @@
 	<!-- ===== Informations générales ===== -->
 	<name>climbing web site</name>
 	<url>http://maven.apache.org</url>
-
+		
+	<repositories>
+    	<repository>
+        	<id>sonatype.oss.snapshots</id>
+        	<name>Sonatype OSS Snapshot Repository</name>
+       	 	<url>http://oss.sonatype.org/content/repositories/snapshots</url>
+        	<releases><enabled>false</enabled></releases>
+        	<snapshots><enabled>true</enabled></snapshots>
+    	</repository>
+	</repositories>
+	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -136,13 +146,6 @@
 				<version>2.5.16</version>
 			</dependency>
 
-			<!-- Struts 2 Dojo Ajax Tags -->
-			<dependency>
-				<groupId>org.apache.struts</groupId>
-				<artifactId>struts2-dojo-plugin</artifactId>
-				<version>2.3.35</version>
-			</dependency>
-
 			<dependency>
 				<groupId>org.apache.struts</groupId>
 				<artifactId>struts2-api</artifactId>
@@ -230,7 +233,7 @@
 				<groupId>com.jgeppert.struts2.jquery</groupId>
 				<artifactId>struts2-jquery-mobile-plugin</artifactId>
 				<version>4.0.3</version>
-			</dependency>
+			</dependency> 
 
 			<!-- struts2-bootstrap-plugin -->
 			<dependency>
