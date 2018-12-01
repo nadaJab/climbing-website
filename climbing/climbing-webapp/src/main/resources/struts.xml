@@ -48,6 +48,13 @@
 			method="searchSpotDetails">
 			<result name="success">/jsp/site.jsp</result>
 		</action>
+		
+		<!-- Action details secteur -->
+		<action name="sectorDetail"
+			class="org.climbing.action.SpotDetailsAction"
+			method="getAllSector">
+			<result name="success">/jsp/site.jsp</result>
+		</action>
 
 		<!-- Action "inscription" -->
 		<action name="inscription"
@@ -77,11 +84,6 @@
 		<action name="connexionOK" class="org.climbing.action.LoginAction" method="doLogin">
 			<result name="input">/jsp/connexion.jsp</result>
 			<result name="success" type="redirectAction">/jsp/home.jsp</result>
-		</action>
-
-		<!-- Information secteur -->
-		<action name="secteurInformation" class="org.climbing.action.SpotDetailsAction">
-			<result name="success">/jsp/secteurs-lignes.jsp</result>
 		</action>
 
 	</package>

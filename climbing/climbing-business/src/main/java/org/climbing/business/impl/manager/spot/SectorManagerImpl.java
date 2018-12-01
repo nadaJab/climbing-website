@@ -1,5 +1,7 @@
 package org.climbing.business.impl.manager.spot;
 
+import java.util.ArrayList;
+
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -17,27 +19,72 @@ public class SectorManagerImpl extends AbstractManagerImpl implements SectorMana
 
 	@Inject
 	@Named("PlatformTransactionManager")
-    private PlatformTransactionManager platformTransactionManager;
-	
+	private PlatformTransactionManager platformTransactionManager;
+
+	ArrayList<Sector> sectorList;
+
 	public Sector addSector(Sector pSector) {
 		DefaultTransactionDefinition vDefintion = new DefaultTransactionDefinition();
 		vDefintion.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
 		vDefintion.setTimeout(30); 
-		
+
 		TransactionStatus vTransactionStatus = platformTransactionManager.getTransaction(vDefintion);
-		
+
 		try {
 			getDaoFactory().getSectorDao().addSectorDao(pSector);
-			
+
 			TransactionStatus vTScommit = vTransactionStatus;
-	    	vTransactionStatus = null;
-	    	platformTransactionManager.commit(vTScommit);		
+			vTransactionStatus = null;
+			platformTransactionManager.commit(vTScommit);		
 		} finally {
-	    if (vTransactionStatus != null) {
-	        platformTransactionManager.rollback(vTransactionStatus);
-	    }
+			if (vTransactionStatus != null) {
+				platformTransactionManager.rollback(vTransactionStatus);
+			}
 		}
 		return pSector;	
+	}
+
+	@Override
+	public ArrayList<Sector> getAllSectors(int idSpot) {
+		DefaultTransactionDefinition vDefintion = new DefaultTransactionDefinition();
+		vDefintion.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
+		vDefintion.setTimeout(30); 
+
+		TransactionStatus vTransactionStatus = platformTransactionManager.getTransaction(vDefintion);
+
+		try {
+			sectorList = getDaoFactory().getSectorDao().getAllSectorsDao(idSpot);
+
+			TransactionStatus vTScommit = vTransactionStatus;
+			vTransactionStatus = null;
+			platformTransactionManager.commit(vTScommit);		
+		} finally {
+			if (vTransactionStatus != null) {
+				platformTransactionManager.rollback(vTransactionStatus);
+			}
+		}
+		return sectorList;
+	}
+
+	@Override
+	public void addJoinSpotSector(int idSpot, int idSector) {
+		DefaultTransactionDefinition vDefintion = new DefaultTransactionDefinition();
+		vDefintion.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
+		vDefintion.setTimeout(30); 
+
+		TransactionStatus vTransactionStatus = platformTransactionManager.getTransaction(vDefintion);
+
+		try {
+			getDaoFactory().getSectorDao().addJoinSpotSectorDao(idSpot, idSector);
+
+			TransactionStatus vTScommit = vTransactionStatus;
+			vTransactionStatus = null;
+			platformTransactionManager.commit(vTScommit);	
+		} finally {
+			if (vTransactionStatus != null) {
+				platformTransactionManager.rollback(vTransactionStatus);
+			}
+		}
 	}
 
 }

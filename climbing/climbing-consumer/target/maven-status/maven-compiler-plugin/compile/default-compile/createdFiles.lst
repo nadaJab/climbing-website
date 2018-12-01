@@ -8,6 +8,7 @@ org\climbing\consumer\contract\dao\spot\CountryDao.class
 org\climbing\consumer\contract\dao\spot\SectorDao.class
 org\climbing\consumer\contract\dao\user\UserDao.class
 org\climbing\consumer\impl\dao\comment\CommentSpotDaoImpl.class
+org\climbing\consumer\impl\rowmappers\spot\SectorRM.class
 org\climbing\consumer\contract\dao\topo\BookingTopoDao.class
 org\climbing\consumer\contract\dao\spot\RouteDao.class
 org\climbing\consumer\impl\rowmappers\spot\CountryRM.class

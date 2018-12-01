@@ -63,7 +63,9 @@ public class AjoutSectorAction extends ActionSupport{
 		String vResult = ActionSupport.INPUT;
 
 		LOGGER.debug(idSpot + "==");
+	
 		sectorBean = managerFactory.getSectorManager().addSector(sectorBean);
+		managerFactory.getSectorManager().addJoinSpotSector(idSpot, sectorBean.getIdSector());
 		
 	    vResult = ActionSupport.SUCCESS;
 		return vResult;

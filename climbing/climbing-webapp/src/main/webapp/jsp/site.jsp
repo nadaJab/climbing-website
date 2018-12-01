@@ -19,21 +19,29 @@
 	<div class="container">
 		<div class="row justify-content-lg-center">
 			<div class="col-sm-6">
+			<!-- 
+				<ul class="nav">
+					<li class="nav-item"><a class="nav-link" href="#">Informations</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">Secteurs et Voies</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">Topo</a></li>
+				</ul> -->
+				
 				<ul class="nav nav-tabs" id="myTab" role="tablist">
 
-					<li class="nav-item"><a class="nav-link active" id="home-tab"
+					<li class="nav-item"><s:a action="siteDetail" class="nav-link active" id="home-tab"
 						data-toggle="tab" href="#home" role="tab" aria-controls="home"
-						aria-selected="true">Informations</a></li>
+						aria-selected="true"><s:param name="idSpot" value="idSpot" />Informations</s:a></li>
 
-					<li class="nav-item"><a class="nav-link" id="profile-tab"
-						data-toggle="tab" href="#profile" role="tab"
-						aria-controls="profile" aria-selected="false">Secteurs et
-							Voies</a></li>
+					<li class="nav-item"><s:a action="sectorDetail"
+							class="nav-link" id="profile-tab" data-toggle="tab"
+							href="#profile" role="tab" aria-controls="profile"
+							aria-selected="false"><s:param name="idSpot" value="idSpot" />Secteurs et
+							Voies</s:a></li>
 
 					<li class="nav-item"><a class="nav-link" id="contact-tab"
 						data-toggle="tab" href="#contact" role="tab"
 						aria-controls="contact" aria-selected="false">Topo</a></li>
-				</ul>
+				</ul> 
 
 			</div>
 		</div>
@@ -45,6 +53,7 @@
 			<!-- Information -->
 			<div class="tab-pane fade show active" id="home" role="tabpanel"
 				aria-labelledby="home-tab">
+				<s:a action="siteDetail"></s:a>
 				<div class="card">
 					<div class="card-header">
 						Informations sur
@@ -116,31 +125,44 @@
 				aria-labelledby="profile-tab">
 				<!-- *** -->
 				<div class="card">
-
 					<div class="card-header">Secteurs et voies</div>
 					<div class="card-body">
-						<div class="card">
-							<div class="card-body">
-								<h5>Nom su secteur:</h5>
-								<p>
-									<s:a action="" class="btn btn-primary" data-toggle="collapse"
-										href="#collapseExample" role="button" aria-expanded="false"
-										aria-controls="collapseExample"> Lignes </s:a>
-								</p>
-								<div class="collapse" id="collapseExample">
-									<div class="card card-body">coucou</div>
-								</div>
+						<s:if test="sectors.empty">
+							<div class="row justify-content-lg-center">
+								<p class="text-center grossissement">Aucun secteur n'a été
+									trouvé</p>
 							</div>
-						</div>
+						</s:if>
+
+						<s:else>
+							<s:iterator value="sectors">
+								<div class="card">
+									<div class="card-body">
+
+										<h5>
+											Nom su secteur:
+											<s:property value="sectorName" />
+										</h5>
+
+										<p>
+											<s:a action="" class="btn btn-primary" data-toggle="collapse"
+												href="#collapseExample" role="button" aria-expanded="false"
+												aria-controls="collapseExample"> Lignes </s:a>
+										</p>
+										<div class="collapse" id="collapseExample">
+											<div class="card card-body">coucou</div>
+										</div>
+									</div>
+								</div>
+							</s:iterator>
+						</s:else>
 					</div>
 
 				</div>
-				<s:a action="ajoutsecteur">
-					<s:param name="idSpot" value="idSpot" />
-					<button type="button" class="btn btn-primary">
+				<s:a action="ajoutsecteur" class="btn btn-primary">
+						<s:param name="idSpot" value="idSpot" />
 						<span class="glyphicon glyphicon-plus"></span>
-					</button>
-				</s:a>
+				</s:a>				
 			</div>
 
 			<!-- Topo -->
