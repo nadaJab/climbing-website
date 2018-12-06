@@ -2,8 +2,11 @@ package org.climbing.model.beans.topo;
 
 import java.util.Date;
 
+import javax.inject.Named;
+
 import org.climbing.model.beans.user.User;
 
+@Named("bookingBean")
 public class BookingTopo {
 	
 	private Integer id_bookingTopo;

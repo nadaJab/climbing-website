@@ -110,7 +110,6 @@ public class DaoFactoryImpl {
 		}
 		
 		@Autowired
-
 		public void setBookingTopoDao(BookingTopoDao bookingTopoDao) {
 			this.bookingTopoDao = bookingTopoDao;
 		}

@@ -5,7 +5,9 @@ import org.climbing.business.contract.manager.comment.CommentManager;
 
 import org.climbing.model.beans.comment.Comment;
 import org.climbing.model.exception.NotFoundException;
+import org.springframework.stereotype.Component;
 
+@Component("commentManager")
 public class CommentManagerImpl extends AbstractManagerImpl implements CommentManager {
 
 }

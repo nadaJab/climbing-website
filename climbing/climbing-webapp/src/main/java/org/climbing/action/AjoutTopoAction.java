@@ -1,4 +1,8 @@
 package org.climbing.action;
+import org.climbing.business.contract.ManagerFactory;
+import org.climbing.model.beans.topo.Topo;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.opensymphony.xwork2.ActionSupport;
 
 public class AjoutTopoAction extends ActionSupport{
@@ -8,47 +12,38 @@ public class AjoutTopoAction extends ActionSupport{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private String nameTopo;
-	private String author;
-	private int nbCopyMax;
-	private int editionYear;
-	private String picture;
+	private Topo topoBean;
+	private Integer idSpot;
+	
+	@Autowired
+	private ManagerFactory managerFactory;
 	
 	public String execute() {
 		return SUCCESS;	
 	}
-	
-	public String getNameTopo() {
-		return nameTopo;
+
+	public Topo getTopoBean() {
+		return topoBean;
 	}
-	public void setNameTopo(String nameTopo) {
-		this.nameTopo = nameTopo;
+
+	public void setTopoBean(Topo topoBean) {
+		this.topoBean = topoBean;
 	}
-	public String getAuthor() {
-		return author;
+
+	public Integer getIdSpot() {
+		return idSpot;
 	}
-	public void setAuthor(String author) {
-		this.author = author;
-	}
-	public int getNbCopyMax() {
-		return nbCopyMax;
-	}
-	public void setNbCopyMax(int nbCopyMax) {
-		this.nbCopyMax = nbCopyMax;
-	}
-	public int getEditionYear() {
-		return editionYear;
-	}
-	public void setEditionYear(int editionYear) {
-		this.editionYear = editionYear;
-	}
-	public String getPicture() {
-		return picture;
-	}
-	public void setPicture(String picture) {
-		this.picture = picture;
+
+	public void setIdSpot(Integer idSpot) {
+		this.idSpot = idSpot;
 	}
 	
-	
+	public String doAddTopo() {
+		String vResult = ActionSupport.INPUT;	
+		//topoBean = managerFactory.getTopoManager().addTopo(topoBean);
+		
+		vResult = ActionSupport.SUCCESS;
+		return vResult;
+	}
 
 }

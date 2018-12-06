@@ -7,6 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.interceptor.SessionAware;
 import org.climbing.business.contract.ManagerFactory;
+import org.climbing.model.beans.spot.Route;
 import org.climbing.model.beans.spot.Sector;
 import org.climbing.model.beans.spot.Spot;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,10 @@ public class SpotDetailsAction extends ActionSupport  implements SessionAware {
 	
 	private Spot spotBean;
 	private Integer idSpot;
-	private Sector sectorBean;
+	private Integer idSector;
 	private ArrayList<Sector> sectors;
+	private ArrayList<Route> lignes;
+
 	private Map<String, Object> spotDetails;
 	private static final String SPOT = "spot";
 
@@ -60,14 +63,22 @@ public class SpotDetailsAction extends ActionSupport  implements SessionAware {
 		this.sectors = sectors;
 	}
 	
-	public Sector getSectorBean() {
-		return sectorBean;
+	public ArrayList<Route> getLignes() {
+		return lignes;
 	}
 
-	public void setSectorBean(Sector sectorBean) {
-		this.sectorBean = sectorBean;
+	public void setLignes(ArrayList<Route> lignes) {
+		this.lignes = lignes;
 	}
 	
+	public Integer getIdSector() {
+		return idSector;
+	}
+
+	public void setIdSector(Integer idSector) {
+		this.idSector = idSector;
+	}
+
 	@Override
 	public void setSession(Map<String, Object> spotDetails) {
 		this.spotDetails = spotDetails;	
@@ -78,6 +89,7 @@ public class SpotDetailsAction extends ActionSupport  implements SessionAware {
 		
 		spotBean = managerFactory.getSpotManager().getSpotId(idSpot);
 		sectors = managerFactory.getSectorManager().getAllSectors(idSpot);
+
 		LOGGER.debug(spotBean.toString() + "§§§§§");
 		this.spotDetails.put(SPOT, spotBean);
 		
@@ -85,15 +97,12 @@ public class SpotDetailsAction extends ActionSupport  implements SessionAware {
 
 		return vResult;
 	}
-/*
-	public String getAllSector() {
+	
+	public String getAllLignes() {
 		String vResult = ActionSupport.INPUT;
-		LOGGER.debug(idSpot + "'''''");
-		sectors = managerFactory.getSectorManager().getAllSectors(idSpot);
+		LOGGER.debug(idSector + "!!!");
+		lignes = managerFactory.getRouteManager().getAllRoute(idSector);
 		vResult = ActionSupport.SUCCESS;	
-
 		return vResult;
-
-	}*/
-
+	}
 }

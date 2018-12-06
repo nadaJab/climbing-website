@@ -21,7 +21,7 @@ public class ManagerFactoryImpl implements ManagerFactory{
 	//***************	
 	//****comment****
 	//***************
-	//@Autowired
+	@Autowired
 	private CommentManager commentManager;
 	public CommentManager getCommentManager() {
 		return this.commentManager;
@@ -30,7 +30,7 @@ public class ManagerFactoryImpl implements ManagerFactory{
 		this.commentManager = commentManager;
 	}
 	
-	//@Autowired
+	@Autowired
 	private CommentSpotManager commentSpotManager;
 	public CommentSpotManager getCommentSpotManager() {
 		return commentSpotManager;
@@ -39,7 +39,7 @@ public class ManagerFactoryImpl implements ManagerFactory{
 		this.commentSpotManager = commentSpotManager;
 	}
 	
-	//@Autowired
+	@Autowired
 	private CommentTopoManager commentTopoManager;
 	public CommentTopoManager getCommentTopoManager() {
 		return commentTopoManager;
@@ -91,7 +91,7 @@ public class ManagerFactoryImpl implements ManagerFactory{
 	//***************
 	//****topo****
 	//***************
-	//@Autowired
+	@Autowired
 	private BookingTopoManager bookingTopoManager;
 	public BookingTopoManager getBookingTopoManager() {
 		return bookingTopoManager;
@@ -100,7 +100,7 @@ public class ManagerFactoryImpl implements ManagerFactory{
 		this.bookingTopoManager = bookingTopoManager;
 	}
 	
-	//@Autowired
+	@Autowired
 	private TopoManager topoManager;
 	public TopoManager getTopoManager() {
 		return topoManager;

@@ -1,20 +1,22 @@
 package org.climbing.model.beans.comment;
 
-import org.climbing.model.beans.spot.Spot;
+import javax.inject.Named;
 
+@Named("commentSpotBean")
 public class CommentSpot extends Comment{
 
-	private Spot spot;
+	private int idSpotBean;
 	
 	public CommentSpot() {
 		super();
 	}
-	
-	public Spot getSpot() {
-		return spot;
+
+	public int getIdSpotBean() {
+		return idSpotBean;
 	}
 
-	public void setSpot(Spot spot) {
-		this.spot = spot;
+	public void setIdSpotBean(int idSpotBean) {
+		this.idSpotBean = idSpotBean;
 	}
+	
 }

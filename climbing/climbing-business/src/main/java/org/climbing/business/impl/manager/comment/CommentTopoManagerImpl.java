@@ -5,7 +5,9 @@ import org.climbing.business.impl.AbstractManagerImpl;
 
 import org.climbing.model.beans.comment.CommentTopo;
 import org.climbing.model.exception.NotFoundException;
+import org.springframework.stereotype.Component;
 
+@Component("commentTopoManager")
 public class CommentTopoManagerImpl extends AbstractManagerImpl implements CommentTopoManager {
 
 

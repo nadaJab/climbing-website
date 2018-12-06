@@ -1,8 +1,12 @@
 package org.climbing.model.beans.comment;
 
 import java.util.Date;
+
+import javax.inject.Named;
+
 import org.climbing.model.beans.user.User;
 
+@Named("commentBean")
 public class Comment {
 
 	// ==================== Attributs ====================

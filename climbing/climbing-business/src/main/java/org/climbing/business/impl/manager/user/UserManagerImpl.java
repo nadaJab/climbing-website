@@ -31,7 +31,7 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager 
 	@Named("PlatformTransactionManager")
     private PlatformTransactionManager platformTransactionManager;
 	
-	private static final Logger LOGGER = LogManager.getRootLogger();
+	private static final Logger LOGGER = LogManager.getLogger(UserManagerImpl.class);
 	private User userImp;
 
 	@Override

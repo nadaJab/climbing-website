@@ -55,6 +55,6 @@ public class SectorDaoImpl extends AbstractDaoImpl implements SectorDao  {
 		String vSQL ="INSERT INTO spot_sector (id_spot,id_sector ) VALUES (?,?)";
 		
 		JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
-		vJdbcTemplate.queryForList(vSQL, new Object[] { idSpot, idSector });
+		vJdbcTemplate.update(vSQL, new Object[] { idSpot, idSector });
 	}
 }

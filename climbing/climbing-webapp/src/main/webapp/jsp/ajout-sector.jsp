@@ -19,7 +19,8 @@
 		
 		<s:form action="ajoutsecteurOk" enctype="multipart/form-data"
 			cssClass="form-horizontal" label="Ajouter un nouveau secteur">
-			<s:param name="idSpot" value="idSpot" />
+			<s:hidden key="idSpot"></s:hidden>
+			
 			<s:textfield key="sectorBean.sectorName" />
 			<s:submit value="Ajouter" cssClass="btn btn-primary center-block" />
 		</s:form>

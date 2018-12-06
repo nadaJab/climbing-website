@@ -13,37 +13,16 @@
 		<message>La cotation est obligatoire.</message>
 	</validator>
 	
-	<field name="routeBean.height">
-        <field-validator type="requiredstring">
-			<message>L'hauteur est obligatoire.</message>
-        </field-validator>
-        <field-validator type="int" short-circuit="true">
-        	<param name="min">1</param>
-			<message>Entrez un nombre.</message>
-		</field-validator>        
-    </field>
-    
-    <!--  
-	<validator type="requiredstring">
-		<param name="fieldName">routeBean.height</param>
-		<message>L'hauteur est obligatoire.</message>
-	</validator>
-	
 	<validator type="int">
 		<param name="fieldName">routeBean.height</param>
 		<param name="min">1</param>
-		<message>Entrez un nombre.</message>
+		<message>Entrez un nombre</message>
 	</validator>	
-	-->
 	
-	<field name="routeBean.pointNumber">
-        <field-validator type="requiredstring">
-			<message>L'hauteur est obligatoire.</message>
-        </field-validator>
-        <field-validator type="int" short-circuit="true">
-            <param name="min">1</param>
-			<message>Entrez un nombre.</message>
-		</field-validator>        
-    </field>
+	<validator type="int">
+		<param name="fieldName">routeBean.pointNumber</param>
+		<param name="min">1</param>
+		<message>Entrez un nombre</message>
+	</validator>
 		
 </validators>	
