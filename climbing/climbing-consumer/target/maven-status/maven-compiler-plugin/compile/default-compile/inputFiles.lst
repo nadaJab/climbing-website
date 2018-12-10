@@ -3,6 +3,7 @@ C:\Users\nadas\Documents\formation-openclassrooms-P6\climbing-website-master\cli
 C:\Users\nadas\Documents\formation-openclassrooms-P6\climbing-website-master\climbing\climbing-consumer\src\main\java\org\climbing\consumer\contract\dao\topo\BookingTopoDao.java
 C:\Users\nadas\Documents\formation-openclassrooms-P6\climbing-website-master\climbing\climbing-consumer\src\main\java\org\climbing\consumer\contract\dao\spot\SpotDao.java
 C:\Users\nadas\Documents\formation-openclassrooms-P6\climbing-website-master\climbing\climbing-consumer\src\main\java\org\climbing\consumer\impl\DaoFactoryImpl.java
+C:\Users\nadas\Documents\formation-openclassrooms-P6\climbing-website-master\climbing\climbing-consumer\src\main\java\org\climbing\consumer\impl\rowmappers\topo\CommentRM.java
 C:\Users\nadas\Documents\formation-openclassrooms-P6\climbing-website-master\climbing\climbing-consumer\src\main\java\org\climbing\consumer\impl\dao\comment\CommentDaoImpl.java
 C:\Users\nadas\Documents\formation-openclassrooms-P6\climbing-website-master\climbing\climbing-consumer\src\main\java\org\climbing\consumer\impl\dao\topo\BookingTopoDaoImpl.java
 C:\Users\nadas\Documents\formation-openclassrooms-P6\climbing-website-master\climbing\climbing-consumer\src\main\java\org\climbing\consumer\contract\DaoFactory.java

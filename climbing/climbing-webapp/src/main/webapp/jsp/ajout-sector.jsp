@@ -15,8 +15,6 @@
 
 	<div class="container">
 
-		<s:property value="idSpot" />
-		
 		<s:form action="ajoutsecteurOk" enctype="multipart/form-data"
 			cssClass="form-horizontal" label="Ajouter un nouveau secteur">
 			<s:hidden key="idSpot"></s:hidden>

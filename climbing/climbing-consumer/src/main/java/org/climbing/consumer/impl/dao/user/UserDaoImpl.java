@@ -36,7 +36,7 @@ public class UserDaoImpl extends AbstractDaoImpl implements UserDao  {
 	}
 	
 	public User createUserDao(User user) {	
-			String vSQL = "INSERT INTO user_Web (pseudo, first_name, last_name, climbing_type, birth_year, genre, id_compte)"
+		String vSQL = "INSERT INTO user_Web (pseudo, first_name, last_name, climbing_type, birth_year, genre, id_compte)"
 						+ " VALUES ( :pseudo, :firstName, :lastName, :climbingType, :birthYear, :genre, :idAccount)";
 			
 		 //auto generated primary key by the database

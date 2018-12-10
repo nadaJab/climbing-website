@@ -11,7 +11,7 @@ public class Topo {
 	private String topoName;
 	private String author;
 	private Integer nbCopyMax;
-	private Date editionYear;
+	private Integer editionYear;
 	private Date published;
 	private String imageURL;
 	
@@ -39,10 +39,11 @@ public class Topo {
 	public void setNbCopyMax(Integer nbCopyMax) {
 		this.nbCopyMax = nbCopyMax;
 	}
-	public Date getEditionYear() {
+	
+	public Integer getEditionYear() {
 		return editionYear;
 	}
-	public void setEditionYear(Date editionYear) {
+	public void setEditionYear(Integer editionYear) {
 		this.editionYear = editionYear;
 	}
 	public Date getPublished() {

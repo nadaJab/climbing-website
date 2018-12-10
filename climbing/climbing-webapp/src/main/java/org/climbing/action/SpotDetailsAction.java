@@ -7,6 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.interceptor.SessionAware;
 import org.climbing.business.contract.ManagerFactory;
+import org.climbing.model.beans.comment.Comment;
 import org.climbing.model.beans.spot.Route;
 import org.climbing.model.beans.spot.Sector;
 import org.climbing.model.beans.spot.Spot;
@@ -14,7 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class SpotDetailsAction extends ActionSupport  implements SessionAware {
+public class SpotDetailsAction extends ActionSupport{
 
 	/**
 	 * 
@@ -27,9 +28,7 @@ public class SpotDetailsAction extends ActionSupport  implements SessionAware {
 	private Integer idSector;
 	private ArrayList<Sector> sectors;
 	private ArrayList<Route> lignes;
-
-	private Map<String, Object> spotDetails;
-	private static final String SPOT = "spot";
+	private ArrayList<Comment> comment;
 
 	@Autowired
 	private ManagerFactory managerFactory;
@@ -37,7 +36,6 @@ public class SpotDetailsAction extends ActionSupport  implements SessionAware {
 	public String execute() {
 		return SUCCESS;	
 	}
-	
 	
 	public Spot getSpotBean() {
 		return spotBean;
@@ -78,10 +76,13 @@ public class SpotDetailsAction extends ActionSupport  implements SessionAware {
 	public void setIdSector(Integer idSector) {
 		this.idSector = idSector;
 	}
+	
+	public ArrayList<Comment> getComment() {
+		return comment;
+	}
 
-	@Override
-	public void setSession(Map<String, Object> spotDetails) {
-		this.spotDetails = spotDetails;	
+	public void setComment(ArrayList<Comment> comment) {
+		this.comment = comment;
 	}
 
 	public String searchSpotDetails() {
@@ -89,20 +90,37 @@ public class SpotDetailsAction extends ActionSupport  implements SessionAware {
 		
 		spotBean = managerFactory.getSpotManager().getSpotId(idSpot);
 		sectors = managerFactory.getSectorManager().getAllSectors(idSpot);
+		comment = managerFactory.getCommentSpotManager().getAllComment(idSpot);
 
 		LOGGER.debug(spotBean.toString() + "§§§§§");
-		this.spotDetails.put(SPOT, spotBean);
 		
 		vResult = ActionSupport.SUCCESS;	
 
 		return vResult;
 	}
 	
+    /**
+     * Action "AJAX" renvoyant la liste des voies
+     * @return success
+     */
+    public String doAjaxGetListRoute() {
+    	String vResult = ActionSupport.INPUT;
+    	LOGGER.debug(idSector + "*****");
+		lignes = managerFactory.getRouteManager().getAllRoute(idSector);
+		vResult = ActionSupport.SUCCESS;	
+		
+        return vResult;
+    }
+    
+    /*
 	public String getAllLignes() {
 		String vResult = ActionSupport.INPUT;
 		LOGGER.debug(idSector + "!!!");
 		lignes = managerFactory.getRouteManager().getAllRoute(idSector);
+		
+		LOGGER.debug(lignes + "liste lignes");
+
 		vResult = ActionSupport.SUCCESS;	
 		return vResult;
-	}
+	}*/
 }

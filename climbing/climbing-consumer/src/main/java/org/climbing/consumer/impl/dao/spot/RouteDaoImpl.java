@@ -52,7 +52,7 @@ public class RouteDaoImpl extends AbstractDaoImpl implements RouteDao  {
 
 	@Override
 	public ArrayList<Route> getAllRouteDao(int idSector) {
-	String vSQL = "SELECT route.* FROM route INNER JOIN sector_route ON route.id_route = sector_route.id_route "
+	String vSQL = "SELECT * FROM route INNER JOIN sector_route ON route.id_route = sector_route.id_route "
 				+ " INNER JOIN sector ON sector_route.id_sector = sector.id_sector WHERE sector_route.id_sector = ?";
 	
 	 JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());

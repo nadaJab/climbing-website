@@ -121,7 +121,6 @@
 
 		<action name="ajoutsiteOk"
 			class="org.climbing.action.AjoutSpotAction" method="doAddSpot">
-			<result>/jsp/ajout-site.jsp</result>
 			<result name="input">/jsp/ajout-site.jsp</result>
 			<result name="success" type="redirectAction">/jsp/home.jsp</result>
 		</action>
@@ -161,15 +160,28 @@
 		
 		<!-- Action commentaire -->
 		<action name="ajoutCommentaire"
-			class="org.climbing.action.AjoutCommentSpot">
-			<result>/jsp/site.jsp</result>
+			class="org.climbing.action.GestionComment" method="input">
+			<result name="input">/jsp/site.jsp</result>
+		</action>
+		
+		<action name="ajoutCommentaire"
+			class="org.climbing.action.GestionComment" method="addCommentSpot">
+			<result name="success">/jsp/site.jsp</result>
 		</action>
 		
 	</package>
 	
-	<!-- ===== Package pour les actions AJAX ===== 
-    <package name="ajax" extends="public, json-default"> -->
-
+	<!-- ===== Package pour les actions AJAX =====  -->
+    <package name="ajax" extends="public, json-default">
+		
+		 <action name="ajax_getListLignes"
+                class="org.climbing.action.SpotDetailsAction"
+                method="doAjaxGetListRoute">
+             <result type="json">
+                <param name="root">lignes</param>
+            </result>
+        </action>
+        	
         <!-- Action renvoyant la liste des Spot 
         <action name="ajax_getListSpot"
                 class="org.climbing.action.HomeAction"
@@ -177,7 +189,8 @@
             <result type="json">
                 <param name="root">listSpot</param>
             </result>
-        </action>
-    </package>-->
+        </action>-->
+        
+    </package>
     
 </struts>

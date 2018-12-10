@@ -46,7 +46,7 @@
 						<div class="dropdown-menu"
 							aria-labelledby="navbarDropdownMenuLink">
 							<a class="dropdown-item" href="#">Localiser un site</a> 
-							<s:a action="ajoutsite" class="dropdown-item">Ajouter un site</s:a> 
+						<!--  	<s:a action="ajoutsite" class="dropdown-item">Ajouter un site</s:a> -->
 							
 						</div></li>
 						
@@ -58,8 +58,6 @@
 						<div class="dropdown-menu"
 							aria-labelledby="navbarDropdownMenuLink">
 							<a class="dropdown-item" href="#">Liste topo</a> 
-							<s:a action="ajouttopo.action" class="dropdown-item">Ajouter un topo</s:a> 
-							
 						</div></li>
 						
 				</ul>

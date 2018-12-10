@@ -10,36 +10,49 @@ import org.climbing.model.beans.user.User;
 public class Comment {
 
 	// ==================== Attributs ====================
-	private Integer id_comment;
+	private Integer idComment;
 	private String content;
-	private Date date_comment;
+	private Date dateComment;
+	private Integer idUser;
 	private User user;
-	
 	// ==================== Getters/Setters ====================
-	public Integer getId_comment() {
-		return id_comment;
-	}
-	public void setId_comment(Integer id_comment) {
-		this.id_comment = id_comment;
-	}
+	
 	public String getContent() {
 		return content;
+	}
+	public Integer getIdComment() {
+		return idComment;
+	}
+	public void setIdComment(Integer idComment) {
+		this.idComment = idComment;
+	}
+	public Date getDateComment() {
+		return dateComment;
+	}
+	public void setDateComment(Date dateComment) {
+		this.dateComment = dateComment;
 	}
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Date getDate_comment() {
-		return date_comment;
+	
+	public Integer getIdUser() {
+		return idUser;
 	}
-	public void setDate_comment(Date date_comment) {
-		this.date_comment = date_comment;
+	public void setIdUser(Integer idUser) {
+		this.idUser = idUser;
 	}
+	
 	public User getUser() {
 		return user;
 	}
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
+	@Override
+	public String toString() {
+		return "Comment [idComment=" + idComment + ", content=" + content + ", dateComment=" + dateComment + ", idUser="
+				+ idUser + ", user=" + user + "]";
+	}
 	
 }
