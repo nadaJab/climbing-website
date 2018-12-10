@@ -10,7 +10,7 @@
 				<li class="nav-item"><s:a action="siteDetail"
 						class="nav-link active" id="siteDetail-tab" data-toggle="tab"
 						href="#siteDetail" role="tab" aria-controls="siteDetail"
-						aria-selected="true">
+						aria-selected="false">
 						<s:hidden key="idSpot" />Informations</s:a></li>
 
 				<li class="nav-item"><s:a action="sectorDetail"
@@ -91,7 +91,8 @@
 
 				</div>
 			</div>
-
+			            <hr class="mb-4">
+			
 			<div class="card">
 				<div class="card-body">
 					<h5>Commentaire</h5>
@@ -166,7 +167,7 @@
 												</em></li>
 											</ul>
 										
-											<button type="button" class="btn btn-danger" onclick="reloadListLignes()"><s:hidden key="idSector"/>Voir</button>
+											<button type="button" class="btn btn-danger" id="lignes">Voir</button>
 										</div>
 									</div>
 
@@ -203,9 +204,9 @@
 									</div> -->
 
 									<!-- Ajout ligne -->
-									<s:a action="ajoutligne" class="btn btn-default">
+									<s:a action="ajoutligne" class="btn btn-primary">
 										<s:param name="idSector" value="idSector" />
-										<span class="glyphicon glyphicon-plus"></span>
+										<span class="fas fa-plus"></span>
 									</s:a>
 								</div>
 							</div>
@@ -216,7 +217,7 @@
 			</div>
 			<s:a action="ajoutsecteur" class="btn btn-primary">
 				<s:param name="idSpot" value="idSpot" />
-				<span class="glyphicon glyphicon-plus"></span>
+				<span class="fas fa-plus"></span>
 			</s:a>
 		</div>
 
@@ -235,22 +236,34 @@
 			<!-- Action pour ajouter un nouveau topo -->
 			<s:a action="ajouttopo" class="btn btn-primary">
 				<s:param name="idSpot" value="idSpot" />
-				<span class="glyphicon glyphicon-plus"></span>
+				<span class="fas fa-plus"></span>
 			</s:a>
 		</div>
 	</div>
 
 </div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<%@include file="include/footer.jsp"%>
+
 <script>
-        function reloadListLignes() {
+console.log("mon idSector egale ")
+
+$().ready(function(){
+	console.log("ligne 252 ")
+
+        $("#lignes").click(function(event){
+        	const idSector = $("#idSector").val();
+        	
+        	console.log("mon idSector egale " +idSector)
+        	
             // URL de l'action AJAX
             var url = "<s:url action="ajax_getListLignes"/>";
 
             // Action AJAX en POST
             jQuery.post(
                 url,
+                {idSector:idSector},
+                
                 function (data) {
                     var $lignes = jQuery("#lignes");
                     $lignes.empty();
@@ -266,7 +279,8 @@
                 .fail(function () {
                     alert("Une erreur s'est produite.");
                 });
-        }
+        });
+});
     </script>
 </body>
 </html>

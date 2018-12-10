@@ -10,15 +10,13 @@
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-<link rel="stylesheet"
-	href="/Tarek/view/visitor/home/bootstrap-4.1.3/js/dropdown.js"
-	media="screen" />
-
-<sj:head jqueryui="true" />
-<sb:head />
 
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
@@ -61,20 +59,22 @@
 						</div></li>
 						
 				</ul>
-				<ul class="navbar-nav navbar-right">
+				<ul class="navbar-nav ml-auto">
 					<s:if test="#session.user">
-						<li class="nav-item active"><s:a class="nav-link">
-								<s:property value="#session.user.pseudo" />
-								<span class="glyphicon glyphicon-user"></span>
+						<li class="nav-item active"><s:a class="nav-link" action="userProfile">
+							<s:property value="#session.user.pseudo" />
+								<span class="fas fa-user"></span>
 							</s:a></li>
-						<li class="nav-item active"><s:a class="nav-link" action="deconnexion.action">Déconnexion</s:a></li>
+						<li class="nav-item active"><s:a class="nav-link" action="deconnexion.action">Déconnexion
+							<span class="fas fa-user-times"></span>
+						</s:a></li>	
 					</s:if>
 
 					<s:else>
 						<li class="nav-item active"><s:a class="nav-link" action="connexion.action">
-								<span class="glyphicon glyphicon-user"></span>Connexion</s:a></li>
+								<span class="fas fa-user"></span>Connexion</s:a></li>
 						<li class="nav-item active"><s:a class="nav-link" action="inscription.action">
-								<span class="glyphicon glyphicon-log-in"></span>Inscription</s:a></li>
+								<span class="fas fa-sign-in-alt"></span>Inscription</s:a></li>
 					</s:else>
 
 				</ul>
