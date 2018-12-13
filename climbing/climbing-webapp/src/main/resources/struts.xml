@@ -4,6 +4,8 @@
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 <struts>
 
+	<constant name="struts.multipart.saveDir" value=""/>
+
 	<package name="global" abstract="true" extends="struts-default">
 
 		<interceptors>
@@ -48,21 +50,16 @@
 			method="searchSpotDetails">
 			<result name="success">/jsp/site.jsp</result>
 		</action>
-		
-		<!-- Action details secteur 
-		<action name="sectorDetail"
-			class="org.climbing.action.SpotDetailsAction"
-			method="getAllSector">
-			<result name="success">/jsp/site.jsp</result>
-		</action>-->
-		
+
+		<!-- Action details secteur <action name="sectorDetail" class="org.climbing.action.SpotDetailsAction" 
+			method="getAllSector"> <result name="success">/jsp/site.jsp</result> </action> -->
+
 		<!-- Action details ligne -->
 		<action name="listLigne"
-			class="org.climbing.action.SpotDetailsAction"
-			method="getAllLignes">
+			class="org.climbing.action.SpotDetailsAction" method="getAllLignes">
 			<result name="success">/jsp/site.jsp</result>
 		</action>
-		
+
 		<!-- Action "inscription" -->
 		<action name="inscription"
 			class="org.climbing.action.InscriptionAction" method="input">
@@ -81,14 +78,16 @@
 		</action>
 
 		<!-- Action "connexion -->
-		<action name="connexion" class="org.climbing.action.LoginAction" method="input">
+		<action name="connexion"
+			class="org.climbing.action.LoginAction" method="input">
 			<interceptor-ref name="store">
 				<param name="operationMode">STORE</param>
 			</interceptor-ref>
 			<result name="input">/jsp/connexion.jsp</result>
 		</action>
 
-		<action name="connexionOK" class="org.climbing.action.LoginAction" method="doLogin">
+		<action name="connexionOK"
+			class="org.climbing.action.LoginAction" method="doLogin">
 			<result name="input">/jsp/connexion.jsp</result>
 			<result name="success" type="redirectAction">/jsp/home.jsp</result>
 		</action>
@@ -106,9 +105,10 @@
 			class="org.climbing.action.AjoutTopoAction" method="input">
 			<result name="input">/jsp/ajout-topo.jsp</result>
 		</action>
-		
+
 		<action name="ajouttopoOk"
 			class="org.climbing.action.AjoutTopoAction" method="doAddTopo">
+			<param name="uploadsPath">D:/Test/Upload</param>
 			<result name="input">/jsp/ajout-topo.jsp</result>
 			<result name="success" type="redirectAction">/jsp/home.jsp</result>
 		</action>
@@ -153,48 +153,43 @@
 		<!-- Action "Deconnexion -->
 		<action name="deconnexion"
 			class="org.climbing.action.LoginAction" method="doLogout">
-			<result name="success" type="redirectAction">/jsp/home.jsp</result>
+			<result name="success" type="redirectAction">
+				<param name="actionName">home</param>
+			</result>
 		</action>
-		
-		<!-- Action commentaire -->
-		<action name="ajoutCommentaire"
-			class="org.climbing.action.GestionComment" method="input">
-			<result name="input">/jsp/site.jsp</result>
-		</action>
-		
+
+		<!-- Action commentaire <action name="ajoutCommentaire" class="org.climbing.action.GestionComment" 
+			method="input"> <result name="input">/jsp/site.jsp</result> </action> -->
+
 		<action name="ajoutCommentaire"
 			class="org.climbing.action.GestionComment" method="addCommentSpot">
 			<result name="success">/jsp/site.jsp</result>
 		</action>
-		
+
 		<!-- Action qui affiche la page d'information d'un user -->
-		<action name="userProfile" class="org.climbing.action.UserProfileAction">
+		<action name="userProfile"
+			class="org.climbing.action.UserProfileAction">
 			<result name="input">/jsp/user-profile.jsp</result>
 			<result name="success">/jsp/user-profile.jsp</result>
 		</action>
-		
+
 	</package>
-	
-	<!-- ===== Package pour les actions AJAX =====  -->
-    <package name="ajax" extends="public, json-default">
-		
-		 <action name="ajax_getListLignes"
-                class="org.climbing.action.SpotDetailsAction"
-                method="doAjaxGetListRoute">
-             <result type="json">
-                <param name="root">lignes</param>
-            </result>
-        </action>
-        	
-        <!-- Action renvoyant la liste des Spot 
-        <action name="ajax_getListSpot"
-                class="org.climbing.action.HomeAction"
-                method="searchSpotAjax">
-            <result type="json">
-                <param name="root">listSpot</param>
-            </result>
-        </action>-->
-        
-    </package>
-    
+
+	<!-- ===== Package pour les actions AJAX ===== -->
+	<package name="ajax" extends="public, json-default">
+
+		<action name="ajax_getListLignes"
+			class="org.climbing.action.SpotDetailsAction"
+			method="doAjaxGetListRoute">
+			<result type="json">
+				<param name="root">lignes</param>
+			</result>
+		</action>
+
+		<!-- Action renvoyant la liste des Spot <action name="ajax_getListSpot" 
+			class="org.climbing.action.HomeAction" method="searchSpotAjax"> <result type="json"> 
+			<param name="root">listSpot</param> </result> </action> -->
+
+	</package>
+
 </struts>

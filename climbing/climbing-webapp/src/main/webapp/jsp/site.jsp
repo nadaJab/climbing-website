@@ -32,7 +32,7 @@
 	<div class="tab-content" id="myTabContent">
 
 		<!-- Information -->
-		<div class="tab-pane fade" id="siteDetail" role="tabpanel"
+		<div class="tab-pane fade show active" id="siteDetail" role="tabpanel"
 			aria-labelledby="siteDetail-tab">
 			<s:a action="siteDetail"></s:a>
 			<div class="card">
@@ -91,8 +91,8 @@
 
 				</div>
 			</div>
-			            <hr class="mb-4">
-			
+			<hr class="mb-4">
+
 			<div class="card">
 				<div class="card-body">
 					<h5>Commentaire</h5>
@@ -155,53 +155,25 @@
 										Nom du secteur:
 										<s:property value="sectorName" />
 									</h5>
-									
+
 									<div class="card">
 										<div class="card-body">
+											<s:hidden key="idSector" />
+
 											<ul id="lignes">
-												<s:hidden key="idSector"/>		
-												<li><em>La liste des voies.
 												<s:iterator value="lignes">
-															<s:property value="lignes"/>
+													
+													<li>Liste des voies: 
+													<s:property value="lignescotation" /> 
+													<s:property value="routeName" />
+													</li>
 												</s:iterator>
-												</em></li>
+
 											</ul>
-										
-											<button type="button" class="btn btn-danger" id="lignes">Voir</button>
+
+											<button type="button" class="btn btn-info" id="voieId">Voir</button>
 										</div>
 									</div>
-
-									<!--  
-									<div class="accordion" id="accordionExample">
-										
-										<div class="card">
-											<div class="card-header" id="headingThree">
-												<h5 class="mb-0">
-													<s:a action="listLigne" class="btn btn-link collapsed"
-														data-toggle="collapse" data-target="#collapseThree"
-														aria-expanded="false" aria-controls="collapseThree">
-														<s:hidden key="idSector"/>Lignes</s:a>
-												</h5>
-											</div>
-											<div id="collapseThree" class="collapse"
-												aria-labelledby="headingThree"
-												data-parent="#accordionExample">
-												<div class="card-body">
-													<s:if test="lignes.empty">
-														<div class="row justify-content-lg-center">
-															<p class="text-center grossissement">Aucune ligne n'a
-																été trouvée</p>
-														</div>
-													</s:if>
-													<s:else>
-														<s:iterator value="lignes">
-															<s:property />
-														</s:iterator>
-													</s:else>
-												</div>
-											</div>
-										</div>
-									</div> -->
 
 									<!-- Ajout ligne -->
 									<s:a action="ajoutligne" class="btn btn-primary">
@@ -210,6 +182,8 @@
 									</s:a>
 								</div>
 							</div>
+							<hr class="mb-4">
+
 						</s:iterator>
 					</s:else>
 				</div>
@@ -246,41 +220,43 @@
 <%@include file="include/footer.jsp"%>
 
 <script>
-console.log("mon idSector egale ")
+	console.log("mon idSector egale ")
 
-$().ready(function(){
-	console.log("ligne 252 ")
+	$().ready(
+			function() {
+				console.log("ligne 252 ")
 
-        $("#lignes").click(function(event){
-        	const idSector = $("#idSector").val();
-        	
-        	console.log("mon idSector egale " +idSector)
-        	
-            // URL de l'action AJAX
-            var url = "<s:url action="ajax_getListLignes"/>";
+				$("#voieId").click(
+						function(event) {
+							const idSector = $("#idSector").val();
 
-            // Action AJAX en POST
-            jQuery.post(
-                url,
-                {idSector:idSector},
-                
-                function (data) {
-                    var $lignes = jQuery("#lignes");
-                    $lignes.empty();
-                    jQuery.each(data, function (key, val) {
-                        $lignes.append(
-                            jQuery("<li>")
-                                .append(val.nom)
-                                .append(" - Lignes : ")
-                                .append(val.route_name)
-                        );
-                    });
-                })
-                .fail(function () {
-                    alert("Une erreur s'est produite.");
-                });
-        });
-});
-    </script>
+							console.log("mon idSector egale " + idSector)
+
+							// URL de l'action AJAX
+							var url = "<s:url action="ajax_getListLignes"/>";
+
+							// Action AJAX en POST
+							jQuery.post(
+									url,
+									{
+										idSector : idSector
+									},
+
+									function(data) {
+										var $lignes = jQuery("#lignes");
+										$lignes.empty();
+										jQuery.each(data, function(key, val) {
+											$lignes.append(jQuery("<li>")
+													.append(" - Lignes : ")
+													.append(val));					
+										});
+
+									}).fail(function() {
+								alert("Une erreur s'est produite.");
+							});
+
+						});
+			});
+</script>
 </body>
 </html>
