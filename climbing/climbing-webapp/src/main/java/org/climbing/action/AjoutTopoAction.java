@@ -130,7 +130,9 @@ public class AjoutTopoAction extends ActionSupport implements SessionAware{
 	
 	public String doAddTopo() {
 		String vResult = ActionSupport.INPUT;	
+		
 		String uploadsPath = ServletActionContext.getServletContext().getRealPath("/").concat("userimages");  
+		
 		LOGGER.debug("uploads location: " + uploadsPath);
 		
 		 // copy the uploaded files into pre-configured location
@@ -146,7 +148,7 @@ public class AjoutTopoAction extends ActionSupport implements SessionAware{
             }
         }
         
-        topoBean.setImageURL(uploadsPath);
+        //topoBean.setImageURL(uploadFileNames);
 		LOGGER.debug(topoBean.getImageURL() + "==="); 
 		
 		topoBean.setPublished(Calendar.getInstance().getTime());

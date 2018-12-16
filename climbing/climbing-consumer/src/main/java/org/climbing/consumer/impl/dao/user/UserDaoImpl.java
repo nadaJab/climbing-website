@@ -60,20 +60,22 @@ public class UserDaoImpl extends AbstractDaoImpl implements UserDao  {
 	}
 
 	@Override
-	public void updateUserDao(User user) {
-		String vSQL = "UPDATE user_Web SET pseudo = :pseudo, first_name = :first_name, "
-					+ "last_name = :last_name,climbing_type = :climbing_type, birth_year = :birth_year";
+	public User updateUserDao(User user) {
+		String vSQL = "UPDATE user_Web SET pseudo = :pseudo, first_name = :firstName, "
+					+ "last_name = :lastName, climbing_type = :climbingType, birth_year = :birthYear WHERE id_user = :idUser";
 	    
 		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
 		MapSqlParameterSource vParams = new MapSqlParameterSource();
 		
 		vParams.addValue("pseudo", user.getPseudo(), Types.VARCHAR);
-	    vParams.addValue("first_name", user.getFirstName(), Types.VARCHAR);
-	    vParams.addValue("last_name", user.getLastName(), Types.VARCHAR);
-	    vParams.addValue("climbing_type", user.getClimbingType(), Types.VARCHAR);
-	    vParams.addValue("birth_year", user.getBirthYear(), Types.DATE);
+	    vParams.addValue("firstName", user.getFirstName(), Types.VARCHAR);
+	    vParams.addValue("lastName", user.getLastName(), Types.VARCHAR);
+	    vParams.addValue("climbingType", user.getClimbingType(), Types.VARCHAR);
+	    vParams.addValue("birthYear", user.getBirthYear(), Types.DATE);
+	    vParams.addValue("idUser", user.getIdUser(), Types.INTEGER);
 	    
 	    vJdbcTemplate.update(vSQL, vParams);
+		return user;
 	}
 
 	@Override
@@ -114,6 +116,15 @@ public class UserDaoImpl extends AbstractDaoImpl implements UserDao  {
 	    }
 
 		return user;
+	}
+
+	@Override
+	public boolean updateRoleDao(int idUser) {
+		String vSQL = "UPDATE user_Web SET role = :role WHERE id_user = ?";
+		
+		JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+		vJdbcTemplate.update(vSQL, idUser);
+		return true;
 	}
 
 }

@@ -21,5 +21,6 @@ public interface SpotDao {
 	
 	Spot getSpotDao(String spotName, String cityName, String countryName);
 	
+	boolean deleteSpotDao(int idSpot);
 	
 }

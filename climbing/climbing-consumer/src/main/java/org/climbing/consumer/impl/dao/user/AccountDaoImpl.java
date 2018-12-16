@@ -63,8 +63,19 @@ public class AccountDaoImpl extends AbstractDaoImpl implements AccountDao  {
 	}
 
 	@Override
-	public void updateAccountDao(Account account) {
-		// TODO Auto-generated method stub	
+	public Account updateAccountDao(Account account) {
+		String vSQL = "UPDATE account SET email = :email, password = :password WHERE id_compte = :idAccount";
+    
+		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
+		MapSqlParameterSource vParams = new MapSqlParameterSource();
+	
+		vParams.addValue("email", account.getEmail(), Types.VARCHAR);
+		vParams.addValue("password", account.getPassword(), Types.VARCHAR);
+		vParams.addValue("idAccount", account.getIdAccount(), Types.INTEGER);
+		
+		vJdbcTemplate.update(vSQL, vParams);
+		
+		return account;
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package org.climbing.model.beans.topo;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.inject.Named;
@@ -14,6 +15,9 @@ public class Topo {
 	private Integer editionYear;
 	private Date published;
 	private String imageURL;
+
+	//private ArrayList<String> imageURL;
+	
 	
 	public Integer getIdTopo() {
 		return idTopo;
@@ -52,6 +56,15 @@ public class Topo {
 	public void setPublished(Date published) {
 		this.published = published;
 	}
+	/*
+	public ArrayList<String> getImageURL() {
+		return imageURL;
+	}
+	public void setImageURL(ArrayList<String> imageURL) {
+		this.imageURL = imageURL;
+	}*/
+	
+	
 	public String getImageURL() {
 		return imageURL;
 	}

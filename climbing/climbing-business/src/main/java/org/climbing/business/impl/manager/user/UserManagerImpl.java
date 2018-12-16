@@ -26,69 +26,89 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager 
 	/*
 	@Autowired
 	@Qualifier("PlatformTransactionManager")*/
-	
+
 	@Inject
 	@Named("PlatformTransactionManager")
-    private PlatformTransactionManager platformTransactionManager;
-	
+	private PlatformTransactionManager platformTransactionManager;
+
 	private static final Logger LOGGER = LogManager.getLogger(UserManagerImpl.class);
 	private User userImp;
 
 	@Override
 	public ArrayList<User> getListAllUser() {
-		
+
 		return getDaoFactory().getUserDao().ListAllUser();
 	}
-	
+
 	public User createUser(User pUser) throws AccountException, UserException {
-		
+
 		DefaultTransactionDefinition vDefintion = new DefaultTransactionDefinition();
 		vDefintion.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
 		vDefintion.setTimeout(30); 
-		
+
 		TransactionStatus vTransactionStatus = platformTransactionManager.getTransaction(vDefintion);
-		
+
 		try {	
-			
+
 			getDaoFactory().getAccountDao().addAccountDao(pUser.getAccount());
 			getDaoFactory().getUserDao().createUserDao(pUser);
-			
+
 			TransactionStatus vTScommit = vTransactionStatus;
-	    	vTransactionStatus = null;
-	    	platformTransactionManager.commit(vTScommit);		
+			vTransactionStatus = null;
+			platformTransactionManager.commit(vTScommit);		
 		} finally {
-	    if (vTransactionStatus != null) {
-	        platformTransactionManager.rollback(vTransactionStatus);
-	    }
+			if (vTransactionStatus != null) {
+				platformTransactionManager.rollback(vTransactionStatus);
+			}
 		}
 		return pUser;
 	}
-	
+
 	public User getUser(int idAccount) {
-		
+
 		DefaultTransactionDefinition vDefintion = new DefaultTransactionDefinition();
 		vDefintion.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
 		vDefintion.setTimeout(30); 
-		
+
 		TransactionStatus vTransactionStatus = platformTransactionManager.getTransaction(vDefintion);
 		try {	
-		
+
 			userImp = getDaoFactory().getUserDao().searchUserDao(idAccount);
 
-		TransactionStatus vTScommit = vTransactionStatus;
-	    vTransactionStatus = null;
-	    platformTransactionManager.commit(vTScommit);		
+			TransactionStatus vTScommit = vTransactionStatus;
+			vTransactionStatus = null;
+			platformTransactionManager.commit(vTScommit);		
 		} finally {
-	    if (vTransactionStatus != null) {
-	    platformTransactionManager.rollback(vTransactionStatus);
-	    	}
+			if (vTransactionStatus != null) {
+				platformTransactionManager.rollback(vTransactionStatus);
+			}
 		}		
 		return userImp;	
 	}
 	@Override
-	public void updateUser(User user) {
-		getDaoFactory().getUserDao().updateUserDao(user);
-	}
+	public User updateUser(User user) {
+
+		DefaultTransactionDefinition vDefintion = new DefaultTransactionDefinition();
+		vDefintion.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
+		vDefintion.setTimeout(30); 
+
+		TransactionStatus vTransactionStatus = platformTransactionManager.getTransaction(vDefintion);
+
+		try {	
+
+			getDaoFactory().getAccountDao().updateAccountDao(user.getAccount());;
+			user = getDaoFactory().getUserDao().updateUserDao(user);
+
+			TransactionStatus vTScommit = vTransactionStatus;
+			vTransactionStatus = null;
+			platformTransactionManager.commit(vTScommit);		
+		} finally {
+			if (vTransactionStatus != null) {
+				platformTransactionManager.rollback(vTransactionStatus);
+			}
+		}
+		return user;
+		}
 
 	@Override
 	public void deleteUser(User user) {
@@ -99,6 +119,29 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager 
 	public User searchUser(String uPseudo) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public boolean updateRole(int idUser) {
+		DefaultTransactionDefinition vDefintion = new DefaultTransactionDefinition();
+		vDefintion.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
+		vDefintion.setTimeout(30); 
+
+		TransactionStatus vTransactionStatus = platformTransactionManager.getTransaction(vDefintion);
+
+		try {	
+
+			getDaoFactory().getUserDao().updateRoleDao(idUser);
+			
+			TransactionStatus vTScommit = vTransactionStatus;
+			vTransactionStatus = null;
+			platformTransactionManager.commit(vTScommit);		
+		} finally {
+			if (vTransactionStatus != null) {
+				platformTransactionManager.rollback(vTransactionStatus);
+			}
+		}
+		return true;
 	}
 
 }

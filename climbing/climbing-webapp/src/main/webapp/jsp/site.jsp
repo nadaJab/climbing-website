@@ -107,12 +107,22 @@
 							<div class="list">
 								<div class="card">
 									<div class="card-body">
+
 										<s:property value="user.pseudo" />
 										:
 										<s:property value="content" />
 										<s:property value="dateComment" />
 										.
+										<s:if test="#session.user.role == 'admin'">
+											<s:a action="deleteComment" class="btn btn-outline-danger">
+												<span class="fas fa-times"></span>
+												<s:hidden key="idComment" />
+												<s:param name="idComment" value="idComment" />
+											</s:a>
+										</s:if>
+
 									</div>
+
 								</div>
 							</div>
 						</s:iterator>
@@ -148,6 +158,7 @@
 
 					<s:else>
 						<s:iterator value="sectors">
+							<div class="list">
 							<div class="card">
 								<div class="card-body">
 
@@ -162,10 +173,9 @@
 
 											<ul id="lignes">
 												<s:iterator value="lignes">
-													
-													<li>Liste des voies: 
-													<s:property value="lignescotation" /> 
-													<s:property value="routeName" />
+
+													<li>Liste des voies: <s:property
+															value="lignescotation" /> <s:property value="routeName" />
 													</li>
 												</s:iterator>
 
@@ -183,7 +193,7 @@
 								</div>
 							</div>
 							<hr class="mb-4">
-
+							</div>
 						</s:iterator>
 					</s:else>
 				</div>

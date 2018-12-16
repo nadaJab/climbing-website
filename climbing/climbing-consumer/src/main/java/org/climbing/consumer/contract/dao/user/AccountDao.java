@@ -8,7 +8,7 @@ public interface AccountDao {
 	//Account connexion(Account account); getAccount() dans user
 	
 	Account addAccountDao(Account account) throws AccountException;
-	void updateAccountDao(Account account);
+	Account updateAccountDao(Account account);
 	void deleteAccountDao(Account account);
 	Account getAccountDao(Account account);
 }
