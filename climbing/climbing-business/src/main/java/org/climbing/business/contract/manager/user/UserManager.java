@@ -10,8 +10,9 @@ public interface UserManager {
 
 	User createUser(User user) throws AccountException, UserException;	
 	ArrayList<User> getListAllUser();
-	void updateUser(User user);
+	User updateUser(User user);
 	void deleteUser(User user);
 	User searchUser(String uPseudo);
 	User getUser(int idAccount);
+	boolean updateRole(int idUser, String role);
 }

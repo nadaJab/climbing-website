@@ -5,7 +5,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.climbing.business.contract.ManagerFactory;
 import org.climbing.model.beans.spot.Country;
-import org.climbing.model.beans.spot.Sector;
 import org.climbing.model.beans.spot.Spot;
 import org.climbing.model.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;

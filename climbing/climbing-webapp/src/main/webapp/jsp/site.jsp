@@ -107,12 +107,22 @@
 							<div class="list">
 								<div class="card">
 									<div class="card-body">
+
 										<s:property value="user.pseudo" />
 										:
 										<s:property value="content" />
 										<s:property value="dateComment" />
 										.
+										<s:if test="#session.user.role == 'admin'">
+											<s:a action="deleteComment" class="btn btn-outline-danger">
+												<span class="fas fa-times"></span>
+												<s:hidden key="idComment" />
+												<s:param name="idComment" value="idComment" />
+											</s:a>
+										</s:if>
+
 									</div>
+
 								</div>
 							</div>
 						</s:iterator>
@@ -148,42 +158,68 @@
 
 					<s:else>
 						<s:iterator value="sectors">
-							<div class="card">
-								<div class="card-body">
+							<div class="list">
+								<div class="card">
+									<div class="card-body">
 
-									<h5>
-										Nom du secteur:
-										<s:property value="sectorName" />
-									</h5>
+										<h5>
+											Nom du secteur:
+											<s:property value="sectorName" />
+										</h5>
 
-									<div class="card">
-										<div class="card-body">
-											<s:hidden key="idSector" />
+										<div class="card">
+											<div class="card-body">
+												<s:hidden key="idSector" />
 
-											<ul id="lignes">
-												<s:iterator value="lignes">
-													
-													<li>Liste des voies: 
-													<s:property value="lignescotation" /> 
-													<s:property value="routeName" />
-													</li>
-												</s:iterator>
+												<ul id="lignes">
+													<table class="table">
+														<thead>
+															<tr class="table-primary">
+																<th scope="col">Nom</th>
+																<th scope="col">Cotation</th>
+																<th scope="col">Hauteur</th>
+																<th scope="col">Nombre des points</th>
+																<th scope="col">Ouvreur</th>
+																<th scope="col">Année d'ouverture</th>
+															</tr>
+														</thead>
+														<tbody>
+															<s:iterator value="lignes">
+																<tr>
+																	<td><s:property value="routeName" /></td>
+																	<td><s:property value="cotation" /></td>
+																	<td><s:property value="height" /></td>
+																	<td><s:property value="pointNumber" /></td>
+																	<td><s:property value="routeOpener" /></td>
+																	<td><s:property value="openingYear" /></td>
 
-											</ul>
+															</s:iterator>
+														</tbody>
+													</table>
+												</ul>
 
-											<button type="button" class="btn btn-info" id="voieId">Voir</button>
+												<button type="button" class="btn btn-info voieId">Voir</button>
+											</div>
 										</div>
+
+										<!-- Ajout ligne -->
+										<s:a action="ajoutligne" class="btn btn-primary">
+											<s:param name="idSector" value="idSector" />
+											<span class="fas fa-plus"></span>
+										</s:a>
+
+										<!-- Supprimer le secteur par l'admin -->
+										<s:if test="#session.user.role == 'admin'">
+											<s:a action="deleteSector" class="btn btn-outline-danger">
+												<span class="fas fa-times"></span>
+												<s:hidden key="idSector" />
+												<s:param name="idSector" value="idSector" />
+											</s:a>
+										</s:if>
 									</div>
-
-									<!-- Ajout ligne -->
-									<s:a action="ajoutligne" class="btn btn-primary">
-										<s:param name="idSector" value="idSector" />
-										<span class="fas fa-plus"></span>
-									</s:a>
 								</div>
+								<hr class="mb-4">
 							</div>
-							<hr class="mb-4">
-
 						</s:iterator>
 					</s:else>
 				</div>
@@ -220,20 +256,19 @@
 <%@include file="include/footer.jsp"%>
 
 <script>
-	console.log("mon idSector egale ")
 
 	$().ready(
 			function() {
-				console.log("ligne 252 ")
 
-				$("#voieId").click(
+				$(".voieId").click(
 						function(event) {
-							const idSector = $("#idSector").val();
-
-							console.log("mon idSector egale " + idSector)
+						
+							const idSector=$(this).parent().children("#idSector").val();
+							console.log("mon idSector egale " + idSector);
 
 							// URL de l'action AJAX
 							var url = "<s:url action="ajax_getListLignes"/>";
+							var $lignes = $(this).parent().children("#lignes > .table > tbody > tr");
 
 							// Action AJAX en POST
 							jQuery.post(
@@ -241,14 +276,15 @@
 									{
 										idSector : idSector
 									},
-
+									
 									function(data) {
-										var $lignes = jQuery("#lignes");
+										console.log("data: " + data.responseJSON);
+										console.log("idSector: " + idSector);
+
 										$lignes.empty();
 										jQuery.each(data, function(key, val) {
-											$lignes.append(jQuery("<li>")
-													.append(" - Lignes : ")
-													.append(val));					
+											$lignes.append("<td>" + val);
+											console.log("val: " + val);
 										});
 
 									}).fail(function() {

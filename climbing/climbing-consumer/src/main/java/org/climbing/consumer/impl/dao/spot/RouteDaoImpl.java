@@ -60,4 +60,17 @@ public class RouteDaoImpl extends AbstractDaoImpl implements RouteDao  {
 	 
 	return listRouteDao;
 	}
+
+	@Override
+	public boolean deleteRouteDao(int idRoute) {
+		boolean result = false;
+
+		String vSQL = "DELETE FROM route WHERE route.id_route = ?";
+		JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+
+		vJdbcTemplate.update(vSQL, idRoute);
+		result = true;
+
+		return result;
+	}
 }

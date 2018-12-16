@@ -32,8 +32,7 @@
 		<default-action-ref name="home" />
 
 		<!-- Action "home" -->
-		<action name="home" class="org.climbing.action.HomeAction"
-			method="input">
+		<action name="home" class="org.climbing.action.HomeAction" method="input">
 			<result name="input">/jsp/home.jsp</result>
 		</action>
 
@@ -153,9 +152,7 @@
 		<!-- Action "Deconnexion -->
 		<action name="deconnexion"
 			class="org.climbing.action.LoginAction" method="doLogout">
-			<result name="success" type="redirectAction">
-				<param name="actionName">home</param>
-			</result>
+			<result name="success" type="redirectAction">/jsp/home.jsp</result>
 		</action>
 
 		<!-- Action commentaire <action name="ajoutCommentaire" class="org.climbing.action.GestionComment" 
@@ -172,7 +169,52 @@
 			<result name="input">/jsp/user-profile.jsp</result>
 			<result name="success">/jsp/user-profile.jsp</result>
 		</action>
-
+		
+		 <!-- action pour modifier les attributs de l'utilisateur -->
+        <action name="updateUser" class="org.climbing.action.UserProfileAction" method="doUpdateUser">
+        	<result name="input">/jsp/user-profile.jsp</result>        
+        	<result name="success">/jsp/user-profile.jsp</result>	
+        </action>
+        
+        <!-- Action pour modifier le role d'un user par l'admin -->
+        <action name="updateRole" class="org.climbing.action.AdminGestion" method="updateRoleUser">
+        	<result name="input">/jsp/user-profile.jsp</result>        
+        	<result name="success">/jsp/user-profile.jsp</result>	
+        </action>
+        
+        <!-- action pour supprimer des commentaires pour l'admin -->
+        <action name="deleteComment" class="org.climbing.action.GestionComment" method="deleteCommentSpot">
+        	<result name="input">
+				<param name="actionName">home</param>
+			</result>
+			
+        	<result name="success" type="redirectAction">
+				<param name="actionName">home</param>
+			</result>
+        </action>
+        
+        <!-- action pour supprimer spot par l'admin -->
+        <action name="deleteSpot" class="org.climbing.action.AdminGestion" method="deleteSpot">
+        	<result name="input">
+				<param name="actionName">home</param>
+			</result>
+			
+        	<result name="success" type="redirectAction">
+				<param name="actionName">home</param>
+			</result>
+        </action>
+        
+         <!-- action pour supprimer sector par l'admin -->
+        <action name="deleteSector" class="org.climbing.action.AdminGestion" method="deleteSector">
+        	<result name="input">
+				<param name="actionName">home</param>
+			</result>
+			
+        	<result name="success" type="redirectAction">
+				<param name="actionName">home</param>
+			</result>
+        </action>
+        
 	</package>
 
 	<!-- ===== Package pour les actions AJAX ===== -->

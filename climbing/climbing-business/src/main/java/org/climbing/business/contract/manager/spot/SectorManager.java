@@ -9,4 +9,5 @@ public interface SectorManager {
 	 Sector addSector(Sector pSector);
 	 ArrayList<Sector> getAllSectors(int idSpot);
 	 void addJoinSpotSector(int idSpot, int idSector);
+	 boolean deleteSector(int idSector);
 }

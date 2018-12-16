@@ -173,7 +173,7 @@ CREATE TABLE public.comment_spot (
 ALTER TABLE public.user_Web ADD CONSTRAINT account_user_fk
 FOREIGN KEY (id_compte)
 REFERENCES public.account (id_compte)
-ON DELETE NO ACTION
+ON DELETE CASCADE
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
@@ -201,7 +201,7 @@ NOT DEFERRABLE;
 ALTER TABLE public.comment_spot ADD CONSTRAINT comment_commentspot_fk
 FOREIGN KEY (id_comment)
 REFERENCES public.comment (id_comment)
-ON DELETE NO ACTION
+ON DELETE CASCADE
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
@@ -285,6 +285,6 @@ NOT DEFERRABLE;
 ALTER TABLE public.spot_sector ADD CONSTRAINT spot_spotsector_fk
 FOREIGN KEY (id_spot)
 REFERENCES public.spot (id_spot)
-ON DELETE NO ACTION
+ON DELETE CASCADE
 ON UPDATE CASCADE
 NOT DEFERRABLE;

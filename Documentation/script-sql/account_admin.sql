@@ -1,0 +1,1 @@
+INSERT INTO account (email, password) VALUES ('joumen@gmail.fr', '$2a$10$X8D0yhRNbl1egU.Q8g3v0O0RvGX8vkBNc3A7XN6f3HEoZfLldEsJS');

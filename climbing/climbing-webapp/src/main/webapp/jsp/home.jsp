@@ -4,7 +4,7 @@
 <s:fielderror />
 
 <div class="container">
-<hr class="mb-4">
+	<hr class="mb-4">
 
 	<!-- recherche multi-critères  -->
 	<div class="card">
@@ -50,6 +50,15 @@
 
 							<s:a action="siteDetail" class="btn btn-primary">
 								<s:param name="idSpot" value="idSpot" />Voir détails</s:a>
+								
+							<s:if test="#session.user.role == 'admin'">
+								<s:a action="deleteSpot" class="btn btn-outline-danger">
+									<span class="fas fa-times"></span>
+									<s:hidden key="idSpot" />
+									<s:param name="idSpot" value="idSpot" />
+								</s:a>
+							</s:if>
+
 						</div>
 					</div>
 				</div>

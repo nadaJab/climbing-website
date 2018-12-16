@@ -25,6 +25,7 @@ public class GestionComment extends ActionSupport implements SessionAware{
 	private Comment commentBean;
 	private Integer idSpot;
 	private Integer idTopo;
+	private Integer idComment;
 	private ArrayList<Comment> comment;
 	private Map<String, Object> session;
 	private static final String USER = "user";
@@ -73,6 +74,14 @@ public class GestionComment extends ActionSupport implements SessionAware{
 		this.comment = comment;
 	}
 
+	public Integer getIdComment() {
+		return idComment;
+	}
+
+	public void setIdComment(Integer idComment) {
+		this.idComment = idComment;
+	}
+
 	public String addCommentSpot() {
 		String vResult = ActionSupport.INPUT;
 		
@@ -104,15 +113,14 @@ public class GestionComment extends ActionSupport implements SessionAware{
 		vResult = ActionSupport.SUCCESS;
 		return vResult;
 	}
-
-	/*
-	public String getAllCommentSpot() {
-		String vResult = ActionSupport.INPUT;
-
-		comment = managerFactory.getCommentSpotManager().getAllComment(idSpot);
-		vResult = ActionSupport.SUCCESS;	
-		return vResult;
-	}*/
 	
+	public String deleteCommentSpot() {
+		String vResult = ActionSupport.INPUT;
+		
+		managerFactory.getCommentSpotManager().deleteCommentSpot(idComment);
+		
+		vResult = ActionSupport.SUCCESS;
+		return vResult;
+	}
 			
 }

@@ -19,6 +19,7 @@ public class CommentRM implements RowMapper<Comment>{
 		
 		commentSpot.setContent(rs.getString("content"));
 		commentSpot.setDateComment(rs.getDate("date_coment"));
+		commentSpot.setIdComment(rs.getInt("id_comment"));
 	
 		commentSpot.setUser(user);
 		user.setPseudo(rs.getString("pseudo"));

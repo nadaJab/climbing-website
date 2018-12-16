@@ -44,7 +44,7 @@
 						<div class="dropdown-menu"
 							aria-labelledby="navbarDropdownMenuLink">
 							<a class="dropdown-item" href="#">Localiser un site</a> 
-						<!--  	<s:a action="ajoutsite" class="dropdown-item">Ajouter un site</s:a> -->
+							<s:a action="ajoutsite" class="dropdown-item">Ajouter un site</s:a> 
 							
 						</div></li>
 						
