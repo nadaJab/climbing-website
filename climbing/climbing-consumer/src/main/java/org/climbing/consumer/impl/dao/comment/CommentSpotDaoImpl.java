@@ -84,4 +84,16 @@ public class CommentSpotDaoImpl extends AbstractDaoImpl implements 	CommentSpotD
 		return result;
 	}
 
+<<<<<<< HEAD
+=======
+	@Override
+	public boolean deleteCommentSpotJoinDao(int idComment) {
+		String vSQL = "DELETE FROM comment_spot WHERE comment_spot.id_comment = ?";
+		
+		JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+		vJdbcTemplate.update(vSQL, idComment);
+		
+		return true;
+	}
+>>>>>>> 8aa81a7b9392e8a6c62aaff28b1a159dc70605f0
 }

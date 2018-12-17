@@ -14,5 +14,9 @@ public interface UserManager {
 	void deleteUser(User user);
 	User searchUser(String uPseudo);
 	User getUser(int idAccount);
+<<<<<<< HEAD
 	boolean updateRole(int idUser, String role);
+=======
+	boolean updateRole(int idUser);
+>>>>>>> 8aa81a7b9392e8a6c62aaff28b1a159dc70605f0
 }

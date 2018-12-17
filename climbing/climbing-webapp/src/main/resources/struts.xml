@@ -176,12 +176,15 @@
         	<result name="success">/jsp/user-profile.jsp</result>	
         </action>
         
+<<<<<<< HEAD
         <!-- Action pour modifier le role d'un user par l'admin -->
         <action name="updateRole" class="org.climbing.action.AdminGestion" method="updateRoleUser">
         	<result name="input">/jsp/user-profile.jsp</result>        
         	<result name="success">/jsp/user-profile.jsp</result>	
         </action>
         
+=======
+>>>>>>> 8aa81a7b9392e8a6c62aaff28b1a159dc70605f0
         <!-- action pour supprimer des commentaires pour l'admin -->
         <action name="deleteComment" class="org.climbing.action.GestionComment" method="deleteCommentSpot">
         	<result name="input">
@@ -193,7 +196,11 @@
 			</result>
         </action>
         
+<<<<<<< HEAD
         <!-- action pour supprimer spot par l'admin -->
+=======
+        <!-- action pour supprimer spot pour l'admin -->
+>>>>>>> 8aa81a7b9392e8a6c62aaff28b1a159dc70605f0
         <action name="deleteSpot" class="org.climbing.action.AdminGestion" method="deleteSpot">
         	<result name="input">
 				<param name="actionName">home</param>
@@ -204,6 +211,7 @@
 			</result>
         </action>
         
+<<<<<<< HEAD
          <!-- action pour supprimer sector par l'admin -->
         <action name="deleteSector" class="org.climbing.action.AdminGestion" method="deleteSector">
         	<result name="input">
@@ -215,6 +223,26 @@
 			</result>
         </action>
         
+=======
+         <!-- action pour supprimer des commentaires pour l'admin
+        <action name="deleteComment" class="org.climbing.action.GestionComment" method="deleteCommentSpot">
+        	<result name="input">
+				<param name="actionName">siteDetail</param>
+				<param name="namespace">/</param>
+			</result>
+			
+        	<result name="success" type="redirectAction">
+				<param name="actionName">siteDetail</param>
+				<param name="namespace">/</param>
+			</result>
+        </action> -->
+        
+         <!-- action qui retourne tous les users
+        <action name="getAllUsers" class="org.climbing.action.AdminGestion" method="getAllUsers">
+        	<result name="input">/jsp/user-profile.jsp</result>        
+        	<result name="success">/jsp/user-profile.jsp</result>	
+        </action> -->
+>>>>>>> 8aa81a7b9392e8a6c62aaff28b1a159dc70605f0
 	</package>
 
 	<!-- ===== Package pour les actions AJAX ===== -->

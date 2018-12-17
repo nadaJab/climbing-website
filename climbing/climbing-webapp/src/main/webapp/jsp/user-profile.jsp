@@ -16,11 +16,19 @@
 						class="fas fa-file"></span> Mes Topos </a></li>
 
 				<li class="nav-item"><a class="nav-link" href="#productUser"><span
+<<<<<<< HEAD
 						class="fas fa-cart-arrow-down"></span> Mes commandes </a></li>
 
 				<s:if test="#session.user.role == 'admin'">
 					<li class="nav-item"><a class="nav-link" href="#users"><span
 							class="fas fa-users"></span> Users </a></li>
+=======
+						class="fas fa-cart-arrow-down"></span> Mes commandes</a></li>
+
+				<s:if test="#session.user.role == 'admin'">
+					<li class="nav-item"><a class="nav-link" href="#users"><span
+							class="fas fa-users"></span> Users</a></li>
+>>>>>>> 8aa81a7b9392e8a6c62aaff28b1a159dc70605f0
 				</s:if>
 			</ul>
 		</div>
@@ -124,6 +132,7 @@
 								<td><s:property value="pseudo" /></td>
 								<td><s:property value="climbingType" /></td>
 								<td><s:property value="sexe" /></td>
+<<<<<<< HEAD
 
 								<!-- un champs input pour modifier role user par l'admin -->
 								<td><s:form action="updateRole">
@@ -138,6 +147,18 @@
 										<s:hidden key="idUser" />
 										<span class="fas fa-edit"></span></button>
 									</s:form></td>
+=======
+								<td><select id="inputState" class="form-control">
+										<option selected><s:property value="role" /></option>
+										<option>
+										<s:if test="#session.user.role == 'admin'">utilisateur</s:if>
+										<s:elseif test="#session.user.role == 'utilisateur'"> admin</s:elseif>
+										</option>	
+								</select></td>
+								<td><s:a action=""><span class="fas fa-edit"></span>
+								<s:hidden key="idUser" />
+								</s:a></td>
+>>>>>>> 8aa81a7b9392e8a6c62aaff28b1a159dc70605f0
 							</tr>
 						</s:iterator>
 
