@@ -82,11 +82,7 @@ public class CommentSpotManagerImpl extends AbstractManagerImpl implements Comme
 		TransactionStatus vTransactionStatus = platformTransactionManager.getTransaction(vDefintion);
 
 		try {
-<<<<<<< HEAD
 			
-=======
-			getDaoFactory().getCommentSpotDao().deleteCommentSpotJoinDao(idComment);
->>>>>>> 8aa81a7b9392e8a6c62aaff28b1a159dc70605f0
 			getDaoFactory().getCommentSpotDao().deleteCommentSpotDao(idComment);
 			result = true;
 			

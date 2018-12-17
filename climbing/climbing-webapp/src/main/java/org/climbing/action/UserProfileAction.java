@@ -19,11 +19,7 @@ public class UserProfileAction extends ActionSupport implements SessionAware{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> 8aa81a7b9392e8a6c62aaff28b1a159dc70605f0
 	@Autowired
 	private ManagerFactory managerFactory;
 
@@ -31,10 +27,7 @@ public class UserProfileAction extends ActionSupport implements SessionAware{
 	private User userBean;
 	private Account accountBean;
 	private ArrayList<User> listUsers;
-<<<<<<< HEAD
 	private Integer idUser;
-=======
->>>>>>> 8aa81a7b9392e8a6c62aaff28b1a159dc70605f0
 	
 	private static final Logger LOGGER = LogManager.getLogger(UserProfileAction.class);
 
@@ -76,38 +69,21 @@ public class UserProfileAction extends ActionSupport implements SessionAware{
 		this.listUsers = listUsers;
 	}
 	
-<<<<<<< HEAD
 	public Integer getIdUser() {
 		return idUser;
 	}
 
 	public void setIdUser(Integer idUser) {
 		this.idUser = idUser;
-=======
-	public ArrayList<User> getListUsers() {
-		return listUsers;
-	}
-
-	public void setListUsers(ArrayList<User> listUsers) {
-		this.listUsers = listUsers;
->>>>>>> 8aa81a7b9392e8a6c62aaff28b1a159dc70605f0
 	}
 	
 	public String doUpdateUser() {
 		String vResult = ActionSupport.INPUT;
-<<<<<<< HEAD
 
 		User userSession = (User) session.get("user"); 
 		LOGGER.debug("Voici les anciennes données " + userSession);
 		LOGGER.debug("Voici les nouvelles données " + userBean + accountBean);
 
-=======
-		
-		User userSession = (User) session.get("user"); 
-		LOGGER.debug("Voici les anciennes données " + userSession);
-		LOGGER.debug("Voici les nouvelles données " + userBean + accountBean);
-		
->>>>>>> 8aa81a7b9392e8a6c62aaff28b1a159dc70605f0
 		userBean.setIdUser(userSession.getIdUser());
 		userBean.setSexe(userSession.getSexe());
 		if(userBean.getClimbingType() == null) {
@@ -116,11 +92,7 @@ public class UserProfileAction extends ActionSupport implements SessionAware{
 
 		}
 		accountBean.setIdAccount(userSession.getAccount().getIdAccount());
-<<<<<<< HEAD
 
-=======
-		
->>>>>>> 8aa81a7b9392e8a6c62aaff28b1a159dc70605f0
 		//si on a pas modifié password, on garde l'ancien password
 		if(accountBean.getPassword() == "") {
 			accountBean.setPassword(userSession.getAccount().getPassword());
@@ -128,17 +100,10 @@ public class UserProfileAction extends ActionSupport implements SessionAware{
 
 		}
 		else {
-<<<<<<< HEAD
 			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 			String hashedPassword = passwordEncoder.encode(accountBean.getPassword());
 			accountBean.setPassword(hashedPassword);	
 			vResult = ActionSupport.SUCCESS;  
-=======
-			 BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-			 String hashedPassword = passwordEncoder.encode(accountBean.getPassword());
-			 accountBean.setPassword(hashedPassword);	
-			 vResult = ActionSupport.SUCCESS;  
->>>>>>> 8aa81a7b9392e8a6c62aaff28b1a159dc70605f0
 
 		}
 		userBean.setAccount(accountBean);
@@ -146,15 +111,8 @@ public class UserProfileAction extends ActionSupport implements SessionAware{
 		session.remove("user");
 		session.put("user", userBean);
 		vResult = ActionSupport.SUCCESS;  
-<<<<<<< HEAD
 
 		return vResult;      	
 	}
 
-=======
-		
-	    return vResult;      	
-	}
-	
->>>>>>> 8aa81a7b9392e8a6c62aaff28b1a159dc70605f0
 }

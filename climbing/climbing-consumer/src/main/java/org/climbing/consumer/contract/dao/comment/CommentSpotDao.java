@@ -10,10 +10,5 @@ public interface CommentSpotDao {
 	boolean addJoinCommentSpotDao(int idComment, int idSpot);
 	ArrayList<Comment> getAllCommentDao(int idSpot);
 	boolean deleteCommentSpotDao(int idComment);
-<<<<<<< HEAD
 	
-=======
-	boolean deleteCommentSpotJoinDao(int idComment);
-
->>>>>>> 8aa81a7b9392e8a6c62aaff28b1a159dc70605f0
 }

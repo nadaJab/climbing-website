@@ -122,11 +122,7 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager 
 	}
 
 	@Override
-<<<<<<< HEAD
 	public boolean updateRole(int idUser,  String role) {
-=======
-	public boolean updateRole(int idUser) {
->>>>>>> 8aa81a7b9392e8a6c62aaff28b1a159dc70605f0
 		DefaultTransactionDefinition vDefintion = new DefaultTransactionDefinition();
 		vDefintion.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
 		vDefintion.setTimeout(30); 
@@ -135,11 +131,7 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager 
 
 		try {	
 
-<<<<<<< HEAD
 			getDaoFactory().getUserDao().updateRoleDao(idUser, role);
-=======
-			getDaoFactory().getUserDao().updateRoleDao(idUser);
->>>>>>> 8aa81a7b9392e8a6c62aaff28b1a159dc70605f0
 			
 			TransactionStatus vTScommit = vTransactionStatus;
 			vTransactionStatus = null;

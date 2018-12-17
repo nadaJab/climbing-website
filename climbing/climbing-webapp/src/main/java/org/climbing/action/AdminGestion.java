@@ -1,10 +1,6 @@
 package org.climbing.action;
 
-<<<<<<< HEAD
 import java.util.Map;
-=======
-import java.util.ArrayList;
->>>>>>> 8aa81a7b9392e8a6c62aaff28b1a159dc70605f0
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -26,15 +22,10 @@ public class AdminGestion extends ActionSupport{
 	private static final Logger LOGGER = LogManager.getLogger(AdminGestion.class);
 	private Integer idSpot;
 	private Integer idUser;
-<<<<<<< HEAD
 	private Integer idSector;
 	private Integer idRoute;
 	private User userBean;
 		
-=======
-	private User userBean;
-	
->>>>>>> 8aa81a7b9392e8a6c62aaff28b1a159dc70605f0
 	public String execute() {
         return ActionSupport.SUCCESS;
 	}
@@ -62,7 +53,6 @@ public class AdminGestion extends ActionSupport{
 	public void setUserBean(User userBean) {
 		this.userBean = userBean;
 	}
-<<<<<<< HEAD
 	
 	public Integer getIdSector() {
 		return idSector;
@@ -79,8 +69,6 @@ public class AdminGestion extends ActionSupport{
 	public void setIdRoute(Integer idRoute) {
 		this.idRoute = idRoute;
 	}
-=======
->>>>>>> 8aa81a7b9392e8a6c62aaff28b1a159dc70605f0
 
 	public String deleteSpot() {
 		String vResult = ActionSupport.INPUT;
@@ -94,18 +82,13 @@ public class AdminGestion extends ActionSupport{
 	public String updateRoleUser() {
 		String vResult = ActionSupport.INPUT;
 		
-<<<<<<< HEAD
 		LOGGER.debug(userBean.getRole() + "===");
 		
 		managerFactory.getUserManager().updateRole(idUser, userBean.getRole());
-=======
-		managerFactory.getUserManager().updateRole(idUser);
->>>>>>> 8aa81a7b9392e8a6c62aaff28b1a159dc70605f0
 		vResult = ActionSupport.SUCCESS;
 		
 		return vResult;
 	}
-<<<<<<< HEAD
 	
 	public String deleteSector() {
 		String vResult = ActionSupport.INPUT;
@@ -124,6 +107,4 @@ public class AdminGestion extends ActionSupport{
 		vResult = ActionSupport.SUCCESS;
 		return vResult;
 	}
-=======
->>>>>>> 8aa81a7b9392e8a6c62aaff28b1a159dc70605f0
 }

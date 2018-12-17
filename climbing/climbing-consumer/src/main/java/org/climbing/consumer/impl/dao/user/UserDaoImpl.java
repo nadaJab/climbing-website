@@ -119,19 +119,11 @@ public class UserDaoImpl extends AbstractDaoImpl implements UserDao  {
 	}
 
 	@Override
-<<<<<<< HEAD
 	public boolean updateRoleDao(int idUser, String role) {
 		String vSQL = "UPDATE user_Web SET role = ? WHERE id_user = ?";
 		
 		JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
 		vJdbcTemplate.update(vSQL,  role, idUser);
-=======
-	public boolean updateRoleDao(int idUser) {
-		String vSQL = "UPDATE user_Web SET role = :role WHERE id_user = ?";
-		
-		JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
-		vJdbcTemplate.update(vSQL, idUser);
->>>>>>> 8aa81a7b9392e8a6c62aaff28b1a159dc70605f0
 		return true;
 	}
 

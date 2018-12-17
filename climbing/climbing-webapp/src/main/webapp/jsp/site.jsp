@@ -159,7 +159,6 @@
 					<s:else>
 						<s:iterator value="sectors">
 							<div class="list">
-<<<<<<< HEAD
 								<div class="card">
 									<div class="card-body">
 
@@ -201,31 +200,6 @@
 
 												<button type="button" class="btn btn-info voieId">Voir</button>
 											</div>
-=======
-							<div class="card">
-								<div class="card-body">
-
-									<h5>
-										Nom du secteur:
-										<s:property value="sectorName" />
-									</h5>
-
-									<div class="card">
-										<div class="card-body">
-											<s:hidden key="idSector" />
-
-											<ul id="lignes">
-												<s:iterator value="lignes">
-
-													<li>Liste des voies: <s:property
-															value="lignescotation" /> <s:property value="routeName" />
-													</li>
-												</s:iterator>
-
-											</ul>
-
-											<button type="button" class="btn btn-info" id="voieId">Voir</button>
->>>>>>> 8aa81a7b9392e8a6c62aaff28b1a159dc70605f0
 										</div>
 
 										<!-- Ajout ligne -->
@@ -246,11 +220,6 @@
 								</div>
 								<hr class="mb-4">
 							</div>
-<<<<<<< HEAD
-=======
-							<hr class="mb-4">
-							</div>
->>>>>>> 8aa81a7b9392e8a6c62aaff28b1a159dc70605f0
 						</s:iterator>
 					</s:else>
 				</div>
