@@ -22,7 +22,7 @@ public class CommentSpotManagerImpl extends AbstractManagerImpl implements Comme
 	@Inject
 	@Named("PlatformTransactionManager")
 	private PlatformTransactionManager platformTransactionManager;
-	List<Comment> listComment;
+	ArrayList<Comment> listComment;
 
 	@Override
 	public boolean addJoinCommentSpot(int idComment, int idSpot) {
@@ -69,7 +69,7 @@ public class CommentSpotManagerImpl extends AbstractManagerImpl implements Comme
 				platformTransactionManager.rollback(vTransactionStatus);
 			}
 		}
-		return (ArrayList<Comment>) listComment;
+		return listComment;
 	}
 
 	@Override

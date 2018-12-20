@@ -1,6 +1,5 @@
 package org.climbing.model.beans.topo;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 import javax.inject.Named;
@@ -70,6 +69,11 @@ public class Topo {
 	}
 	public void setImageURL(String imageURL) {
 		this.imageURL = imageURL;
+	}
+	@Override
+	public String toString() {
+		return "Topo [idTopo=" + idTopo + ", topoName=" + topoName + ", author=" + author + ", nbCopyMax=" + nbCopyMax
+				+ ", editionYear=" + editionYear + ", published=" + published + ", imageURL=" + imageURL + "]";
 	}
 	
 }

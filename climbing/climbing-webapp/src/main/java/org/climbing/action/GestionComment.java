@@ -33,9 +33,10 @@ public class GestionComment extends ActionSupport implements SessionAware{
 	@Autowired
 	private ManagerFactory managerFactory;
 	
+	/*
 	public String execute() {
 		return SUCCESS;	
-	}
+	} */
 	
 	public Comment getCommentBean() {
 		return commentBean;

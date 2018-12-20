@@ -115,7 +115,10 @@
 										.
 										<s:if test="#session.user.role == 'admin'">
 											<s:a action="deleteComment" class="btn btn-outline-danger">
-												<span class="fas fa-times"></span>
+												<span class="fas fa-trash-alt"></span>
+
+												<s:hidden key="idSpot" />
+												<s:param name="idSpot" value="idSpot" />
 												<s:hidden key="idComment" />
 												<s:param name="idComment" value="idComment" />
 											</s:a>
@@ -185,15 +188,18 @@
 														</thead>
 														<tbody>
 															<s:iterator value="lignes">
-																<tr>
-																	<td><s:property value="routeName" /></td>
-																	<td><s:property value="cotation" /></td>
-																	<td><s:property value="height" /></td>
-																	<td><s:property value="pointNumber" /></td>
-																	<td><s:property value="routeOpener" /></td>
-																	<td><s:property value="openingYear" /></td>
 
+																<!--  
+																<s:if test="#session.user.role == 'admin'">
+																	<s:a action="deleteSpot" class="btn btn-outline-danger">
+																		<span class="fas fa-times"></span>
+																		<s:hidden key="idSpot" />
+																		<s:param name="idSpot" value="idSpot" />
+																	</s:a>
+																</s:if>
+														-->
 															</s:iterator>
+
 														</tbody>
 													</table>
 												</ul>
@@ -202,16 +208,16 @@
 											</div>
 										</div>
 
-										<!-- Ajout ligne -->
+										<!-- Ajout ligne 
 										<s:a action="ajoutligne" class="btn btn-primary">
 											<s:param name="idSector" value="idSector" />
 											<span class="fas fa-plus"></span>
-										</s:a>
+										</s:a>-->
 
 										<!-- Supprimer le secteur par l'admin -->
 										<s:if test="#session.user.role == 'admin'">
 											<s:a action="deleteSector" class="btn btn-outline-danger">
-												<span class="fas fa-times"></span>
+												<span class="fas fa-trash-alt"></span>
 												<s:hidden key="idSector" />
 												<s:param name="idSector" value="idSector" />
 											</s:a>
@@ -225,7 +231,8 @@
 				</div>
 				<!-- Action pour ajouter un secteur -->
 			</div>
-			<s:a action="ajoutsecteur" class="btn btn-primary">
+			<s:a action="ajoutsecteurOk" class="btn btn-primary">
+				<s:hidden key="idSpot" />
 				<s:param name="idSpot" value="idSpot" />
 				<span class="fas fa-plus"></span>
 			</s:a>
@@ -237,11 +244,30 @@
 			<div class="card">
 				<div class="card-header">Topo</div>
 				<div class="card-body">
-					<div class="card">
-						<div class="card-body"></div>
-					</div>
-				</div>
 
+					<s:if test="topos.empty">
+						<div class="row justify-content-lg-center">
+							<p class="text-center grossissement">Aucun topo qui existe
+								pour ce site</p>
+						</div>
+					</s:if>
+
+					<s:else>
+						<s:iterator value="topos">
+							<div class="card" style="width: 18rem;">
+								<div class="card-body">
+									<h5 class="card-title">
+										<s:property value="topoName" />
+									</h5>
+									<s:a action="topoDetails" class="btn btn-primary"><span
+										class="fas fa-file-image"></span><s:hidden key="idTopo" /><s:param name="idTopo" value="idTopo" />
+										 Voir topo</s:a>
+								</div>
+							</div>
+							<hr class="mb-4">
+						</s:iterator>
+					</s:else>
+				</div>
 			</div>
 			<!-- Action pour ajouter un nouveau topo -->
 			<s:a action="ajouttopo" class="btn btn-primary">
@@ -249,50 +275,108 @@
 				<span class="fas fa-plus"></span>
 			</s:a>
 		</div>
+
 	</div>
+</div>
 
 </div>
 
 <%@include file="include/footer.jsp"%>
 
 <script>
+	$()
+			.ready(
+					function() {
 
-	$().ready(
-			function() {
+						$(".voieId")
+								.click(
+										function(event) {
 
-				$(".voieId").click(
-						function(event) {
-						
-							const idSector=$(this).parent().children("#idSector").val();
-							console.log("mon idSector egale " + idSector);
+											const idSector = $(this).parent()
+													.children("#idSector")
+													.val();
+											console.log("mon idSector egale "
+													+ idSector);
 
-							// URL de l'action AJAX
-							var url = "<s:url action="ajax_getListLignes"/>";
-							var $lignes = $(this).parent().children("#lignes > .table > tbody > tr");
+											// URL de l'action AJAX
+											var url = "<s:url action="ajax_getListLignes"/>";
 
-							// Action AJAX en POST
-							jQuery.post(
-									url,
-									{
-										idSector : idSector
-									},
-									
-									function(data) {
-										console.log("data: " + data.responseJSON);
-										console.log("idSector: " + idSector);
+											var $lignes = $(this).parent()
+													.children("#lignes")
+													.children("table")
+													.children("tbody");
 
-										$lignes.empty();
-										jQuery.each(data, function(key, val) {
-											$lignes.append("<td>" + val);
-											console.log("val: " + val);
+											// Action AJAX en POST
+											jQuery
+													.post(
+															url,
+															{
+																idSector : idSector
+															},
+
+															function(data) {
+
+																console
+																		.log("data: "
+																				+ data.responseJSON);
+																console
+																		.log("idSector: "
+																				+ idSector);
+
+																$lignes.empty();
+																jQuery
+																		.each(
+																				data,
+																				function(
+																						key,
+																						val) {
+																					var html = "";
+
+																					html += '<tr>';
+																					html += ("<td>"
+																							+ val.routeName + "</td>");
+																					html += ("<td>"
+																							+ val.cotation + "</td>");
+																					html += ("<td>"
+																							+ val.height + "</td>");
+																					html += ("<td>"
+																							+ val.pointNumber + "</td>");
+
+																					if (val.routeOpener == "") {
+																						html += ("<td> non renseigné </td>");
+																					} else {
+																						html += ("<td>"
+																								+ val.routeOpener + "</td>");
+																					}
+
+																					if (val.openingYear == 0) {
+																						html += ("<td> non renseigné </td>");
+																					} else {
+																						html += ("<td>"
+																								+ val.openingYear + "</td>");
+																					}
+																					html += '</tr>';
+
+																					$lignes
+																							.append(html);
+
+																					console
+																							.log("val: "
+																									+ val.cotation);
+																					console
+																							.log("val: "
+																									+ val.routeName);
+
+																				});
+
+															})
+													.fail(
+															function() {
+																alert("Une erreur s'est produite.");
+															});
+
 										});
-
-									}).fail(function() {
-								alert("Une erreur s'est produite.");
-							});
-
-						});
-			});
+					});
 </script>
 </body>
 </html>

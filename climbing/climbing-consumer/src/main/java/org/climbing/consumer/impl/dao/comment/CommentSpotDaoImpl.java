@@ -24,7 +24,7 @@ import org.springframework.stereotype.Component;
 @Component("commentSpotDao") 
 public class CommentSpotDaoImpl extends AbstractDaoImpl implements 	CommentSpotDao {
 	
-	List<Comment> listCommentDao;
+	ArrayList<Comment> listCommentDao;
 
 	@Override
 	public boolean addJoinCommentSpotDao(int idComment, int idSpot) {
@@ -47,9 +47,9 @@ public class CommentSpotDaoImpl extends AbstractDaoImpl implements 	CommentSpotD
 					+ "INNER JOIN comment_spot ON comment.id_comment = comment_spot.id_comment WHERE comment_spot.id_spot = ?";
 		
 		JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
-		listCommentDao = vJdbcTemplate.query(vSQL, new Object[] { idSpot }, new CommentRM());
+		listCommentDao = (ArrayList<Comment>) vJdbcTemplate.query(vSQL, new Object[] { idSpot }, new CommentRM());
 
-		return (ArrayList<Comment>) listCommentDao;
+		return listCommentDao;
 	}
 
 	@Override

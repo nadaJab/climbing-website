@@ -53,7 +53,7 @@
 								
 							<s:if test="#session.user.role == 'admin'">
 								<s:a action="deleteSpot" class="btn btn-outline-danger">
-									<span class="fas fa-times"></span>
+									<span class="fas fa-trash-alt"></span>
 									<s:hidden key="idSpot" />
 									<s:param name="idSpot" value="idSpot" />
 								</s:a>
@@ -69,33 +69,6 @@
 	</div>
 </s:if>
 
-<!-- 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script>
-        function reloadListProjet() {
-            // URL de l'action AJAX
-            var url = "<s:url action="searchSpotAjax"/>";
-
-            // Action AJAX en POST
-            jQuery.post(
-                url,
-                function (data) {
-                    var $listProjet = jQuery("#listSpot");
-                    $listSpot.empty();
-                    jQuery.each(data, function (key, val) {
-                        $listProjet.append(
-                            jQuery("<li>")
-                                .append(" - Nom du site : ")
-                                .append(val.spotName)
-                                
-                        );
-                    });
-                })
-                .fail(function () {
-                    alert("Une erreur s'est produite.");
-                });
-        }
-    </script>  -->
 <%@include file="include/footer.jsp"%>
 </body>
 </html>

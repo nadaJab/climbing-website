@@ -30,3 +30,4 @@ org\climbing\consumer\impl\dao\topo\BookingTopoDaoImpl.class
 org\climbing\consumer\contract\dao\comment\CommentTopoDao.class
 org\climbing\consumer\impl\dao\comment\CommentTopoDaoImpl.class
 org\climbing\consumer\impl\dao\user\UserDaoImpl.class
+org\climbing\consumer\impl\rowmappers\topo\topoRM.class

@@ -34,11 +34,7 @@ public class LoginAction extends ActionSupport implements SessionAware, ServletR
 
 	@Autowired
 	private ManagerFactory managerFactory;
-	
-	public String execute() {
-		return SUCCESS;	
-	}
-		
+			
 	public void setSession(Map<String, Object> session) {
 		this.session = session ;
 	}
@@ -81,6 +77,7 @@ public class LoginAction extends ActionSupport implements SessionAware, ServletR
 	
 	public String doLogout() {
 		
+		LOGGER.debug("Methode deconnexion" );
 	    this.session.remove(USER);
 	    this.servletRequest.getSession().invalidate();
 	    

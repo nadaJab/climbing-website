@@ -24,6 +24,7 @@ C:\Users\nadas\Documents\formation-openclassrooms-P6\climbing-website-master\cli
 C:\Users\nadas\Documents\formation-openclassrooms-P6\climbing-website-master\climbing\climbing-consumer\src\main\java\org\climbing\consumer\impl\dao\user\UserDaoImpl.java
 C:\Users\nadas\Documents\formation-openclassrooms-P6\climbing-website-master\climbing\climbing-consumer\src\main\java\org\climbing\consumer\contract\dao\spot\RouteDao.java
 C:\Users\nadas\Documents\formation-openclassrooms-P6\climbing-website-master\climbing\climbing-consumer\src\main\java\org\climbing\consumer\impl\dao\spot\CountryDaoImpl.java
+C:\Users\nadas\Documents\formation-openclassrooms-P6\climbing-website-master\climbing\climbing-consumer\src\main\java\org\climbing\consumer\impl\rowmappers\topo\topoRM.java
 C:\Users\nadas\Documents\formation-openclassrooms-P6\climbing-website-master\climbing\climbing-consumer\src\main\java\org\climbing\consumer\contract\dao\user\AccountDao.java
 C:\Users\nadas\Documents\formation-openclassrooms-P6\climbing-website-master\climbing\climbing-consumer\src\main\java\org\climbing\consumer\impl\rowmappers\spot\SpotRM.java
 C:\Users\nadas\Documents\formation-openclassrooms-P6\climbing-website-master\climbing\climbing-consumer\src\main\java\org\climbing\consumer\impl\rowmappers\user\AccountRM.java

@@ -13,9 +13,8 @@
 		<s:textfield key="topoBean.editionYear"
 			tooltip="L'année d'édition du topo" />
 
-		<s:file label="Image (1)" name="upload" />
-  		<s:file label="Image (2)" name="upload" />
-  		<s:file label="Image (3)" name="upload" />
+		<s:file label="Image de couverture" name="upload" />
+  		<s:file label="Image extrait" name="upload" />
   		
 		<s:hidden key="idSpot" />
 		<s:hidden key="#session.user.idUser"></s:hidden>

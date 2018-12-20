@@ -1,11 +1,16 @@
 package org.climbing.consumer.impl.dao.topo;
 
 import org.climbing.consumer.impl.AbstractDaoImpl;
+import org.climbing.consumer.impl.rowmappers.spot.SpotRM;
+import org.climbing.consumer.impl.rowmappers.topo.CommentRM;
+import org.climbing.consumer.impl.rowmappers.topo.topoRM;
 
 import java.sql.Types;
+import java.util.ArrayList;
 
 import org.climbing.consumer.contract.dao.topo.TopoDao;
-
+import org.climbing.model.beans.comment.Comment;
+import org.climbing.model.beans.spot.Spot;
 import org.climbing.model.beans.topo.Topo;
 import org.climbing.model.exception.NotFoundException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -17,6 +22,9 @@ import org.springframework.stereotype.Component;
 
 @Component("topoDao") 
 public class TopoDaoImpl extends AbstractDaoImpl implements TopoDao  {
+	
+	ArrayList<Topo> listTopoDao;
+	Topo topoDao;
 
 	@Override
 	public Topo addTopoDao(Topo topo) {
@@ -72,5 +80,28 @@ public class TopoDaoImpl extends AbstractDaoImpl implements TopoDao  {
 		}
 
 		return result;
+	}
+
+	@Override
+	public ArrayList<Topo> getAllTopoDao(int idSpot) {
+		
+		String vSQL = "SELECT * FROM topo "
+				+ "INNER JOIN list_topo ON topo.id_topo = list_topo.id_topo "
+				+ "INNER JOIN topo_spot ON topo.id_topo = topo_spot.id_topo WHERE topo_spot.id_spot = ?";
+
+		JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+		listTopoDao = (ArrayList<Topo>) vJdbcTemplate.query(vSQL, new Object[] { idSpot }, new topoRM());
+
+		return listTopoDao;
+	}
+
+	@Override
+	public Topo getTopoDao(int idTopo) {
+		String vSQL = "SELECT * FROM topo WHERE id_topo = ?";
+		
+		JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+		topoDao =  vJdbcTemplate.queryForObject(vSQL, new Object[] { idTopo }, new topoRM());
+		
+		return topoDao;
 	}
 }

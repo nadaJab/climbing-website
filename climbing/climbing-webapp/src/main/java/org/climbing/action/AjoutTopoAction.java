@@ -27,6 +27,7 @@ public class AjoutTopoAction extends ActionSupport implements SessionAware{
 
 	private Topo topoBean;
 	private Integer idSpot;
+	private String fileName;
 
 	private Map<String, Object> session;
 	private static final String USER = "user";
@@ -34,28 +35,14 @@ public class AjoutTopoAction extends ActionSupport implements SessionAware{
 	private ArrayList<File> uploads;
 	private ArrayList<String> uploadFileNames;
 	private ArrayList<String> uploadContentTypes;
-	
-	private String uploadsPath;
 
+	private String uploadsPath;
+	private String namePack;
 	@Autowired
 	private ManagerFactory managerFactory;
-	
+
 	public String execute() {
-		String uploadsPath = ServletActionContext.getServletContext().getRealPath("/").concat("userimages");  
-		LOGGER.debug("uploads location: " + uploadsPath);
-		
-		 // copy the uploaded files into pre-configured location
-        for (int i = 0; i < uploads.size(); i++) {
-            File uploadedFile = uploads.get(i);
-            String fileName = uploadFileNames.get(i);
-            File destFile = new File(uploadsPath + File.separator + fileName);
-            try {
-                FileUtils.copyFile(uploadedFile, destFile);
-            } catch (IOException ex) {
-                System.out.println("Could not copy file " + fileName);
-                ex.printStackTrace();
-            }
-        }
+
 		return SUCCESS;	
 	}
 
@@ -93,7 +80,7 @@ public class AjoutTopoAction extends ActionSupport implements SessionAware{
 	public void setIdSpot(Integer idSpot) {
 		this.idSpot = idSpot;
 	}
-	
+
 	public String getUploadsPath() {
 		return uploadsPath;
 	}
@@ -107,62 +94,57 @@ public class AjoutTopoAction extends ActionSupport implements SessionAware{
 		this.session = session;	
 	}
 
-	/*
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
 	public String doAddTopo() {
-		String vResult = ActionSupport.INPUT;	
-		
-		topoBean.setImageURL(getUploadFileName());
-		LOGGER.debug(topoBean.getUploadFileName() + "==="); 
-		
-		topoBean.setPublished(Calendar.getInstance().getTime());
-		LOGGER.debug(topoBean.getPublished() + "date d'ajout du topo");
+		String vResult = ActionSupport.INPUT;
 
-		LOGGER.debug(((User) session.get(USER)).getIdUser());
-		int idUser = ((User) session.get(USER)).getIdUser();
+		namePack = topoBean.getTopoName() + "-" + String.valueOf(((User) session.get(USER)).getIdUser());
 
-		topoBean = managerFactory.getTopoManager().addTopo(topoBean);
-		managerFactory.getTopoManager().addJoinTopoSpot(topoBean.getIdTopo(), idSpot);
-		managerFactory.getTopoManager().addJoinTopoUser(topoBean.getIdTopo(), idUser);
+		for (int i = 0; i < uploads.size(); i++) {
+			File uploadedFile = uploads.get(i);
 
-		vResult = ActionSupport.SUCCESS;
-		return vResult;
-	} */
-	
-	public String doAddTopo() {
-		String vResult = ActionSupport.INPUT;	
-		
-		String uploadsPath = ServletActionContext.getServletContext().getRealPath("/").concat("userimages");  
-		
-		LOGGER.debug("uploads location: " + uploadsPath);
-		
-		 // copy the uploaded files into pre-configured location
-        for (int i = 0; i < uploads.size(); i++) {
-            File uploadedFile = uploads.get(i);
-            String fileName = uploadFileNames.get(i);
-            File destFile = new File(uploadsPath + File.separator + fileName);
-            try {
-                FileUtils.copyFile(uploadedFile, destFile);
-            } catch (IOException ex) {
-                System.out.println("Could not copy file " + fileName);
-                ex.printStackTrace();
-            }
-        }
-        
-        //topoBean.setImageURL(uploadFileNames);
+			String destinationDir = uploadedFile.getAbsoluteFile().getParentFile().getAbsolutePath() + File.separator + namePack;
+
+			LOGGER.debug("uploads location: " + destinationDir);
+
+			try {
+
+				File destFile = new File(destinationDir + File.separator + fileName);
+				FileUtils.copyFile(uploadedFile, destFile);
+				vResult = ActionSupport.SUCCESS;	
+
+			} catch (IOException ex) {
+				System.out.println("Could not copy file " + fileName);
+				ex.printStackTrace();
+			}	
+		}
+
+		topoBean.setImageURL(namePack);
 		LOGGER.debug(topoBean.getImageURL() + "==="); 
-		
+
 		topoBean.setPublished(Calendar.getInstance().getTime());
 		LOGGER.debug(topoBean.getPublished() + "date d'ajout du topo");
 
 		LOGGER.debug(((User) session.get(USER)).getIdUser());
 		int idUser = ((User) session.get(USER)).getIdUser();
 
+		try {
 		topoBean = managerFactory.getTopoManager().addTopo(topoBean);
 		managerFactory.getTopoManager().addJoinTopoSpot(topoBean.getIdTopo(), idSpot);
 		managerFactory.getTopoManager().addJoinTopoUser(topoBean.getIdTopo(), idUser);
-
-		
 		vResult = ActionSupport.SUCCESS;
+
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+
 		return vResult;
 	}
 

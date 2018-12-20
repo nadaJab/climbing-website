@@ -18,6 +18,7 @@
 			<s:textfield key="accountBean.email"
 				placeholder="adresse@exemple.com" />
 			<s:password key="accountBean.password" />
+			
 			<s:submit value="Enregistrer" cssClass="btn btn-primary center-block" />
 
 		</s:form>
