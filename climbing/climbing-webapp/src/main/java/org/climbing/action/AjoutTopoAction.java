@@ -27,8 +27,7 @@ public class AjoutTopoAction extends ActionSupport implements SessionAware{
 
 	private Topo topoBean;
 	private Integer idSpot;
-	private String fileName;
-
+	
 	private Map<String, Object> session;
 	private static final String USER = "user";
 
@@ -94,14 +93,6 @@ public class AjoutTopoAction extends ActionSupport implements SessionAware{
 		this.session = session;	
 	}
 
-	public String getFileName() {
-		return fileName;
-	}
-
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
-	}
-
 	public String doAddTopo() {
 		String vResult = ActionSupport.INPUT;
 
@@ -109,14 +100,15 @@ public class AjoutTopoAction extends ActionSupport implements SessionAware{
 
 		for (int i = 0; i < uploads.size(); i++) {
 			File uploadedFile = uploads.get(i);
-
+			String fileName = uploadFileNames.get(i);
 			String destinationDir = uploadedFile.getAbsoluteFile().getParentFile().getAbsolutePath() + File.separator + namePack;
+			
+			File destFile = new File(destinationDir + File.separator + fileName);
 
 			LOGGER.debug("uploads location: " + destinationDir);
-
+			
 			try {
-
-				File destFile = new File(destinationDir + File.separator + fileName);
+				
 				FileUtils.copyFile(uploadedFile, destFile);
 				vResult = ActionSupport.SUCCESS;	
 
@@ -142,7 +134,7 @@ public class AjoutTopoAction extends ActionSupport implements SessionAware{
 		vResult = ActionSupport.SUCCESS;
 
 		}catch(Exception e) {
-			e.printStackTrace();
+			  this.addActionError(e.getMessage());
 		}
 
 		return vResult;

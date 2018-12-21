@@ -24,7 +24,7 @@
 	crossorigin="anonymous">
 
 </head>
-<body>
+<body style="background-color: #F5F5F6;">
 
 	<header>
 

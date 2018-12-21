@@ -1,11 +1,17 @@
 package org.climbing.action;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import java.util.ArrayList;
-import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.interceptor.SessionAware;
+import org.apache.struts2.servlet.ServletRequestAware;
 import org.climbing.business.contract.ManagerFactory;
 import org.climbing.model.beans.comment.Comment;
 import org.climbing.model.beans.spot.Route;
@@ -104,7 +110,7 @@ public class SpotDetailsAction extends ActionSupport{
 	public void setTopoBean(Topo topoBean) {
 		this.topoBean = topoBean;
 	}
-	
+
 	public Integer getIdTopo() {
 		return idTopo;
 	}

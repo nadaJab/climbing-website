@@ -31,7 +31,9 @@
 			<div class="col-sm">
 				<div class="card">
 					<div class="card-body">
-						<img class="card-img-top" src="" alt="Card image cap">
+						
+						<img src=""></img>
+						
 					</div>
 				</div>
 			</div>
