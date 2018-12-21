@@ -6,6 +6,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.interceptor.SessionAware;
 import org.climbing.business.contract.ManagerFactory;
+import org.climbing.model.beans.topo.BookingTopo;
+import org.climbing.model.beans.topo.Topo;
 import org.climbing.model.beans.user.Account;
 import org.climbing.model.beans.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,12 +30,23 @@ public class UserProfileAction extends ActionSupport implements SessionAware{
 	private Account accountBean;
 	private ArrayList<User> listUsers;
 	private Integer idUser;
+	private ArrayList<Topo> listTopo;
+	private ArrayList<BookingTopo> bookingTopoList;
 	
 	private static final Logger LOGGER = LogManager.getLogger(UserProfileAction.class);
 
 	public String execute() {
 		listUsers = managerFactory.getUserManager().getListAllUser();
 		LOGGER.debug(listUsers + "///");
+		
+		User userSession = (User) session.get("user"); 
+		listTopo = managerFactory.getTopoManager().getTopoUser(userSession.getIdUser());
+		
+		for(int i=0;i<listTopo.size();i++) {
+
+		}
+		
+		//bookingTopoList = managerFactory.getBookingTopoManager().getBookingTopoList(); 
 		return SUCCESS;	
 	}
 
@@ -68,7 +81,7 @@ public class UserProfileAction extends ActionSupport implements SessionAware{
 	public void setListUsers(ArrayList<User> listUsers) {
 		this.listUsers = listUsers;
 	}
-	
+
 	public Integer getIdUser() {
 		return idUser;
 	}
@@ -76,7 +89,23 @@ public class UserProfileAction extends ActionSupport implements SessionAware{
 	public void setIdUser(Integer idUser) {
 		this.idUser = idUser;
 	}
-	
+
+	public ArrayList<Topo> getListTopo() {
+		return listTopo;
+	}
+
+	public void setListTopo(ArrayList<Topo> listTopo) {
+		this.listTopo = listTopo;
+	}
+
+	public ArrayList<BookingTopo> getBookingTopoList() {
+		return bookingTopoList;
+	}
+
+	public void setBookingTopoList(ArrayList<BookingTopo> bookingTopoList) {
+		this.bookingTopoList = bookingTopoList;
+	}
+
 	public String doUpdateUser() {
 		String vResult = ActionSupport.INPUT;
 
@@ -113,6 +142,16 @@ public class UserProfileAction extends ActionSupport implements SessionAware{
 		vResult = ActionSupport.SUCCESS;  
 
 		return vResult;      	
+	}
+
+	public String getAllTopoUser() {
+		String vResult = ActionSupport.INPUT;
+
+		User userSession = (User) session.get("user"); 
+		listTopo = managerFactory.getTopoManager().getTopoUser(userSession.getIdUser());
+		vResult = ActionSupport.SUCCESS;  
+
+		return vResult;   
 	}
 
 }

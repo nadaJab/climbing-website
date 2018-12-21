@@ -104,4 +104,15 @@ public class TopoDaoImpl extends AbstractDaoImpl implements TopoDao  {
 		
 		return topoDao;
 	}
+
+	@Override
+	public ArrayList<Topo> getTopoUserDao(int idUser) {
+		String vSQL = "SELECT * FROM topo INNER JOIN list_topo ON topo.id_topo = list_topo.id_topo "
+					+ "WHERE list_topo.id_user = ?";
+		
+		JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+		listTopoDao = (ArrayList<Topo>) vJdbcTemplate.query(vSQL, new Object[] { idUser }, new topoRM());
+		
+		return listTopoDao;
+	}
 }

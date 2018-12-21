@@ -225,6 +225,20 @@
 				<param name="actionName">home</param>
 			</result>
 		</action>
+		
+		<!-- action pour réserver un topo -->
+		<action name="booking"
+			class="org.climbing.action.BookingTopoAction">
+			<result name="input">/jsp/topo-details.jsp</result>
+		</action>
+		
+		<action name="bookingOk"
+			class="org.climbing.action.BookingTopoAction" method="bookingTopo">
+			<result name="input">/jsp/topo-details.jsp</result>
+			<result name="success" type="redirectAction">
+				<param name="actionName">home</param>
+			</result>
+		</action>
 
 	</package>
 

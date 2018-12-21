@@ -11,4 +11,5 @@ public interface TopoDao {
 	boolean addJoinTopoUserDao(int idTopo, int idUser);
 	ArrayList<Topo> getAllTopoDao(int idSpot);
 	Topo getTopoDao(int idTopo);
+	ArrayList<Topo> getTopoUserDao(int idUser);
 }

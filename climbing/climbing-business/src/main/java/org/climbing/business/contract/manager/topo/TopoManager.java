@@ -11,6 +11,6 @@ public interface TopoManager {
 	boolean addJoinTopoUser(int idTopo, int idUser);
 	ArrayList<Topo> getAllTopo(int idSpot);
 	Topo getTopo(int idTopo);
-
+	ArrayList<Topo> getTopoUser(int idUser);
 
 }

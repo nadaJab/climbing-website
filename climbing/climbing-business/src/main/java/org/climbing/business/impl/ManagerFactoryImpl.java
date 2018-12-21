@@ -1,7 +1,5 @@
 package org.climbing.business.impl;
 
-import javax.inject.Named;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger; 
 
