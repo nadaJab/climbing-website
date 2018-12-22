@@ -239,7 +239,14 @@
 				<param name="actionName">home</param>
 			</result>
 		</action>
-
+		
+		<!-- Action pour confirmer le retour du topo par le propriétaire -->
+		<action name="returnOk"
+			class="org.climbing.action.BookingTopoAction" method="updateTopoReturn">
+			<result name="input">/jsp/user-profile.jsp</result>
+			<result name="success">/jsp/user-profile.jsp</result>
+		</action>
+		
 	</package>
 
 	<!-- ===== Package pour les actions AJAX ===== -->

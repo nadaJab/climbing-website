@@ -8,4 +8,6 @@ public interface BookingTopoDao {
 
 	ArrayList<BookingTopo> getBookingTopoInfoDao(int idTopo);
 	void addBookingTopoDao( BookingTopo bookingTopo);
+	boolean updateTopoReturnDao(int idTopo);
+	//ArrayList<BookingTopo> getBookingTopoListDao(int idTopo);
 }

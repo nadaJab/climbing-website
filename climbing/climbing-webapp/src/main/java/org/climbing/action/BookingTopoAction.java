@@ -77,7 +77,7 @@ public class BookingTopoAction extends ActionSupport implements SessionAware{
 	public void setBookingTopoBean(BookingTopo bookingTopoBean) {
 		this.bookingTopoBean = bookingTopoBean;
 	}
-
+	
 	public String bookingTopo() {
 		String vResult = ActionSupport.INPUT;
 		
@@ -88,6 +88,7 @@ public class BookingTopoAction extends ActionSupport implements SessionAware{
 		
 		bookingTopoList = managerFactory.getBookingTopoManager().getBookingTopoInfo(idTopo);
 		LOGGER.debug(bookingTopoList.toString() + "Voici les topo déjà commandé");
+		
 		
 		if( (bookingTopoList.size() == 0) || (topoBean.getNbCopyMax() > bookingTopoList.size()) ){
 			
@@ -102,13 +103,21 @@ public class BookingTopoAction extends ActionSupport implements SessionAware{
 		
 		else if(topoBean.getNbCopyMax() == bookingTopoList.size()) {
 				
-			addActionError("Indisponible !!");		
+			addActionError("Topo indisponible !!");		
 			LOGGER.debug("Indisponible");
-			vResult = ActionSupport.SUCCESS;
-
-
+			
 		}
 		return vResult;	
 	}
 
+	public String updateTopoReturn() {
+		String vResult = ActionSupport.INPUT;
+
+		User userSession = (User) session.get("user"); 
+		managerFactory.getBookingTopoManager().updateTopoReturn(idTopo);
+		
+		vResult = ActionSupport.SUCCESS;  
+
+		return vResult;   
+	}
 }

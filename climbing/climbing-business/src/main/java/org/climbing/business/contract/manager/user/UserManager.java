@@ -15,4 +15,6 @@ public interface UserManager {
 	User searchUser(String uPseudo);
 	User getUser(int idAccount);
 	boolean updateRole(int idUser, String role);
+	ArrayList<User> getUserAccount(int idUser);
+
 }

@@ -68,4 +68,30 @@ public class BookingTopoManagerImpl extends AbstractManagerImpl implements Booki
 		}
 
 	}
+
+	@Override
+	public boolean updateTopoReturn(int idTopo) {
+		boolean result=false;
+		
+		DefaultTransactionDefinition vDefintion = new DefaultTransactionDefinition();
+		vDefintion.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
+		vDefintion.setTimeout(30); 
+
+		TransactionStatus vTransactionStatus = platformTransactionManager.getTransaction(vDefintion);
+
+		try {
+
+			getDaoFactory().getBookingTopoDao().updateTopoReturnDao(idTopo);
+			 result=true;
+			 
+			TransactionStatus vTScommit = vTransactionStatus;
+			vTransactionStatus = null;
+			platformTransactionManager.commit(vTScommit);	
+		} finally {
+			if (vTransactionStatus != null) {
+				platformTransactionManager.rollback(vTransactionStatus);
+			}
+		}
+		return result;
+	}
 }

@@ -8,5 +8,6 @@ public interface BookingTopoManager {
 	
 	ArrayList<BookingTopo> getBookingTopoInfo(int idTopo);
 	void addBookingTopo( BookingTopo bookingTopo);
+	boolean updateTopoReturn(int idTopo);
 
 }

@@ -12,4 +12,5 @@ public interface UserDao {
 	User searchUserDao(int uId);
 	User searchUserDao(String uPseudo);
 	boolean updateRoleDao(int idUser, String role);
+	ArrayList<User> getUserAccountDao(int idUser);
 }

@@ -13,12 +13,7 @@ public class UserRM implements RowMapper<User>{
 	public User mapRow(ResultSet rs, int rownumber) throws SQLException {
 
 		User user = new User();
-		
-		/*
-		Account account = new Account();
-		
-		account.setEmail(rs.getString("email")); */
-		
+	
 		user.setIdUser(rs.getInt("id_user"));
 		user.setPseudo(rs.getString("pseudo"));
 		user.setLastName(rs.getString("first_name"));
@@ -27,7 +22,6 @@ public class UserRM implements RowMapper<User>{
 		user.setBirthYear(rs.getDate("birth_year"));
 		user.setSexe(rs.getString("genre"));
 		user.setRole(rs.getString("role"));
-		//user.setAccount(account);
 		
 		return user;
 	}

@@ -86,6 +86,7 @@
 		<div id="topoUser">
 			<hr class="mb-4">
 			<h4 class="mb-3">Mes topos</h4>
+			
 			<table class="table table-bordered">
 				<thead>
 					<tr class="table-primary">
@@ -112,41 +113,47 @@
 
 				</tbody>
 			</table>
-			<h6>Topo en réservation</h6>
+			
+			<h6>Topo en réservation :</h6>
+			<s:if test="bookingTopoList.empty">
+				<div class="row justify-content-lg-center">
+					<p class="text-center grossissement">Aucun topo réservé</p>
+				</div>
+			</s:if>
+	 		<s:else>
 			<table class="table table-bordered">
 				<thead>
 					<tr class="table-primary">
 						<th scope="col">Nom du topo</th>
-						<th scope="col">Date de réservation</th>
-						<th scope="col">Date de retour</th>
-						<th scope="col">Date de retour</th>
 						<th scope="col">Réservé par</th>
 						<th scope="col">Email</th>
+						<th scope="col">Date de réservation</th>
+						<th scope="col">Date de retour</th>
 						<th scope="col">Retour Ok</th>
 					</tr>
 				</thead>
 				<tbody>
-
-					<s:iterator value="listTopo">
+					<s:iterator value="bookingTopoList">
 						<tr>
-							<td><s:property value="topoName" /></td>
-							<td><s:property value="nbCopyMax" /></td>
-							<td><s:property value="published" /></td>
-							<td><s:property value="topoName" /></td>
-							<td><s:property value="nbCopyMax" /></td>
-							<td><s:property value="nbCopyMax" /></td>
+							<td><s:property value="topo.topoName" /></td>
+							<td><s:property value="user.userName" /></td>
+							<td><s:property value="user.account.email" /></td>
+							<td><s:property value="borrowingDate" /></td>
+							<td><s:property value="returnDate" /></td>
 
-							<td><s:a action="" class="btn btn-outline-danger">
+							<td><s:a action="returnOk" class="btn btn-outline-danger">
 									<span class="fas fa-exchange-alt"></span>
 									<s:hidden key="idTopo" />
 									<s:param name="idTopo" value="idTopo" />
 								</s:a></td>
-						</tr>
 
+						</tr>
 					</s:iterator>
+
 
 				</tbody>
 			</table>
+			</s:else>
 			<hr class="mb-4">
 
 		</div>

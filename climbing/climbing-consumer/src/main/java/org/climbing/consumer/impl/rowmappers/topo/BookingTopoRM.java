@@ -17,7 +17,8 @@ public class BookingTopoRM implements RowMapper<BookingTopo>{
 		bookingTopo.setBorrowingDate(rs.getDate("borrowing_date"));
 		bookingTopo.setReturnDate(rs.getDate("return_date"));
 		bookingTopo.setIdTopo(rs.getInt("id_topo"));
-		bookingTopo.setIdUser(rs.getInt("id_uer"));
+		bookingTopo.setIdUser(rs.getInt("id_user"));
+		bookingTopo.setReturnConfirmation(rs.getBoolean("return_confirmation"));
 		
 		return bookingTopo;
 	}

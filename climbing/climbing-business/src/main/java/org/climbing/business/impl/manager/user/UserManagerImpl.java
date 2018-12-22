@@ -108,7 +108,7 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager 
 			}
 		}
 		return user;
-		}
+	}
 
 	@Override
 	public void deleteUser(User user) {
@@ -132,7 +132,7 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager 
 		try {	
 
 			getDaoFactory().getUserDao().updateRoleDao(idUser, role);
-			
+
 			TransactionStatus vTScommit = vTransactionStatus;
 			vTransactionStatus = null;
 			platformTransactionManager.commit(vTScommit);		
@@ -142,6 +142,30 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager 
 			}
 		}
 		return true;
+	}
+
+	@Override
+	public ArrayList<User> getUserAccount(int idUser) {
+		ArrayList<User> userList;
+		
+		DefaultTransactionDefinition vDefintion = new DefaultTransactionDefinition();
+		vDefintion.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
+		vDefintion.setTimeout(30); 
+
+		TransactionStatus vTransactionStatus = platformTransactionManager.getTransaction(vDefintion);
+		try {	
+
+			userList = getDaoFactory().getUserDao().getUserAccountDao(idUser);
+
+			TransactionStatus vTScommit = vTransactionStatus;
+			vTransactionStatus = null;
+			platformTransactionManager.commit(vTScommit);		
+		} finally {
+			if (vTransactionStatus != null) {
+				platformTransactionManager.rollback(vTransactionStatus);
+			}
+		}		
+		return userList;
 	}
 
 }

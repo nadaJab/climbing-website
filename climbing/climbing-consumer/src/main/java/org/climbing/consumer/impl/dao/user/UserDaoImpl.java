@@ -2,6 +2,7 @@ package org.climbing.consumer.impl.dao.user;
 
 import org.climbing.consumer.contract.dao.user.UserDao;
 import org.climbing.consumer.impl.AbstractDaoImpl;
+import org.climbing.consumer.impl.rowmappers.user.UserAccountRM;
 import org.climbing.consumer.impl.rowmappers.user.UserRM;
 import org.climbing.model.beans.user.User;
 
@@ -125,6 +126,16 @@ public class UserDaoImpl extends AbstractDaoImpl implements UserDao  {
 		JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
 		vJdbcTemplate.update(vSQL,  role, idUser);
 		return true;
+	}
+
+	@Override
+	public ArrayList<User> getUserAccountDao(int idUser) {
+		String vSQL = "SELECT * FROM  user_Web INNER JOIN account ON user_Web.id_compte = account.id_compte "
+					+ "WHERE id_user = ?";
+		
+        JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+        ArrayList<User> ListUser = (ArrayList<User>) vJdbcTemplate.query(vSQL, new Object[] { idUser }, new UserAccountRM());
+		return ListUser;
 	}
 
 }

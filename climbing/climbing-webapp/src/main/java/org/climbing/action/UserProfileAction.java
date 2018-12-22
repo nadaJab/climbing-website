@@ -30,23 +30,32 @@ public class UserProfileAction extends ActionSupport implements SessionAware{
 	private Account accountBean;
 	private ArrayList<User> listUsers;
 	private Integer idUser;
+	private Integer idTopo;
 	private ArrayList<Topo> listTopo;
+	private ArrayList<User> userList;
 	private ArrayList<BookingTopo> bookingTopoList;
-	
+
 	private static final Logger LOGGER = LogManager.getLogger(UserProfileAction.class);
 
 	public String execute() {
 		listUsers = managerFactory.getUserManager().getListAllUser();
 		LOGGER.debug(listUsers + "///");
-		
+
 		User userSession = (User) session.get("user"); 
 		listTopo = managerFactory.getTopoManager().getTopoUser(userSession.getIdUser());
-		
-		for(int i=0;i<listTopo.size();i++) {
 
+		for(int i=0;i<listTopo.size();i++) {
+			bookingTopoList = managerFactory.getBookingTopoManager().getBookingTopoInfo(listTopo.get(i).getIdTopo());
+		}
+	
+
+		for(int i=0;i<bookingTopoList.size(); i++) {
+			userList = managerFactory.getUserManager().getUserAccount(bookingTopoList.get(i).getIdUser()); 
+			bookingTopoList.get(i).setUserBean(userList.get(i));
 		}
 		
-		//bookingTopoList = managerFactory.getBookingTopoManager().getBookingTopoList(); 
+		LOGGER.debug(bookingTopoList.toString() + "Voici la liste de vos topos réservés");
+		
 		return SUCCESS;	
 	}
 
@@ -106,6 +115,14 @@ public class UserProfileAction extends ActionSupport implements SessionAware{
 		this.bookingTopoList = bookingTopoList;
 	}
 
+	public Integer getIdTopo() {
+		return idTopo;
+	}
+
+	public void setIdTopo(Integer idTopo) {
+		this.idTopo = idTopo;
+	}
+
 	public String doUpdateUser() {
 		String vResult = ActionSupport.INPUT;
 
@@ -144,14 +161,6 @@ public class UserProfileAction extends ActionSupport implements SessionAware{
 		return vResult;      	
 	}
 
-	public String getAllTopoUser() {
-		String vResult = ActionSupport.INPUT;
 
-		User userSession = (User) session.get("user"); 
-		listTopo = managerFactory.getTopoManager().getTopoUser(userSession.getIdUser());
-		vResult = ActionSupport.SUCCESS;  
-
-		return vResult;   
-	}
 
 }
