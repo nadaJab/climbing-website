@@ -9,6 +9,5 @@ public interface CommentSpotManager {
 	//CommentSpot addCommentSpot(CommentSpot commentSpot);
 	boolean addJoinCommentSpot(int idComment, int idSpot);
 	ArrayList<Comment> getAllComment(int idSpot);
-	boolean deleteCommentSpot(int idComment);
 
 }

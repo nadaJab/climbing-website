@@ -118,7 +118,16 @@ public class GestionComment extends ActionSupport implements SessionAware{
 	public String deleteCommentSpot() {
 		String vResult = ActionSupport.INPUT;
 		
-		managerFactory.getCommentSpotManager().deleteCommentSpot(idComment);
+		managerFactory.getCommentManager().deleteCommentSpot(idComment);
+		
+		vResult = ActionSupport.SUCCESS;
+		return vResult;
+	}
+	
+	public String deleteCommentTopo() {
+		String vResult = ActionSupport.INPUT;
+		
+		managerFactory.getCommentManager().deleteCommentSpot(idComment);
 		
 		vResult = ActionSupport.SUCCESS;
 		return vResult;

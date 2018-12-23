@@ -37,6 +37,7 @@ public class SpotDetailsAction extends ActionSupport{
 	private ArrayList<Sector> sectors;
 	private ArrayList<Route> lignes;
 	private ArrayList<Comment> comment;
+	private ArrayList<Comment> commentTopo;
 	private ArrayList<Topo> topos;
 	private Topo topoBean;
 
@@ -119,6 +120,14 @@ public class SpotDetailsAction extends ActionSupport{
 		this.idTopo = idTopo;
 	}
 
+	public ArrayList<Comment> getCommentTopo() {
+		return commentTopo;
+	}
+
+	public void setCommentTopo(ArrayList<Comment> commentTopo) {
+		this.commentTopo = commentTopo;
+	}
+
 	public String searchSpotDetails() {
 		String vResult = ActionSupport.INPUT;
 
@@ -150,6 +159,7 @@ public class SpotDetailsAction extends ActionSupport{
 	public String getTopo() {
 		String vResult = ActionSupport.INPUT;
 		topoBean = managerFactory.getTopoManager().getTopo(idTopo);
+		commentTopo = managerFactory.getCommentTopoManager().getAllComment(idTopo);
 		LOGGER.debug(topoBean.toString() + "@@");
 		vResult = ActionSupport.SUCCESS;	
 

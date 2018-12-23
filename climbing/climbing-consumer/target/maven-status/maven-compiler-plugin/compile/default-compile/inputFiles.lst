@@ -1,4 +1,5 @@
 C:\Users\nadas\Documents\formation-openclassrooms-P6\climbing-website-master\climbing\climbing-consumer\src\main\java\org\climbing\consumer\contract\dao\user\UserDao.java
+C:\Users\nadas\Documents\formation-openclassrooms-P6\climbing-website-master\climbing\climbing-consumer\src\main\java\org\climbing\consumer\impl\rowmappers\topo\BookingTopoUserRM.java
 C:\Users\nadas\Documents\formation-openclassrooms-P6\climbing-website-master\climbing\climbing-consumer\src\main\java\org\climbing\consumer\impl\rowmappers\spot\RouteRM.java
 C:\Users\nadas\Documents\formation-openclassrooms-P6\climbing-website-master\climbing\climbing-consumer\src\main\java\org\climbing\consumer\contract\dao\topo\BookingTopoDao.java
 C:\Users\nadas\Documents\formation-openclassrooms-P6\climbing-website-master\climbing\climbing-consumer\src\main\java\org\climbing\consumer\contract\dao\spot\SpotDao.java

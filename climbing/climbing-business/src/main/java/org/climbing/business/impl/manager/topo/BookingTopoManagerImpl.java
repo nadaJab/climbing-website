@@ -23,7 +23,8 @@ public class BookingTopoManagerImpl extends AbstractManagerImpl implements Booki
 	private PlatformTransactionManager platformTransactionManager;
 
 	ArrayList<BookingTopo> listBooking;
-
+	ArrayList<BookingTopo> listCommande;
+	
 	@Override
 	public ArrayList<BookingTopo> getBookingTopoInfo(int idTopo) {
 		DefaultTransactionDefinition vDefintion = new DefaultTransactionDefinition();
@@ -72,7 +73,7 @@ public class BookingTopoManagerImpl extends AbstractManagerImpl implements Booki
 	@Override
 	public boolean updateTopoReturn(int idTopo) {
 		boolean result=false;
-		
+
 		DefaultTransactionDefinition vDefintion = new DefaultTransactionDefinition();
 		vDefintion.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
 		vDefintion.setTimeout(30); 
@@ -82,8 +83,8 @@ public class BookingTopoManagerImpl extends AbstractManagerImpl implements Booki
 		try {
 
 			getDaoFactory().getBookingTopoDao().updateTopoReturnDao(idTopo);
-			 result=true;
-			 
+			result=true;
+
 			TransactionStatus vTScommit = vTransactionStatus;
 			vTransactionStatus = null;
 			platformTransactionManager.commit(vTScommit);	
@@ -93,5 +94,50 @@ public class BookingTopoManagerImpl extends AbstractManagerImpl implements Booki
 			}
 		}
 		return result;
+	}
+
+	@Override
+	public ArrayList<BookingTopo> getBookingTopoList(int idUser) {
+		DefaultTransactionDefinition vDefintion = new DefaultTransactionDefinition();
+		vDefintion.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
+		vDefintion.setTimeout(30); 
+
+		TransactionStatus vTransactionStatus = platformTransactionManager.getTransaction(vDefintion);
+
+		try {
+			listBooking = getDaoFactory().getBookingTopoDao().getBookingTopoListDao(idUser);
+
+			TransactionStatus vTScommit = vTransactionStatus;
+			vTransactionStatus = null;
+			platformTransactionManager.commit(vTScommit);	
+		} finally {
+			if (vTransactionStatus != null) {
+				platformTransactionManager.rollback(vTransactionStatus);
+			}
+		}
+		return listBooking;
+	}
+
+	@Override
+	public ArrayList<BookingTopo> getCommandeList(int idUser) {
+		DefaultTransactionDefinition vDefintion = new DefaultTransactionDefinition();
+		vDefintion.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
+		vDefintion.setTimeout(30); 
+
+		TransactionStatus vTransactionStatus = platformTransactionManager.getTransaction(vDefintion);
+
+		try {
+			
+			listCommande = getDaoFactory().getBookingTopoDao().getCommandeListDao(idUser);
+
+			TransactionStatus vTScommit = vTransactionStatus;
+			vTransactionStatus = null;
+			platformTransactionManager.commit(vTScommit);	
+		} finally {
+			if (vTransactionStatus != null) {
+				platformTransactionManager.rollback(vTransactionStatus);
+			}
+		}
+		return listCommande;
 	}
 }

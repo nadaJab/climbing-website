@@ -161,7 +161,7 @@
 			<result name="success" type="redirectAction">/jsp/home.jsp</result>
 		</action>
 
-		<!-- Action ajout commentaire -->
+		<!-- Action ajout commentaire Spot-->
 		<action name="ajoutCommentaire"
 			class="org.climbing.action.GestionComment" method="addCommentSpot">
 			<result name="success" type="redirectAction">
@@ -170,6 +170,17 @@
 				<param name="idSpot">${idSpot}</param>
 			</result>
 		</action>
+		
+		<!-- Action ajout commentaire Topo-->
+		<action name="ajoutCommentaireTopo"
+			class="org.climbing.action.GestionComment" method="addCommentTopo">
+			<result name="success" type="redirectAction">
+				<param name="actionName">topoDetails</param>
+				<param name="parse">true</param>
+				<param name="idTopo">${idTopo}</param>
+			</result>
+		</action>
+		
 
 		<!-- Action qui affiche la page d'information d'un user -->
 		<action name="userProfile"
@@ -193,12 +204,22 @@
 		</action>
 
 		<!-- action pour supprimer des commentaires pour l'admin -->
-		<action name="deleteComment"
+		<action name="deleteCommentSpot"
 			class="org.climbing.action.GestionComment" method="deleteCommentSpot">
 			<result name="success" type="redirectAction">
 				<param name="actionName">siteDetail</param>
 				<param name="parse">true</param>
 				<param name="idSpot">${idSpot}</param>
+			</result>
+		</action>
+		
+		<!-- action pour supprimer des commentaires Topo pour l'admin -->
+		<action name="deleteCommentTopo"
+			class="org.climbing.action.GestionComment" method="deleteCommentTopo">
+			<result name="success" type="redirectAction">
+				<param name="actionName">topoDetails</param>
+				<param name="parse">true</param>
+				<param name="idTopo">${idTopo}</param>
 			</result>
 		</action>
 

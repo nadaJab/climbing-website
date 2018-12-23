@@ -86,7 +86,12 @@
 		<div id="topoUser">
 			<hr class="mb-4">
 			<h4 class="mb-3">Mes topos</h4>
-			
+			<s:if test="listTopo.empty">
+				<div class="row justify-content-lg-center">
+					<p class="text-center grossissement">Vous n'avez aucun Topo en ligne</p>
+				</div>
+			</s:if>
+			<s:else>
 			<table class="table table-bordered">
 				<thead>
 					<tr class="table-primary">
@@ -108,11 +113,11 @@
 									<s:param name="idTopo" value="idTopo" />
 								</s:a></td>
 						</tr>
-
 					</s:iterator>
 
 				</tbody>
 			</table>
+			</s:else>
 			
 			<h6>Topo en réservation :</h6>
 			<s:if test="bookingTopoList.empty">
@@ -120,39 +125,40 @@
 					<p class="text-center grossissement">Aucun topo réservé</p>
 				</div>
 			</s:if>
-	 		<s:else>
-			<table class="table table-bordered">
-				<thead>
-					<tr class="table-primary">
-						<th scope="col">Nom du topo</th>
-						<th scope="col">Réservé par</th>
-						<th scope="col">Email</th>
-						<th scope="col">Date de réservation</th>
-						<th scope="col">Date de retour</th>
-						<th scope="col">Retour Ok</th>
-					</tr>
-				</thead>
-				<tbody>
-					<s:iterator value="bookingTopoList">
-						<tr>
-							<td><s:property value="topo.topoName" /></td>
-							<td><s:property value="user.userName" /></td>
-							<td><s:property value="user.account.email" /></td>
-							<td><s:property value="borrowingDate" /></td>
-							<td><s:property value="returnDate" /></td>
-
-							<td><s:a action="returnOk" class="btn btn-outline-danger">
-									<span class="fas fa-exchange-alt"></span>
-									<s:hidden key="idTopo" />
-									<s:param name="idTopo" value="idTopo" />
-								</s:a></td>
-
+			<s:else>
+				<table class="table table-bordered">
+					<thead>
+						<tr class="table-primary">
+							<th scope="col">Nom du topo</th>
+							<th scope="col">Réservé par</th>
+							<th scope="col">Email</th>
+							<th scope="col">Date de réservation</th>
+							<th scope="col">Date de retour</th>
+							<th scope="col">Retour Ok</th>
 						</tr>
-					</s:iterator>
+					</thead>
+					<tbody>
+						<s:iterator value="bookingTopoList">
+							<tr>
+								<td><s:property value="topoBean.topoName" /></td>
+								<td><s:property value="userBean.firstName" /> 
+								<s:property value="userBean.lastName" /></td>
+								<td><s:property value="userBean.account.email" /></td>
+								<td><s:property value="borrowingDate" /></td>
+								<td><s:property value="returnDate" /></td>
+
+								<td><s:a action="returnOk" class="btn btn-outline-danger">
+										<span class="fas fa-exchange-alt"></span>
+										<s:hidden key="idTopo" />
+										<s:param name="idTopo" value="idTopo" />
+									</s:a></td>
+
+							</tr>
+						</s:iterator>
 
 
-				</tbody>
-			</table>
+					</tbody>
+				</table>
 			</s:else>
 			<hr class="mb-4">
 
@@ -160,6 +166,31 @@
 
 		<div id="productUser">
 			<h4 class="mb-3">Mes commandes</h4>
+			<s:if test="Commandes.empty">
+				<div class="row justify-content-lg-center">
+					<p class="text-center grossissement">Vous n'avez aucune commande</p>
+				</div>
+			</s:if>
+			<s:else>
+				<table class="table table-bordered">
+					<thead>
+						<tr class="table-primary">
+							<th scope="col">Nom du topo</th>		
+							<th scope="col">Date de réservation</th>
+							<th scope="col">Retour Ok</th>
+						</tr>
+					</thead>
+					<tbody>
+						<s:iterator value="Commandes">
+							<tr>
+								<td><s:property value="topoBean.topoName" /></td>
+								<td><s:property value="borrowingDate" /></td>
+							    <td><s:property value="returnConfirmation" /></td>
+							</tr>
+						</s:iterator>
+					</tbody>
+				</table>
+			</s:else>
 			<hr class="mb-4">
 
 		</div>

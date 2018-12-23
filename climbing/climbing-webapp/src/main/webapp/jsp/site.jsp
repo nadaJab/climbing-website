@@ -114,7 +114,7 @@
 										<s:property value="dateComment" />
 										.
 										<s:if test="#session.user.role == 'admin'">
-											<s:a action="deleteComment" class="btn btn-outline-danger">
+											<s:a action="deleteCommentSpot" class="btn btn-outline-danger">
 												<span class="fas fa-trash-alt"></span>
 
 												<s:hidden key="idSpot" />

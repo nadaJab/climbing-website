@@ -5,16 +5,19 @@ import java.sql.SQLException;
 
 import org.climbing.model.beans.topo.BookingTopo;
 import org.climbing.model.beans.topo.Topo;
+import org.climbing.model.beans.user.Account;
 import org.climbing.model.beans.user.User;
 import org.springframework.jdbc.core.RowMapper;
 
-public class BookingTopoRM implements RowMapper<BookingTopo>{
+public class BookingTopoUserRM implements RowMapper<BookingTopo>{
 
 	@Override
 	public BookingTopo mapRow(ResultSet rs, int rowNum) throws SQLException {
-
+		
 		BookingTopo bookingTopo = new BookingTopo();
 		Topo topo = new Topo();
+		User user = new User();
+		Account account = new Account();
 		
 		bookingTopo.setIdBookingTopo(rs.getInt("id_bookingtopo"));
 		bookingTopo.setBorrowingDate(rs.getDate("borrowing_date"));
@@ -27,6 +30,12 @@ public class BookingTopoRM implements RowMapper<BookingTopo>{
 		topo.setTopoName(rs.getString("topo_name"));
 		bookingTopo.setTopoBean(topo);
 		
+		user.setFirstName(rs.getString("first_name"));
+		user.setLastName(rs.getString("last_name"));
+		account.setEmail(rs.getString("email"));
+		user.setAccount(account);
+		
+		bookingTopo.setUserBean(user);
 		return bookingTopo;
 	}
 

@@ -32,8 +32,8 @@ public class UserProfileAction extends ActionSupport implements SessionAware{
 	private Integer idUser;
 	private Integer idTopo;
 	private ArrayList<Topo> listTopo;
-	private ArrayList<User> userList;
 	private ArrayList<BookingTopo> bookingTopoList;
+	private ArrayList<BookingTopo> Commandes;
 
 	private static final Logger LOGGER = LogManager.getLogger(UserProfileAction.class);
 
@@ -43,18 +43,8 @@ public class UserProfileAction extends ActionSupport implements SessionAware{
 
 		User userSession = (User) session.get("user"); 
 		listTopo = managerFactory.getTopoManager().getTopoUser(userSession.getIdUser());
-
-		for(int i=0;i<listTopo.size();i++) {
-			bookingTopoList = managerFactory.getBookingTopoManager().getBookingTopoInfo(listTopo.get(i).getIdTopo());
-		}
-	
-
-		for(int i=0;i<bookingTopoList.size(); i++) {
-			userList = managerFactory.getUserManager().getUserAccount(bookingTopoList.get(i).getIdUser()); 
-			bookingTopoList.get(i).setUserBean(userList.get(i));
-		}
-		
-		LOGGER.debug(bookingTopoList.toString() + "Voici la liste de vos topos réservés");
+		bookingTopoList = managerFactory.getBookingTopoManager().getBookingTopoList(userSession.getIdUser());
+		Commandes = managerFactory.getBookingTopoManager().getCommandeList(userSession.getIdUser());
 		
 		return SUCCESS;	
 	}
@@ -121,6 +111,14 @@ public class UserProfileAction extends ActionSupport implements SessionAware{
 
 	public void setIdTopo(Integer idTopo) {
 		this.idTopo = idTopo;
+	}
+
+	public ArrayList<BookingTopo> getCommandes() {
+		return Commandes;
+	}
+
+	public void setCommandes(ArrayList<BookingTopo> commandes) {
+		Commandes = commandes;
 	}
 
 	public String doUpdateUser() {

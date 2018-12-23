@@ -72,6 +72,7 @@ public class CommentSpotManagerImpl extends AbstractManagerImpl implements Comme
 		return listComment;
 	}
 
+	/*
 	@Override
 	public boolean deleteCommentSpot(int idComment) {
 		boolean result = false;
@@ -95,5 +96,5 @@ public class CommentSpotManagerImpl extends AbstractManagerImpl implements Comme
 			}
 		}
 		return result;
-	}
+	} */
 }
