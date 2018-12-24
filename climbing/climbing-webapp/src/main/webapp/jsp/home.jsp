@@ -7,18 +7,16 @@
 	<br/>
 	
 	<!-- recherche multi-critères  -->
-	<div class="card">
-		<div class="card-body">
-			<s:form action="search" theme="simple" cssClass="well form-search">
+
+			<s:form action="search" theme="simple" class="btn-lg">
+
 				<s:textfield key="spotBean.spotName" placeholder="Le nom du site" />
 				<s:textfield key="countryBean.cityName" placeholder="Ville" />
 				<s:textfield key="countryBean.countryName" placeholder="Pays" />
-
-				<s:submit cssClass="btn btn-primary" key="search" />
+			
+				<s:submit cssClass="btn btn-primary btn-lg" key="search" />	
 			</s:form>
-		</div>
-	</div>
-	
+
 <s:if test="!isTestAffichage()">	
 	<br/>
 	<div id="carouselExampleControls" class="carousel slide"

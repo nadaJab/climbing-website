@@ -83,10 +83,7 @@
 					class="d-block w-100" alt="...">
 				</div>
 				
-				<div class="col-sm">
-					<img src="/climbing-webapp/assets/images-topo/31/photo1.jpg"
-					class="d-block w-100" alt="...">
-				</div>
+				
 			</div>		
 			
 		</div>
