@@ -95,9 +95,29 @@ public class AjoutTopoAction extends ActionSupport implements SessionAware{
 
 	public String doAddTopo() {
 		String vResult = ActionSupport.INPUT;
+		
+		topoBean.setImageURL("aa");
+		LOGGER.debug(topoBean.getImageURL() + "==="); 
 
-		namePack = topoBean.getTopoName() + "-" + String.valueOf(((User) session.get(USER)).getIdUser());
+		topoBean.setPublished(Calendar.getInstance().getTime());
+		LOGGER.debug(topoBean.getPublished() + "date d'ajout du topo");
 
+		LOGGER.debug(((User) session.get(USER)).getIdUser());
+		int idUser = ((User) session.get(USER)).getIdUser();
+
+		try {
+		topoBean = managerFactory.getTopoManager().addTopo(topoBean);
+		managerFactory.getTopoManager().addJoinTopoSpot(topoBean.getIdTopo(), idSpot);
+		managerFactory.getTopoManager().addJoinTopoUser(topoBean.getIdTopo(), idUser);
+		vResult = ActionSupport.SUCCESS;
+
+		}catch(Exception e) {
+			  this.addActionError(e.getMessage());
+		}
+		
+		namePack = String.valueOf(topoBean.getIdTopo());
+
+		
 		for (int i = 0; i < uploads.size(); i++) {
 			File uploadedFile = uploads.get(i);
 			String fileName = uploadFileNames.get(i);
@@ -116,25 +136,6 @@ public class AjoutTopoAction extends ActionSupport implements SessionAware{
 				System.out.println("Could not copy file " + fileName);
 				ex.printStackTrace();
 			}	
-		}
-
-		topoBean.setImageURL(namePack);
-		LOGGER.debug(topoBean.getImageURL() + "==="); 
-
-		topoBean.setPublished(Calendar.getInstance().getTime());
-		LOGGER.debug(topoBean.getPublished() + "date d'ajout du topo");
-
-		LOGGER.debug(((User) session.get(USER)).getIdUser());
-		int idUser = ((User) session.get(USER)).getIdUser();
-
-		try {
-		topoBean = managerFactory.getTopoManager().addTopo(topoBean);
-		managerFactory.getTopoManager().addJoinTopoSpot(topoBean.getIdTopo(), idSpot);
-		managerFactory.getTopoManager().addJoinTopoUser(topoBean.getIdTopo(), idUser);
-		vResult = ActionSupport.SUCCESS;
-
-		}catch(Exception e) {
-			  this.addActionError(e.getMessage());
 		}
 
 		return vResult;

@@ -4,8 +4,8 @@
 <s:fielderror />
 
 <div class="container">
-	<hr class="mb-4">
-
+	<br/>
+	
 	<!-- recherche multi-critères  -->
 	<div class="card">
 		<div class="card-body">
@@ -18,8 +18,55 @@
 			</s:form>
 		</div>
 	</div>
+	
+<s:if test="!isTestAffichage()">	
+	<br/>
+	<div id="carouselExampleControls" class="carousel slide"
+		data-ride="carousel">
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<img class="d-block w-100"
+					src="/climbing-webapp/assets/images-topo/Image-home/photo11.jpg"
+					alt="First slide">
+				<div class="carousel-caption d-none d-md-block">
+					<h5>Bienvenu à notre site</h5>
+					<p>Site communautaire dédié à l'escalade</p>
+				</div>
+			</div>
+			<div class="carousel-item">
+				<img class="d-block w-100"
+					src="/climbing-webapp/assets/images-topo/Image-home/photo12.jpg"
+					alt="Second slide">
+				<div class="carousel-caption d-none d-md-block">
+					<h5>Bienvenu à notre site</h5>
+					<p>Site communautaire dédié à l'escalade</p>
+				</div>
+			</div>
+			<div class="carousel-item">
+				<img class="d-block w-100"
+					src="/climbing-webapp/assets/images-topo/Image-home/photo13.jpg"
+					alt="Third slide">
+				<div class="carousel-caption d-none d-md-block">
+					<h5>Bienvenu à notre site</h5>
+					<p>Site communautaire dédié à l'escalade</p>
+				</div>
+			</div>
+		</div>
+		<a class="carousel-control-prev" href="#carouselExampleControls"
+			role="button" data-slide="prev"> <span
+			class="carousel-control-prev-icon" aria-hidden="true"></span> <span
+			class="sr-only">Previous</span>
+		</a> <a class="carousel-control-next" href="#carouselExampleControls"
+			role="button" data-slide="next"> <span
+			class="carousel-control-next-icon" aria-hidden="true"></span> <span
+			class="sr-only">Next</span>
+		</a>
+	</div>
+</s:if>
+	
 </div>
 
+<br/>
 <!-- Résultat de recherche -->
 <s:if test="isTestAffichage()">
 	<div class="container content">
@@ -50,7 +97,7 @@
 
 							<s:a action="siteDetail" class="btn btn-primary">
 								<s:param name="idSpot" value="idSpot" />Voir détails</s:a>
-								
+
 							<s:if test="#session.user.role == 'admin'">
 								<s:a action="deleteSpot" class="btn btn-outline-danger">
 									<span class="fas fa-trash-alt"></span>
@@ -62,13 +109,11 @@
 						</div>
 					</div>
 				</div>
-				<hr class="mb-4">
-
+				<br/>
 			</s:iterator>
 		</s:else>
 	</div>
 </s:if>
-
 <%@include file="include/footer.jsp"%>
 </body>
 </html>

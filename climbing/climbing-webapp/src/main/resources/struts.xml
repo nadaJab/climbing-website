@@ -98,6 +98,13 @@
 			<result name="success">/jsp/topo-details.jsp</result>
 		</action>
 
+		<!-- Action "Deconnexion -->
+		<action name="deconnexion" class="org.climbing.action.LoginAction" method="doLogout">
+			<result type="redirectAction">
+				<param name="actionName">home</param>
+			</result>	
+		</action>
+		
 	</package>
 
 	<!-- ===== Package pour les actions privées ===== -->
@@ -105,7 +112,16 @@
 	<package name="private" extends="global">
 
 		<default-interceptor-ref name="loginStack"></default-interceptor-ref>
+		
+		<!-- Action par défaut -->
+		<default-action-ref name="home" />
 
+		<!-- Action "home" -->
+		<action name="home" class="org.climbing.action.HomeAction"
+			method="input">
+			<result name="input">/jsp/home.jsp</result>
+		</action>
+		
 		<!-- Action "Ajout d'un topo" -->
 		<action name="ajouttopo"
 			class="org.climbing.action.AjoutTopoAction" method="input">
@@ -155,11 +171,6 @@
 			<result name="success" type="redirectAction">/jsp/home.jsp</result>
 		</action>
 
-		<!-- Action "Deconnexion -->
-		<action name="deconnexion"
-			class="org.climbing.action.LoginAction" method="doLogout">
-			<result name="success" type="redirectAction">/jsp/home.jsp</result>
-		</action>
 
 		<!-- Action ajout commentaire Spot-->
 		<action name="ajoutCommentaire"

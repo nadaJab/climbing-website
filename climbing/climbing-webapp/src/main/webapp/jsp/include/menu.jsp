@@ -31,7 +31,7 @@
     
     <sx:head />
 </head>
-<body>
+<body background="/climbing-webapp/assets/images-topo/Image-home/Background1.jpg">
 
 	<header>
 

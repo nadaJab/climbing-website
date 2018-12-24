@@ -91,7 +91,7 @@
 
 				</div>
 			</div>
-			<hr class="mb-4">
+			<br/>
 
 			<div class="card">
 				<div class="card-body">
@@ -208,11 +208,11 @@
 											</div>
 										</div>
 
-										<!-- Ajout ligne 
+										<!-- Ajout ligne -->
 										<s:a action="ajoutligne" class="btn btn-primary">
 											<s:param name="idSector" value="idSector" />
 											<span class="fas fa-plus"></span>
-										</s:a>-->
+										</s:a>
 
 										<!-- Supprimer le secteur par l'admin -->
 										<s:if test="#session.user.role == 'admin'">
@@ -224,7 +224,7 @@
 										</s:if>
 									</div>
 								</div>
-								<hr class="mb-4">
+								<br/>
 							</div>
 						</s:iterator>
 					</s:else>
@@ -264,7 +264,7 @@
 										 Voir topo</s:a>
 								</div>
 							</div>
-							<hr class="mb-4">
+							<br/>
 						</s:iterator>
 					</s:else>
 				</div>

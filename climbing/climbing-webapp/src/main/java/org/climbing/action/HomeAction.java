@@ -117,11 +117,4 @@ public class HomeAction extends ActionSupport{
 		return vResult;
 	} 
 	
-	/*
-	public String searchSpotAjax() {
-		listSpot = managerFactory.getSpotManager().getAllSpot();
-        return ActionSupport.SUCCESS;
-
-	}*/
-	
 }

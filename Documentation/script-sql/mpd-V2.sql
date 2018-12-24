@@ -21,7 +21,7 @@ CREATE TABLE public.user_Web (
                 climbing_type VARCHAR NOT NULL,
                 birth_year DATE NOT NULL,
                 genre VARCHAR NOT NULL,
-                role VARCHAR NOT NULL DEFAULT 'utilisateur',
+                role VARCHAR NOT NULL,
                 id_compte INTEGER NOT NULL,
                 CONSTRAINT user_web_pk PRIMARY KEY (id_user)
 );
@@ -46,8 +46,8 @@ CREATE SEQUENCE public.country_id_city_country_seq_1;
 
 CREATE TABLE public.country (
                 id_city_country INTEGER NOT NULL DEFAULT nextval('public.country_id_city_country_seq_1'),
-                city_name VARCHAR NOT NULL,
                 country_name VARCHAR NOT NULL,
+                city_name VARCHAR NOT NULL,
                 CONSTRAINT country_pk PRIMARY KEY (id_city_country)
 );
 
@@ -75,6 +75,7 @@ CREATE SEQUENCE public.sector_id_sector_seq;
 CREATE TABLE public.sector (
                 id_sector INTEGER NOT NULL DEFAULT nextval('public.sector_id_sector_seq'),
                 sector_name VARCHAR NOT NULL,
+                nb_routes INTEGER NOT NULL,
                 CONSTRAINT sector_pk PRIMARY KEY (id_sector)
 );
 
@@ -112,7 +113,6 @@ CREATE TABLE public.booking_topo (
                 return_date DATE NOT NULL,
                 id_topo INTEGER NOT NULL,
                 id_user INTEGER NOT NULL,
-				return_confirmation BOOLEAN DEFAULT 'false'
                 CONSTRAINT booking_topo_pk PRIMARY KEY (id_bookingTopo)
 );
 
@@ -122,6 +122,7 @@ ALTER SEQUENCE public.booking_topo_id_bookingtopo_seq OWNED BY public.booking_to
 CREATE TABLE public.list_topo (
                 id_topo INTEGER NOT NULL,
                 id_user INTEGER NOT NULL,
+                nb_copy INTEGER NOT NULL,
                 CONSTRAINT list_topo_pk PRIMARY KEY (id_topo, id_user)
 );
 
@@ -174,7 +175,7 @@ CREATE TABLE public.comment_spot (
 ALTER TABLE public.user_Web ADD CONSTRAINT account_user_fk
 FOREIGN KEY (id_compte)
 REFERENCES public.account (id_compte)
-ON DELETE CASCADE
+ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
@@ -188,7 +189,7 @@ NOT DEFERRABLE;
 ALTER TABLE public.list_topo ADD CONSTRAINT user_listtopo_fk
 FOREIGN KEY (id_user)
 REFERENCES public.user_Web (id_user)
-ON DELETE CASCADE
+ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
@@ -202,7 +203,7 @@ NOT DEFERRABLE;
 ALTER TABLE public.comment_spot ADD CONSTRAINT comment_commentspot_fk
 FOREIGN KEY (id_comment)
 REFERENCES public.comment (id_comment)
-ON DELETE CASCADE
+ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
@@ -223,7 +224,7 @@ NOT DEFERRABLE;
 ALTER TABLE public.sector_route ADD CONSTRAINT route_sectorroute_fk
 FOREIGN KEY (id_route)
 REFERENCES public.route (id_route)
-ON DELETE CASCADE
+ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
@@ -237,35 +238,35 @@ NOT DEFERRABLE;
 ALTER TABLE public.spot_sector ADD CONSTRAINT sector_spotsector_fk
 FOREIGN KEY (id_sector)
 REFERENCES public.sector (id_sector)
-ON DELETE CASCADE
+ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
 ALTER TABLE public.comment_topo ADD CONSTRAINT topo_commenttopo_fk
 FOREIGN KEY (id_topo)
 REFERENCES public.topo (id_topo)
-ON DELETE CASCADE
+ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
 ALTER TABLE public.list_topo ADD CONSTRAINT topo_listtopo_fk
 FOREIGN KEY (id_topo)
 REFERENCES public.topo (id_topo)
-ON DELETE CASCADE
+ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
 ALTER TABLE public.booking_topo ADD CONSTRAINT topo_bookingtopo_fk
 FOREIGN KEY (id_topo)
 REFERENCES public.topo (id_topo)
-ON DELETE CASCADE
+ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
 ALTER TABLE public.topo_spot ADD CONSTRAINT topo_toposite_fk
 FOREIGN KEY (id_topo)
 REFERENCES public.topo (id_topo)
-ON DELETE CASCADE
+ON DELETE NO ACTION
 ON UPDATE NO ACTION
 NOT DEFERRABLE;
 
@@ -286,6 +287,6 @@ NOT DEFERRABLE;
 ALTER TABLE public.spot_sector ADD CONSTRAINT spot_spotsector_fk
 FOREIGN KEY (id_spot)
 REFERENCES public.spot (id_spot)
-ON DELETE CASCADE
+ON DELETE NO ACTION
 ON UPDATE CASCADE
 NOT DEFERRABLE;
