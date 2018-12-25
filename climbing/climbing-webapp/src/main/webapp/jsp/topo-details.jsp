@@ -73,10 +73,10 @@
 		<div class="card-body">
 		
 			<div class="row">
-			<s:iterator value="files">
+			<s:iterator value="lFileName">
 			
 				<div class="col-sm">		
-					<img alt="img" src="<s:property/>">
+					<img alt="img" src="/climbing-webapp/images/images-topo/<s:property/>" />
 				</div>
 				
 			</s:iterator>	

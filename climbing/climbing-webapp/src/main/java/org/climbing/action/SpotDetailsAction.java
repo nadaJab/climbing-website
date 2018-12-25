@@ -1,25 +1,14 @@
 package org.climbing.action;
 
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
-import javax.imageio.ImageIO;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.struts2.interceptor.SessionAware;
-import org.apache.struts2.servlet.ServletRequestAware;
 import org.climbing.business.contract.ManagerFactory;
 import org.climbing.model.beans.comment.Comment;
 import org.climbing.model.beans.spot.Route;
@@ -30,7 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class SpotDetailsAction extends ActionSupport implements ServletRequestAware{
+public class SpotDetailsAction extends ActionSupport{
 
 	/**
 	 * 
@@ -49,8 +38,9 @@ public class SpotDetailsAction extends ActionSupport implements ServletRequestAw
 	private ArrayList<Topo> topos;
 	private Topo topoBean;
 	private  File[] files;
+	private ArrayList<String> lFileName = new ArrayList<String>();
 	private HttpServletRequest servletRequest;
-	
+
 	@Autowired
 	private ManagerFactory managerFactory;
 
@@ -147,6 +137,14 @@ public class SpotDetailsAction extends ActionSupport implements ServletRequestAw
 		this.files = files;
 	}
 
+	public ArrayList<String> getlFileName() {
+		return lFileName;
+	}
+
+	public void setlFileName(ArrayList<String> lFileName) {
+		this.lFileName = lFileName;
+	}
+
 	public String searchSpotDetails() {
 		String vResult = ActionSupport.INPUT;
 
@@ -180,13 +178,24 @@ public class SpotDetailsAction extends ActionSupport implements ServletRequestAw
 		topoBean = managerFactory.getTopoManager().getTopo(idTopo);
 		commentTopo = managerFactory.getCommentTopoManager().getAllComment(idTopo);
 		LOGGER.debug(topoBean.toString() + "@@");
-		
+
 		String rep = String.valueOf(topoBean.getIdTopo());
 		String docPath = "C:\\Users\\nadas\\Documents\\formation-openclassrooms-P6\\climbing-website-master\\climbing\\climbing-webapp\\src\\main\\webapp\\images\\images-topo";
-	
-		File file = new File(docPath + "/" + rep +"/");
-		
-		files=file.listFiles(); 
+		//String docPath = "/climbing-webapp/src/main/webapp/images/images-topo";
+
+		//String docPath = "..\\images\\images-topo";
+
+		String relativeWebPath = "/images";
+		String absoluteDiskPath = servletRequest.getServletContext().getRealPath(relativeWebPath);
+		LOGGER.debug(absoluteDiskPath);
+		File file = new File(docPath + "/" + rep +"/");	
+
+
+		files=file.listFiles();
+
+		for (File f : files) {
+			lFileName.add(rep + "/" + f.getName());
+		}
 		LOGGER.debug( Arrays.toString(files) + "%%");
 		vResult = ActionSupport.SUCCESS;	
 
@@ -194,15 +203,9 @@ public class SpotDetailsAction extends ActionSupport implements ServletRequestAw
 
 	}
 
-	@Override
 	public void setServletRequest(HttpServletRequest request) {
 		this.servletRequest = request;
 
 	}
-
-	@Override
-	public String toString() {
-		return "SpotDetailsAction [files=" + Arrays.toString(files) + "]";
-	}
-
+	
 }
