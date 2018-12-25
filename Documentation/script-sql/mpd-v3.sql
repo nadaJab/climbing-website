@@ -97,7 +97,6 @@ CREATE TABLE public.topo (
                 nb_copy_max INTEGER NOT NULL,
                 edition_year INTEGER,
                 published DATE,
-                image_URL VARCHAR NOT NULL,
                 CONSTRAINT topo_pk PRIMARY KEY (id_topo)
 );
 

@@ -1,0 +1,1 @@
+INSERT INTO spot_sector (id_spot, id_sector) VALUES (1, 1);

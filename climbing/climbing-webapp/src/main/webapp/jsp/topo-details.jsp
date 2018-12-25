@@ -73,17 +73,13 @@
 		<div class="card-body">
 		
 			<div class="row">
-				<div class="col-sm">
-					<img src="/climbing-webapp/assets/images-topo/31/photo1.jpg"
-					class="d-block w-100" alt="...">
+			<s:iterator value="files">
+			
+				<div class="col-sm">		
+					<img alt="img" src="<s:property/>">
 				</div>
 				
-				<div class="col-sm">
-					<img src="/climbing-webapp/assets/images-topo/31/photo1.jpg"
-					class="d-block w-100" alt="...">
-				</div>
-				
-				
+			</s:iterator>	
 			</div>		
 			
 		</div>
@@ -173,5 +169,7 @@
         });
     </script>
 -->
+<br/>
+<%@include file="include/footer.jsp"%>
 </body>
 </html>

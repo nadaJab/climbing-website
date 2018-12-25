@@ -28,8 +28,8 @@ public class TopoDaoImpl extends AbstractDaoImpl implements TopoDao  {
 
 	@Override
 	public Topo addTopoDao(Topo topo) {
-		String vSQL = "INSERT INTO topo (topo_name, author, nb_copy_max, edition_year, published, image_url)"
-				+ " VALUES ( :topoName, :author, :nbCopyMax, :editionYear, :published, :imageURL)";
+		String vSQL = "INSERT INTO topo (topo_name, author, nb_copy_max, edition_year, published)"
+				+ " VALUES ( :topoName, :author, :nbCopyMax, :editionYear, :published)";
 
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 
@@ -42,7 +42,6 @@ public class TopoDaoImpl extends AbstractDaoImpl implements TopoDao  {
 		vParams.addValue("editionYear", topo.getEditionYear(), Types.INTEGER);
 		vParams.addValue("editionYear", topo.getEditionYear(), Types.INTEGER);
 		vParams.addValue("published", topo.getPublished(), Types.DATE);
-		vParams.addValue("imageURL", topo.getImageURL(), Types.VARCHAR);
 
 		vJdbcTemplate.update(vSQL, vParams, keyHolder, new String[] { "id_topo" }); 
 		topo.setIdTopo(keyHolder.getKey().intValue());

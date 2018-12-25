@@ -18,12 +18,12 @@
 				<interceptor-ref name="defaultStack" />
 			</interceptor-stack>
 		</interceptors>
-
+		
 		<global-results>
-			<result name="error-forbidden" type="httpheader">
-				<param name="error">403</param>
-			</result>
+			<result name="login">/jsp/erreur.jsp</result>
 		</global-results>
+		
+		
 
 	</package>
 	<!-- ===== Package pour les actions publiques ===== -->
@@ -99,7 +99,7 @@
 		</action>
 
 		<!-- Action "Deconnexion -->
-		<action name="deconnexion" class="org.climbing.action.LoginAction" method="doLogout">
+		<action name="deconnexion" class="org.climbing.action.LogOutAction" method="doLogout">
 			<result type="redirectAction">
 				<param name="actionName">home</param>
 			</result>	
@@ -297,5 +297,5 @@
 			<param name="root">listSpot</param> </result> </action> -->
 
 	</package>
-
+	
 </struts>

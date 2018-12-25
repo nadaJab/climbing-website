@@ -19,8 +19,7 @@ public class topoRM implements RowMapper<Topo>{
 		topo.setAuthor(rs.getString("author"));
 		topo.setEditionYear(rs.getInt("edition_year"));
 		topo.setPublished(rs.getDate("published"));
-		topo.setImageURL(rs.getString("image_url"));
-
+	
 		return topo;
 	}
 

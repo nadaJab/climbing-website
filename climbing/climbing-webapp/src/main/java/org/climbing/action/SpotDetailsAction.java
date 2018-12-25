@@ -1,11 +1,19 @@
 package org.climbing.action;
 
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import javax.imageio.ImageIO;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.logging.log4j.LogManager;
@@ -22,7 +30,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class SpotDetailsAction extends ActionSupport{
+public class SpotDetailsAction extends ActionSupport implements ServletRequestAware{
 
 	/**
 	 * 
@@ -40,7 +48,9 @@ public class SpotDetailsAction extends ActionSupport{
 	private ArrayList<Comment> commentTopo;
 	private ArrayList<Topo> topos;
 	private Topo topoBean;
-
+	private  File[] files;
+	private HttpServletRequest servletRequest;
+	
 	@Autowired
 	private ManagerFactory managerFactory;
 
@@ -128,6 +138,15 @@ public class SpotDetailsAction extends ActionSupport{
 		this.commentTopo = commentTopo;
 	}
 
+
+	public File[] getFiles() {
+		return files;
+	}
+
+	public void setFiles(File[] files) {
+		this.files = files;
+	}
+
 	public String searchSpotDetails() {
 		String vResult = ActionSupport.INPUT;
 
@@ -161,10 +180,29 @@ public class SpotDetailsAction extends ActionSupport{
 		topoBean = managerFactory.getTopoManager().getTopo(idTopo);
 		commentTopo = managerFactory.getCommentTopoManager().getAllComment(idTopo);
 		LOGGER.debug(topoBean.toString() + "@@");
+		
+		String rep = String.valueOf(topoBean.getIdTopo());
+		String docPath = "C:\\Users\\nadas\\Documents\\formation-openclassrooms-P6\\climbing-website-master\\climbing\\climbing-webapp\\src\\main\\webapp\\images\\images-topo";
+	
+		File file = new File(docPath + "/" + rep +"/");
+		
+		files=file.listFiles(); 
+		LOGGER.debug( Arrays.toString(files) + "%%");
 		vResult = ActionSupport.SUCCESS;	
 
 		return vResult;
 
+	}
+
+	@Override
+	public void setServletRequest(HttpServletRequest request) {
+		this.servletRequest = request;
+
+	}
+
+	@Override
+	public String toString() {
+		return "SpotDetailsAction [files=" + Arrays.toString(files) + "]";
 	}
 
 }

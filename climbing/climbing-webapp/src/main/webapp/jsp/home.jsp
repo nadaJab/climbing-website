@@ -7,15 +7,17 @@
 	<br/>
 	
 	<!-- recherche multi-critères  -->
-
+	<div class="card">
+		<div class="card-body">
 			<s:form action="search" theme="simple" class="btn-lg">
 
 				<s:textfield key="spotBean.spotName" placeholder="Le nom du site" />
 				<s:textfield key="countryBean.cityName" placeholder="Ville" />
 				<s:textfield key="countryBean.countryName" placeholder="Pays" />
 			
-				<s:submit cssClass="btn btn-primary btn-lg" key="search" />	
+				<s:submit cssClass="btn btn-primary btn-lg" key="search" />		
 			</s:form>
+	</div></div>
 
 <s:if test="!isTestAffichage()">	
 	<br/>
@@ -24,7 +26,7 @@
 		<div class="carousel-inner">
 			<div class="carousel-item active">
 				<img class="d-block w-100"
-					src="/climbing-webapp/assets/images-topo/Image-home/photo11.jpg"
+					src="/climbing-webapp/images/Image-home/photo11.jpg"
 					alt="First slide">
 				<div class="carousel-caption d-none d-md-block">
 					<h5>Bienvenu à notre site</h5>
@@ -33,7 +35,7 @@
 			</div>
 			<div class="carousel-item">
 				<img class="d-block w-100"
-					src="/climbing-webapp/assets/images-topo/Image-home/photo12.jpg"
+					src="/climbing-webapp/images/Image-home/photo12.jpg"
 					alt="Second slide">
 				<div class="carousel-caption d-none d-md-block">
 					<h5>Bienvenu à notre site</h5>
@@ -42,7 +44,7 @@
 			</div>
 			<div class="carousel-item">
 				<img class="d-block w-100"
-					src="/climbing-webapp/assets/images-topo/Image-home/photo13.jpg"
+					src="/climbing-webapp/images/Image-home/photo13.jpg"
 					alt="Third slide">
 				<div class="carousel-caption d-none d-md-block">
 					<h5>Bienvenu à notre site</h5>
@@ -112,6 +114,8 @@
 		</s:else>
 	</div>
 </s:if>
+<br/>
 <%@include file="include/footer.jsp"%>
+
 </body>
 </html>

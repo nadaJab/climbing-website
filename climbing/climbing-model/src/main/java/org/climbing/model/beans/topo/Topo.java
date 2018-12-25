@@ -13,10 +13,7 @@ public class Topo {
 	private Integer nbCopyMax;
 	private Integer editionYear;
 	private Date published;
-	private String imageURL;
 
-	//private ArrayList<String> imageURL;
-	
 	
 	public Integer getIdTopo() {
 		return idTopo;
@@ -55,25 +52,11 @@ public class Topo {
 	public void setPublished(Date published) {
 		this.published = published;
 	}
-	/*
-	public ArrayList<String> getImageURL() {
-		return imageURL;
-	}
-	public void setImageURL(ArrayList<String> imageURL) {
-		this.imageURL = imageURL;
-	}*/
 	
-	
-	public String getImageURL() {
-		return imageURL;
-	}
-	public void setImageURL(String imageURL) {
-		this.imageURL = imageURL;
-	}
 	@Override
 	public String toString() {
 		return "Topo [idTopo=" + idTopo + ", topoName=" + topoName + ", author=" + author + ", nbCopyMax=" + nbCopyMax
-				+ ", editionYear=" + editionYear + ", published=" + published + ", imageURL=" + imageURL + "]";
+				+ ", editionYear=" + editionYear + ", published=" + published + "]";
 	}
 	
 }

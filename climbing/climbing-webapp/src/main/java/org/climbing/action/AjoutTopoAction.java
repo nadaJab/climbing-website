@@ -95,10 +95,7 @@ public class AjoutTopoAction extends ActionSupport implements SessionAware{
 
 	public String doAddTopo() {
 		String vResult = ActionSupport.INPUT;
-		
-		topoBean.setImageURL("aa");
-		LOGGER.debug(topoBean.getImageURL() + "==="); 
-
+	
 		topoBean.setPublished(Calendar.getInstance().getTime());
 		LOGGER.debug(topoBean.getPublished() + "date d'ajout du topo");
 

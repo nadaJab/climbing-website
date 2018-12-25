@@ -25,7 +25,8 @@ public class LoginInterceptor extends AbstractInterceptor{
 	        if (sessionAttributes.get(USER) != null) {
 	            vResult = pInvocation.invoke();
 	        } else {
-	            vResult = "error-forbidden";
+	            //vResult = "error-forbidden";
+	        	vResult = "login";
 	        }
 	        return vResult;
 	    }

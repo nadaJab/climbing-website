@@ -1,8 +1,10 @@
 <%@include file="include/menu.jsp"%>
 
-</body>
-
 <div class="card">
 	<div class="card-body">.</div>
 </div>
+
+<br />
+<%@include file="include/footer.jsp"%>
+</body>
 </html>
