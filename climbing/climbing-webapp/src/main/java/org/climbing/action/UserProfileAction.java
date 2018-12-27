@@ -45,7 +45,7 @@ public class UserProfileAction extends ActionSupport implements SessionAware{
 		listTopo = managerFactory.getTopoManager().getTopoUser(userSession.getIdUser());
 		bookingTopoList = managerFactory.getBookingTopoManager().getBookingTopoList(userSession.getIdUser());
 		Commandes = managerFactory.getBookingTopoManager().getCommandeList(userSession.getIdUser());
-		
+
 		return SUCCESS;	
 	}
 
@@ -157,6 +157,23 @@ public class UserProfileAction extends ActionSupport implements SessionAware{
 		vResult = ActionSupport.SUCCESS;  
 
 		return vResult;      	
+	}
+
+	public String deleteUser() {
+		String vResult = ActionSupport.INPUT;
+		User userSession = (User) session.get("user"); 
+
+		try {
+			managerFactory.getAccountManager().deleteAccountDao(userSession.getAccount().getIdAccount());
+			this.session.remove("user");
+			
+			vResult = ActionSupport.SUCCESS;
+			addActionError("suppression valide");
+
+		} catch (Exception e) {
+			addActionError("suppression non valide");
+		}
+		return vResult;
 	}
 
 

@@ -1,11 +1,10 @@
 package org.climbing.action;
 
 import java.io.File;
-import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
-
-import javax.servlet.http.HttpServletRequest;
+import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -39,8 +38,8 @@ public class SpotDetailsAction extends ActionSupport{
 	private Topo topoBean;
 	private  File[] files;
 	private ArrayList<String> lFileName = new ArrayList<String>();
-	private HttpServletRequest servletRequest;
-
+	protected Properties properties = new Properties();
+	String docPath;
 	@Autowired
 	private ManagerFactory managerFactory;
 
@@ -145,6 +144,14 @@ public class SpotDetailsAction extends ActionSupport{
 		this.lFileName = lFileName;
 	}
 
+	public String getDocPath() {
+		return docPath;
+	}
+
+	public void setDocPath(String docPath) {
+		this.docPath = docPath;
+	}
+
 	public String searchSpotDetails() {
 		String vResult = ActionSupport.INPUT;
 
@@ -173,24 +180,21 @@ public class SpotDetailsAction extends ActionSupport{
 		return vResult;
 	}
 
-	public String getTopo() {
+	public String getTopo() throws Exception {
 		String vResult = ActionSupport.INPUT;
 		topoBean = managerFactory.getTopoManager().getTopo(idTopo);
 		commentTopo = managerFactory.getCommentTopoManager().getAllComment(idTopo);
 		LOGGER.debug(topoBean.toString() + "@@");
 
 		String rep = String.valueOf(topoBean.getIdTopo());
-		String docPath = "C:\\Users\\nadas\\Documents\\formation-openclassrooms-P6\\climbing-website-master\\climbing\\climbing-webapp\\src\\main\\webapp\\images\\images-topo";
-		//String docPath = "/climbing-webapp/src/main/webapp/images/images-topo";
+		
+		Properties prop = new Properties();
+		InputStream in = this.getClass().getResourceAsStream("file.properties");
+		prop.load(in);
+		docPath = prop.getProperty("uploads.saveDir");
+		in.close();
 
-		//String docPath = "..\\images\\images-topo";
-
-		String relativeWebPath = "/images";
-		String absoluteDiskPath = servletRequest.getServletContext().getRealPath(relativeWebPath);
-		LOGGER.debug(absoluteDiskPath);
 		File file = new File(docPath + "/" + rep +"/");	
-
-
 		files=file.listFiles();
 
 		for (File f : files) {
@@ -202,10 +206,17 @@ public class SpotDetailsAction extends ActionSupport{
 		return vResult;
 
 	}
-
-	public void setServletRequest(HttpServletRequest request) {
-		this.servletRequest = request;
-
-	}
 	
+	public String getAllTopo() {
+		String vResult = ActionSupport.INPUT;
+		try {
+			topos = managerFactory.getTopoManager().getAllTopo();
+			vResult = ActionSupport.SUCCESS;
+
+		} catch (Exception e) {
+			addActionError("erreur");
+		}
+		return vResult;    
+	}
+
 }

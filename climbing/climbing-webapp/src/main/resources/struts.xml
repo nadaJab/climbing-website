@@ -73,7 +73,7 @@
 			<interceptor-ref name="defaultStack" />
 
 			<result name="input">/jsp/inscription.jsp</result>
-			<result name="success">/jsp/thankYou.jsp</result>
+			<result name="success">/jsp/home.jsp</result>
 		</action>
 
 		<!-- Action "connexion -->
@@ -96,6 +96,12 @@
 		<action name="topoDetails"
 			class="org.climbing.action.SpotDetailsAction" method="getTopo">
 			<result name="success">/jsp/topo-details.jsp</result>
+		</action>
+		
+		<!-- Action qui retourne tous les topo -->
+		<action name="Alltopo"
+			class="org.climbing.action.SpotDetailsAction" method="getAllTopo">
+			<result name="success">/jsp/all-topo.jsp</result>
 		</action>
 
 		<!-- Action "Deconnexion -->
@@ -279,6 +285,12 @@
 			<result name="success">/jsp/user-profile.jsp</result>
 		</action>
 		
+		<!-- Action pour supprimer un user par lui meme -->
+		<action name="supprimer"
+			class="org.climbing.action.UserProfileAction" method="deleteUser">
+			<result name="input">/jsp/user-profile.jsp</result>
+			<result name="success">/jsp/home.jsp</result>
+		</action>
 	</package>
 
 	<!-- ===== Package pour les actions AJAX ===== -->

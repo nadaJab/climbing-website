@@ -168,4 +168,27 @@ public class TopoManagerImpl extends AbstractManagerImpl implements TopoManager 
 		}
 		return listTopo;		
 	}
+
+	@Override
+	public ArrayList<Topo> getAllTopo() {
+		DefaultTransactionDefinition vDefintion = new DefaultTransactionDefinition();
+		vDefintion.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
+		vDefintion.setTimeout(30); 
+
+		TransactionStatus vTransactionStatus = platformTransactionManager.getTransaction(vDefintion);
+
+		try {	
+
+			listTopo = getDaoFactory().getTopoDao().getAllTopo();
+			
+			TransactionStatus vTScommit = vTransactionStatus;
+			vTransactionStatus = null;
+			platformTransactionManager.commit(vTScommit);		
+		} finally {
+			if (vTransactionStatus != null) {
+				platformTransactionManager.rollback(vTransactionStatus);
+			}
+		}
+		return listTopo;
+	}
 }

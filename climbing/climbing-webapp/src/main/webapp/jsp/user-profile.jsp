@@ -88,37 +88,38 @@
 			<h4 class="mb-3">Mes topos</h4>
 			<s:if test="listTopo.empty">
 				<div class="row justify-content-lg-center">
-					<p class="text-center grossissement">Vous n'avez aucun Topo en ligne</p>
+					<p class="text-center grossissement">Vous n'avez aucun Topo en
+						ligne</p>
 				</div>
 			</s:if>
 			<s:else>
-			<table class="table table-bordered">
-				<thead>
-					<tr class="table-primary">
-						<th scope="col">Nom du topo</th>
-						<th scope="col">Nombre d'exemplaire</th>
-						<th scope="col">Ajoutè le</th>
-					</tr>
-				</thead>
-				<tbody>
-
-					<s:iterator value="listTopo">
-						<tr>
-							<td><s:property value="topoName" /></td>
-							<td><s:property value="nbCopyMax" /></td>
-							<td><s:property value="published" /></td>
-							<td><s:a action="deleteTopo" class="btn btn-outline-danger">
-									<span class="fas fa-trash-alt"></span>
-									<s:hidden key="idTopo" />
-									<s:param name="idTopo" value="idTopo" />
-								</s:a></td>
+				<table class="table table-bordered">
+					<thead>
+						<tr class="table-primary">
+							<th scope="col">Nom du topo</th>
+							<th scope="col">Nombre d'exemplaire</th>
+							<th scope="col">Ajoutè le</th>
 						</tr>
-					</s:iterator>
+					</thead>
+					<tbody>
 
-				</tbody>
-			</table>
+						<s:iterator value="listTopo">
+							<tr>
+								<td><s:property value="topoName" /></td>
+								<td><s:property value="nbCopyMax" /></td>
+								<td><s:property value="published" /></td>
+								<td><s:a action="deleteTopo" class="btn btn-outline-danger">
+										<span class="fas fa-trash-alt"></span>
+										<s:hidden key="idTopo" />
+										<s:param name="idTopo" value="idTopo" />
+									</s:a></td>
+							</tr>
+						</s:iterator>
+
+					</tbody>
+				</table>
 			</s:else>
-			
+
 			<h6>Topo en réservation :</h6>
 			<s:if test="bookingTopoList.empty">
 				<div class="row justify-content-lg-center">
@@ -141,8 +142,8 @@
 						<s:iterator value="bookingTopoList">
 							<tr>
 								<td><s:property value="topoBean.topoName" /></td>
-								<td><s:property value="userBean.firstName" /> 
-								<s:property value="userBean.lastName" /></td>
+								<td><s:property value="userBean.firstName" /> <s:property
+										value="userBean.lastName" /></td>
 								<td><s:property value="userBean.account.email" /></td>
 								<td><s:property value="borrowingDate" /></td>
 								<td><s:property value="returnDate" /></td>
@@ -168,14 +169,15 @@
 			<h4 class="mb-3">Mes commandes</h4>
 			<s:if test="Commandes.empty">
 				<div class="row justify-content-lg-center">
-					<p class="text-center grossissement">Vous n'avez aucune commande</p>
+					<p class="text-center grossissement">Vous n'avez aucune
+						commande</p>
 				</div>
 			</s:if>
 			<s:else>
 				<table class="table table-bordered">
 					<thead>
 						<tr class="table-primary">
-							<th scope="col">Nom du topo</th>		
+							<th scope="col">Nom du topo</th>
 							<th scope="col">Date de réservation</th>
 							<th scope="col">Retour Ok</th>
 						</tr>
@@ -185,7 +187,7 @@
 							<tr>
 								<td><s:property value="topoBean.topoName" /></td>
 								<td><s:property value="borrowingDate" /></td>
-							    <td><s:property value="returnConfirmation" /></td>
+								<td><s:property value="returnConfirmation" /></td>
 							</tr>
 						</s:iterator>
 					</tbody>
@@ -247,9 +249,16 @@
 			</s:if>
 		</div>
 
+		<!-- Suppression d'un user -->
+		<hr class="mb-4">
+		<h6 class="mb-3">Supprimer votre compte</h6>
+		<s:a action="supprimer" class="btn btn-outline-danger">
+			<span class="fas fa-trash-alt"></span>
+		</s:a>
+		
+		<%@include file="include/footer.jsp"%>
 	</div>
 </div>
-<%@include file="include/footer.jsp"%>
 
 </body>
 </html>

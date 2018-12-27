@@ -12,5 +12,6 @@ public interface TopoManager {
 	ArrayList<Topo> getAllTopo(int idSpot);
 	Topo getTopo(int idTopo);
 	ArrayList<Topo> getTopoUser(int idUser);
+	ArrayList<Topo> getAllTopo();
 
 }

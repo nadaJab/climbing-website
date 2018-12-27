@@ -1,6 +1,7 @@
 
 	<%@include file="include/menu.jsp"%>
-
+	<s:actionerror />
+    <s:actionmessage/>
 	<div class="container">
 
 		<s:form action="save" validate="true" theme="bootstrap" cssClass="form-horizontal" label="Créer un compte">
@@ -8,9 +9,10 @@
 			<s:textfield key="userBean.lastName" />
 			<s:textfield key="userBean.firstName" />
 			<s:textfield key="userBean.pseudo" />
-			<sj:datepicker key="userBean.birthYear" parentTheme="bootstrap"
-				cssClass="form-control" elementCssClass="col-sm-5" showOn="focus"
-				inputAppendIcon="calendar" />
+			
+			<s:textfield name="userBean.birthYear" type="date" id="startDate" width="200"/>
+			
+		
 			<s:radio key="userBean.sexe" labelposition="inline"
 				list="{'Femme', 'Homme'}" cssErrorClass="foo" />
 			<s:checkboxlist key="userBean.climbingType" labelposition="inline"
@@ -23,7 +25,19 @@
 
 		</s:form>
 	</div>
-
+	
+	<script>
+        var today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
+        $('#startDate').datepicker({
+            uiLibrary: 'bootstrap4',
+            iconsLibrary: 'fontawesome',
+            minDate: today,
+            maxDate: function () {
+                return $('#endDate').val();
+            }
+        });
+    </script>
+    
 	<%@include file="include/footer.jsp"%>
 
 </body>

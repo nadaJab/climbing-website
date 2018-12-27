@@ -7,6 +7,7 @@ public interface AccountDao {
 	
 	Account addAccountDao(Account account) throws AccountException;
 	Account updateAccountDao(Account account);
-	void deleteAccountDao(Account account);
+	boolean deleteAccountDao(int idAccount);
 	Account getAccountDao(Account account);
+	Integer getAccountOk(String email);
 }

@@ -12,4 +12,5 @@ public interface TopoDao {
 	ArrayList<Topo> getAllTopoDao(int idSpot);
 	Topo getTopoDao(int idTopo);
 	ArrayList<Topo> getTopoUserDao(int idUser);
+	ArrayList<Topo> getAllTopo();
 }

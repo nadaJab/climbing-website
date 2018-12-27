@@ -7,5 +7,6 @@ public interface AccountManager {
 	
 	Account addAccount(Account pAccount) throws AccountException;
 	Account getAccount(Account pAccount);
-
+	Integer getAccountOk(String email);
+	boolean deleteAccountDao(int idAccount);
 }

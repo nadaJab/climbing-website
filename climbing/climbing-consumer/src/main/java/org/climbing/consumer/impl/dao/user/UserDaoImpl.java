@@ -79,17 +79,6 @@ public class UserDaoImpl extends AbstractDaoImpl implements UserDao  {
 		return user;
 	}
 
-	@Override
-	public void deleteUserDao(User user) {
-		String vSQL = "DELETE FROM user_Web WHERE id_user = :id_user";
-		
-		MapSqlParameterSource vParams = new MapSqlParameterSource();
-		vParams.addValue("idUser", user.getIdUser(), Types.INTEGER);
-		
-	    NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());
-	    vJdbcTemplate.update(vSQL, vParams);
-		
-	}
 
 	@Override
 	public User searchUserDao(int aId) {
@@ -100,25 +89,7 @@ public class UserDaoImpl extends AbstractDaoImpl implements UserDao  {
 		return userD;
 	}
 
-	@Override
-	public User searchUserDao(String uPseudo) {
-		String vSQL = "SELECT FROM user_Web WHERE pseudo = ?";
-		User user;
-		
-		MapSqlParameterSource vParams = new MapSqlParameterSource();
-		vParams.addValue("pseudo", uPseudo, Types.VARCHAR);
-		
-		NamedParameterJdbcTemplate vJdbcTemplate = new NamedParameterJdbcTemplate(getDataSource());  
-	    if(!vJdbcTemplate.query(vSQL, userRow).isEmpty()) {
-	    	user = (User) vJdbcTemplate.query(vSQL, userRow);
-	    }
-	    else {
-	    	user = null;
-	    }
-
-		return user;
-	}
-
+	
 	@Override
 	public boolean updateRoleDao(int idUser, String role) {
 		String vSQL = "UPDATE user_Web SET role = ? WHERE id_user = ?";

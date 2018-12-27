@@ -62,7 +62,7 @@
 						aria-haspopup="true" aria-expanded="false"> Topo </a>
 						<div class="dropdown-menu"
 							aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item" href="#">Liste topo</a> 
+							<s:a class="dropdown-item" action="Alltopo">Liste topo</s:a> 
 						</div></li>
 						
 				</ul>

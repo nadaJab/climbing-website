@@ -114,4 +114,14 @@ public class TopoDaoImpl extends AbstractDaoImpl implements TopoDao  {
 		
 		return listTopoDao;
 	}
+
+	@Override
+	public ArrayList<Topo> getAllTopo() {
+		String vSQL = "SELECT * FROM topo";
+        JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
+
+        ArrayList<Topo> topoList = (ArrayList<Topo>) vJdbcTemplate.query(vSQL, new topoRM());
+        
+		return topoList;
+	}
 }

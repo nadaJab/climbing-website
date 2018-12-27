@@ -1,7 +1,5 @@
 package org.climbing.business.impl.manager.user;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
@@ -108,17 +106,6 @@ public class UserManagerImpl extends AbstractManagerImpl implements UserManager 
 			}
 		}
 		return user;
-	}
-
-	@Override
-	public void deleteUser(User user) {
-		getDaoFactory().getUserDao().deleteUserDao(user);		
-	}
-
-	@Override
-	public User searchUser(String uPseudo) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
