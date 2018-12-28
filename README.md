@@ -20,16 +20,17 @@ Créez un site communautaire autour de l’escalade
 	defaultTransactionIsolation="READ_COMMITTED" 
 	initialSize="1"
 * Lancez les script sql qui se trouvent dans le dossier Documentation/script	
+*Chemin à modifier --> dans le module climbing-webapp --> src/main/resources/org/climbing/action --> file.properties (uploads.saveDir)
 * déploiement du projet :
 
-		-Avec IDE:
-		Téléchargez le projet depuis Github à l’url https://github.com/nadaJab/climbing-website
-		Ensuite, dézippez le projet qui contient deux dossiers : Documentation et climbing
-		Dans votre IDE,--> importez le dossier climbing --> clique droit sur le projet --> Run as --> Maven build --> clean packages
-		Enfin, lancez le module climbing-webapp sur le serveur 
-		Et entrez sur votre navigateur l'URL: http://localhost:8080/climbing-webapp/home.action 
+-Avec IDE:
+Téléchargez le projet depuis Github à l’url https://github.com/nadaJab/climbing-website
+Ensuite, dézippez le projet qui contient deux dossiers : Documentation et climbing
+Dans votre IDE,--> importez le dossier climbing --> clique droit sur le projet --> Run as --> Maven build --> clean packages
+Enfin, lancez le module climbing-webapp sur le serveur 
+Et entrez sur votre navigateur l'URL: http://localhost:8080/climbing-webapp/home.action 
 		
-		-Sans IDE:
-		Dans le dossier Documentation, vous trouvez le fichier climbing-webapp.war. Copiez ce fichier dans le repertoire Tomcat/webapps
-		Demarrez Tomcat et lancez l'URL: http://localhost:8080/climbing-webapp/home.action  
+-Sans IDE:
+Dans le dossier Documentation, vous trouvez le fichier climbing-webapp.war. Copiez ce fichier dans le repertoire Tomcat/webapps
+Demarrez Tomcat et lancez l'URL: http://localhost:8080/climbing-webapp/home.action  
 

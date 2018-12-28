@@ -273,9 +273,7 @@
 		<action name="bookingOk"
 			class="org.climbing.action.BookingTopoAction" method="bookingTopo">
 			<result name="input">/jsp/topo-details.jsp</result>
-			<result name="success" type="redirectAction">
-				<param name="actionName">home</param>
-			</result>
+			<result name="success">/jsp/booking-valide.jsp</result>
 		</action>
 		
 		<!-- Action pour confirmer le retour du topo par le propriétaire -->
@@ -303,10 +301,6 @@
 				<param name="root">lignes</param>
 			</result>
 		</action>
-
-		<!-- Action renvoyant la liste des Spot <action name="ajax_getListSpot" 
-			class="org.climbing.action.HomeAction" method="searchSpotAjax"> <result type="json"> 
-			<param name="root">listSpot</param> </result> </action> -->
 
 	</package>
 	
