@@ -19,8 +19,11 @@ Créez un site communautaire autour de l’escalade
 	defaultAutoCommit="false"
 	defaultTransactionIsolation="READ_COMMITTED" 
 	initialSize="1"
-* Lancez les script sql qui se trouvent dans le dossier Documentation/script	
-*Chemin à modifier --> dans le module climbing-webapp --> src/main/resources/org/climbing/action --> file.properties (uploads.saveDir)
+* Lancez les script sql qui se trouvent dans le dossier Documentation/script:
+* 1- Dossier user: --> Lancer le script account_0.0.1.sql ensuite user_0.0.1.sql 	
+* 2- Dossier user-admin: --> Lancer le script account_admin.sql ensuite user_Admin.sql
+* 3- Dossier site-Mont-Dol: --> lancer les script country.sql --> spot.sql --> sector.sql --> spot-sector.sql --> route.sql --> sector-route.sql --> topo.sql
+* Chemin à modifier --> dans le module climbing-webapp --> src/main/resources/org/climbing/action --> file.properties (uploads.saveDir)
 * déploiement du projet :
 
 -Avec IDE:
