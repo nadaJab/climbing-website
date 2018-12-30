@@ -36,5 +36,5 @@ Et entrez sur votre navigateur l'URL: http://localhost:8080/climbing-webapp/home
 		
 -Sans IDE:
 Dans le dossier Documentation, vous trouvez le fichier climbing-webapp.war. Copiez ce fichier dans le repertoire Tomcat/webapps
-Demarrez Tomcat et lancez l'URL: http://localhost:8080/climbing-webapp/home.action  
+Demarrez Tomcat et lancez l'URL: http://localhost:8080/climbing webapp/home.action  
 
