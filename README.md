@@ -6,7 +6,7 @@ Créez un site communautaire autour de l’escalade
 * JDK8 version 191
 * Apache Maven 3.5.4
 * Apache Tomcat 9.0.12
-* PostgreSQL 9.6
+* PostgreSQL 10
 
 # Installation des outils:
   Configuration de la base de données:
