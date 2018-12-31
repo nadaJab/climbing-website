@@ -24,7 +24,8 @@ public class BookingTopoDaoImpl extends AbstractDaoImpl implements BookingTopoDa
 
 	@Override
 	public ArrayList<BookingTopo> getBookingTopoInfoDao(int idTopo) {
-		String vSQL = "SELECT * FROM booking_topo WHERE id_topo = ? AND return_confirmation = 'false'";
+		String vSQL = "SELECT * FROM booking_topo INNER JOIN topo ON booking_topo.id_topo = topo.id_topo "
+					+ "WHERE booking_topo.id_topo = ? AND booking_topo.return_confirmation = 'false'";
 
 		JdbcTemplate vJdbcTemplate = new JdbcTemplate(getDataSource());
 		bookingTopo = (ArrayList<BookingTopo>) vJdbcTemplate.query(vSQL, new Object[] { idTopo }, new BookingTopoRM());
